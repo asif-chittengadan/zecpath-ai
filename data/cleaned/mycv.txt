@@ -1,0 +1,60 @@
+ASIF C
+asifsifuoz6@gmail.com +91 8137876025
+linkedin github
+Professional Summary
+Motivated Information Technology graduate with a strong foundation in Computer Networks, Operating Systems,
+Database Management Systems, and System Administration. Skilled in Python, C++, SQL, networking
+fundamentals (TCP/IP, DNS, DHCP), and troubleshooting technical issues. Passionate about enterprise
+infrastructure, networking, servers, storage technologies, and delivering reliable IT support. Quick learner with
+strong analytical and problem-solving abilities, eager to contribute to HCLTechs Networking, Mobility, Storage &
+Server team.
+Education
+Cochin University of Science and Technology
+Bachelor of Technology In Information Technology
+CGPA: 7.84/10
+Graduated: April 2026
+VHMHSS Morayur
+Higher Secondary Education
+Percentage: 95.8
+Relevant Coursework
+- Computer Networks
+- Operating Systems
+- Database Management Systems
+- Computer Organization
+- Data Structures & Algorithms
+- Object-Oriented Programming
+- Network Security Fundamentals
+Experience
+Data Analytics Intern Bridgeon Solution LLP
+- Worked with enterprise datasets and ensured data accuracy through cleaning and validation.
+- Collaborated with cross-functional teams to understand technical requirements.
+- Performed troubleshooting during dashboard development and report deployment
+- Developed analytical reports using Power BI while maintaining data integrity.
+- Improved problem-solving and debugging skills through real-world business projects.
+Projects
+Self-Extensible AI Platform Python, Neo4j, FastAPI, LLMs
+- Developed an AI platform capable of dynamically creating and integrating tools based on user requirements .
+- Implemented a Knowledge Graph RAG system using Neo4j for intelligent information retrieval
+- Added secure code validation and execution checks before running AI-generated code.
+- Integrated web knowledge retrieval and LLMs to improve adaptability and automation.
+Sales Data Analytics Dashboard Power BI, DAX, Power Query
+GitHub Repository
+- Built interactive dashboards and reports using Power BI for sales performance analysis.
+- Cleaned and transformed raw datasets using Power Query and established relational data models.
+- Developed advanced DAX calculations, KPIs, and time-based analytical reports.
+- Implemented slicers, drill-through features, and visual analytics for improved user interaction.
+Family Health Management Website HTML, CSS, JavaScript
+GitHub Repository
+- Designed and developed a responsive multi-page healthcare-focused web application.
+- Implemented features including BMI calculator, medical history forms, and visit tracking.
+- Developed registration and login pages with frontend validation techniques.
+- Improved usability with responsive layouts and clean UI design principles.
+Skills
+Programming Languages: Python, C++, C, SQL
+Networking: TCP/IP, OSI Model, DNS, DHCP, HTTP, HTTPS, Routing & Switching Fundamentals, IPv4
+Addressing, Subnetting
+Operating System: Windows, Linux
+Database: MySQL, DBMS
+Core Concepts: Data Structures, DBMS, Object-Oriented Programming, Operating System, Computer Networks
+Tools & Platforms: GitHub, VS Code, PyCharm, Figma
+Soft Skills: Problem Solving, Team Collaboration, Adaptability, Time Management, Troubleshooting
