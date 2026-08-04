@@ -1,0 +1,12 @@
+{
+    "JS": "JavaScript",
+    "NodeJS": "Node.js",
+    "ReactJS": "React",
+    "Py": "Python",
+    "GCP": "Google Cloud Platform",
+    "ML": "Machine Learning",
+    "AI": "Artificial Intelligence",
+    "DB": "Database",
+    "BE": "B.E",
+    "BTech": "B.Tech"
+}

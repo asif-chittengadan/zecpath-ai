@@ -1,0 +1,18 @@
+{
+    "role": "Software Developer",
+    "skills": [
+        "C",
+        "C++",
+        "JavaScript"
+    ],
+    "experience": {
+        "minimum": 0,
+        "maximum": 0,
+        "text": "Freshers"
+    },
+    "education": [
+        "Artificial Intelligence",
+        "B.Tech",
+        "Computer Science"
+    ]
+}

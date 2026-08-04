@@ -1,0 +1,19 @@
+{
+    "role": "",
+    "skills": [
+        "Cyber Security",
+        "DNS",
+        "Linux",
+        "Networking",
+        "TCP/IP"
+    ],
+    "experience": {
+        "minimum": 0,
+        "maximum": 0,
+        "text": "Freshers"
+    },
+    "education": [
+        "B.Tech",
+        "Computer Science"
+    ]
+}
