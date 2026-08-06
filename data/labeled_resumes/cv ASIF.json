@@ -1,0 +1,56 @@
+{
+    "Skills": [
+        "Programming Languages: Python, C++, C, SQL",
+        "Data Engineering: Data Cleaning, Data Transformation, Power Query, DAX, Data Modeling",
+        "Core Concepts: Data Structures, DBMS, Object-Oriented Programming, Operating System, Computer Networks",
+        "Tools & Platforms: GitHub, VS Code, PyCharm, Figma",
+        "Soft Skills: Problem Solving, Team Collaboration, Adaptability, Time Management"
+    ],
+    "Experience": [
+        "Data Analytics Intern Bridgeon Solution LLP",
+        "- Worked with structured datasets to analyze business performance using Power BI",
+        "- Cleaned and transformed data using Power Query for accurate reporting",
+        "- Collaborated with team members to understand business requirements and deliver analytical solutions",
+        "- Developed dashboards and KPI reports to support data-driven decision making"
+    ],
+    "Education": [
+        "Cochin University of Science and Technology",
+        "Bachelor of Technology In Information Technology",
+        "CGPA: 7.84/10",
+        "Graduated: April 2026",
+        "VHMHSS Morayur",
+        "Higher Secondary Education",
+        "Percentage: 95.6"
+    ],
+    "Projects": [
+        "Sales Data Analytics Dashboard Power BI, DAX, Power Query",
+        "GitHub Repository",
+        "- Built interactive dashboards and reports using Power BI for sales performance analysis.",
+        "- Cleaned and transformed raw datasets using Power Query and established relational data models.",
+        "- Developed advanced DAX calculations, KPIs, and time-based analytical reports.",
+        "- Implemented slicers, drill-through features, and visual analytics for improved user interaction.",
+        "Family Health Management Website HTML, CSS, JavaScript",
+        "GitHub Repository",
+        "- Designed and developed a responsive multi-page healthcare-focused web application.",
+        "- Implemented features including BMI calculator, medical history forms, and visit tracking.",
+        "- Developed registration and login pages with frontend validation techniques.",
+        "- Improved usability with responsive layouts and clean UI design principles.",
+        "Self-Extensible AI Platform Python, Neo4j, FastAPI, LLMs",
+        "- Developed an AI platform capable of dynamically creating and integrating tools based on user requirements .",
+        "- Implemented a Knowledge Graph RAG system using Neo4j for intelligent information retrieval",
+        "- Added secure code validation and execution checks before running AI-generated code.",
+        "- Integrated web knowledge retrieval and LLMs to improve adaptability and automation."
+    ],
+    "Certifications": [],
+    "Others": [
+        "ASIF C",
+        "asifsifuoz6@gmail.com +91 8137876025",
+        "linkedin github",
+        "Professional Summary",
+        "Recent B.Tech Information Technology graduate from Cochin University of Science and Technology (CUSAT) with",
+        "knowledge of Python, SQL, Power BI, and data analytics. Experienced in data cleaning, visualization, dashboard",
+        "development, and working with structured datasets through academic projects and an internship. Interested in",
+        "Data Science and currently building my skills in machine learning and AI. A quick learner with strong analytical",
+        "and problem-solving abilities, eager to contribute and grow in a data-driven environment."
+    ]
+}

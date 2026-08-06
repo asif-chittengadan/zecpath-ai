@@ -1,0 +1,123 @@
+{
+    "Personal Information": [
+
+        "email",
+        "phone",
+        "mobile",
+        "linkedin",
+        "github",
+        "portfolio",
+        "address",
+        "name"
+
+    ],
+    
+    "Skills": [
+
+        "python",
+        "java",
+        "c",
+        "c++",
+        "c#",
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "react",
+        "angular",
+        "vue",
+        "node",
+        "node.js",
+        "django",
+        "flask",
+        "fastapi",
+        "spring",
+        "sql",
+        "mysql",
+        "postgresql",
+        "mongodb",
+        "oracle",
+        "firebase",
+        "supabase",
+        "aws",
+        "azure",
+        "gcp",
+        "docker",
+        "kubernetes",
+        "git",
+        "github",
+        "linux",
+        "tensorflow",
+        "pytorch",
+        "opencv",
+        "pandas",
+        "numpy",
+        "scikit-learn",
+        "power bi",
+        "excel"
+    ],
+
+    "Education": [
+
+        "b.tech",
+        "b.e",
+        "bachelor",
+        "m.tech",
+        "m.e",
+        "master",
+        "phd",
+        "computer science",
+        "information technology",
+        "electronics",
+        "electrical",
+        "mechanical",
+        "cgpa",
+        "gpa",
+        "university",
+        "college"
+    ],
+
+    "Experience": [
+
+        "software engineer",
+        "software developer",
+        "intern",
+        "internship",
+        "developer",
+        "engineer",
+        "analyst",
+        "consultant",
+        "team lead",
+        "manager",
+        "company",
+        "present",
+        "worked",
+        "responsible"
+    ],
+
+    "Projects": [
+
+        "project",
+        "developed",
+        "implemented",
+        "built",
+        "designed",
+        "application",
+        "system",
+        "website",
+        "mobile app"
+    ],
+
+    "Certifications": [
+
+        "certification",
+        "certificate",
+        "aws",
+        "azure",
+        "google",
+        "oracle",
+        "coursera",
+        "udemy",
+        "nptel"
+    ]
+}
