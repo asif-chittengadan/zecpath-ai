@@ -5,6 +5,7 @@ from parsers.docx_reader import DOCXReader
 from parsers.text_cleaner import TextCleaner
 from parsers.section_classifier import SectionClassifier
 from parsers.section_builder import SectionBuilder
+from parsers.resume_skill_extractor import SkillExtractor
 
 
 def main():
@@ -23,6 +24,8 @@ def main():
     classifier = SectionClassifier()
 
     builder = SectionBuilder()
+
+    skill_extractor = SkillExtractor()
 
     files = [
 
@@ -83,6 +86,14 @@ def main():
         # ----------------------------
 
         sections = classifier.classify(text)
+
+        if "Skills" in sections:
+
+            sections["Skills"] = skill_extractor.extract(
+
+                sections["Skills"]
+
+            )
 
         # ----------------------------
         # Save JSON

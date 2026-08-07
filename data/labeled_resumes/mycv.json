@@ -1,14 +1,96 @@
 {
-    "Skills": [
-        "Programming Languages: Python, C++, C, SQL",
-        "Networking: TCP/IP, OSI Model, DNS, DHCP, HTTP, HTTPS, Routing & Switching Fundamentals, IPv4",
-        "Addressing, Subnetting",
-        "Operating System: Windows, Linux",
-        "Database: MySQL, DBMS",
-        "Core Concepts: Data Structures, DBMS, Object-Oriented Programming, Operating System, Computer Networks",
-        "Tools & Platforms: GitHub, VS Code, PyCharm, Figma",
-        "Soft Skills: Problem Solving, Team Collaboration, Adaptability, Time Management, Troubleshooting"
+    "Summary": [
+        "Motivated Information Technology graduate with a strong foundation in Computer Networks, Operating Systems,",
+        "Database Management Systems, and System Administration. Skilled in Python, C++, SQL, networking",
+        "fundamentals (TCP/IP, DNS, DHCP), and troubleshooting technical issues. Passionate about enterprise",
+        "infrastructure, networking, servers, storage technologies, and delivering reliable IT support. Quick learner with",
+        "strong analytical and problem-solving abilities, eager to contribute to HCLTechs Networking, Mobility, Storage &",
+        "Server team."
     ],
+    "Skills": {
+        "technical": [
+            {
+                "skill": "C",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "C++",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "DNS",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Linux",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "MySQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Python",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "SQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "TCP/IP",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "business": [
+            {
+                "skill": "Adaptability",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Collaboration",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Problem Solving",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Team Collaboration",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Time Management",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "creative": [
+            {
+                "skill": "Figma",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "summary": {
+            "technical_count": 8,
+            "business_count": 5,
+            "creative_count": 1,
+            "total_skills": 14
+        }
+    },
     "Experience": [
         "Data Analytics Intern Bridgeon Solution LLP",
         "- Worked with enterprise datasets and ensured data accuracy through cleaning and validation.",
@@ -57,13 +139,6 @@
     "Others": [
         "ASIF C",
         "asifsifuoz6@gmail.com +91 8137876025",
-        "linkedin github",
-        "Professional Summary",
-        "Motivated Information Technology graduate with a strong foundation in Computer Networks, Operating Systems,",
-        "Database Management Systems, and System Administration. Skilled in Python, C++, SQL, networking",
-        "fundamentals (TCP/IP, DNS, DHCP), and troubleshooting technical issues. Passionate about enterprise",
-        "infrastructure, networking, servers, storage technologies, and delivering reliable IT support. Quick learner with",
-        "strong analytical and problem-solving abilities, eager to contribute to HCLTechs Networking, Mobility, Storage &",
-        "Server team."
+        "linkedin github"
     ]
 }

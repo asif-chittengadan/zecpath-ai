@@ -1,12 +1,116 @@
 {
-    "Skills": [
-        "Programming Languages: Python, C++, C, SQL",
-        "Data Engineering: ETL Concepts, Data Cleaning, Data Transformation, Power Query, DAX, Data Modeling",
-        "Core Concepts: Data Structures, DBMS, Object-Oriented Programming, Operating System, Computer",
-        "Networks(TCP/IP,DNS)",
-        "Tools & Platforms: GitHub, VS Code, PyCharm, Figma",
-        "Soft Skills: Problem Solving, Team Collaboration, Adaptability, Time Management"
+    "Summary": [
+        "Recent Information Technology graduate (2026) with hands-on experience in Python, SQL, Power BI, Power",
+        "Query, and data analytics. Skilled in data cleaning, transformation, visualization, and building data-driven",
+        "solutions using relational databases and analytical tools. Experienced in developing dashboards, working with",
+        "structured datasets, and implementing AI-based applications. Passionate about Data Engineering, ETL pipelines,",
+        "cloud technologies, and designing scalable data solutions. Strong problem-solving, analytical thinking, and",
+        "collaborative skills with a commitment to continuous learning."
     ],
+    "Skills": {
+        "technical": [
+            {
+                "skill": "C",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "C++",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "DAX",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "DNS",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Data Cleaning",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Data Modeling",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Data Transformation",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "ETL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Power Query",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Python",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "SQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "TCP/IP",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "business": [
+            {
+                "skill": "Adaptability",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Collaboration",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Problem Solving",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Team Collaboration",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Time Management",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "creative": [
+            {
+                "skill": "Figma",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "summary": {
+            "technical_count": 12,
+            "business_count": 5,
+            "creative_count": 1,
+            "total_skills": 18
+        }
+    },
     "Experience": [
         "Data Analytics Intern Bridgeon Solution LLP",
         "- Worked with structured datasets to analyze business performance using Power BI",
@@ -46,13 +150,6 @@
     "Others": [
         "ASIF C",
         "asifsifuoz6@gmail.com +91 8137876025",
-        "linkedin github",
-        "Professional Summary",
-        "Recent Information Technology graduate (2026) with hands-on experience in Python, SQL, Power BI, Power",
-        "Query, and data analytics. Skilled in data cleaning, transformation, visualization, and building data-driven",
-        "solutions using relational databases and analytical tools. Experienced in developing dashboards, working with",
-        "structured datasets, and implementing AI-based applications. Passionate about Data Engineering, ETL pipelines,",
-        "cloud technologies, and designing scalable data solutions. Strong problem-solving, analytical thinking, and",
-        "collaborative skills with a commitment to continuous learning."
+        "linkedin github"
     ]
 }
