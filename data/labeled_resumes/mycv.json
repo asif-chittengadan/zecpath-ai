@@ -91,14 +91,6 @@
             "total_skills": 14
         }
     },
-    "Experience": [
-        "Data Analytics Intern Bridgeon Solution LLP",
-        "- Worked with enterprise datasets and ensured data accuracy through cleaning and validation.",
-        "- Collaborated with cross-functional teams to understand technical requirements.",
-        "- Performed troubleshooting during dashboard development and report deployment",
-        "- Developed analytical reports using Power BI while maintaining data integrity.",
-        "- Improved problem-solving and debugging skills through real-world business projects."
-    ],
     "Education": [
         "Cochin University of Science and Technology",
         "Bachelor of Technology In Information Technology",
@@ -140,5 +132,25 @@
         "ASIF C",
         "asifsifuoz6@gmail.com +91 8137876025",
         "linkedin github"
-    ]
+    ],
+    "Experience": {
+        "experiences": [
+            {
+                "company": "Bridgeon Solution LLP",
+                "role": "Data Analytics Intern",
+                "start_date": "",
+                "end_date": "",
+                "duration": "",
+                "description": []
+            }
+        ],
+        "total_experience": {
+            "total_months": 0,
+            "years": 0,
+            "months": 0,
+            "formatted": "0 years 0 months"
+        },
+        "gaps": [],
+        "overlaps": []
+    }
 }

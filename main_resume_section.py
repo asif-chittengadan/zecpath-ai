@@ -6,7 +6,7 @@ from parsers.text_cleaner import TextCleaner
 from parsers.section_classifier import SectionClassifier
 from parsers.section_builder import SectionBuilder
 from parsers.resume_skill_extractor import SkillExtractor
-
+from parsers.resume_experience_extractor import ResumeExperienceExtractor
 
 def main():
 
@@ -26,6 +26,8 @@ def main():
     builder = SectionBuilder()
 
     skill_extractor = SkillExtractor()
+
+    experience_extractor = ResumeExperienceExtractor()
 
     files = [
 
@@ -95,6 +97,48 @@ def main():
 
             )
 
+        experience_lines = sections.get("Experience", [])
+
+        companies = experience_extractor.extract_companies(
+            experience_lines
+        )
+
+        roles = experience_extractor.extract_roles(
+            experience_lines
+        )
+
+        dates = experience_extractor.extract_dates(
+            experience_lines
+        )
+
+        durations = experience_extractor.extract_durations(
+            experience_lines
+        )
+
+        total_experience = experience_extractor.calculate_total_experience(
+            dates,
+            durations
+        )
+
+        gaps = experience_extractor.detect_gaps(
+            dates
+        )
+
+        overlaps = experience_extractor.detect_overlaps(
+            dates
+        )
+
+        experience_output = experience_extractor.build_experience_output(
+            companies,
+            roles,
+            dates,
+            durations
+        )
+
+        experience_output["total_experience"] = total_experience
+        experience_output["gaps"] = gaps
+        experience_output["overlaps"] = overlaps
+
         # ----------------------------
         # Save JSON
         # ----------------------------
@@ -113,12 +157,12 @@ def main():
 
         )
 
+        sections.pop("Experience", None)
+        sections["Experience"] = experience_output
+
         builder.save(
-
             sections,
-
             output_path
-
         )
 
         print(
