@@ -7,6 +7,9 @@ from parsers.section_classifier import SectionClassifier
 from parsers.section_builder import SectionBuilder
 from parsers.resume_skill_extractor import SkillExtractor
 from parsers.resume_experience_extractor import ResumeExperienceExtractor
+from parsers.resume_education_extractor import EducationExtractor
+from parsers.resume_certification_extractor import CertificationExtractor
+
 
 def main():
 
@@ -28,6 +31,10 @@ def main():
     skill_extractor = SkillExtractor()
 
     experience_extractor = ResumeExperienceExtractor()
+
+    education_extractor = EducationExtractor()
+
+    certification_extractor = CertificationExtractor()
 
     files = [
 
@@ -89,6 +96,56 @@ def main():
 
         sections = classifier.classify(text)
 
+        # ----------------------------
+        # Education Extraction
+        # ----------------------------
+
+        education_lines = sections.get(
+            "Education",
+            []
+        )
+
+        education_text = "\n".join(
+            education_lines
+        )
+
+        degree_types = education_extractor.extract_degree(
+            education_text
+        )
+
+        fields_of_study = education_extractor.extract_field_of_study(
+            education_text
+        )
+
+        institutions = education_extractor.extract_institution(
+            education_text
+        )
+
+        graduation_year = education_extractor.extract_graduation_year(
+            education_text
+        )
+
+        education_output = {
+            "degree": degree_types[0] if degree_types else "",
+            "field_of_study": fields_of_study[0] if fields_of_study else "",
+            "institution": institutions[0] if institutions else "",
+            "graduation_year": graduation_year
+        }
+
+
+        # ----------------------------
+        # Certification Extraction
+        # ----------------------------
+
+        certification_lines = sections.get(
+            "Certifications",
+            []
+        )
+
+        certification_output = certification_extractor.extract(
+            certification_lines
+        )
+
         if "Skills" in sections:
 
             sections["Skills"] = skill_extractor.extract(
@@ -98,6 +155,11 @@ def main():
             )
 
         experience_lines = sections.get("Experience", [])
+
+        print("\n===== EXPERIENCE INPUT =====")
+
+        for line in experience_lines:
+            print(repr(line))
 
         companies = experience_extractor.extract_companies(
             experience_lines
@@ -110,10 +172,14 @@ def main():
         dates = experience_extractor.extract_dates(
             experience_lines
         )
+        print("\n===== EXTRACTED DATES =====")
+        print(dates)
 
         durations = experience_extractor.extract_durations(
             experience_lines
         )
+        print("\n===== EXTRACTED DURATIONS =====")
+        print(durations)
 
         total_experience = experience_extractor.calculate_total_experience(
             dates,
@@ -139,6 +205,16 @@ def main():
         experience_output["gaps"] = gaps
         experience_output["overlaps"] = overlaps
 
+
+        sections.pop("Education", None)
+        sections["Education"] = education_output
+
+        sections.pop("Certifications", None)
+        sections["Certifications"] = certification_output
+
+        sections.pop("Experience", None)
+        sections["Experience"] = experience_output
+
         # ----------------------------
         # Save JSON
         # ----------------------------
@@ -156,9 +232,6 @@ def main():
             output_name
 
         )
-
-        sections.pop("Experience", None)
-        sections["Experience"] = experience_output
 
         builder.save(
             sections,

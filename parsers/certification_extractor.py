@@ -1,6 +1,5 @@
 import re
 
-
 class CertificationExtractor:
 
     def extract(self, section_lines):

@@ -1,114 +1,158 @@
+import json
 import re
-import spacy
 
 
 class EducationExtractor:
 
     def __init__(self):
 
-        self.nlp = spacy.load("en_core_web_sm")
+        with open(
+            "data/education.json",
+            "r",
+            encoding="utf-8"
+        ) as file:
+            data = json.load(file)
 
-        self.degree_patterns = [
+        self.degree_types = sorted(
+            set(data["degree_types"]),
+            key=len,
+            reverse=True
+        )
 
-            r"\bb\.?tech\b",
-            r"\bb\.?e\b",
-            r"\bm\.?tech\b",
-            r"\bm\.?e\b",
-            r"\bbachelor(?:'s)?\b",
-            r"\bmaster(?:'s)?\b",
-            r"\bbsc\b",
-            r"\bmsc\b",
-            r"\bbca\b",
-            r"\bmca\b",
-            r"\bph\.?d\b",
-            r"\bdiploma\b"
+        self.fields_of_study = sorted(
+            set(data["fields_of_study"]),
+            key=len,
+            reverse=True
+        )
 
+    def extract_degree(self, text):
+
+        matches = []
+
+        for degree in self.degree_types:
+
+            pattern = (
+                r"(?<![A-Za-z0-9])"
+                + re.escape(degree)
+                + r"(?![A-Za-z0-9])"
+            )
+
+            if re.search(
+                pattern,
+                text,
+                re.IGNORECASE
+            ):
+                matches.append(degree)
+
+        matches.sort(
+            key=len,
+            reverse=True
+        )
+
+        if not matches:
+            return []
+
+        return [matches[0]]
+    
+    def extract_field_of_study(self, text):
+
+        matches = []
+
+        for field in self.fields_of_study:
+
+            pattern = (
+                r"(?<![A-Za-z0-9])"
+                + re.escape(field)
+                + r"(?![A-Za-z0-9])"
+            )
+
+            if re.search(
+                pattern,
+                text,
+                re.IGNORECASE
+            ):
+                matches.append(field)
+
+        matches.sort(
+            key=len,
+            reverse=True
+        )
+
+        if not matches:
+            return []
+
+        return [matches[0]]
+    
+    def extract_institution(self, text):
+
+        lines = [
+            line.strip()
+            for line in text.splitlines()
+            if line.strip()
         ]
 
-    def extract(self, section_lines):
+        institutions = []
 
-        education = []
+        for index, line in enumerate(lines):
 
-        current = {
+            # Degree | Institution | Location
+            if self.extract_degree(line):
 
-            "degree": "",
+                parts = [
+                    part.strip()
+                    for part in re.split(
+                        r"\s*\|\s*",
+                        line
+                    )
+                    if part.strip()
+                ]
 
-            "institution": "",
+                if len(parts) >= 2:
 
-            "cgpa": "",
+                    institutions.append(parts[1])
+                    continue
 
-            "graduation_year": ""
+                # Institution on previous line
+                if index > 0:
 
-        }
+                    previous_line = lines[index - 1]
 
-        text = "\n".join(section_lines)
+                    if (
+                        not self.extract_degree(previous_line)
+                        and
+                        not self.extract_field_of_study(previous_line)
+                        and
+                        not re.search(
+                            r"\b(CGPA|GPA|Percentage|Graduated|"
+                            r"Graduation|Grade)\b",
+                            previous_line,
+                            re.IGNORECASE
+                        )
+                        and
+                        not re.search(
+                            r"\b(?:19|20)\d{2}\b",
+                            previous_line
+                        )
+                    ):
 
-        lower = text.lower()
+                        institutions.append(
+                            previous_line
+                        )
 
-        # -------------------------
-        # Degree
-        # -------------------------
+        return list(dict.fromkeys(institutions))
+        
+    def extract_graduation_year(self, text):
 
-        for pattern in self.degree_patterns:
-
-            match = re.search(pattern, lower)
-
-            if match:
-
-                current["degree"] = match.group()
-
-                break
-
-        # -------------------------
-        # CGPA
-        # -------------------------
-
-        cgpa = re.search(
-
-            r'(cgpa|gpa)\s*[:\-]?\s*([0-9]+\.[0-9]+)',
-
+        match = re.search(
+            r"\b(?:graduated|graduation|completed|passed out|passout)"
+            r"\s*[:\-]?\s*"
+            r"(?:[A-Za-z]+\s+)?"
+            r"(19|20)\d{2}\b",
             text,
-
             re.IGNORECASE
-
         )
 
-        if cgpa:
+        if match:
+            return int(match.group(0)[-4:])
 
-            current["cgpa"] = cgpa.group(2)
-
-        # -------------------------
-        # Graduation Year
-        # -------------------------
-
-        year = re.search(
-
-            r'(20\d{2}|19\d{2})',
-
-            text
-
-        )
-
-        if year:
-
-            current["graduation_year"] = year.group()
-
-        # -------------------------
-        # Institution
-        # -------------------------
-
-        doc = self.nlp(text)
-
-        for ent in doc.ents:
-
-            if ent.label_ == "ORG":
-
-                current["institution"] = ent.text
-
-                break
-
-        if any(current.values()):
-
-            education.append(current)
-
-        return education
+        return None

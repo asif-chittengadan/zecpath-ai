@@ -1,0 +1,228 @@
+{
+    "Summary": [
+        "Data Analyst with 2+ years of experience in data cleaning, SQL analysis, dashboard development, reporting, and business",
+        "insights. Experienced in Python, SQL, Power BI, Excel, data visualization, and ETL workflows. Strong analytical thinking,",
+        "communication, and stakeholder collaboration skills."
+    ],
+    "Skills": {
+        "technical": [
+            {
+                "skill": "AWS",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "CI/CD",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "DAX",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Data Cleaning",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Data Transformation",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Docker",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "ETL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "FastAPI",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Git",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "JavaScript",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Matplotlib",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "MongoDB",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "MySQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "NumPy",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Pandas",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "PostgreSQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Power BI",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Power Query",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Python",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "REST API",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "SQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Scikit-learn",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "business": [],
+        "creative": [],
+        "summary": {
+            "technical_count": 22,
+            "business_count": 0,
+            "creative_count": 0,
+            "total_skills": 22
+        }
+    },
+    "Projects": [
+        "Retail Sales Analytics Dashboard Python, SQL, Power BI",
+        "- Built an interactive dashboard to analyze revenue, product performance, regional sales, and customer trends.",
+        "- Designed an ETL workflow to clean and transform transactional data before visualization.",
+        "Customer Churn Analysis Python, Pandas, Scikit-learn",
+        "- Performed exploratory data analysis and feature preparation on customer usage data.",
+        "- Developed a machine learning workflow to identify customers with higher churn risk.",
+        "COURSEWORK",
+        "Data Analysis, Database Systems, Machine Learning, Statistics, Cloud Computing",
+        "ACHIEVEMENTS",
+        "- Received an internal recognition award for automating monthly reporting.",
+        "- Presented a Power BI analytics dashboard to a cross-functional business team.",
+        "SOFT SKILLS",
+        "Communication, Problem Solving, Critical Thinking, Team Collaboration, Time Management, Stakeholder Management,",
+        "Presentation Skills",
+        "LANGUAGES",
+        "English, Malayalam, Hindi",
+        "INTERESTS",
+        "Data Visualization, Business Analytics, Technology Research"
+    ],
+    "Others": [
+        "MAYA SHARMA",
+        "Bengaluru, Karnataka +91 98765 43210 maya.sharma@example.com linkedin.com/in/mayasharma github.com/mayasharma"
+    ],
+    "Education": {
+        "degree": "Bachelor of Technology",
+        "field_of_study": "Information Technology",
+        "institution": "",
+        "graduation_year": 2023
+    },
+    "Certifications": [
+        {
+            "name": "Google Data Analytics Professional Certificate",
+            "issuer": "",
+            "platform": "Coursera",
+            "date": "2024",
+            "credential_id": "GDA-2024-1842",
+            "categories": [
+                "Data",
+                "Programming"
+            ]
+        },
+        {
+            "name": "Microsoft Certified: Power BI Data Analyst Associate",
+            "issuer": "Microsoft",
+            "platform": "",
+            "date": "2025",
+            "credential_id": "PBI-582941",
+            "categories": [
+                "Data"
+            ]
+        },
+        {
+            "name": "AWS Certified Cloud Practitioner",
+            "issuer": "Amazon Web Services",
+            "platform": "",
+            "date": "2025",
+            "credential_id": "AWS-CP-731924",
+            "categories": [
+                "Cloud"
+            ]
+        },
+        {
+            "name": "SQL for Data Science Udemy 2023 Certificate ID: UDEMY-SQL-39184",
+            "issuer": "SQL for Data Science",
+            "platform": "Udemy",
+            "date": "2023",
+            "credential_id": "UDEMY-SQL-39184",
+            "categories": [
+                "Data"
+            ]
+        }
+    ],
+    "Experience": {
+        "experiences": [
+            {
+                "company": "TechNova Analytics Pvt. Ltd.",
+                "role": "Data Analyst",
+                "start_date": "June 2024",
+                "end_date": "Present",
+                "duration": "2 years 3 months"
+            },
+            {
+                "company": "InsightWorks Solutions",
+                "role": "Data Analyst Intern",
+                "start_date": "January 2024",
+                "end_date": "May 2024",
+                "duration": "5 months"
+            }
+        ],
+        "total_experience": {
+            "total_months": 32,
+            "years": 2,
+            "months": 8,
+            "formatted": "2 years 8 months"
+        },
+        "gaps": [],
+        "overlaps": []
+    }
+}

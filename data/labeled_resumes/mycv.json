@@ -91,23 +91,6 @@
             "total_skills": 14
         }
     },
-    "Education": [
-        "Cochin University of Science and Technology",
-        "Bachelor of Technology In Information Technology",
-        "CGPA: 7.84/10",
-        "Graduated: April 2026",
-        "VHMHSS Morayur",
-        "Higher Secondary Education",
-        "Percentage: 95.8",
-        "Relevant Coursework",
-        "- Computer Networks",
-        "- Operating Systems",
-        "- Database Management Systems",
-        "- Computer Organization",
-        "- Data Structures & Algorithms",
-        "- Object-Oriented Programming",
-        "- Network Security Fundamentals"
-    ],
     "Projects": [
         "Self-Extensible AI Platform Python, Neo4j, FastAPI, LLMs",
         "- Developed an AI platform capable of dynamically creating and integrating tools based on user requirements .",
@@ -127,23 +110,20 @@
         "- Developed registration and login pages with frontend validation techniques.",
         "- Improved usability with responsive layouts and clean UI design principles."
     ],
-    "Certifications": [],
     "Others": [
         "ASIF C",
         "asifsifuoz6@gmail.com +91 8137876025",
         "linkedin github"
     ],
+    "Education": {
+        "degree": "Bachelor of Technology",
+        "field_of_study": "Information Technology",
+        "institution": "Cochin University of Science and Technology",
+        "graduation_year": 2026
+    },
+    "Certifications": [],
     "Experience": {
-        "experiences": [
-            {
-                "company": "Bridgeon Solution LLP",
-                "role": "Data Analytics Intern",
-                "start_date": "",
-                "end_date": "",
-                "duration": "",
-                "description": []
-            }
-        ],
+        "experiences": [],
         "total_experience": {
             "total_months": 0,
             "years": 0,

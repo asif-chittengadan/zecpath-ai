@@ -1,7 +1,6 @@
 import json
 import re
 
-
 class EducationExtractor:
 
     def __init__(self):

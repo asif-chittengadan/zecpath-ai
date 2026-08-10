@@ -95,15 +95,6 @@
             "total_skills": 15
         }
     },
-    "Education": [
-        "Cochin University of Science and Technology",
-        "Bachelor of Technology In Information Technology",
-        "CGPA: 7.84/10",
-        "Graduated: April 2026",
-        "VHMHSS Morayur",
-        "Higher Secondary Education",
-        "Percentage: 95.6"
-    ],
     "Projects": [
         "Sales Data Analytics Dashboard Power BI, DAX, Power Query",
         "GitHub Repository",
@@ -123,23 +114,20 @@
         "- Added secure code validation and execution checks before running AI-generated code.",
         "- Integrated web knowledge retrieval and LLMs to improve adaptability and automation."
     ],
-    "Certifications": [],
     "Others": [
         "ASIF C",
         "asifsifuoz6@gmail.com +91 8137876025",
         "linkedin github"
     ],
+    "Education": {
+        "degree": "Bachelor of Technology",
+        "field_of_study": "Information Technology",
+        "institution": "Cochin University of Science and Technology",
+        "graduation_year": 2026
+    },
+    "Certifications": [],
     "Experience": {
-        "experiences": [
-            {
-                "company": "Bridgeon Solution LLP",
-                "role": "Data Analytics Intern",
-                "start_date": "",
-                "end_date": "",
-                "duration": "",
-                "description": []
-            }
-        ],
+        "experiences": [],
         "total_experience": {
             "total_months": 0,
             "years": 0,

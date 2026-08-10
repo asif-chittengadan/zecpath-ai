@@ -24,9 +24,11 @@ class ResumeExperienceExtractor:
         )
 
     def extract_companies(self, section_lines):
+
         companies = []
 
         for line in section_lines:
+
             line = line.strip()
 
             if not line:
@@ -35,17 +37,55 @@ class ResumeExperienceExtractor:
             if line.startswith("-") or line.startswith("•"):
                 continue
 
+            parts = [
+                part.strip()
+                for part in re.split(
+                    r"\s*\|\s*",
+                    line
+                )
+                if part.strip()
+            ]
+
+            # -----------------------------
+            # Role | Company | Location
+            # -----------------------------
+
+            if len(parts) >= 2:
+
+                role_part = parts[0]
+
+                matched_role = None
+
+                for role in self.roles:
+
+                    if re.match(
+                        r"^" + re.escape(role) + r"\b",
+                        role_part,
+                        re.IGNORECASE
+                    ):
+                        matched_role = role
+                        break
+
+                if matched_role:
+
+                    company = parts[1].strip()
+
+                    if company and company not in companies:
+                        companies.append(company)
+
+                    continue
+
+            # -----------------------------
+            # PDF text without |
+            # Role Company Location
+            # -----------------------------
+
             matched_role = None
 
             for role in self.roles:
-                pattern = (
-                    r"^"
-                    + re.escape(role)
-                    + r"\b"
-                )
 
-                if re.search(
-                    pattern,
+                if re.match(
+                    r"^" + re.escape(role) + r"\b",
                     line,
                     re.IGNORECASE
                 ):
@@ -65,18 +105,27 @@ class ResumeExperienceExtractor:
                 company
             ).strip()
 
-            if not company:
-                continue
+            # Remove ONLY the final "City, State"
+            # Example:
+            # TechNova Analytics Pvt. Ltd. Bengaluru, Karnataka
+            # -> TechNova Analytics Pvt. Ltd.
+            company = re.sub(
+                r"\s+[A-Z][A-Za-z]+,\s+[A-Z][A-Za-z]+$",
+                "",
+                company
+            ).strip()
 
-            if company not in companies:
+            if company and company not in companies:
                 companies.append(company)
 
         return companies
 
     def extract_roles(self, section_lines):
+
         roles = []
 
         for line in section_lines:
+
             line = line.strip()
 
             if not line:
@@ -85,44 +134,76 @@ class ResumeExperienceExtractor:
             if line.startswith("-") or line.startswith("•"):
                 continue
 
-            for role in self.roles:
-                pattern = r"^" + re.escape(role) + r"\b"
+            parts = [
+                part.strip()
+                for part in re.split(
+                    r"\s*\|\s*",
+                    line
+                )
+                if part.strip()
+            ]
 
-                if re.search(pattern, line, re.IGNORECASE):
+            role_text = parts[0] if parts else line
+
+            for role in self.roles:
+
+                if re.match(
+                    r"^" + re.escape(role) + r"\b",
+                    role_text,
+                    re.IGNORECASE
+                ):
+
                     if role not in roles:
                         roles.append(role)
 
                     break
 
         return roles
+
     def extract_dates(self, section_lines):
+
         dates = []
 
-        pattern = (
-            r"(?i)"
+        pattern = re.compile(
             r"\b("
+            r"January|February|March|April|May|June|July|August|"
+            r"September|October|November|December|"
             r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-            r")[a-z]*\s+\d{4}"
-            r"\s*[-–—]\s*"
+            r")"
+            r"\s+"
+            r"((?:19|20)\d{2})"
+            r"\s*(?:[-–—|]|to)?\s*"
             r"(Present|"
-            r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
-            r"[a-z]*\s+\d{4})"
+            r"(?:January|February|March|April|May|June|July|August|"
+            r"September|October|November|December|"
+            r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+            r"\s+(?:19|20)\d{2})",
+            re.IGNORECASE
         )
 
         for line in section_lines:
+
             line = line.strip()
 
             if not line:
                 continue
 
-            match = re.search(pattern, line)
+            match = pattern.search(line)
 
             if not match:
                 continue
 
+            start_date = (
+                match.group(1)
+                + " "
+                + match.group(2)
+            )
+
+            end_date = match.group(3).strip()
+
             dates.append({
-                "start_date": match.group(1),
-                "end_date": match.group(2),
+                "start_date": start_date,
+                "end_date": end_date,
                 "text": match.group(0)
             })
 
@@ -160,7 +241,32 @@ class ResumeExperienceExtractor:
                     if duration not in durations:
                         durations.append(duration)
 
-        return durations
+        return durations    
+
+    def __parse_month_year(self, value):
+
+        if not value:
+            return None
+
+        value = value.strip()
+
+        formats = [
+            "%B %Y",
+            "%b %Y"
+        ]
+
+        for date_format in formats:
+
+            try:
+                return datetime.strptime(
+                    value,
+                    date_format
+                )
+
+            except ValueError:
+                continue
+
+        return None
 
     def calculate_total_experience(self, dates, durations):
         total_months = 0
@@ -223,6 +329,41 @@ class ResumeExperienceExtractor:
             months = int(month_match.group(1))
 
         return round(years * 12) + months
+
+    def calculate_experience_duration(self, start_date, end_date):
+
+        start = self.__parse_month_year(start_date)
+
+        if not start:
+            return ""
+
+        if end_date.lower() == "present":
+            end = datetime.now()
+        else:
+            end = self.__parse_month_year(end_date)
+
+        if not end:
+            return ""
+
+        months = (
+            (end.year - start.year) * 12
+            + (end.month - start.month)
+            + 1
+        )
+
+        if months <= 0:
+            return ""
+
+        years = months // 12
+        remaining_months = months % 12
+
+        if years and remaining_months:
+            return f"{years} years {remaining_months} months"
+
+        if years:
+            return f"{years} years"
+
+        return f"{remaining_months} months"
     
     def detect_gaps(self, dates):
         if len(dates) < 2:
@@ -451,6 +592,7 @@ class ResumeExperienceExtractor:
         dates,
         durations
     ):
+
         experiences = []
 
         count = max(
@@ -461,18 +603,39 @@ class ResumeExperienceExtractor:
         )
 
         for index in range(count):
-            experience = {
-                "company": companies[index] if index < len(companies) else "",
-                "role": roles[index] if index < len(roles) else "",
-                "start_date": "",
-                "end_date": "",
-                "duration": durations[index] if index < len(durations) else "",
-                "description": []
-            }
+
+            start_date = ""
+            end_date = ""
 
             if index < len(dates):
-                experience["start_date"] = dates[index]["start_date"]
-                experience["end_date"] = dates[index]["end_date"]
+                start_date = dates[index]["start_date"]
+                end_date = dates[index]["end_date"]
+
+            duration = ""
+
+            if start_date and end_date:
+                duration = self.calculate_experience_duration(
+                    start_date,
+                    end_date
+                )
+            elif index < len(durations):
+                duration = durations[index]
+
+            experience = {
+                "company": (
+                    companies[index]
+                    if index < len(companies)
+                    else ""
+                ),
+                "role": (
+                    roles[index]
+                    if index < len(roles)
+                    else ""
+                ),
+                "start_date": start_date,
+                "end_date": end_date,
+                "duration": duration
+            }
 
             experiences.append(experience)
 
