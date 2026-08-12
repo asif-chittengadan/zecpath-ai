@@ -1,0 +1,29 @@
+{
+    "default": {
+        "skill_match": 0.35,
+        "experience_relevance": 0.30,
+        "education_alignment": 0.15,
+        "semantic_similarity": 0.20
+    },
+
+    "Data Analyst": {
+        "skill_match": 0.40,
+        "experience_relevance": 0.30,
+        "education_alignment": 0.10,
+        "semantic_similarity": 0.20
+    },
+
+    "Data Scientist": {
+        "skill_match": 0.35,
+        "experience_relevance": 0.30,
+        "education_alignment": 0.10,
+        "semantic_similarity": 0.25
+    },
+
+    "Software Developer": {
+        "skill_match": 0.40,
+        "experience_relevance": 0.30,
+        "education_alignment": 0.10,
+        "semantic_similarity": 0.20
+    }
+}
