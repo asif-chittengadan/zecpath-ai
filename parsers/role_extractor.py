@@ -18,46 +18,132 @@ class RoleExtractor:
             reverse=True
         )
 
-    def extract(self, text):
+    def extract(self, text, full_text=None):
 
-        # -----------------------------
-        # Search only Job Roles section
-        # -----------------------------
+        if not text:
+            text = ""
+
+        if not full_text:
+            full_text = text
+
+        # Normalize whitespace
+        text = re.sub(
+            r"\s+",
+            " ",
+            text
+        ).strip()
+
+        full_text = re.sub(
+            r"\s+",
+            " ",
+            full_text
+        ).strip()
+
+        # --------------------------------
+        # 1. Search job title
+        # --------------------------------
+
+        title_patterns = [
+            r"Job Description\s*[-–—:]\s*(.*?)(?:Job Summary|Role Overview|$)",
+            r"Job Title\s*[:\-–—]\s*(.*?)(?:Job Summary|Role Overview|$)",
+            r"Position\s*[:\-–—]\s*(.*?)(?:Job Summary|Role Overview|$)",
+            r"Role\s*[:\-–—]\s*(.*?)(?:Job Summary|Role Overview|$)"
+        ]
+
+        for pattern in title_patterns:
+
+            match = re.search(
+                pattern,
+                full_text,
+                re.IGNORECASE
+            )
+
+            if not match:
+                continue
+
+            title = match.group(1).strip()
+
+            title_matches = []
+
+            for role in self.roles:
+
+                if re.search(
+                    r"(?<![A-Za-z0-9])"
+                    + re.escape(role)
+                    + r"(?![A-Za-z0-9])",
+                    title,
+                    re.IGNORECASE
+                ):
+
+                    title_matches.append(role)
+
+            if title_matches:
+
+                return max(
+                    title_matches,
+                    key=len
+                )
+
+        # --------------------------------
+        # 2. Search Job Roles section
+        # --------------------------------
 
         match = re.search(
-
-            r'Job Roles?\s*:?(.*?)(?:Work Location|Number of Positions|Compensation|Preferred Languages|Selection Procedure|\Z)',
-
+            r"Job Roles?\s*:?(.*?)(?:Work Location|"
+            r"Number of Positions|Compensation|"
+            r"Preferred Languages|Selection Procedure|\Z)",
             text,
-
             re.IGNORECASE | re.DOTALL
-
         )
 
         if match:
 
             search_text = match.group(1)
 
-        else:
+            section_matches = []
 
-            search_text = text
+            for role in self.roles:
 
-        matches = []
+                if re.search(
+                    r"(?<![A-Za-z0-9])"
+                    + re.escape(role)
+                    + r"(?![A-Za-z0-9])",
+                    search_text,
+                    re.IGNORECASE
+                ):
 
-        lower_text = search_text.lower()
+                    section_matches.append(role)
+
+            if section_matches:
+
+                return max(
+                    section_matches,
+                    key=len
+                )
+
+        # --------------------------------
+        # 3. Fallback: search full document
+        # --------------------------------
+
+        full_matches = []
 
         for role in self.roles:
 
-            count = lower_text.count(role.lower())
+            if re.search(
+                r"(?<![A-Za-z0-9])"
+                + re.escape(role)
+                + r"(?![A-Za-z0-9])",
+                full_text,
+                re.IGNORECASE
+            ):
 
-            if count > 0:
+                full_matches.append(role)
 
-                matches.append((count, role))
+        if full_matches:
 
-        if matches:
-
-            matches.sort(reverse=True)
-
-            return matches[0][1]
+            return max(
+                full_matches,
+                key=len
+            )
 
         return ""

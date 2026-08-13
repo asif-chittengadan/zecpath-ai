@@ -6,15 +6,35 @@ class SkillExtractor:
 
     def __init__(self):
 
-        with open("data/skills.json", "r", encoding="utf-8") as f:
-            self.skills = json.load(f)
+        with open(
+            "data/skills.json",
+            "r",
+            encoding="utf-8"
+        ) as f:
 
-        # Search longer skills first
-        self.skills.sort(
+            data = json.load(f)
+
+        if isinstance(data, dict):
+
+            self.skills = []
+
+            for category_skills in data.values():
+
+                if isinstance(category_skills, list):
+
+                    self.skills.extend(
+                        category_skills
+                    )
+
+        else:
+
+            self.skills = data
+
+        self.skills = sorted(
+            set(self.skills),
             key=len,
             reverse=True
         )
-
     def extract(self, text):
 
         skills = []

@@ -48,12 +48,15 @@ class JobParser:
         sections = self.section_extractor.extract(text)
 
         role_text = (
-            sections.get("roles", "") +
-            "\n" +
-            sections.get("job_details", "")
+            sections.get("roles", "")
+            + "\n"
+            + sections.get("job_details", "")
         )
 
-        role = self.role_extractor.extract(role_text)
+        role = self.role_extractor.extract(
+            role_text,
+            full_text=text
+        )
 
         skills = self.skill_extractor.extract(
             sections.get("skills", text)

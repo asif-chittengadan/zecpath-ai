@@ -1,10 +1,8 @@
 {
-    "role": "",
+    "role": "Solution Consultant Apprentice",
     "skills": [
-        "Cyber Security",
         "DNS",
         "Linux",
-        "Networking",
         "TCP/IP"
     ],
     "experience": {
@@ -13,7 +11,8 @@
         "text": "Freshers"
     },
     "education": [
+        "Computer Science",
         "B.Tech",
-        "Computer Science"
+        "B.E"
     ]
 }

@@ -3,48 +3,18 @@ from parsers.education_extractor import EducationExtractor
 
 extractor = EducationExtractor()
 
+
 text = """
-Bachelor of Technology in Information Technology
-Cochin University of Science and Technology
-Graduated: April 2026
+Eligibility & Qualifications
+
+Education: BE / B.Tech in Computer Science or a closely related information technology discipline.
 """
 
-degrees = extractor.extract_degree(text)
-fields = extractor.extract_field_of_study(text)
 
-print("Degree Types:")
+education = extractor.extract(text)
 
-for degree in degrees:
-    print("-", degree)
 
-print("\nFields of Study:")
+print("Education:")
 
-for field in fields:
-    print("-", field)
-
-institution = extractor.extract_institution(text)
-
-print("\nInstitutions:")
-
-for item in institution:
+for item in education:
     print("-", item)
-
-graduation_year = extractor.extract_graduation_year(text)
-
-print("\nGraduation Year:")
-
-print("-", graduation_year)
-
-text = """
-Cochin University of Science and Technology
-Bachelor of Technology In Information Technology
-CGPA: 7.84/10
-Graduated: April 2026
-"""
-
-print("\nInstitutions:")
-
-institutions = extractor.extract_institution(text)
-
-for institution in institutions:
-    print("-", institution)
