@@ -7,6 +7,24 @@ class ATSScoringEngine:
 
         self.weight_config = WeightConfig()
 
+    def normalize_component_score(self, score):
+
+        if score is None:
+            return 0.0
+
+        try:
+            score = float(score)
+        except (TypeError, ValueError):
+            return 0.0
+
+        if score < 0:
+            return 0.0
+
+        if score > 1:
+            return 1.0
+
+        return round(score, 4)
+
     def calculate_score(
         self,
         role,
@@ -23,19 +41,19 @@ class ATSScoringEngine:
                 f"Invalid scoring weights for role: {role}"
             )
 
-        skill_match = self.__normalize_score(
+        skill_match = self.normalize_component_score(
             skill_match
         )
 
-        experience_relevance = self.__normalize_score(
+        experience_relevance = self.normalize_component_score(
             experience_relevance
         )
 
-        education_alignment = self.__normalize_score(
+        education_alignment = self.normalize_component_score(
             education_alignment
         )
 
-        semantic_similarity = self.__normalize_score(
+        semantic_similarity = self.normalize_component_score(
             semantic_similarity
         )
 
@@ -156,3 +174,4 @@ class ATSScoringEngine:
             })
 
         return explanations
+    

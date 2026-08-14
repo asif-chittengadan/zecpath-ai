@@ -113,10 +113,19 @@ class SemanticMatchingEngine:
 
             for candidate_skill in candidate_skills:
 
-                score = self.calculate_similarity(
-                    candidate_skill,
-                    required_skill
-                )
+                candidate_normalized = candidate_skill.strip().lower()
+                required_normalized = required_skill.strip().lower()
+
+                if candidate_normalized == required_normalized:
+
+                    score = 1.0
+
+                else:
+
+                    score = self.calculate_similarity(
+                        candidate_skill,
+                        required_skill
+                    )
 
                 if score > best_score:
                     best_score = score
