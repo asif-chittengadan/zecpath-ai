@@ -1,0 +1,22 @@
+{
+    "role": "Data Engineer",
+    "skills": [
+        "AWS",
+        "Apache Spark",
+        "Data Warehousing",
+        "Docker",
+        "ETL",
+        "Git",
+        "Python",
+        "SQL"
+    ],
+    "experience": {
+        "minimum": 5,
+        "maximum": 0,
+        "text": "Minimum 5 years of relevant data engineering experience."
+    },
+    "education": [
+        "Information Technology",
+        "Computer Science"
+    ]
+}

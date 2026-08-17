@@ -1,0 +1,114 @@
+[
+    {
+        "test_id": "T01",
+        "category": "Tech",
+        "cv_file": "ATS_Dummy_CV_Data_Analyst_FINAL.json",
+        "jd_file": "Gmail - Fwd_ Invitation - Campus Recruitment Drive - 2026 - Gizmeon Technologies Pvt Ltd.json",
+        "manual_decision": "REJECT",
+        "reason": "Data Analyst profile with limited alignment to the Software Developer requirements."
+    },
+    {
+        "test_id": "T02",
+        "category": "Tech",
+        "cv_file": "ATS_Dummy_CV_Data_Analyst_FINAL.json",
+        "jd_file": "JD_Solution Consultant Apprentice(1).json",
+        "manual_decision": "REJECT",
+        "reason": "Required networking skills are largely missing and the candidate has professional experience while the JD targets freshers."
+    },
+    {
+        "test_id": "T03",
+        "category": "Tech",
+        "cv_file": "cv ASIF.json",
+        "jd_file": "Gmail - Fwd_ Invitation - Campus Recruitment Drive - 2026 - Gizmeon Technologies Pvt Ltd.json",
+        "manual_decision": "REVIEW",
+        "reason": "C and C++ match the JD, but JavaScript is not present in the structured skills and overall role alignment is partial."
+    },
+    {
+        "test_id": "T04",
+        "category": "Tech",
+        "cv_file": "cv ASIF.json",
+        "jd_file": "JD_Solution Consultant Apprentice(1).json",
+        "manual_decision": "REJECT",
+        "reason": "The required DNS, Linux, and TCP/IP skill set is not sufficiently represented."
+    },
+    {
+        "test_id": "T05",
+        "category": "Tech",
+        "cv_file": "cv data.json",
+        "jd_file": "Gmail - Fwd_ Invitation - Campus Recruitment Drive - 2026 - Gizmeon Technologies Pvt Ltd.json",
+        "manual_decision": "REVIEW",
+        "reason": "C and C++ are present, but JavaScript is missing from the structured skills, giving partial alignment."
+    },
+    {
+        "test_id": "T06",
+        "category": "Tech",
+        "cv_file": "cv data.json",
+        "jd_file": "JD_Solution Consultant Apprentice(1).json",
+        "manual_decision": "REVIEW",
+        "reason": "DNS and TCP/IP match the JD, but Linux is missing; fresher status and B.Tech are suitable."
+    },
+    {
+        "test_id": "T07",
+        "category": "Tech",
+        "cv_file": "cv-2.json",
+        "jd_file": "Gmail - Fwd_ Invitation - Campus Recruitment Drive - 2026 - Gizmeon Technologies Pvt Ltd.json",
+        "manual_decision": "MATCH",
+        "reason": "C, C++, and JavaScript all match the JD, with fresher status and B.Tech education."
+    },
+    {
+        "test_id": "T08",
+        "category": "Tech",
+        "cv_file": "cv-2.json",
+        "jd_file": "JD_Solution Consultant Apprentice(1).json",
+        "manual_decision": "REVIEW",
+        "reason": "DNS and TCP/IP match, but Linux is missing from the candidate skills."
+    },
+    {
+        "test_id": "T09",
+        "category": "Tech",
+        "cv_file": "mycv.json",
+        "jd_file": "Gmail - Fwd_ Invitation - Campus Recruitment Drive - 2026 - Gizmeon Technologies Pvt Ltd.json",
+        "manual_decision": "REVIEW",
+        "reason": "C and C++ match, but JavaScript is missing; education and fresher status provide partial alignment."
+    },
+    {
+        "test_id": "T10",
+        "category": "Tech",
+        "cv_file": "mycv.json",
+        "jd_file": "JD_Solution Consultant Apprentice(1).json",
+        "manual_decision": "MATCH",
+        "reason": "DNS, Linux, and TCP/IP all match the JD, with fresher status and B.Tech education."
+    },
+        {
+        "test_id": "T11",
+        "category": "Non-Tech",
+        "cv_file": "Day17_NonTech_HR_CV.json",
+        "jd_file": "Day17_NonTech_HR_JD.json",
+        "manual_decision": "MATCH",
+        "reason": "HR skills, experience, education, and responsibilities strongly align with the HR Executive role."
+    },
+    {
+        "test_id": "T12",
+        "category": "Non-Tech",
+        "cv_file": "Day17_NonTech_HR_CV.json",
+        "jd_file": "Day17_Senior_Data_Engineer_JD.json",
+        "manual_decision": "REJECT",
+        "reason": "HR profile does not match the required data engineering skills or experience."
+    },
+    {
+        "test_id": "T13",
+        "category": "Senior",
+        "cv_file": "Day17_Senior_Data_Engineer_CV.json",
+        "jd_file": "Day17_Senior_Data_Engineer_JD.json",
+        "manual_decision": "MATCH",
+        "reason": "Strong alignment across data engineering skills, responsibilities, education, and 8 years of experience."
+    },
+    {
+        "test_id": "T14",
+        "category": "Senior",
+        "cv_file": "Day17_Senior_Data_Engineer_CV.json",
+        "jd_file": "Day17_NonTech_HR_JD.json",
+        "manual_decision": "REJECT",
+        "reason": "Data engineering profile does not match the required HR skills or responsibilities."
+    }
+]

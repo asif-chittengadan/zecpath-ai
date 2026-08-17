@@ -1,0 +1,66 @@
+{
+    "Summary": [
+        "HR professional with 3 years of experience in recruitment coordination, employee onboarding, HR",
+        "operations, and stakeholder communication."
+    ],
+    "Skills": {
+        "technical": [],
+        "business": [
+            {
+                "skill": "Communication",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Stakeholder Management",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Talent Acquisition",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "creative": [],
+        "summary": {
+            "technical_count": 0,
+            "business_count": 3,
+            "creative_count": 0,
+            "total_skills": 3
+        }
+    },
+    "Projects": [],
+    "Others": [
+        "Candidate Resume Human Resources",
+        "Candidate",
+        "Ananya Menon",
+        "Kochi, Kerala ananya.menon@example.com"
+    ],
+    "Education": {
+        "degree": "Bachelor of Business Administration",
+        "field_of_study": "Business Administration",
+        "institution": "",
+        "graduation_year": null
+    },
+    "Certifications": [],
+    "Experience": {
+        "experiences": [
+            {
+                "company": "3 years",
+                "role": "HR Executive",
+                "start_date": "",
+                "end_date": "",
+                "duration": "3 years"
+            }
+        ],
+        "total_experience": {
+            "total_months": 36,
+            "years": 3,
+            "months": 0,
+            "formatted": "3 years 0 months"
+        },
+        "gaps": [],
+        "overlaps": []
+    }
+}

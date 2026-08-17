@@ -1,0 +1,113 @@
+{
+    "Summary": [
+        "Senior Data Engineer with 8 years of experience designing data pipelines, cloud data platforms, ETL",
+        "systems, and production analytics infrastructure."
+    ],
+    "Skills": {
+        "technical": [
+            {
+                "skill": "AWS",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Apache Spark",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Data Warehousing",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Databricks",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Docker",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "ETL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Git",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "PostgreSQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Python",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "SQL",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            },
+            {
+                "skill": "Snowflake",
+                "confidence": 1.0,
+                "matched_by": "dictionary"
+            }
+        ],
+        "business": [],
+        "creative": [],
+        "summary": {
+            "technical_count": 11,
+            "business_count": 0,
+            "creative_count": 0,
+            "total_skills": 11
+        }
+    },
+    "Projects": [],
+    "Others": [
+        "Candidate Resume Senior Data Engineer",
+        "Candidate",
+        "Rahul Nair",
+        "Bengaluru, Karnataka rahul.nair@example.com"
+    ],
+    "Education": {
+        "degree": "Bachelor of Technology",
+        "field_of_study": "Computer Science",
+        "institution": "",
+        "graduation_year": null
+    },
+    "Certifications": [],
+    "Experience": {
+        "experiences": [
+            {
+                "company": "3 years",
+                "role": "Data Engineer",
+                "start_date": "",
+                "end_date": "",
+                "duration": "5 years"
+            },
+            {
+                "company": "",
+                "role": "",
+                "start_date": "",
+                "end_date": "",
+                "duration": "3 years"
+            }
+        ],
+        "total_experience": {
+            "total_months": 96,
+            "years": 8,
+            "months": 0,
+            "formatted": "8 years 0 months"
+        },
+        "gaps": [],
+        "overlaps": []
+    }
+}

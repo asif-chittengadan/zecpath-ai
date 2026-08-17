@@ -1,0 +1,56 @@
+MAYA SHARMA
+Bengaluru, Karnataka +91 98765 43210 maya.sharma@example.com linkedin.com/in/mayasharma github.com/mayasharma
+Summary
+Data Analyst with 2+ years of experience in data cleaning, SQL analysis, dashboard development, reporting, and business
+insights. Experienced in Python, SQL, Power BI, Excel, data visualization, and ETL workflows. Strong analytical thinking,
+communication, and stakeholder collaboration skills.
+Skills
+Programming Languages: Python, SQL, JavaScript
+Data Science: Pandas, NumPy, Scikit-learn, Data Cleaning, Data Transformation
+Data Engineering: ETL, Power Query, DAX
+Databases: MySQL, PostgreSQL, MongoDB
+Visualization: Power BI, Matplotlib
+Cloud and DevOps: AWS, Docker, Git, CI/CD
+APIs and Backend: REST API, FastAPI
+Experience
+Data Analyst TechNova Analytics Pvt. Ltd. Bengaluru, Karnataka
+June 2024 Present
+- Analyzed sales and customer datasets using SQL and Python to identify trends, anomalies, and performance drivers.
+- Built Power BI dashboards and KPI reports used by business stakeholders for weekly performance reviews.
+- Cleaned and transformed raw datasets using Python, Pandas, Power Query, and SQL.
+- Automated recurring reporting workflows, reducing manual reporting effort by approximately 30.
+- Collaborated with product and business teams to translate requirements into actionable analytical reports.
+Data Analyst Intern InsightWorks Solutions Kochi, Kerala
+January 2024 May 2024
+- Prepared and validated datasets for business reporting and exploratory analysis.
+- Created Excel and Power BI reports covering revenue, customer, and operational KPIs.
+- Performed data quality checks and documented recurring data issues.
+- Supported senior analysts with SQL queries and ad hoc business analysis.
+EDUCATION
+Bachelor of Technology in Information Technology Cochin Institute of Technology Kochi, Kerala
+Graduated: April 2023 CGPA: 8.2/10
+Higher Secondary Education Government Higher Secondary School Kerala 2020
+CERTIFICATIONS
+- Google Data Analytics Professional Certificate Coursera 2024 Credential ID: GDA-2024-1842
+- Microsoft Certified: Power BI Data Analyst Associate Microsoft 2025 Credential ID: PBI-582941
+- AWS Certified Cloud Practitioner Amazon Web Services 2025 Credential ID: AWS-CP-731924
+- SQL for Data Science Udemy 2023 Certificate ID: UDEMY-SQL-39184
+PROJECTS
+Retail Sales Analytics Dashboard Python, SQL, Power BI
+- Built an interactive dashboard to analyze revenue, product performance, regional sales, and customer trends.
+- Designed an ETL workflow to clean and transform transactional data before visualization.
+Customer Churn Analysis Python, Pandas, Scikit-learn
+- Performed exploratory data analysis and feature preparation on customer usage data.
+- Developed a machine learning workflow to identify customers with higher churn risk.
+COURSEWORK
+Data Analysis, Database Systems, Machine Learning, Statistics, Cloud Computing
+ACHIEVEMENTS
+- Received an internal recognition award for automating monthly reporting.
+- Presented a Power BI analytics dashboard to a cross-functional business team.
+SOFT SKILLS
+Communication, Problem Solving, Critical Thinking, Team Collaboration, Time Management, Stakeholder Management,
+Presentation Skills
+LANGUAGES
+English, Malayalam, Hindi
+INTERESTS
+Data Visualization, Business Analytics, Technology Research

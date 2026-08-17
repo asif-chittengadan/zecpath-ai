@@ -1,0 +1,15 @@
+{
+    "role": "HR Executive",
+    "skills": [
+        "Communication",
+        "Talent Acquisition"
+    ],
+    "experience": {
+        "minimum": 2,
+        "maximum": 0,
+        "text": "Minimum 2 years of relevant HR experience."
+    },
+    "education": [
+        "Business Administration"
+    ]
+}
