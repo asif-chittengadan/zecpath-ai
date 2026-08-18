@@ -78,7 +78,9 @@ class PersonalInfoExtractor:
 
         if linkedin:
 
-            result["linkedin"] = linkedin.group()
+            result["linkedin"] = linkedin.group().rstrip(
+                ".,;:)]}"
+            )
 
         # -------------------------
         # GitHub
@@ -96,7 +98,9 @@ class PersonalInfoExtractor:
 
         if github:
 
-            result["github"] = github.group()
+            result["github"] = github.group().rstrip(
+                ".,;:)]}"
+            )
 
         # -------------------------
         # Portfolio
@@ -122,7 +126,9 @@ class PersonalInfoExtractor:
 
             ):
 
-                result["portfolio"] = url
+                result["portfolio"] = url.rstrip(
+                    ".,;:)]}"
+                )
 
                 break
 
@@ -130,7 +136,9 @@ class PersonalInfoExtractor:
         # Name using spaCy
         # -------------------------
 
-        first_lines = "\n".join(header_lines[:5])
+        first_lines = "\n".join(
+            header_lines[:5]
+        )
 
         doc = self.nlp(first_lines)
 
@@ -138,10 +146,72 @@ class PersonalInfoExtractor:
 
             if ent.label_ == "PERSON":
 
-                result["name"] = ent.text
+                result["name"] = ent.text.strip()
 
                 break
 
+
+        # -------------------------
+        # Name fallback
+        # -------------------------
+
+        if not result["name"]:
+
+            for line in header_lines[:5]:
+
+                candidate = line.strip()
+
+                if not candidate:
+                    continue
+
+                # Remove common separators
+                candidate = re.sub(
+                    r"^[•●▪◦\-–—]+",
+                    "",
+                    candidate
+                ).strip()
+
+                # Skip obvious contact/header lines
+                if "@" in candidate:
+                    continue
+
+                if re.search(
+                    r"\d{3,}",
+                    candidate
+                ):
+                    continue
+
+                if any(
+                    keyword in candidate.lower()
+                    for keyword in [
+                        "resume",
+                        "curriculum vitae",
+                        "cv",
+                        "linkedin",
+                        "github",
+                        "portfolio",
+                        "email",
+                        "phone",
+                        "mobile"
+                    ]
+                ):
+                    continue
+
+                words = candidate.split()
+
+                if 2 <= len(words) <= 4:
+
+                    if all(
+                        re.match(
+                            r"^[A-Za-z][A-Za-z.'-]*$",
+                            word
+                        )
+                        for word in words
+                    ):
+
+                        result["name"] = candidate.title()
+
+                        break
         # -------------------------
         # Location
         # -------------------------

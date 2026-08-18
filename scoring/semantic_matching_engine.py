@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -18,6 +20,12 @@ class SemanticMatchingEngine:
 
         if not text:
             return None
+
+        return self._encode_cached(text)
+
+
+    @lru_cache(maxsize=256)
+    def _encode_cached(self, text):
 
         return self.model.encode(
             text,

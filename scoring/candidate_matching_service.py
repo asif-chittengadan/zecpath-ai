@@ -4,9 +4,20 @@ from scoring.candidate_score_generator import CandidateScoreGenerator
 
 class CandidateMatchingService:
 
+    _semantic_engine = None
+
     def __init__(self):
 
-        self.semantic_engine = SemanticMatchingEngine()
+        if CandidateMatchingService._semantic_engine is None:
+
+            CandidateMatchingService._semantic_engine = (
+                SemanticMatchingEngine()
+            )
+
+        self.semantic_engine = (
+            CandidateMatchingService._semantic_engine
+        )
+
         self.score_generator = CandidateScoreGenerator()
 
     def generate_score(
