@@ -1,0 +1,56 @@
+{
+  "Software Developer": {
+    "minimum_ats_score": 70,
+    "mandatory_skills": [
+      "Python",
+      "SQL"
+    ],
+    "experience": {
+      "minimum": 1,
+      "maximum": 4
+    },
+    "location": [],
+    "availability": []
+  },
+
+  "Data Scientist": {
+    "minimum_ats_score": 75,
+    "mandatory_skills": [
+      "Python",
+      "Machine Learning"
+    ],
+    "experience": {
+      "minimum": 1,
+      "maximum": 5
+    },
+    "location": [],
+    "availability": []
+  },
+
+  "Solution Consultant Apprentice": {
+    "minimum_ats_score": 80,
+    "mandatory_skills": [
+      "YOUR_REQUIRED_SKILL_1",
+      "YOUR_REQUIRED_SKILL_2"
+    ],
+    "experience": {
+      "minimum": 0,
+      "maximum": 2
+    },
+    "location": [],
+    "availability": []
+  },
+  "HR Executive": {
+    "minimum_ats_score": 70,
+    "mandatory_skills": [
+        "Communication",
+        "Talent Acquisition"
+    ],
+    "experience": {
+        "minimum": 2,
+        "maximum": null
+    },
+    "location": [],
+    "availability": []
+  }
+}

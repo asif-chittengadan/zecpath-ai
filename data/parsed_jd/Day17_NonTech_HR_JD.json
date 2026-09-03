@@ -6,7 +6,7 @@
     ],
     "experience": {
         "minimum": 2,
-        "maximum": 0,
+        "maximum": null,
         "text": "Minimum 2 years of relevant HR experience."
     },
     "education": [

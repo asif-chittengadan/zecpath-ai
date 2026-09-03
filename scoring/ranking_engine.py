@@ -49,8 +49,9 @@ class RankingEngine:
                 0
             )
 
-            status = shortlisting_module.classify(
-                score
+            status = candidate.get(
+                "status",
+                shortlisting_module.classify(score)
             )
 
             output.append({

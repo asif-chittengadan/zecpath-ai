@@ -171,7 +171,10 @@ class CandidateMatchingService:
                     skill = str(item)
 
                 if skill:
-                    result.append(skill)
+
+                    result.append(
+                        skill
+                    )
 
         return list(
             dict.fromkeys(result)
@@ -198,10 +201,33 @@ class CandidateMatchingService:
             {}
         )
 
+        # -----------------------------
+        # Candidate experience
+        # -----------------------------
+
         candidate_years = total_experience.get(
-            "years",
-            0
+            "years"
         )
+
+        if candidate_years is None:
+
+            total_months = total_experience.get(
+                "total_months"
+            )
+
+            if total_months is not None:
+
+                candidate_years = (
+                    total_months / 12
+                )
+
+            else:
+
+                candidate_years = 0
+
+        # -----------------------------
+        # JD experience requirements
+        # -----------------------------
 
         minimum = job_experience.get(
             "minimum",
@@ -209,8 +235,7 @@ class CandidateMatchingService:
         )
 
         maximum = job_experience.get(
-            "maximum",
-            0
+            "maximum"
         )
 
         job_text = job_experience.get(
@@ -218,28 +243,47 @@ class CandidateMatchingService:
             ""
         ).lower()
 
+        # -----------------------------
         # Fresher requirement
+        # -----------------------------
+
         if "fresher" in job_text:
 
             if candidate_years == 0:
+
                 return 1.0
 
             return 0.5
 
+        # -----------------------------
         # No experience requirement
+        # -----------------------------
+
         if (
             minimum == 0
-            and maximum == 0
+            and (
+                maximum == 0
+                or maximum is None
+            )
         ):
 
             return 1.0
+
+        # -----------------------------
+        # Minimum experience check
+        # -----------------------------
 
         if candidate_years < minimum:
 
             return 0.0
 
+        # -----------------------------
+        # Maximum experience check
+        # -----------------------------
+
         if (
-            maximum > 0
+            maximum is not None
+            and maximum > 0
             and candidate_years > maximum
         ):
 
@@ -264,17 +308,28 @@ class CandidateMatchingService:
         )
 
         if not education or not required_education:
+
             return 0.0
 
         candidate_degree = str(
-            education.get("degree", "")
+            education.get(
+                "degree",
+                ""
+            )
         ).strip().lower()
 
         candidate_field = str(
-            education.get("field_of_study", "")
+            education.get(
+                "field_of_study",
+                ""
+            )
         ).strip().lower()
 
-        if not candidate_degree and not candidate_field:
+        if (
+            not candidate_degree
+            and not candidate_field
+        ):
+
             return 0.0
 
         # -----------------------------
@@ -354,15 +409,19 @@ class CandidateMatchingService:
         # -----------------------------
 
         if degree_match and field_match:
+
             return 1.0
 
         if degree_match:
+
             return 0.5
 
         if field_match:
+
             return 0.5
 
         return 0.0
+
     def __build_candidate_text(
         self,
         resume
@@ -377,7 +436,9 @@ class CandidateMatchingService:
 
         if isinstance(summary, list):
 
-            parts.extend(summary)
+            parts.extend(
+                summary
+            )
 
         else:
 
@@ -392,7 +453,9 @@ class CandidateMatchingService:
 
         if isinstance(projects, list):
 
-            parts.extend(projects)
+            parts.extend(
+                projects
+            )
 
         else:
 
@@ -419,7 +482,10 @@ class CandidateMatchingService:
         )
 
         if role:
-            parts.append(role)
+
+            parts.append(
+                role
+            )
 
         skills = job_description.get(
             "skills",
@@ -436,7 +502,10 @@ class CandidateMatchingService:
             {}
         )
 
-        if experience.get("text"):
+        if experience.get(
+            "text"
+        ):
+
             parts.append(
                 experience["text"]
             )
@@ -451,4 +520,6 @@ class CandidateMatchingService:
             for item in education
         )
 
-        return " ".join(parts)
+        return " ".join(
+            parts
+        )
