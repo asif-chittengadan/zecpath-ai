@@ -1,0 +1,153 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Voice Transcript Schema",
+    "description": "Structure for a single question-answer turn captured during an AI voice screening call, and the ordered session transcript that groups turns together.",
+    "definitions": {
+        "transcript_turn": {
+            "type": "object",
+            "required": [
+                "transcript_id",
+                "candidate_id",
+                "job_id",
+                "question_id",
+                "turn_index",
+                "timestamp",
+                "speaker",
+                "raw_transcript",
+                "normalized_transcript",
+                "confidence_level",
+                "answer_type",
+                "extract_field",
+                "extracted_value",
+                "retry_count"
+            ],
+            "properties": {
+                "transcript_id": {
+                    "type": "string",
+                    "pattern": "^TR-[0-9]{8}-[0-9]{4}$",
+                    "description": "Unique transcript turn identifier. Format: TR-<session date YYYYMMDD>-<4 digit sequence>."
+                },
+                "candidate_id": {
+                    "type": "string",
+                    "pattern": "^CAND-[0-9]{6}$",
+                    "description": "Foreign key to the candidate record."
+                },
+                "job_id": {
+                    "type": "string",
+                    "pattern": "^JOB-[0-9]{6}$",
+                    "description": "Foreign key to the job/role being screened for."
+                },
+                "session_id": {
+                    "type": "string",
+                    "pattern": "^SESSION-[0-9]{8}-[0-9]{4}$",
+                    "description": "Foreign key to the parent screening session."
+                },
+                "question_id": {
+                    "type": "string",
+                    "description": "Matches the id field of the source question object in hr_screening_questions.json, e.g. skill_002."
+                },
+                "turn_index": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Zero-based position of this turn within the session, defines playback and review order."
+                },
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "UTC ISO 8601 timestamp marking when the candidate's response was captured, e.g. 2026-09-04T10:15:32Z."
+                },
+                "speaker": {
+                    "type": "string",
+                    "enum": ["candidate", "ai"],
+                    "description": "Who produced this transcript line. Only candidate turns carry extracted_value."
+                },
+                "raw_transcript": {
+                    "type": "string",
+                    "description": "Unmodified speech-to-text output, including filler words and disfluencies."
+                },
+                "normalized_transcript": {
+                    "type": "string",
+                    "description": "Transcript after normalization rules are applied. See normalization_rules.json."
+                },
+                "confidence_level": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "description": "STT engine confidence score for this turn. Bands: high >= 0.85, medium 0.60-0.84, low < 0.60."
+                },
+                "answer_type": {
+                    "type": "string",
+                    "enum": ["open_text", "number", "choice", "list", "boolean", "date"],
+                    "description": "Copied from the source question object; governs how extracted_value is parsed."
+                },
+                "extract_field": {
+                    "type": "string",
+                    "description": "Copied from the source question object; the field this answer is written to in the candidate's screening record."
+                },
+                "extracted_value": {
+                    "description": "Parsed value derived from normalized_transcript according to answer_type. Null if extraction failed or the turn is an AI prompt.",
+                    "type": ["string", "number", "boolean", "array", "null"]
+                },
+                "language": {
+                    "type": "string",
+                    "default": "en",
+                    "description": "BCP-47 language code of the spoken response."
+                },
+                "audio_duration_seconds": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Length of the audio segment this turn was transcribed from."
+                },
+                "retry_count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Number of times the AI re-prompted this question before this turn was accepted."
+                },
+                "flagged_for_review": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Set true when confidence_level is low and mandatory is true on the source question, so a recruiter can manually verify the answer."
+                }
+            }
+        },
+        "session_transcript": {
+            "type": "object",
+            "required": ["session_id", "candidate_id", "job_id", "started_at", "turns"],
+            "properties": {
+                "session_id": {
+                    "type": "string",
+                    "pattern": "^SESSION-[0-9]{8}-[0-9]{4}$"
+                },
+                "candidate_id": {
+                    "type": "string",
+                    "pattern": "^CAND-[0-9]{6}$"
+                },
+                "job_id": {
+                    "type": "string",
+                    "pattern": "^JOB-[0-9]{6}$"
+                },
+                "started_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "completed_at": {
+                    "type": ["string", "null"],
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["in_progress", "completed", "abandoned", "failed"]
+                },
+                "turns": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/transcript_turn" }
+                }
+            }
+        }
+    },
+    "type": "object",
+    "oneOf": [
+        { "$ref": "#/definitions/transcript_turn" },
+        { "$ref": "#/definitions/session_transcript" }
+    ]
+}

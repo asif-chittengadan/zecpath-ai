@@ -1,0 +1,62 @@
+{
+    "session_id": "SESSION-20260904-0007",
+    "candidate_id": "CAND-004821",
+    "job_id": "JOB-000045",
+    "role": "Technical Support Engineer",
+    "started_at": "2026-09-04T10:12:05Z",
+    "completed_at": "2026-09-04T10:24:41Z",
+    "status": "completed",
+    "language": "en",
+    "turns": [
+        {
+            "transcript_id": "TR-20260904-0001",
+            "candidate_id": "CAND-004821",
+            "job_id": "JOB-000045",
+            "session_id": "SESSION-20260904-0007",
+            "question_id": "exp_001",
+            "turn_index": 0,
+            "timestamp": "2026-09-04T10:12:40Z",
+            "speaker": "candidate",
+            "raw_transcript": "uh i have around two years of total experience",
+            "normalized_transcript": "i have around 2 years of total experience",
+            "confidence_level": 0.93,
+            "answer_type": "number",
+            "extract_field": "total_experience_years",
+            "extracted_value": 2,
+            "audio_duration_seconds": 4.2,
+            "retry_count": 0,
+            "flagged_for_review": false
+        },
+        {
+            "transcript_id": "TR-20260904-0002",
+            "candidate_id": "CAND-004821",
+            "job_id": "JOB-000045",
+            "session_id": "SESSION-20260904-0007",
+            "question_id": "loc_002",
+            "turn_index": 1,
+            "timestamp": "2026-09-04T10:14:02Z",
+            "speaker": "candidate",
+            "raw_transcript": "yeah that should be fine for me",
+            "normalized_transcript": "yes that should be fine for me",
+            "confidence_level": 0.58,
+            "answer_type": "choice",
+            "extract_field": "relocation_willingness",
+            "extracted_value": "Yes",
+            "audio_duration_seconds": 2.6,
+            "retry_count": 1,
+            "flagged_for_review": true
+        }
+    ],
+    "extracted_summary": {
+        "total_experience_years": 2,
+        "relocation_willingness": "Yes"
+    },
+    "review_flags": [
+        {
+            "transcript_id": "TR-20260904-0002",
+            "question_id": "loc_002",
+            "reason": "confidence_below_threshold",
+            "confidence_level": 0.58
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "version": "1.0",
+    "categories": {
+        "Introduction": {
+            "order": 1,
+            "description": "Establishes candidate identity, current status, and motivation for the role.",
+            "applicable_roles": ["all"],
+            "question_ids": ["intro_001", "intro_002", "intro_003", "intro_004"]
+        },
+        "Education": {
+            "order": 2,
+            "description": "Captures academic background, specialization, and relevant certifications.",
+            "applicable_roles": ["all"],
+            "question_ids": ["edu_001", "edu_002", "edu_003", "edu_004"]
+        },
+        "Experience": {
+            "order": 3,
+            "description": "Assesses total and role-relevant work experience.",
+            "applicable_roles": ["all"],
+            "question_ids": ["exp_001", "exp_002", "exp_003", "exp_004"]
+        },
+        "Skills": {
+            "order": 4,
+            "description": "Verifies hands-on proficiency in role-specific skills from the job description.",
+            "applicable_roles": ["all"],
+            "question_ids": ["skill_001", "skill_002", "skill_003", "skill_004"]
+        },
+        "Location": {
+            "order": 5,
+            "description": "Confirms current location, relocation willingness, and work mode preference.",
+            "applicable_roles": ["all"],
+            "question_ids": ["loc_001", "loc_002", "loc_003", "loc_004"]
+        },
+        "Salary": {
+            "order": 6,
+            "description": "Captures current and expected compensation for eligibility filtering.",
+            "applicable_roles": ["all"],
+            "question_ids": ["sal_001", "sal_002", "sal_003", "sal_004"]
+        },
+        "Notice Period": {
+            "order": 7,
+            "description": "Determines availability and joining timeline.",
+            "applicable_roles": ["all"],
+            "question_ids": ["notice_001", "notice_002", "notice_003", "notice_004"]
+        }
+    }
+}
