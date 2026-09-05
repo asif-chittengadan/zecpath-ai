@@ -1,0 +1,82 @@
+[
+    {
+        "clip_id": "C01",
+        "audio_path": "tests/audio_samples/en_indian_clean_01.wav",
+        "language": "en",
+        "accent": "Indian English",
+        "noise_condition": "clean",
+        "expected_transcript": "You do not spit me like that. You do not. Yeah, okay?"
+    },
+    {
+        "clip_id": "C02",
+        "audio_path": "tests/audio_samples/en_indian_noisy_01.wav",
+        "language": "en",
+        "accent": "Indian English",
+        "noise_condition": "background_noise",
+        "expected_transcript": "REPLACE_WITH_GROUND_TRUTH_TRANSCRIPT"
+    },
+    {
+        "clip_id": "C03",
+        "audio_path": "tests/audio_samples/en_us_clean_01.wav",
+        "language": "en",
+        "accent": "US English",
+        "noise_condition": "clean",
+        "expected_transcript": "REPLACE_WITH_GROUND_TRUTH_TRANSCRIPT"
+    },
+    {
+        "clip_id": "C04",
+        "audio_path": "tests/audio_samples/hi_clean_01.wav",
+        "language": "hi",
+        "accent": "Hindi (native)",
+        "noise_condition": "clean",
+        "expected_transcript": "ये ड्हाई किलो का हाथ किसी पर पड़ता है न, (0:03) तो आदमी उठता नहीं, उठ चाता है।"
+    },
+    {
+        "clip_id": "C05",
+        "audio_path": "tests/audio_samples/hi_noisy_01.wav",
+        "language": "hi",
+        "accent": "Hindi (native)",
+        "noise_condition": "background_noise",
+        "expected_transcript": "REPLACE_WITH_GROUND_TRUTH_TRANSCRIPT"
+    },
+    {
+        "clip_id": "C06",
+        "audio_path": "tests/audio_samples/ml_clean_01.wav",
+        "language": "ml",
+        "accent": "Malayalam (native)",
+        "noise_condition": "clean",
+        "expected_transcript": "മണീ മുറ്റത് താവണിക് പന്നല് മീനാക്കു പോലേ അഞ്യാരത് തംപില് പന്നല് മണീ മുറ്റത് താവണിൕ് പന്നല് മീനാക്കു പോല"
+    },
+    {
+        "clip_id": "C07",
+        "audio_path": "tests/audio_samples/ml_noisy_01.wav",
+        "language": "ml",
+        "accent": "Malayalam (native)",
+        "noise_condition": "background_noise",
+        "expected_transcript": "REPLACE_WITH_GROUND_TRUTH_TRANSCRIPT"
+    },
+    {
+        "clip_id": "C08",
+        "audio_path": "tests/audio_samples/ta_clean_01.wav",
+        "language": "ta",
+        "accent": "Tamil (native)",
+        "noise_condition": "clean",
+        "expected_transcript": "உங்கள் அம்மாவில் எல்லாம் மாறி இருக்கிறது இங்கு. உங்களுடைய அம்மா மகிழ்ச்சியாக இருக்கிறது படம். உங்கள் அம்மாவைத் தூக்கிச் சொருங்கள் உங்களின் அம்மாவை. எவ்வாவது வந்தாலும் உங்கள் அம்மாவைத் தூக்கும் உங்கள் அம்மாவை விலிங்கடி."
+    },
+    {
+        "clip_id": "C09",
+        "audio_path": "tests/audio_samples/ta_noisy_01.wav",
+        "language": "ta",
+        "accent": "Tamil (native)",
+        "noise_condition": "background_noise",
+        "expected_transcript": "REPLACE_WITH_GROUND_TRUTH_TRANSCRIPT"
+    },
+    {
+        "clip_id": "C10",
+        "audio_path": "tests/audio_samples/en_indian_crosstalk_01.wav",
+        "language": "en",
+        "accent": "Indian English",
+        "noise_condition": "cross_talk",
+        "expected_transcript": "REPLACE_WITH_GROUND_TRUTH_TRANSCRIPT"
+    }
+]
