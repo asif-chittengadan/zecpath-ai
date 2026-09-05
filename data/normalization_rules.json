@@ -1,0 +1,222 @@
+{
+    "version": "1.0",
+    "description": "Transcript normalization rules for the AI voice screening pipeline. Consumed by screening_ai/transcript_normalizer.py and referenced by data/transcript_schema.json.",
+    "filler_words": [
+        "um",
+        "umm",
+        "ummm",
+        "uh",
+        "uhh",
+        "uhhh",
+        "er",
+        "erm",
+        "hmm",
+        "mmm",
+        "ah",
+        "eh",
+        "like",
+        "basically",
+        "actually",
+        "literally",
+        "obviously",
+        "honestly"
+    ],
+    "filler_phrases": [
+        "you know",
+        "i mean",
+        "sort of",
+        "kind of",
+        "you see",
+        "how do i say",
+        "what i mean is",
+        "let me think"
+    ],
+    "contractions": {
+        "i'm": "i am",
+        "i've": "i have",
+        "i'll": "i will",
+        "i'd": "i would",
+        "we've": "we have",
+        "we'll": "we will",
+        "they've": "they have",
+        "don't": "do not",
+        "doesn't": "does not",
+        "didn't": "did not",
+        "can't": "cannot",
+        "won't": "will not",
+        "isn't": "is not",
+        "aren't": "are not",
+        "wasn't": "was not",
+        "weren't": "were not",
+        "haven't": "have not",
+        "hasn't": "has not",
+        "hadn't": "had not",
+        "shouldn't": "should not",
+        "wouldn't": "would not",
+        "couldn't": "could not",
+        "it's": "it is",
+        "that's": "that is",
+        "there's": "there is",
+        "here's": "here is",
+        "what's": "what is",
+        "you're": "you are",
+        "we're": "we are",
+        "they're": "they are"
+    },
+    "boolean_affirmative": {
+        "global": [
+            "yeah",
+            "yea",
+            "yep",
+            "yup",
+            "aye",
+            "of course",
+            "for sure",
+            "absolutely yes"
+        ],
+        "utterance_initial": [
+            "sure",
+            "correct",
+            "definitely",
+            "absolutely",
+            "certainly",
+            "right",
+            "indeed",
+            "that is right",
+            "that is correct"
+        ]
+    },
+    "boolean_negative": {
+        "global": [
+            "nope",
+            "nah",
+            "no way",
+            "not really",
+            "not at all",
+            "definitely not",
+            "certainly not"
+        ],
+        "utterance_initial": [
+            "negative",
+            "that is not right",
+            "that is not correct"
+        ]
+    },
+    "number_words": {
+        "ones": {
+            "zero": 0,
+            "one": 1,
+            "two": 2,
+            "three": 3,
+            "four": 4,
+            "five": 5,
+            "six": 6,
+            "seven": 7,
+            "eight": 8,
+            "nine": 9
+        },
+        "teens": {
+            "ten": 10,
+            "eleven": 11,
+            "twelve": 12,
+            "thirteen": 13,
+            "fourteen": 14,
+            "fifteen": 15,
+            "sixteen": 16,
+            "seventeen": 17,
+            "eighteen": 18,
+            "nineteen": 19
+        },
+        "tens": {
+            "twenty": 20,
+            "thirty": 30,
+            "forty": 40,
+            "fifty": 50,
+            "sixty": 60,
+            "seventy": 70,
+            "eighty": 80,
+            "ninety": 90
+        },
+        "scales": {
+            "hundred": 100,
+            "thousand": 1000,
+            "lakh": 100000,
+            "lakhs": 100000,
+            "crore": 10000000,
+            "crores": 10000000
+        }
+    },
+    "number_word_guards": {
+        "description": "A bare number word is left as a word when the next token is one of these, so 'one of my projects' does not become '1 of my projects'.",
+        "skip_when_followed_by": [
+            "of",
+            "or",
+            "another",
+            "more",
+            "day",
+            "thing",
+            "reason"
+        ],
+        "guarded_words": [
+            "one",
+            "two"
+        ]
+    },
+    "interruption_markers": [
+        "--",
+        "---",
+        "—",
+        "…"
+    ],
+    "display_acronyms": {
+        "hr": "HR",
+        "ctc": "CTC",
+        "api": "API",
+        "ui": "UI",
+        "ux": "UX",
+        "qa": "QA",
+        "sdk": "SDK",
+        "crm": "CRM",
+        "erp": "ERP",
+        "kpi": "KPI",
+        "sla": "SLA",
+        "cv": "CV",
+        "ats": "ATS",
+        "b.tech": "B.Tech",
+        "m.tech": "M.Tech",
+        "bca": "BCA",
+        "mca": "MCA",
+        "mba": "MBA",
+        "bsc": "BSc",
+        "msc": "MSc",
+        "python": "Python",
+        "java": "Java",
+        "django": "Django",
+        "flask": "Flask",
+        "linux": "Linux",
+        "windows": "Windows"
+    },
+    "display_casing": {
+        "description": "Skill display casing is built from data/skills.json so there is one source of truth. Only unambiguous typographic forms are restored: all-caps acronyms (SQL, AWS, ETL), internal capitals (MongoDB, PostgreSQL, Power BI) and names containing punctuation (C++, Node.js, A/B Testing). Plain title-case single words are skipped unless listed in display_acronyms above, because recasing common English words reads worse than leaving them lowercase.",
+        "skill_stoplist": [
+            "c",
+            "r",
+            "go",
+            "dart",
+            "maya",
+            "sass",
+            "swift",
+            "rust",
+            "ruby",
+            "scala",
+            "access",
+            "word",
+            "excel"
+        ]
+    },
+    "sentence_terminators": [
+        ".",
+        "?",
+        "!"
+    ]
+}

@@ -11,27 +11,28 @@
 | Clip | Language | Accent | Noise | WER | Confidence | Flagged |
 |---|---|---|---|---|---|---|
 | C01 | en | Indian English | clean | 0.167 | 0.652 | no |
-| C04 | hi | Hindi (native) | clean | 0.667 | 0.564 | yes |
-| C06 | ml | Malayalam (native) | clean | 1.0 | 0.001 | yes |
-| C08 | ta | Tamil (native) | clean | 1.24 | 0.844 | no |
+| C04 | hi | Hindi (native) | clean | 0.333 | 0.72 | no |
+| C06 | ml | Malayalam (native) | clean | 1.0 | 0.0 | yes |
+| C08 | ta | Tamil (native) | clean | 0.558 | 0.661 | no |
+| C11 | ml | Malayalam (native) | clean | 1.0 | 0.0 | yes |
 
 ## 2. Accuracy by Language
 
 | Language | Clips | Avg WER | Avg Confidence |
 |---|---|---|---|
 | en | 1 | 0.167 | 0.652 |
-| hi | 1 | 0.667 | 0.564 |
-| ml | 1 | 1.0 | 0.001 |
-| ta | 1 | 1.24 | 0.844 |
+| hi | 1 | 0.333 | 0.72 |
+| ml | 2 | 1.0 | 0.0 |
+| ta | 1 | 0.558 | 0.661 |
 
 ## 3. Accuracy by Noise Condition
 
 | Noise Condition | Clips | Avg WER | Avg Confidence |
 |---|---|---|---|
-| clean | 4 | 0.768 | 0.515 |
+| clean | 5 | 0.612 | 0.407 |
 
 ## 4. Overall Summary
 
-- Total clips tested: 4
-- Overall average WER: 0.768
+- Total clips tested: 5
+- Overall average WER: 0.612
 - Clips flagged for review (confidence < 0.6): 2

@@ -21,28 +21,33 @@ class SpeechToTextEngine:
 
     LOW_CONFIDENCE_THRESHOLD = 0.60
 
-    MODEL_SIZE = "small"
+    MODEL_SIZE_BY_LANGUAGE = {
+        "en": "small",
+        "hi": "medium",
+        "ml": "medium",
+        "ta": "medium"
+    }
 
-    _model = None
+    _models = {}
 
     def __init__(
         self,
         language=DEFAULT_LANGUAGE
     ):
 
-        if SpeechToTextEngine._model is None:
-
-            SpeechToTextEngine._model = WhisperModel(
-                self.MODEL_SIZE,
-                device="cpu",
-                compute_type="int8"
-            )
-
-        self.model = SpeechToTextEngine._model
-
         self.language_code = self.__resolve_language_code(
             language
         )
+
+        model_size = self.MODEL_SIZE_BY_LANGUAGE.get(
+            self.language_code,
+            self.MODEL_SIZE_BY_LANGUAGE[self.DEFAULT_LANGUAGE]
+        )
+
+        self.model = self.__get_or_load_model(
+            model_size
+        )
+
 
         self.audio_queue = queue.Queue()
 
@@ -57,6 +62,30 @@ class SpeechToTextEngine:
             language,
             self.SUPPORTED_LANGUAGES[self.DEFAULT_LANGUAGE]
         )
+
+    def __get_or_load_model(
+        self,
+        model_size
+    ):
+
+        if model_size not in SpeechToTextEngine._models:
+
+            print(
+                f"Loading Whisper '{model_size}' model "
+                f"(first use downloads it, may take a few minutes)..."
+            )
+
+            SpeechToTextEngine._models[model_size] = WhisperModel(
+                model_size,
+                device="cpu",
+                compute_type="int8"
+            )
+
+            print(
+                f"Whisper '{model_size}' model ready."
+            )
+
+        return SpeechToTextEngine._models[model_size]
 
     def start(self):
 
