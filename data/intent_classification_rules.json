@@ -1,0 +1,61 @@
+{
+    "version": "1.0",
+    "description": "Reference examples and thresholds used by screening_ai/intent_classifier.py. on_topic_similarity_threshold is the minimum cosine similarity (via SemanticMatchingEngine, all-MiniLM-L6-v2) between a candidate's answer and the closest reference example for its question category before the answer is considered off_topic rather than on_topic.",
+    "on_topic_similarity_threshold": 0.35,
+    "vague_word_count_threshold": 4,
+    "vague_phrases": [
+        "not sure",
+        "not exactly sure",
+        "not too sure",
+        "maybe",
+        "i don't know",
+        "i do not know",
+        "something like that",
+        "around some",
+        "not certain",
+        "hard to say",
+        "i am not sure",
+        "cannot say exactly",
+        "can not say exactly",
+        "it depends",
+        "not fixed yet",
+        "still thinking"
+    ],
+    "reference_examples": {
+        "introduction": [
+            "i am a software developer with experience in web applications",
+            "i have been working in the industry for a few years and i am looking for new opportunities",
+            "let me tell you about my background and what i have worked on"
+        ],
+        "education": [
+            "i completed my degree in computer science from a university",
+            "i have a bachelor's degree and i also did a certification course",
+            "my highest qualification is a masters in information technology"
+        ],
+        "experience": [
+            "i have two years of experience working as a developer",
+            "i worked at a company for three years handling backend development",
+            "my most recent role involved building and maintaining web applications"
+        ],
+        "skills": [
+            "i am skilled in python and react",
+            "i have hands on experience with java and spring boot",
+            "i know sql and have worked with cloud platforms like aws"
+        ],
+        "location": [
+            "i am currently based in kochi and i am open to relocating",
+            "i can work from the office or remotely depending on the requirement",
+            "i live in bangalore and i am willing to move for the right opportunity"
+        ],
+        "salary": [
+            "i am expecting around eight lakhs per annum",
+            "my current salary is six lakhs and i am looking for a hike",
+            "i am flexible on salary depending on the role"
+        ],
+        "notice_period": [
+            "my current notice period is thirty days",
+            "i can join within two weeks after resigning",
+            "i am serving notice period and can join immediately"
+        ]
+    }
+}
