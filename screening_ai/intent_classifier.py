@@ -111,20 +111,19 @@ class IntentClassifier:
         self,
         source_text
     ):
+        stripped = source_text.strip().rstrip(".").lower()
 
-        stripped = source_text.strip().rstrip(".")
+        for phrase in self.rules["vague_phrases"]:
+            if phrase in stripped:
+                return True
 
         word_count = len(stripped.split())
 
         if word_count > self.rules["vague_word_count_threshold"]:
             return False
 
-        for phrase in self.rules["vague_phrases"]:
-            if phrase in stripped:
-                return True
-
         return False
-
+        
     def __build_result(
         self,
         intent_label,

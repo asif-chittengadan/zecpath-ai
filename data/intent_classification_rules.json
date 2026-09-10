@@ -19,7 +19,15 @@
         "can not say exactly",
         "it depends",
         "not fixed yet",
-        "still thinking"
+        "still thinking",
+        "some experience",
+        "some knowledge",
+        "a little experience",
+        "a bit of experience",
+        "some skills",
+        "a few skills",
+        "not much experience",
+        "don't have much experience"
     ],
     "reference_examples": {
         "introduction": [
@@ -56,6 +64,14 @@
             "my current notice period is thirty days",
             "i can join within two weeks after resigning",
             "i am serving notice period and can join immediately"
+        ],
+        "availability": [
+            "i can join immediately",
+            "i am available to start immediately",
+            "i can start immediately",
+            "i am available to join next month",
+            "i can join after my notice period",
+            "i am currently serving my notice period"
         ]
     }
 }
