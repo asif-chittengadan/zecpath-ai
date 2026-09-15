@@ -2,6 +2,27 @@ import re
 
 class CertificationExtractor:
 
+    def normalize_name(self, name):
+        """
+        Normalize a certification name for consistent comparison.
+
+        - Converts text to lowercase
+        - Removes leading/trailing whitespace
+        - Collapses repeated whitespace
+        """
+        if name is None:
+            return ""
+
+        normalized = str(name).strip().lower()
+
+        normalized = re.sub(
+            r"\s+",
+            " ",
+            normalized
+        )
+
+        return normalized
+
     def extract(self, section_lines):
 
         certifications = []

@@ -1,0 +1,72 @@
+{
+    "version": "1.0",
+    "score_range": {
+        "minimum": 0,
+        "maximum": 100
+    },
+    "hesitation": {
+        "filler_words": [
+            "um",
+            "umm",
+            "uh",
+            "uhh",
+            "er",
+            "erm",
+            "hmm"
+        ],
+        "hesitation_phrases": [
+            "let me think",
+            "let me remember",
+            "give me a moment",
+            "i need to think",
+            "how should i say this"
+        ]
+    },
+    "uncertainty": {
+        "phrases": [
+            "i am not sure",
+            "i'm not sure",
+            "i don't know",
+            "i do not know",
+            "maybe",
+            "perhaps",
+            "probably",
+            "possibly",
+            "i think",
+            "i guess",
+            "might be",
+            "could be",
+            "as far as i know"
+        ]
+    },
+    "contradiction": {
+        "phrases": [
+            "actually",
+            "to correct myself",
+            "let me correct that",
+            "i previously said",
+            "what i said earlier was incorrect",
+            "i want to clarify my previous answer"
+        ]
+    },
+    "response_length": {
+        "very_short_max_words": 5,
+        "short_max_words": 15,
+        "adequate_max_words": 100
+    },
+    "response_pace": {
+        "slow_wpm_max": 100,
+        "normal_wpm_max": 180,
+        "fast_wpm_max": 220
+    },
+    "scoring": {
+        "base_score": 100,
+        "hesitation_penalty": 3,
+        "uncertainty_penalty": 3,
+        "contradiction_penalty": 8,
+        "very_short_response_penalty": 20,
+        "short_response_penalty": 10,
+        "slow_pace_penalty": 5,
+        "fast_pace_penalty": 3
+    }
+}

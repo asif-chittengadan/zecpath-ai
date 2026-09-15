@@ -1,0 +1,57 @@
+{
+    "version": "1.0",
+    "positive_words": [
+        "achieved",
+        "accomplished",
+        "confident",
+        "excellent",
+        "good",
+        "improved",
+        "successful",
+        "successfully",
+        "strong",
+        "enjoy",
+        "enjoyed",
+        "motivated",
+        "excited",
+        "interested",
+        "comfortable",
+        "proficient",
+        "skilled",
+        "experienced",
+        "effective"
+    ],
+    "negative_words": [
+        "bad",
+        "difficult",
+        "failed",
+        "failure",
+        "problem",
+        "problems",
+        "weak",
+        "unable",
+        "uncomfortable",
+        "confused",
+        "worried",
+        "nervous",
+        "frustrated",
+        "frustrating",
+        "disappointed",
+        "lack",
+        "lacking",
+        "struggle",
+        "struggled"
+    ],
+    "intensifiers": [
+        "very",
+        "extremely",
+        "highly",
+        "really"
+    ],
+    "negations": [
+        "not",
+        "never",
+        "no",
+        "without"
+    ]
+}
