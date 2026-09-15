@@ -1,5 +1,5 @@
 from scoring.screening_scoring_engine import ScreeningScoringEngine
-
+from scoring.candidate_matching_service import CandidateMatchingService
 
 def test_complete_relevant_answer():
     engine = ScreeningScoringEngine()
@@ -203,3 +203,37 @@ def test_empty_answer_has_explanation():
     )
 
     assert result["explanations"]["clarity"] == "No answer was provided."
+
+def test_null_minimum_experience():
+    engine = CandidateMatchingService()
+
+    resume = {
+        "Others": ["Test Candidate"],
+        "Skills": {
+            "technical": []
+        },
+        "Experience": {
+            "total_experience": {
+                "years": 3
+            }
+        },
+        "Education": {}
+    }
+
+    job_description = {
+        "role": "Test Role",
+        "skills": [],
+        "experience": {
+            "minimum": None,
+            "maximum": None,
+            "text": ""
+        },
+        "education": []
+    }
+
+    result = engine.generate_score(
+        resume,
+        job_description
+    )
+
+    assert result["percentage"] >= 0

@@ -1,6 +1,7 @@
 import copy
 import json
 import os
+import traceback
 
 from scoring.candidate_matching_service import CandidateMatchingService
 from scoring.ranking_engine import RankingEngine
@@ -321,6 +322,22 @@ def main():
                 cv_path
             )
 
+            if not isinstance(resume, dict):
+                print(
+                    f"Skipping {file_name}: "
+                    "expected a resume JSON object."
+                )
+                continue
+
+            skills = resume.get("Skills", {})
+
+            if not isinstance(skills, dict):
+                print(
+                    f"Skipping {file_name}: "
+                    "unsupported Skills format."
+                )
+                continue
+
             # ---------------------------------
             # Normalize Resume
             # ---------------------------------
@@ -530,9 +547,10 @@ def main():
         except Exception as e:
 
             print(
-                f"Error processing "
-                f"{file_name}: {e}"
+                f"\nError processing {file_name}: {e}"
             )
+
+            traceback.print_exc()
 
     # ---------------------------------
     # Check Candidate Results

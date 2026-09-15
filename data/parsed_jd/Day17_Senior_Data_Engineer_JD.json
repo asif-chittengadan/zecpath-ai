@@ -11,9 +11,9 @@
         "SQL"
     ],
     "experience": {
-        "minimum": 5,
-        "maximum": 0,
-        "text": "Minimum 5 years of relevant data engineering experience."
+        "minimum": null,
+        "maximum": null,
+        "text": ""
     },
     "education": [
         "Information Technology",

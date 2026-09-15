@@ -230,13 +230,16 @@ class CandidateMatchingService:
         # -----------------------------
 
         minimum = job_experience.get(
-            "minimum",
-            0
+            "minimum"
         )
 
         maximum = job_experience.get(
             "maximum"
         )
+
+        # A null minimum means there is no minimum
+        if minimum is None:
+            minimum = 0
 
         job_text = job_experience.get(
             "text",

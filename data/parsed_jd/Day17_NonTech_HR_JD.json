@@ -5,9 +5,9 @@
         "Talent Acquisition"
     ],
     "experience": {
-        "minimum": 2,
+        "minimum": null,
         "maximum": null,
-        "text": "Minimum 2 years of relevant HR experience."
+        "text": ""
     },
     "education": [
         "Business Administration"
