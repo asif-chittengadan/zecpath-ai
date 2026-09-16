@@ -1,0 +1,115 @@
+{
+    "report_title": "AI Screening Report",
+    "candidate_information": {
+        "candidate_id": "CAND-004821",
+        "job_id": "JOB-000045",
+        "session_id": "SESSION-20260904-0007-DAY28",
+        "name": "",
+        "email": "",
+        "role": "Technical Support Engineer"
+    },
+    "key_answers": [
+        {
+            "category": "total_experience_years",
+            "question": "exp_001",
+            "answer": "i have around 2 years of total experience"
+        },
+        {
+            "category": "relocation_willingness",
+            "question": "loc_002",
+            "answer": "yes that should be fine for me"
+        },
+        {
+            "category": "skills",
+            "question": "SKI_SO_013",
+            "answer": "i am most comfortable with python, sql and django. i have also worked with git and rest apis."
+        },
+        {
+            "category": "salary_expectation",
+            "question": "SAL_SO_001",
+            "answer": "i am expecting around 6 lakh per annum, but i am open to discussing the compensation based on the role."
+        },
+        {
+            "category": "notice_period",
+            "question": "NOT_SO_001",
+            "answer": "my current notice period is 30 days."
+        },
+        {
+            "category": "joining_availability",
+            "question": "NOT_SO_002",
+            "answer": "i would be available to join after completing my 30 day notice period."
+        }
+    ],
+    "screening_score": {
+        "total_score": 80.83,
+        "questions_evaluated": 6,
+        "parameter_scores": {
+            "clarity": 22.5,
+            "relevance": 12.5,
+            "completeness": 25.0,
+            "consistency": 20.83
+        }
+    },
+    "communication_signals": {
+        "communication_strength": {
+            "score": 92.0,
+            "scale": "0-100"
+        },
+        "hesitation": {
+            "detected": true
+        },
+        "uncertainty": {
+            "detected": false
+        },
+        "contradictions": {
+            "detected": false
+        },
+        "response_length": {},
+        "response_pace": {},
+        "sentiment": {
+            "sentiment": "positive"
+        },
+        "behavioral_strength": {
+            "score": 100.0,
+            "scale": "0-100"
+        }
+    },
+    "strengths": [
+        "Strong communication signal.",
+        "Positive sentiment detected.",
+        "Relevant skills were confirmed during screening."
+    ],
+    "risks": [],
+    "missing_data": [],
+    "salary_expectation": "i am expecting around 6 lakh per annum, but i am open to discussing the compensation based on the role.",
+    "availability": "i would be available to join after completing my 30 day notice period.",
+    "skill_confirmations": [
+        "Python",
+        "SQL",
+        "Django",
+        "Git",
+        "REST API"
+    ],
+    "recruiter_summary": "Strengths: Strong communication signal.; Positive sentiment detected.; Relevant skills were confirmed during screening.",
+    "session_metadata": {
+        "session_id": "SESSION-20260904-0007-DAY28",
+        "source_session_id": "SESSION-20260904-0007",
+        "status": "completed",
+        "language": "en",
+        "started_at": "2026-09-04T10:12:05Z",
+        "completed_at": "2026-09-04T10:31:18Z"
+    },
+    "review_flags": [
+        {
+            "transcript_id": "TR-20260904-0002",
+            "question_id": "loc_002",
+            "reason": "confidence_below_threshold",
+            "confidence_level": 0.58
+        }
+    ],
+    "job_requirement_status": {
+        "available": false,
+        "job_id": "JOB-000045",
+        "message": "Parsed JD for this job ID was not found in data/parsed_jd."
+    }
+}

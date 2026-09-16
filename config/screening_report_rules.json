@@ -1,0 +1,30 @@
+{
+    "version": "1.0",
+    "report_title": "AI Screening Report",
+    "sections": [
+        "candidate_information",
+        "key_answers",
+        "screening_score",
+        "communication_signals",
+        "strengths",
+        "risks",
+        "missing_data",
+        "salary_expectation",
+        "availability",
+        "skill_confirmations",
+        "recruiter_summary"
+    ],
+    "missing_data_values": [
+        "",
+        null,
+        "unknown",
+        "not provided",
+        "not available",
+        "n/a"
+    ],
+    "risk_thresholds": {
+        "low_communication_strength": 50,
+        "low_screening_score": 50,
+        "negative_sentiment": -10
+    }
+}
