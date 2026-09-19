@@ -29,6 +29,18 @@
         "not much experience",
         "don't have much experience"
     ],
+    "confusion_phrases": [
+        "i don't understand",
+        "i do not understand",
+        "what do you mean",
+        "can you explain",
+        "could you explain",
+        "sorry what",
+        "i am confused",
+        "i'm confused",
+        "please repeat",
+        "can you repeat"
+    ],
     "reference_examples": {
         "introduction": [
             "i am a software developer with experience in web applications",

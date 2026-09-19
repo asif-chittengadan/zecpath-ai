@@ -1,0 +1,130 @@
+{
+    "report_title": "Day 30 - AI vs Human Judgment Comparison",
+    "baseline": {
+        "before_intent_optimization": {
+            "test_cases": 10,
+            "matches": 2,
+            "agreement_percent": 20.0
+        },
+        "after_intent_optimization": {
+            "test_cases": 10,
+            "matches": 10,
+            "agreement_percent": 100.0
+        }
+    },
+    "evaluation": [
+        {
+            "case_id": "D30-001",
+            "category": "Experience",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "The answer directly provides the candidate's experience."
+        },
+        {
+            "case_id": "D30-002",
+            "category": "Skills",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "The answer clearly provides relevant technical skills."
+        },
+        {
+            "case_id": "D30-003",
+            "category": "Salary",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "The candidate provides a salary expectation."
+        },
+        {
+            "case_id": "D30-004",
+            "category": "Availability",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "The answer provides a joining timeline."
+        },
+        {
+            "case_id": "D30-005",
+            "category": "Experience",
+            "human_expected_intent": "vague",
+            "ai_intent": "vague",
+            "human_expected_action": "clarify",
+            "ai_action": "clarify",
+            "result": "match",
+            "reason": "The answer does not provide enough experience detail."
+        },
+        {
+            "case_id": "D30-006",
+            "category": "Skills",
+            "human_expected_intent": "off_topic",
+            "ai_intent": "off_topic",
+            "human_expected_action": "fallback",
+            "ai_action": "fallback",
+            "result": "match",
+            "reason": "The response does not address the skills question."
+        },
+        {
+            "case_id": "D30-007",
+            "category": "Salary",
+            "human_expected_intent": "missing",
+            "ai_intent": "missing",
+            "human_expected_action": "clarify",
+            "ai_action": "clarify",
+            "result": "match",
+            "reason": "The candidate indicates that the question was not understood."
+        },
+        {
+            "case_id": "D30-008",
+            "category": "Experience",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "Natural wording still clearly communicates experience."
+        },
+        {
+            "case_id": "D30-009",
+            "category": "Skills",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "Hesitation does not make a relevant answer invalid."
+        },
+        {
+            "case_id": "D30-010",
+            "category": "Notice Period",
+            "human_expected_intent": "on_topic",
+            "ai_intent": "on_topic",
+            "human_expected_action": "accept",
+            "ai_action": "accept",
+            "result": "match",
+            "reason": "The short answer directly provides the notice period."
+        }
+    ],
+    "summary": {
+        "test_cases": 10,
+        "matches": 10,
+        "mismatches": 0,
+        "human_ai_agreement_percent": 100.0,
+        "false_rejection_cases_in_this_set": 0
+    },
+    "interpretation": [
+        "The original test showed a category-handling problem that caused valid answers to be classified as off_topic.",
+        "After category normalization and confusion handling, all 10 test cases matched the human reference outcomes.",
+        "No false rejection was observed in this 10-case evaluation set.",
+        "The result is a validation of this test set, not a claim that the system will achieve 100% agreement on all real-world candidates."
+    ]
+}

@@ -1,0 +1,158 @@
+{
+  "total_cases": 14,
+  "matches": 14,
+  "agreement_percent": 100.0,
+  "false_rejection_candidates": 0,
+  "results": [
+    {
+      "case_id": "D30-E01",
+      "role": "Software Developer",
+      "purpose": "Case-insensitive skill matching",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E02",
+      "role": "Data Scientist",
+      "purpose": "Case-insensitive skill matching",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E03",
+      "role": "Software Developer",
+      "purpose": "Minimum experience boundary",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E04",
+      "role": "Software Developer",
+      "purpose": "Maximum experience boundary",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E05",
+      "role": "Data Scientist",
+      "purpose": "Maximum experience boundary",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E06",
+      "role": "Software Developer",
+      "purpose": "Experience boundary",
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "Experience below minimum requirement"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E07",
+      "role": "Software Developer",
+      "purpose": "Experience boundary",
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "Experience above maximum requirement"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E08",
+      "role": "HR Executive",
+      "purpose": "Additional skills",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E09",
+      "role": "HR Executive",
+      "purpose": "Unrelated additional skill",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E10",
+      "role": "Data Scientist",
+      "purpose": "Single missing mandatory skill",
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "Missing mandatory skills: Machine Learning"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E11",
+      "role": "Software Developer",
+      "purpose": "Missing all mandatory skills",
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "Missing mandatory skills: Python, SQL"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E12",
+      "role": "Software Developer",
+      "purpose": "Missing experience",
+      "expected_decision": "Review",
+      "actual_decision": "Review",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": [
+        "Experience information unavailable"
+      ]
+    },
+    {
+      "case_id": "D30-E13",
+      "role": "HR Executive",
+      "purpose": "Combined boundary",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-E14",
+      "role": "Data Scientist",
+      "purpose": "Combined boundary",
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    }
+  ]
+}

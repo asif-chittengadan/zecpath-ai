@@ -1,0 +1,96 @@
+{
+    "day": 30,
+    "purpose": "Simulated AI screening calls for screening-system validation",
+    "cases": [
+        {
+            "case_id": "D30-001",
+            "category": "Experience",
+            "question": "How many years of experience do you have?",
+            "candidate_answer": "I have two years of experience in software development.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Directly answers the experience question."
+        },
+        {
+            "case_id": "D30-002",
+            "category": "Skills",
+            "question": "Which programming languages and technologies are you comfortable using?",
+            "candidate_answer": "I am comfortable with Python, SQL and Django.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Clearly provides relevant technical skills."
+        },
+        {
+            "case_id": "D30-003",
+            "category": "Salary",
+            "question": "What are your salary expectations?",
+            "candidate_answer": "I am expecting around six lakh per annum, but I am open to discussion.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Provides a salary expectation and remains open to discussion."
+        },
+        {
+            "case_id": "D30-004",
+            "category": "Availability",
+            "question": "When would you be available to join?",
+            "candidate_answer": "I can join after completing my thirty-day notice period.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Provides a clear joining timeline."
+        },
+        {
+            "case_id": "D30-005",
+            "category": "Experience",
+            "question": "How many years of experience do you have?",
+            "candidate_answer": "I have some experience.",
+            "human_expected_intent": "vague",
+            "human_expected_action": "clarify",
+            "reason": "Does not provide enough detail to determine experience."
+        },
+        {
+            "case_id": "D30-006",
+            "category": "Skills",
+            "question": "Which technologies are you comfortable using?",
+            "candidate_answer": "I enjoy playing cricket in my free time.",
+            "human_expected_intent": "off_topic",
+            "human_expected_action": "fallback",
+            "reason": "Does not answer the skills question."
+        },
+        {
+            "case_id": "D30-007",
+            "category": "Salary",
+            "question": "What are your salary expectations?",
+            "candidate_answer": "Sorry, I don't understand what you mean.",
+            "human_expected_intent": "missing",
+            "human_expected_action": "clarify",
+            "reason": "Candidate indicates that the question was not understood."
+        },
+        {
+            "case_id": "D30-008",
+            "category": "Experience",
+            "question": "How many years of experience do you have?",
+            "candidate_answer": "I have worked for two years, mainly on Python and SQL projects.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Natural wording still clearly answers the experience question."
+        },
+        {
+            "case_id": "D30-009",
+            "category": "Skills",
+            "question": "Which technologies are you comfortable using?",
+            "candidate_answer": "Umm, I think mostly Python and SQL, and I have also used Git.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Hesitation does not make an otherwise relevant answer invalid."
+        },
+        {
+            "case_id": "D30-010",
+            "category": "Notice Period",
+            "question": "What is your current notice period?",
+            "candidate_answer": "Thirty days.",
+            "human_expected_intent": "on_topic",
+            "human_expected_action": "accept",
+            "reason": "Short but complete answer."
+        }
+    ]
+}

@@ -1,0 +1,211 @@
+[
+  {
+    "case_id": "D30-E01",
+    "role": "Software Developer",
+    "description": "Mandatory skills use lowercase; should still match.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "python",
+        "sql"
+      ],
+      "experience": 2
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Case-insensitive skill matching"
+  },
+  {
+    "case_id": "D30-E02",
+    "role": "Data Scientist",
+    "description": "Mandatory skills use mixed case; should match.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Python",
+        "machine learning"
+      ],
+      "experience": 2
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Case-insensitive skill matching"
+  },
+  {
+    "case_id": "D30-E03",
+    "role": "Software Developer",
+    "description": "Candidate has exactly minimum experience.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 1
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Minimum experience boundary"
+  },
+  {
+    "case_id": "D30-E04",
+    "role": "Software Developer",
+    "description": "Candidate has exactly maximum experience.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 4
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Maximum experience boundary"
+  },
+  {
+    "case_id": "D30-E05",
+    "role": "Data Scientist",
+    "description": "Candidate has exactly maximum experience.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "experience": 5
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Maximum experience boundary"
+  },
+  {
+    "case_id": "D30-E06",
+    "role": "Software Developer",
+    "description": "Candidate is just below minimum experience.",
+    "candidate": {
+      "ats_score": 90,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 0.9
+    },
+    "expected_decision": "Rejected",
+    "purpose": "Experience boundary"
+  },
+  {
+    "case_id": "D30-E07",
+    "role": "Software Developer",
+    "description": "Candidate is just above maximum experience.",
+    "candidate": {
+      "ats_score": 90,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 4.1
+    },
+    "expected_decision": "Rejected",
+    "purpose": "Experience boundary"
+  },
+  {
+    "case_id": "D30-E08",
+    "role": "HR Executive",
+    "description": "Candidate has extra skills but all mandatory skills are present.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Communication",
+        "Talent Acquisition",
+        "Excel",
+        "Recruitment"
+      ],
+      "experience": 3
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Additional skills"
+  },
+  {
+    "case_id": "D30-E09",
+    "role": "HR Executive",
+    "description": "Candidate has an unrelated extra skill but still has mandatory skills.",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Communication",
+        "Talent Acquisition",
+        "Python"
+      ],
+      "experience": 3
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Unrelated additional skill"
+  },
+  {
+    "case_id": "D30-E10",
+    "role": "Data Scientist",
+    "description": "Candidate has only one mandatory skill.",
+    "candidate": {
+      "ats_score": 90,
+      "skills": [
+        "Python"
+      ],
+      "experience": 3
+    },
+    "expected_decision": "Rejected",
+    "purpose": "Single missing mandatory skill"
+  },
+  {
+    "case_id": "D30-E11",
+    "role": "Software Developer",
+    "description": "Candidate has no skills but a high ATS score.",
+    "candidate": {
+      "ats_score": 95,
+      "skills": [],
+      "experience": 2
+    },
+    "expected_decision": "Rejected",
+    "purpose": "Missing all mandatory skills"
+  },
+  {
+    "case_id": "D30-E12",
+    "role": "Software Developer",
+    "description": "Candidate has high ATS and valid skills but no experience data.",
+    "candidate": {
+      "ats_score": 95,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": null
+    },
+    "expected_decision": "Review",
+    "purpose": "Missing experience"
+  },
+  {
+    "case_id": "D30-E13",
+    "role": "HR Executive",
+    "description": "Candidate has exact ATS threshold and exact minimum experience.",
+    "candidate": {
+      "ats_score": 70,
+      "skills": [
+        "Communication",
+        "Talent Acquisition"
+      ],
+      "experience": 2
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Combined boundary"
+  },
+  {
+    "case_id": "D30-E14",
+    "role": "Data Scientist",
+    "description": "Candidate has exact ATS threshold and exact minimum experience.",
+    "candidate": {
+      "ats_score": 75,
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "experience": 1
+    },
+    "expected_decision": "Eligible",
+    "purpose": "Combined boundary"
+  }
+]

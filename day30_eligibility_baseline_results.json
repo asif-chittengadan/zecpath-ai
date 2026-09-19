@@ -1,0 +1,151 @@
+{
+  "total_cases": 12,
+  "matches": 12,
+  "agreement_percent": 100.0,
+  "results": [
+    {
+      "case_id": "D30-T01",
+      "role": "Software Developer",
+      "focus": "ATS threshold boundary",
+      "ats_score": 69,
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "ATS score below minimum"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T02",
+      "role": "Software Developer",
+      "focus": "ATS threshold boundary",
+      "ats_score": 70,
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T03",
+      "role": "Software Developer",
+      "focus": "ATS threshold boundary",
+      "ats_score": 71,
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T04",
+      "role": "Data Scientist",
+      "focus": "ATS threshold boundary",
+      "ats_score": 74,
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "ATS score below minimum"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T05",
+      "role": "Data Scientist",
+      "focus": "ATS threshold boundary",
+      "ats_score": 75,
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T06",
+      "role": "Data Scientist",
+      "focus": "ATS threshold boundary",
+      "ats_score": 76,
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T07",
+      "role": "HR Executive",
+      "focus": "ATS threshold boundary",
+      "ats_score": 69,
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "ATS score below minimum"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T08",
+      "role": "HR Executive",
+      "focus": "ATS threshold boundary",
+      "ats_score": 70,
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T09",
+      "role": "HR Executive",
+      "focus": "Mandatory skill rejection",
+      "ats_score": 90,
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "Missing mandatory skills: Talent Acquisition"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T10",
+      "role": "HR Executive",
+      "focus": "Experience rejection",
+      "ats_score": 90,
+      "expected_decision": "Rejected",
+      "actual_decision": "Rejected",
+      "match": true,
+      "failed_rules": [
+        "Experience below minimum requirement"
+      ],
+      "review_rules": []
+    },
+    {
+      "case_id": "D30-T11",
+      "role": "Software Developer",
+      "focus": "Missing information",
+      "ats_score": 85,
+      "expected_decision": "Review",
+      "actual_decision": "Review",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": [
+        "Experience information unavailable"
+      ]
+    },
+    {
+      "case_id": "D30-T12",
+      "role": "Data Scientist",
+      "focus": "Control case",
+      "ats_score": 90,
+      "expected_decision": "Eligible",
+      "actual_decision": "Eligible",
+      "match": true,
+      "failed_rules": [],
+      "review_rules": []
+    }
+  ]
+}

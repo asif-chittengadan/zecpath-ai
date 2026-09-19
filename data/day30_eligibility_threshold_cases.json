@@ -1,0 +1,181 @@
+[
+  {
+    "case_id": "D30-T01",
+    "role": "Software Developer",
+    "description": "Score just below threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 69,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 2
+    },
+    "expected_baseline": "Rejected",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T02",
+    "role": "Software Developer",
+    "description": "Score exactly at threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 70,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 2
+    },
+    "expected_baseline": "Eligible",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T03",
+    "role": "Software Developer",
+    "description": "Score just above threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 71,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": 2
+    },
+    "expected_baseline": "Eligible",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T04",
+    "role": "Data Scientist",
+    "description": "Score just below threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 74,
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "experience": 2
+    },
+    "expected_baseline": "Rejected",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T05",
+    "role": "Data Scientist",
+    "description": "Score exactly at threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 75,
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "experience": 2
+    },
+    "expected_baseline": "Eligible",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T06",
+    "role": "Data Scientist",
+    "description": "Score just above threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 76,
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "experience": 2
+    },
+    "expected_baseline": "Eligible",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T07",
+    "role": "HR Executive",
+    "description": "Score just below threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 69,
+      "skills": [
+        "Communication",
+        "Talent Acquisition"
+      ],
+      "experience": 3
+    },
+    "expected_baseline": "Rejected",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T08",
+    "role": "HR Executive",
+    "description": "Score exactly at threshold with all other requirements satisfied",
+    "candidate": {
+      "ats_score": 70,
+      "skills": [
+        "Communication",
+        "Talent Acquisition"
+      ],
+      "experience": 3
+    },
+    "expected_baseline": "Eligible",
+    "focus": "ATS threshold boundary"
+  },
+  {
+    "case_id": "D30-T09",
+    "role": "HR Executive",
+    "description": "Missing mandatory skill despite sufficient ATS score",
+    "candidate": {
+      "ats_score": 90,
+      "skills": [
+        "Communication"
+      ],
+      "experience": 3
+    },
+    "expected_baseline": "Rejected",
+    "focus": "Mandatory skill rejection"
+  },
+  {
+    "case_id": "D30-T10",
+    "role": "HR Executive",
+    "description": "Insufficient experience despite sufficient ATS score",
+    "candidate": {
+      "ats_score": 90,
+      "skills": [
+        "Communication",
+        "Talent Acquisition"
+      ],
+      "experience": 1
+    },
+    "expected_baseline": "Rejected",
+    "focus": "Experience rejection"
+  },
+  {
+    "case_id": "D30-T11",
+    "role": "Software Developer",
+    "description": "Required skills and ATS pass, but experience is unavailable",
+    "candidate": {
+      "ats_score": 85,
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "experience": null
+    },
+    "expected_baseline": "Review",
+    "focus": "Missing information"
+  },
+  {
+    "case_id": "D30-T12",
+    "role": "Data Scientist",
+    "description": "All requirements pass with a comfortable score",
+    "candidate": {
+      "ats_score": 90,
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "experience": 3
+    },
+    "expected_baseline": "Eligible",
+    "focus": "Control case"
+  }
+]

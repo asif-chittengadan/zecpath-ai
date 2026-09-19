@@ -48,15 +48,21 @@ class IntentClassifier:
         source_text,
         category
     ):
-
         if not source_text or not source_text.strip():
             return self.__build_result(
                 "missing",
                 0.0
             )
 
-        if self.__looks_vague(source_text):
+        if self.__looks_confused(source_text):
+            return self.__build_result(
+                "missing",
+                0.0
+            )
 
+        category = self.__normalize_category(category)
+
+        if self.__looks_vague(source_text):
             similarity = self.__max_similarity_to_category(
                 source_text,
                 category
@@ -123,7 +129,24 @@ class IntentClassifier:
             return False
 
         return False
-        
+
+    def __looks_confused(
+        self,
+        source_text
+    ):
+        normalized = " ".join(
+            source_text.strip().lower().split()
+        )
+
+        for phrase in self.rules.get(
+            "confusion_phrases",
+            []
+        ):
+            if phrase.lower() in normalized:
+                return True
+
+        return False    
+    
     def __build_result(
         self,
         intent_label,
@@ -134,3 +157,26 @@ class IntentClassifier:
             "intent_label": intent_label,
             "intent_confidence": round(intent_confidence, 4)
         }
+    
+    def __normalize_category(
+        self,
+        category
+    ):
+        normalized = (
+            str(category)
+            .strip()
+            .lower()
+            .replace("-", "_")
+            .replace(" ", "_")
+        )
+
+        aliases = {
+            "noticeperiod": "notice_period",
+            "joining_availability": "availability",
+            "joiningavailability": "availability",
+        }
+
+        return aliases.get(
+            normalized,
+            normalized
+        )
