@@ -1,39 +1,31 @@
 {
-    "version": "1.0",
-    "retry_limits": {
-        "silence": 2,
-        "confusion": 1,
-        "repetition": 1,
-        "invalid": 1
-    },
-    "confusion_phrases": [
-        "i don't understand",
-        "i do not understand",
-        "what do you mean",
-        "can you explain",
-        "could you explain",
-        "sorry what",
-        "i am confused",
-        "i'm confused",
-        "please repeat",
-        "can you repeat"
-    ],
-    "fallback_questions": {
-        "skills": "Could you name one or two programming languages or technologies you have worked with?",
-        "experience": "Could you briefly tell me how many years of work experience you have?",
-        "salary": "Could you tell me the approximate salary range you are expecting?",
-        "notice period": "Could you tell me your current notice period in days?",
-        "availability": "Could you tell me when you would be available to join?",
-        "joining availability": "Could you tell me when you would be available to join?",
-        "default": "Could you answer the question briefly in your own words?"
-    },
-    "messages": {
-        "silence": [
-            "Take your time. Please let me know when you're ready.",
-            "Would you like me to repeat the question?"
-        ],
-        "clarification": "Sure. Let me rephrase the question: {question}",
-        "repetition_redirect": "I understand. For this question, could you provide a different answer that addresses what I just asked?",
-        "invalid": "I wasn't able to understand that answer. Could you please try again?"
-    }
+  "retry_limits": {
+    "silence": 2,
+    "confusion": 2,
+    "repetition": 2,
+    "invalid": 2
+  },
+  "messages": {
+    "clarification": "Could you clarify your answer to: {question}?",
+    "repetition_redirect": "Could you provide a different answer or more detail?",
+    "silence": [
+      "I didn't hear an answer. Could you please respond?",
+      "Could you please answer the question?"
+    ]
+  },
+  "fallback_questions": {
+    "default": "Could you answer the question in a simpler way?"
+  },
+  "confusion_phrases": [
+    "i don't understand",
+    "i do not understand",
+    "what do you mean",
+    "can you explain",
+    "could you explain",
+    "sorry what",
+    "i am confused",
+    "i'm confused",
+    "please repeat",
+    "can you repeat"
+  ]
 }

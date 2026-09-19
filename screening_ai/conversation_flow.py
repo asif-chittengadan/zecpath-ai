@@ -1,9 +1,31 @@
+"""
+Zecpath AI - Day 29
+AI Conversation Flow Engine
+
+Controls the screening conversation after a question is asked.
+Handles:
+- silence
+- confusion
+- repeated answers
+- invalid/off-topic answers
+- fallback questions
+- follow-up triggers
+- retry and polite failure logic
+
+This module uses only the Python standard library.
+Existing Zecpath answer-understanding logic can be injected through
+the answer_analyzer callback instead of being duplicated here.
+"""
+
 from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional
+
+from screening_ai.response_quality_checker import ResponseQualityChecker
+from screening_ai.edge_case_handler import EdgeCaseHandler
 
 
 class ConversationState(str, Enum):
@@ -52,9 +74,17 @@ class ConversationFlowEngine:
         self,
         rules_path: str = "config/conversation_flow_rules.json",
         answer_analyzer: Optional[Callable[[str, str, List[Dict[str, Any]]], Dict[str, Any]]] = None,
+        edge_case_rules_path: Optional[str] = None,
     ) -> None:
         self.rules = self._load_rules(rules_path)
         self.answer_analyzer = answer_analyzer
+        self.edge_case_checker = None
+        self.edge_case_handler = None
+
+        if edge_case_rules_path:
+            edge_rules = self._load_rules(edge_case_rules_path)
+            self.edge_case_checker = ResponseQualityChecker(edge_rules)
+            self.edge_case_handler = EdgeCaseHandler(edge_rules)
 
     @staticmethod
     def _load_rules(rules_path: str) -> Dict[str, Any]:
@@ -94,12 +124,54 @@ class ConversationFlowEngine:
         self,
         context: ConversationContext,
         response: Optional[str],
+        metadata: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         if context.completed:
             return self._result(context, "call_already_completed")
 
         text = (response or "").strip()
         context.last_response = text
+
+        # Day 31: optional response/audio quality handling.
+        # Without edge_case_rules_path, the original Day 29 behavior remains unchanged.
+        if self.edge_case_checker is not None and self.edge_case_handler is not None:
+            quality = self.edge_case_checker.check(text, metadata or {})
+
+            if quality["issues"]:
+                retry_counts = dict(getattr(context, "edge_retry_counts", {}))
+                edge_result = self.edge_case_handler.handle(
+                    quality,
+                    retry_counts,
+                )
+                context.edge_retry_counts = dict(edge_result["retry_count"])
+
+                issue = edge_result.get("issue", "response_quality")
+
+                if edge_result["action"] == "retry":
+                    self._transition(
+                        context,
+                        ConversationState.RETRY,
+                        f"Day 31 retry: {issue}",
+                    )
+                elif edge_result["action"] == "clarify":
+                    self._transition(
+                        context,
+                        ConversationState.HANDLE_CONFUSION,
+                        f"Day 31 clarification: {issue}",
+                    )
+                else:
+                    self._transition(
+                        context,
+                        ConversationState.ASK_FALLBACK,
+                        f"Day 31 safe fallback: {issue}",
+                    )
+
+                context.last_action = edge_result["action"]
+                return self._result(
+                    context,
+                    edge_result["action"],
+                    prompt=edge_result["message"],
+                )
 
         if not text:
             return self._handle_silence(context)

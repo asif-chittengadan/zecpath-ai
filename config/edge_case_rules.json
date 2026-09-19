@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "retry_limits": {
+    "poor_audio": 2,
+    "background_noise": 2,
+    "missing_answer": 2,
+    "language_mixing": 2
+  },
+  "quality_thresholds": {
+    "minimum_audio_confidence": 0.55,
+    "maximum_noise_score": 0.7,
+    "minimum_transcript_length": 2
+  },
+  "language_markers": [
+    "haan",
+    "nahi",
+    "acha",
+    "achha",
+    "haanji",
+    "theek",
+    "okey",
+    "seri",
+    "illa",
+    "athe"
+  ],
+  "messages": {
+    "poor_audio": "I couldn't hear that clearly. Could you please repeat your answer?",
+    "background_noise": "There seems to be some background noise. Please repeat your answer clearly.",
+    "missing_answer": "I didn't receive an answer. Could you please answer the question?",
+    "language_mixing": "I detected mixed-language speech. Please answer in the language you are most comfortable using.",
+    "safe_fallback": "I'm having trouble understanding the response. Let's try the question once more in a simpler way.",
+    "retry_limit": "I still couldn't understand the response. We'll move to the next question."
+  }
+}
