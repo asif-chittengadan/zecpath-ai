@@ -1,0 +1,160 @@
+{
+  "version": "2.0",
+  "categories": {
+    "self_introduction": {
+      "description": "Candidate introduction and background.",
+      "questions": {
+        "fresher": {
+          "technical": [
+            "Could you please introduce yourself and briefly tell me about your technical background?",
+            "Could you walk me through your education and the technical projects you have worked on?"
+          ],
+          "non_technical": [
+            "Could you please introduce yourself and tell me about your background?",
+            "Could you walk me through your education and the experiences that prepared you for this role?"
+          ]
+        },
+        "experienced": {
+          "technical": [
+            "Could you introduce yourself and summarize your professional technical experience?",
+            "Could you walk me through your career and the technical roles you have held?"
+          ],
+          "non_technical": [
+            "Could you introduce yourself and summarize your professional experience?",
+            "Could you walk me through your career journey and the roles you have taken on?"
+          ]
+        }
+      }
+    },
+
+    "career_journey": {
+      "description": "Education, career path and major professional experiences.",
+      "questions": {
+        "fresher": {
+          "technical": [
+            "Which academic project or experience has contributed most to your technical growth?",
+            "What led you to choose this technical career path?"
+          ],
+          "non_technical": [
+            "Which academic or extracurricular experience has contributed most to your personal growth?",
+            "What led you to choose this career path?"
+          ]
+        },
+        "experienced": {
+          "technical": [
+            "What has been the most important technical transition in your career?",
+            "Which professional project has contributed most to your technical growth?"
+          ],
+          "non_technical": [
+            "What has been the most important transition in your career?",
+            "Which professional experience has contributed most to your growth?"
+          ]
+        }
+      }
+    },
+
+    "strengths_weaknesses": {
+      "description": "Self-awareness, strengths and areas for improvement.",
+      "questions": {
+        "fresher": {
+          "technical": [
+            "What is one technical strength you would bring to this role?",
+            "What technical area are you currently working to improve?"
+          ],
+          "non_technical": [
+            "What is one strength you would bring to this role?",
+            "What is one area you are currently working to improve?"
+          ]
+        },
+        "experienced": {
+          "technical": [
+            "What technical strength has helped you most in your career?",
+            "What technical area are you currently working to improve?"
+          ],
+          "non_technical": [
+            "What professional strength has helped you most in your career?",
+            "What professional area are you currently working to improve?"
+          ]
+        }
+      }
+    },
+
+    "teamwork_culture_fit": {
+      "description": "Collaboration, communication and workplace behavior.",
+      "questions": {
+        "fresher": {
+          "technical": [
+            "Tell me about a technical project where you worked as part of a team.",
+            "How do you handle a technical disagreement with a teammate?"
+          ],
+          "non_technical": [
+            "Tell me about a project where you worked as part of a team.",
+            "How do you handle a disagreement with a teammate?"
+          ]
+        },
+        "experienced": {
+          "technical": [
+            "Tell me about a technical project where you had to collaborate with different teams.",
+            "How do you handle technical disagreements within a team?"
+          ],
+          "non_technical": [
+            "Tell me about a situation where you had to collaborate with different teams.",
+            "How do you handle disagreements within a team?"
+          ]
+        }
+      }
+    },
+
+    "career_goals": {
+      "description": "Career direction, learning and professional goals.",
+      "questions": {
+        "fresher": {
+          "technical": [
+            "What technical skills would you like to develop over the next few years?",
+            "What are your career goals at the beginning of your professional journey?"
+          ],
+          "non_technical": [
+            "What skills would you like to develop over the next few years?",
+            "What are your career goals at the beginning of your professional journey?"
+          ]
+        },
+        "experienced": {
+          "technical": [
+            "What technical direction would you like to take in the next few years?",
+            "What are your long-term career goals?"
+          ],
+          "non_technical": [
+            "What professional direction would you like to take in the next few years?",
+            "What are your long-term career goals?"
+          ]
+        }
+      }
+    },
+
+    "availability_commitment": {
+      "description": "Joining availability, commitment and work expectations.",
+      "questions": {
+        "fresher": {
+          "technical": [
+            "When would you be available to start this role?",
+            "Are you comfortable with the work expectations associated with this role?"
+          ],
+          "non_technical": [
+            "When would you be available to start this role?",
+            "Are you comfortable with the work expectations associated with this role?"
+          ]
+        },
+        "experienced": {
+          "technical": [
+            "What is your current notice period and when could you start?",
+            "Are there any work arrangements or commitments we should consider?"
+          ],
+          "non_technical": [
+            "What is your current notice period and when could you start?",
+            "Are there any work arrangements or commitments we should consider?"
+          ]
+        }
+      }
+    }
+  }
+}
