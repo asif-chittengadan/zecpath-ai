@@ -3,16 +3,29 @@ from interview_ai.hr.interview_flow import HRInterviewFlow
 from interview_ai.hr.question_generator import HRQuestionGenerator
 from interview_ai.hr.follow_up_engine import HRFollowUpEngine
 
+from interview_ai.hr.response_analyzer import HRResponseAnalyzer
+from interview_ai.hr.adaptive_follow_up_engine import AdaptiveFollowUpEngine
+from interview_ai.hr.difficulty_adapter import InterviewDifficultyAdapter
+from interview_ai.hr.repetition_guard import InterviewRepetitionGuard
+from interview_ai.hr.dynamic_conversation_state import (
+    DynamicConversationState
+)
+
 
 class HRInterviewEngine:
     """
-    Integrated ZECPATH AI V2 HR Interview Engine.
+    ZECPATH AI V2 HR Interview Engine.
 
-    Connects:
+    Integrates:
     - Question Generator
     - Interview State
     - Interview Flow
-    - Follow-Up Engine
+    - Day 33 Follow-Up Engine
+    - Day 34 Response Analyzer
+    - Day 34 Adaptive Follow-Up Engine
+    - Day 34 Difficulty Adapter
+    - Day 34 Repetition Guard
+    - Day 34 Dynamic Conversation State
     """
 
     PHASE_QUESTION_CATEGORIES = {
@@ -51,26 +64,35 @@ class HRInterviewEngine:
             question_bank_path
         )
 
+        # Day 33 compatibility
         self.follow_up_engine = HRFollowUpEngine()
+
+        # Day 34 components
+        self.response_analyzer = HRResponseAnalyzer()
+        self.adaptive_follow_up_engine = AdaptiveFollowUpEngine()
+        self.difficulty_adapter = InterviewDifficultyAdapter()
+        self.repetition_guard = InterviewRepetitionGuard()
+        self.dynamic_state = DynamicConversationState()
 
         self.category_index = 0
         self.question_index = 0
+
         self.follow_up_active = False
         self.current_category = None
 
     def start(self):
         """
-        Start the HR interview and prepare the first question.
+        Start the HR interview.
         """
+
         self.flow.start()
+
         return self._prepare_next_question()
 
     def submit_response(self, response):
         """
-        Process the candidate's response.
-
-        Returns information about whether a follow-up is needed
-        or the interview should continue.
+        Process a candidate response using the Day 34
+        dynamic follow-up pipeline.
         """
 
         if self.state.current_question is None:
@@ -78,38 +100,152 @@ class HRInterviewEngine:
                 "No active question. Start the interview first."
             )
 
-        result = self.follow_up_engine.evaluate(
-            self.state.current_question,
-            response,
-            self.current_category
+        # -------------------------------------------------
+        # 1. Analyze candidate response
+        # -------------------------------------------------
+
+        analysis = self.response_analyzer.analyze(
+            response
         )
+
+        classification = analysis["classification"]
+
+        # -------------------------------------------------
+        # 2. Determine adaptive difficulty
+        # -------------------------------------------------
+
+        difficulty_level = (
+            self.difficulty_adapter.determine_level(
+                classification
+            )
+        )
+
+        # -------------------------------------------------
+        # 3. Store response in Day 33 state
+        # -------------------------------------------------
 
         self.flow.capture_response(
             response,
-            follow_up_eligible=result["eligible"]
+            follow_up_eligible=(
+                classification != "complete"
+                or self.current_category in {
+                    "career_journey",
+                    "strengths_weaknesses",
+                    "teamwork_culture_fit"
+                }
+            )
         )
 
-        if result["eligible"] and not self.follow_up_active:
-            self.follow_up_active = True
+        # -------------------------------------------------
+        # 4. Store response in Day 34 state
+        # -------------------------------------------------
 
-            follow_up_question = (
-                self.follow_up_engine.generate_follow_up(
-                    self.state.current_question,
+        self.dynamic_state.record_response(
+            response=response,
+            classification=classification,
+            difficulty_level=difficulty_level
+        )
+
+        # -------------------------------------------------
+        # 5. Decide adaptive follow-up
+        # -------------------------------------------------
+
+        decision = self.adaptive_follow_up_engine.decide(
+            analysis,
+            self.current_category
+        )
+
+        # -------------------------------------------------
+        # 6. Prevent endless follow-up loops
+        # -------------------------------------------------
+
+        if self.follow_up_active:
+            decision = {
+                "trigger": "none",
+                "follow_up_required": False,
+                "question": None,
+                "reason": (
+                    "Follow-up already used for the current "
+                    "response chain."
+                )
+            }
+
+        # -------------------------------------------------
+        # 7. Handle follow-up
+        # -------------------------------------------------
+
+        if decision["follow_up_required"]:
+
+            follow_up_question = decision["question"]
+
+            # Check repetition
+            if self.repetition_guard.is_repeated(
+                follow_up_question
+            ):
+                alternatives = self._get_alternatives(
+                    decision["trigger"],
                     self.current_category
                 )
-            )
 
-            self.state.set_question(
-                f"{self.state.current_question_id}-FOLLOWUP",
-                follow_up_question
-            )
+                alternative = (
+                    self.repetition_guard.get_alternative(
+                        follow_up_question,
+                        alternatives
+                    )
+                )
 
-            return {
-                "action": "follow_up",
-                "question": follow_up_question,
-                "phase": self.state.current_phase,
-                "follow_up_eligible": True
-            }
+                if alternative is not None:
+                    follow_up_question = alternative
+                else:
+                    decision = {
+                        "trigger": "none",
+                        "follow_up_required": False,
+                        "question": None,
+                        "reason": (
+                            "No unused follow-up question "
+                            "was available."
+                        )
+                    }
+
+            if decision["follow_up_required"]:
+
+                self.follow_up_active = True
+
+                question_id = (
+                    f"{self.state.current_question_id}-"
+                    f"FOLLOWUP"
+                )
+
+                self.state.set_question(
+                    question_id,
+                    follow_up_question
+                )
+
+                self.repetition_guard.register_question(
+                    follow_up_question
+                )
+
+                self.dynamic_state.record_follow_up(
+                    follow_up_type=decision["trigger"],
+                    question=follow_up_question
+                )
+
+                return {
+                    "action": "follow_up",
+                    "question": follow_up_question,
+                    "phase": self.state.current_phase,
+                    "classification": classification,
+                    "difficulty_level": difficulty_level,
+                    "follow_up_type": decision["trigger"],
+                    "follow_up_required": True,
+
+                    # Day 33 backward compatibility
+                    "follow_up_eligible": True
+                }
+
+        # -------------------------------------------------
+        # 8. Continue to next main question
+        # -------------------------------------------------
 
         self.follow_up_active = False
 
@@ -120,20 +256,28 @@ class HRInterviewEngine:
                 "action": "completed",
                 "question": None,
                 "phase": self.state.current_phase,
-                "follow_up_eligible": False
+                "classification": classification,
+                "difficulty_level": difficulty_level,
+                "follow_up_type": None,
+                "follow_up_required": False
             }
 
         return {
             "action": "next_question",
             "question": next_question,
             "phase": self.state.current_phase,
+            "classification": classification,
+            "difficulty_level": difficulty_level,
+            "follow_up_type": None,
+            "follow_up_required": False,
+
+            # Day 33 backward compatibility
             "follow_up_eligible": False
         }
 
     def _prepare_next_question(self):
         """
-        Select and store the next question based on the
-        current interview phase.
+        Select and store the next main interview question.
         """
 
         phase = self.state.current_phase
@@ -182,6 +326,7 @@ class HRInterviewEngine:
         if self.question_index >= len(questions):
             self.category_index += 1
             self.question_index = 0
+
             return self._prepare_next_question()
 
         question = questions[self.question_index]
@@ -199,17 +344,22 @@ class HRInterviewEngine:
             question
         )
 
+        self.dynamic_state.set_question(
+            question_id,
+            question
+        )
+
+        self.repetition_guard.register_question(
+            question
+        )
+
         self.question_index += 1
 
         return question
 
     def _prepare_role_question(self):
         """
-        Prepare a role-specific evaluation question.
-
-        The first V2 implementation keeps this deterministic so
-        the role-specific layer can later be connected to a richer
-        role question bank or AI-generated question service.
+        Prepare a deterministic role-based question.
         """
 
         role = self.state.role
@@ -226,17 +376,73 @@ class HRInterviewEngine:
                 f"would help you contribute effectively as a {role}?"
             )
 
-        self.current_category = "role_based_evaluation"
+        self.current_category = (
+            "role_based_evaluation"
+        )
+
+        question_id = "ROLE-EVAL-001"
 
         self.state.set_question(
-            "ROLE-EVAL-001",
+            question_id,
+            question
+        )
+
+        self.dynamic_state.set_question(
+            question_id,
+            question
+        )
+
+        self.repetition_guard.register_question(
             question
         )
 
         return question
 
+    def _get_alternatives(
+        self,
+        trigger,
+        category
+    ):
+        """
+        Return alternative follow-up questions when the
+        preferred question has already been asked.
+        """
+
+        alternatives = {
+            "clarification": [
+                "Could you explain that from another perspective?",
+                "Could you clarify the main point of your answer?"
+            ],
+
+            "deepening": [
+                "What was the most important part of that experience?",
+                "What did you personally learn from that situation?"
+            ],
+
+            "example_based": [
+                "Could you describe a different example?",
+                "Can you share another situation where this happened?"
+            ],
+
+            "scenario_based": [
+                "How would you approach a similar challenge?",
+                "What would you do if the situation became more complex?"
+            ]
+        }
+
+        return alternatives.get(
+            trigger,
+            []
+        )
+
     def get_state(self):
         """
-        Return the complete interview state.
+        Return the Day 33 interview state.
         """
         return self.flow.get_state()
+
+    def get_dynamic_state(self):
+        """
+        Return the Day 34 adaptive state.
+        """
+        return self.dynamic_state.get_state()
