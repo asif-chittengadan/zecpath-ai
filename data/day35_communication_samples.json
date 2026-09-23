@@ -1,0 +1,97 @@
+[
+  {
+    "id": "COMM-001",
+    "type": "strong_structured",
+    "answer": "First, I understood the project requirements. Then, I designed the backend using Python and Django. Finally, I tested the APIs and documented the solution.",
+    "features": {
+      "fluency": 100.0,
+      "grammar_quality": 100.0,
+      "vocabulary_range": 75.0,
+      "clarity": 100.0,
+      "filler_words": [
+        "um"
+      ],
+      "filler_word_count": 1,
+      "answer_structure": 100,
+      "word_count": 24,
+      "sentence_count": 3
+    },
+    "raw_score": 95.25,
+    "normalized_score": 95.25
+  },
+  {
+    "id": "COMM-002",
+    "type": "normal",
+    "answer": "I completed my degree in Information Technology and worked on Python and Django projects.",
+    "features": {
+      "fluency": 55.33,
+      "grammar_quality": 100.0,
+      "vocabulary_range": 92.86,
+      "clarity": 100.0,
+      "filler_words": [],
+      "filler_word_count": 0,
+      "answer_structure": 0,
+      "word_count": 14,
+      "sentence_count": 1
+    },
+    "raw_score": 75.0,
+    "normalized_score": 75.0
+  },
+  {
+    "id": "COMM-003",
+    "type": "short",
+    "answer": "I worked on Python.",
+    "features": {
+      "fluency": 25.33,
+      "grammar_quality": 100.0,
+      "vocabulary_range": 100.0,
+      "clarity": 0.0,
+      "filler_words": [],
+      "filler_word_count": 0,
+      "answer_structure": 0,
+      "word_count": 4,
+      "sentence_count": 1
+    },
+    "raw_score": 50.07,
+    "normalized_score": 50.07
+  },
+  {
+    "id": "COMM-004",
+    "type": "filler_words",
+    "answer": "Um, I basically worked on a Python project and developed the backend.",
+    "features": {
+      "fluency": 49.33,
+      "grammar_quality": 100.0,
+      "vocabulary_range": 100.0,
+      "clarity": 100.0,
+      "filler_words": [
+        "basically",
+        "um"
+      ],
+      "filler_word_count": 2,
+      "answer_structure": 0,
+      "word_count": 12,
+      "sentence_count": 1
+    },
+    "raw_score": 72.87,
+    "normalized_score": 72.87
+  },
+  {
+    "id": "COMM-005",
+    "type": "empty",
+    "answer": "",
+    "features": {
+      "fluency": 0,
+      "grammar_quality": 0,
+      "vocabulary_range": 0,
+      "clarity": 0,
+      "filler_words": [],
+      "filler_word_count": 0,
+      "answer_structure": 0,
+      "word_count": 0,
+      "sentence_count": 0
+    },
+    "raw_score": 10.0,
+    "normalized_score": 0
+  }
+]

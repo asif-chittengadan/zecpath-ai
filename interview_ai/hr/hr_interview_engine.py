@@ -11,6 +11,18 @@ from interview_ai.hr.dynamic_conversation_state import (
     DynamicConversationState
 )
 
+from interview_ai.hr.communication_feature_analyzer import (
+    CommunicationFeatureAnalyzer
+)
+
+from interview_ai.hr.communication_scoring_engine import (
+    CommunicationScoringEngine
+)
+
+from interview_ai.hr.communication_score_normalizer import (
+    CommunicationScoreNormalizer
+)
+
 
 class HRInterviewEngine:
     """
@@ -74,6 +86,18 @@ class HRInterviewEngine:
         self.repetition_guard = InterviewRepetitionGuard()
         self.dynamic_state = DynamicConversationState()
 
+        # Day 35 communication evaluation
+        self.communication_feature_analyzer = (
+            CommunicationFeatureAnalyzer()
+        )
+        self.communication_scoring_engine = (
+            CommunicationScoringEngine()
+        )
+        self.communication_score_normalizer = (
+            CommunicationScoreNormalizer()
+        )
+        self.communication_history = []
+
         self.category_index = 0
         self.question_index = 0
 
@@ -106,6 +130,39 @@ class HRInterviewEngine:
 
         analysis = self.response_analyzer.analyze(
             response
+        )
+
+        # -------------------------------------------------
+        # Day 35 - Communication evaluation
+        # -------------------------------------------------
+
+        communication_features = (
+            self.communication_feature_analyzer.analyze(
+                response
+            )
+        )
+
+        communication_score_result = (
+            self.communication_scoring_engine.score(
+                communication_features
+            )
+        )
+
+        communication_score = (
+            self.communication_score_normalizer.normalize(
+                communication_score_result["score"],
+                communication_features["word_count"]
+            )
+        )
+
+        communication_result = {
+            "features": communication_features,
+            "raw_score": communication_score_result["score"],
+            "normalized_score": communication_score
+        }
+
+        self.communication_history.append(
+            communication_result
         )
 
         classification = analysis["classification"]
@@ -240,7 +297,8 @@ class HRInterviewEngine:
                     "follow_up_required": True,
 
                     # Day 33 backward compatibility
-                    "follow_up_eligible": True
+                    "follow_up_eligible": True,
+                    "communication": communication_result
                 }
 
         # -------------------------------------------------
@@ -259,7 +317,8 @@ class HRInterviewEngine:
                 "classification": classification,
                 "difficulty_level": difficulty_level,
                 "follow_up_type": None,
-                "follow_up_required": False
+                "follow_up_required": False,
+                "communication": communication_result
             }
 
         return {
@@ -272,7 +331,8 @@ class HRInterviewEngine:
             "follow_up_required": False,
 
             # Day 33 backward compatibility
-            "follow_up_eligible": False
+            "follow_up_eligible": False,
+            "communication": communication_result
         }
 
     def _prepare_next_question(self):
@@ -446,3 +506,12 @@ class HRInterviewEngine:
         Return the Day 34 adaptive state.
         """
         return self.dynamic_state.get_state()
+
+    def get_communication_history(self):
+        """
+        Return communication evaluations for all submitted responses.
+        """
+
+        return list(
+            self.communication_history
+        )
