@@ -22,7 +22,25 @@ from interview_ai.hr.communication_scoring_engine import (
 from interview_ai.hr.communication_score_normalizer import (
     CommunicationScoreNormalizer
 )
+from interview_ai.hr.confidence_analyzer import (
+    ConfidenceAnalyzer
+)
 
+from interview_ai.hr.sentiment_scoring_engine import (
+    SentimentScoringEngine
+)
+
+from interview_ai.hr.contradiction_analyzer import (
+    ContradictionAnalyzer
+)
+
+from interview_ai.hr.stress_indicator_analyzer import (
+    StressIndicatorAnalyzer
+)
+
+from interview_ai.hr.behavioral_confidence_engine import (
+    BehavioralConfidenceEngine
+)
 
 class HRInterviewEngine:
     """
@@ -97,6 +115,28 @@ class HRInterviewEngine:
             CommunicationScoreNormalizer()
         )
         self.communication_history = []
+        # Day 36 behavioral analysis
+        self.confidence_analyzer = (
+            ConfidenceAnalyzer()
+        )
+
+        self.sentiment_scoring_engine = (
+            SentimentScoringEngine()
+        )
+
+        self.contradiction_analyzer = (
+            ContradictionAnalyzer()
+        )
+
+        self.stress_indicator_analyzer = (
+            StressIndicatorAnalyzer()
+        )
+
+        self.behavioral_confidence_engine = (
+            BehavioralConfidenceEngine()
+        )
+
+        self.behavioral_history = []
 
         self.category_index = 0
         self.question_index = 0
@@ -514,4 +554,74 @@ class HRInterviewEngine:
 
         return list(
             self.communication_history
+        )
+
+    def analyze_behavioral_signals(
+        self,
+        response,
+        previous_data=None,
+        metadata=None
+    ):
+        """
+        Run the complete Day 36 behavioral analysis pipeline.
+        """
+
+        confidence_result = (
+            self.confidence_analyzer.analyze(
+                response,
+                metadata
+            )
+        )
+
+        sentiment_result = (
+            self.sentiment_scoring_engine.analyze(
+                response
+            )
+        )
+
+        contradiction_result = (
+            self.contradiction_analyzer.analyze(
+                response,
+                previous_data
+            )
+        )
+
+        stress_result = (
+            self.stress_indicator_analyzer.analyze(
+                response,
+                metadata
+            )
+        )
+
+        behavioral_result = (
+            self.behavioral_confidence_engine.calculate(
+                confidence_result=confidence_result,
+                sentiment_result=sentiment_result,
+                contradiction_result=contradiction_result,
+                stress_result=stress_result
+            )
+        )
+
+        result = {
+            "confidence": confidence_result,
+            "sentiment": sentiment_result,
+            "contradiction": contradiction_result,
+            "stress": stress_result,
+            "behavioral_confidence": behavioral_result
+        }
+
+        self.behavioral_history.append(
+            result
+        )
+
+        return result
+
+    def get_behavioral_history(self):
+        """
+        Return behavioral analysis results
+        for submitted interview responses.
+        """
+
+        return list(
+            self.behavioral_history
         )
