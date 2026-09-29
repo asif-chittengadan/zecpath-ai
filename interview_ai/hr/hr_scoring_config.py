@@ -14,8 +14,13 @@ class HRScoringConfig:
         "consistency"
     }
 
-    def __init__(self, config_path):
+    def __init__(self, config_path, required_parameters=None):
         self.config_path = Path(config_path)
+        self.required_parameters = (
+            required_parameters
+            if required_parameters is not None
+            else self.REQUIRED_PARAMETERS
+        )
         self.config = self._load_config()
         self._validate()
 
@@ -33,7 +38,7 @@ class HRScoringConfig:
         )
 
         missing = (
-            self.REQUIRED_PARAMETERS
+            set(self.required_parameters)
             - set(parameters.keys())
         )
 
@@ -45,7 +50,7 @@ class HRScoringConfig:
 
         weights = [
             parameters[name]["weight"]
-            for name in self.REQUIRED_PARAMETERS
+            for name in self.required_parameters
         ]
 
         if any(
@@ -77,7 +82,7 @@ class HRScoringConfig:
     def get_weights(self):
         return {
             name: self.get_weight(name)
-            for name in self.REQUIRED_PARAMETERS
+            for name in self.required_parameters
         }
 
     def get_score_range(self):

@@ -1,0 +1,202 @@
+{
+    "version": "1.0",
+    "question_types": [
+        "logical_reasoning",
+        "analytical_reasoning",
+        "numerical_reasoning",
+        "pattern_reasoning",
+        "problem_solving"
+    ],
+    "questions": [
+        {
+            "question_id": "LR001",
+            "category": "logical_reasoning",
+            "question": "A project has 5 tasks. Task B must be completed before Task C, and Task A must be completed before Task D. Which sequence is valid?",
+            "options": [
+                "A → B → C → D",
+                "B → C → A → D",
+                "C → B → A → D",
+                "D → A → B → C"
+            ],
+            "correct_answer": "A → B → C → D",
+            "reasoning": "B must occur before C and A must occur before D.",
+            "difficulty": "easy",
+            "evaluation_points": [
+                "Identifies ordering constraints",
+                "Checks task dependencies",
+                "Selects a logically valid sequence"
+            ]
+        },
+        {
+            "question_id": "LR002",
+            "category": "logical_reasoning",
+            "question": "All developers are problem solvers. Some problem solvers are team leaders. Which statement must be true?",
+            "options": [
+                "All developers are team leaders",
+                "Some developers are team leaders",
+                "All developers are problem solvers",
+                "No problem solver is a developer"
+            ],
+            "correct_answer": "All developers are problem solvers",
+            "reasoning": "The first statement directly establishes that every developer belongs to the problem-solver group.",
+            "difficulty": "easy",
+            "evaluation_points": [
+                "Identifies direct logical implication",
+                "Avoids unsupported assumptions",
+                "Distinguishes must-be-true statements"
+            ]
+        },
+        {
+            "question_id": "AR001",
+            "category": "analytical_reasoning",
+            "question": "Three employees A, B, and C work on different tasks: testing, development, and documentation. A does not work on testing. B does not work on documentation. If C works on testing, what task does A perform?",
+            "options": [
+                "Testing",
+                "Development",
+                "Documentation",
+                "Cannot be determined"
+            ],
+            "correct_answer": "Documentation",
+            "reasoning": "C takes testing. B cannot take documentation, so B takes development. Therefore A takes documentation.",
+            "difficulty": "medium",
+            "evaluation_points": [
+                "Eliminates impossible assignments",
+                "Uses multiple constraints",
+                "Derives the remaining valid assignment"
+            ]
+        },
+        {
+            "question_id": "AR002",
+            "category": "analytical_reasoning",
+            "question": "A team has four members: A, B, C, and D. A is more experienced than B. C is less experienced than D. B is more experienced than C. Who is the least experienced?",
+            "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "correct_answer": "C",
+            "reasoning": "A > B > C and D > C, so C is less experienced than both B and D and therefore is the least experienced.",
+            "difficulty": "medium",
+            "evaluation_points": [
+                "Combines relational statements",
+                "Builds an ordering",
+                "Identifies the lowest-ranked element"
+            ]
+        },
+        {
+            "question_id": "NR001",
+            "category": "numerical_reasoning",
+            "question": "A team processes 120 applications in 4 hours. At the same rate, how many applications can it process in 7 hours?",
+            "options": [
+                "180",
+                "200",
+                "210",
+                "240"
+            ],
+            "correct_answer": "210",
+            "reasoning": "The rate is 120 ÷ 4 = 30 applications per hour. In 7 hours, 30 × 7 = 210.",
+            "difficulty": "easy",
+            "evaluation_points": [
+                "Calculates unit rate",
+                "Applies proportional reasoning",
+                "Performs basic multiplication accurately"
+            ]
+        },
+        {
+            "question_id": "NR002",
+            "category": "numerical_reasoning",
+            "question": "A product price increases from 800 to 920. What is the percentage increase?",
+            "options": [
+                "10%",
+                "12%",
+                "15%",
+                "20%"
+            ],
+            "correct_answer": "15%",
+            "reasoning": "The increase is 120. Percentage increase = 120 ÷ 800 × 100 = 15%.",
+            "difficulty": "easy",
+            "evaluation_points": [
+                "Calculates absolute difference",
+                "Uses the original value as the base",
+                "Calculates percentage correctly"
+            ]
+        },
+        {
+            "question_id": "PR001",
+            "category": "pattern_reasoning",
+            "question": "What number comes next in the sequence: 3, 6, 12, 24, 48, ?",
+            "options": [
+                "72",
+                "84",
+                "96",
+                "108"
+            ],
+            "correct_answer": "96",
+            "reasoning": "Each number is multiplied by 2.",
+            "difficulty": "easy",
+            "evaluation_points": [
+                "Identifies the sequence rule",
+                "Applies the rule consistently",
+                "Produces the next value"
+            ]
+        },
+        {
+            "question_id": "PR002",
+            "category": "pattern_reasoning",
+            "question": "What number comes next: 2, 5, 10, 17, 26, ?",
+            "options": [
+                "35",
+                "37",
+                "39",
+                "41"
+            ],
+            "correct_answer": "37",
+            "reasoning": "The differences are 3, 5, 7, and 9. The next difference is 11, so 26 + 11 = 37.",
+            "difficulty": "medium",
+            "evaluation_points": [
+                "Calculates successive differences",
+                "Identifies the increasing difference pattern",
+                "Extends the pattern correctly"
+            ]
+        },
+        {
+            "question_id": "PS001",
+            "category": "problem_solving",
+            "question": "A production system suddenly becomes slow after a new release. What should be the first step?",
+            "options": [
+                "Immediately rewrite the entire application",
+                "Identify and measure the source of the performance problem",
+                "Delete the new release without investigation",
+                "Increase the server size immediately"
+            ],
+            "correct_answer": "Identify and measure the source of the performance problem",
+            "reasoning": "A structured troubleshooting process should first identify the cause using evidence before selecting a solution.",
+            "difficulty": "medium",
+            "evaluation_points": [
+                "Starts with problem diagnosis",
+                "Uses evidence before acting",
+                "Avoids premature solutions"
+            ]
+        },
+        {
+            "question_id": "PS002",
+            "category": "problem_solving",
+            "question": "Two important tasks have the same deadline. One task blocks three other tasks, while the other does not block any task. Which should normally be handled first?",
+            "options": [
+                "The task that blocks three other tasks",
+                "The task with fewer files",
+                "The task that was created first",
+                "Either task without considering dependencies"
+            ],
+            "correct_answer": "The task that blocks three other tasks",
+            "reasoning": "A dependency-blocking task has a greater effect on the overall workflow and should normally be prioritized.",
+            "difficulty": "medium",
+            "evaluation_points": [
+                "Recognizes task dependencies",
+                "Considers downstream impact",
+                "Prioritizes based on workflow impact"
+            ]
+        }
+    ]
+}

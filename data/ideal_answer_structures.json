@@ -1,0 +1,121 @@
+{
+    "version": "1.0",
+    "structure_types": [
+        "logical_reasoning",
+        "analytical_reasoning",
+        "numerical_reasoning",
+        "pattern_reasoning",
+        "problem_solving",
+        "situational_judgment"
+    ],
+    "structures": [
+        {
+            "structure_id": "IAS001",
+            "category": "logical_reasoning",
+            "steps": [
+                "Identify the given facts",
+                "Identify the logical constraints",
+                "Eliminate impossible options",
+                "Apply the remaining constraints",
+                "State the conclusion"
+            ],
+            "key_indicators": [
+                "uses given facts",
+                "identifies constraints",
+                "eliminates contradictions",
+                "reaches a supported conclusion"
+            ]
+        },
+        {
+            "structure_id": "IAS002",
+            "category": "analytical_reasoning",
+            "steps": [
+                "Identify the entities involved",
+                "Extract the relationships or constraints",
+                "Organize the available information",
+                "Compare possible outcomes",
+                "Select the outcome supported by all constraints"
+            ],
+            "key_indicators": [
+                "organizes information",
+                "compares alternatives",
+                "uses relationships",
+                "checks all constraints"
+            ]
+        },
+        {
+            "structure_id": "IAS003",
+            "category": "numerical_reasoning",
+            "steps": [
+                "Identify the numerical information",
+                "Determine the required calculation",
+                "Select the appropriate formula or operation",
+                "Perform the calculation",
+                "Verify the result"
+            ],
+            "key_indicators": [
+                "identifies relevant values",
+                "selects an appropriate calculation",
+                "shows calculation logic",
+                "checks the result"
+            ]
+        },
+        {
+            "structure_id": "IAS004",
+            "category": "pattern_reasoning",
+            "steps": [
+                "Observe the sequence",
+                "Calculate differences or relationships",
+                "Identify the repeating or changing rule",
+                "Apply the rule to the next position",
+                "Verify the resulting value"
+            ],
+            "key_indicators": [
+                "observes relationships",
+                "identifies the pattern",
+                "applies the pattern consistently",
+                "verifies the result"
+            ]
+        },
+        {
+            "structure_id": "IAS005",
+            "category": "problem_solving",
+            "steps": [
+                "Define the problem",
+                "Collect relevant information",
+                "Identify possible causes",
+                "Evaluate possible solutions",
+                "Select and justify a solution",
+                "Verify the outcome"
+            ],
+            "key_indicators": [
+                "defines the problem",
+                "uses evidence",
+                "considers possible causes",
+                "evaluates alternatives",
+                "justifies the decision",
+                "checks the outcome"
+            ]
+        },
+        {
+            "structure_id": "IAS006",
+            "category": "situational_judgment",
+            "steps": [
+                "Understand the situation",
+                "Identify the immediate impact",
+                "Identify constraints and dependencies",
+                "Consider possible actions",
+                "Select a reasoned action",
+                "Explain the expected outcome"
+            ],
+            "key_indicators": [
+                "understands the situation",
+                "recognizes impact",
+                "identifies dependencies",
+                "considers alternatives",
+                "explains the decision",
+                "considers the outcome"
+            ]
+        }
+    ]
+}

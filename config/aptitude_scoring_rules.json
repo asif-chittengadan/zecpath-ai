@@ -1,0 +1,30 @@
+{
+    "version": "1.0",
+    "score_range": {
+        "minimum": 0,
+        "maximum": 100
+    },
+    "parameters": {
+        "reasoning_accuracy": {
+            "weight": 0.30,
+            "description": "Correctness of the logical reasoning used."
+        },
+        "reasoning_structure": {
+            "weight": 0.25,
+            "description": "How clearly the candidate follows the expected reasoning steps."
+        },
+        "problem_solving": {
+            "weight": 0.25,
+            "description": "Ability to identify a problem, evaluate alternatives, and select a reasoned solution."
+        },
+        "clarity": {
+            "weight": 0.20,
+            "description": "Clarity and completeness of the candidate's reasoning explanation."
+        }
+    },
+    "normalization": {
+        "enabled": true,
+        "minimum_score": 0,
+        "maximum_score": 100
+    }
+}

@@ -1,0 +1,127 @@
+{
+    "version": "1.0",
+    "scenario_types": [
+        "incident_handling",
+        "task_prioritization",
+        "team_conflict",
+        "deadline_management",
+        "technical_problem_solving",
+        "decision_making"
+    ],
+    "scenarios": [
+        {
+            "scenario_id": "SJ001",
+            "category": "incident_handling",
+            "scenario": "A production application suddenly stops responding during working hours. Several users report that they cannot access the system. What would you do first?",
+            "options": [
+                "Immediately restart every server without checking the issue",
+                "Identify the scope and collect relevant error and system information",
+                "Wait until users stop reporting the issue",
+                "Start changing application code immediately"
+            ],
+            "ideal_answer": "Identify the scope of the incident, collect logs and system information, and determine the likely cause before taking corrective action.",
+            "evaluation_points": [
+                "Identifies the problem before taking action",
+                "Collects evidence",
+                "Considers impact and scope",
+                "Uses a structured troubleshooting approach"
+            ],
+            "difficulty": "medium"
+        },
+        {
+            "scenario_id": "SJ002",
+            "category": "task_prioritization",
+            "scenario": "You have three tasks. Task A is due today, Task B is blocking two team members, and Task C is due next week. How would you prioritize them?",
+            "options": [
+                "Always complete the task with the nearest deadline first",
+                "Consider urgency, dependencies, and impact before deciding the order",
+                "Complete Task C because it is easier",
+                "Choose tasks randomly"
+            ],
+            "ideal_answer": "Evaluate deadline, dependencies, and business or team impact. A blocking task may need immediate attention even if another task has a nearer deadline.",
+            "evaluation_points": [
+                "Considers urgency",
+                "Recognizes dependencies",
+                "Considers downstream impact",
+                "Explains the prioritization decision"
+            ],
+            "difficulty": "medium"
+        },
+        {
+            "scenario_id": "SJ003",
+            "category": "team_conflict",
+            "scenario": "Two team members disagree about the approach to a project. Both believe their approach is correct. What should you do?",
+            "options": [
+                "Choose the approach of the more senior person without discussion",
+                "Ignore the disagreement",
+                "Understand both approaches, compare evidence and requirements, and choose based on project needs",
+                "Ask both people to stop working on the project"
+            ],
+            "ideal_answer": "Understand the reasoning behind both approaches, compare them against requirements and evidence, and make or support a decision based on project needs.",
+            "evaluation_points": [
+                "Listens to different viewpoints",
+                "Uses evidence",
+                "Relates the decision to requirements",
+                "Avoids personal bias"
+            ],
+            "difficulty": "medium"
+        },
+        {
+            "scenario_id": "SJ004",
+            "category": "deadline_management",
+            "scenario": "You realize that an assigned task will not be completed by the agreed deadline because of an unexpected technical issue. What should you do?",
+            "options": [
+                "Say nothing until the deadline passes",
+                "Hide the problem and submit incomplete work",
+                "Communicate the issue early, explain the impact, and propose a revised plan",
+                "Blame another team member"
+            ],
+            "ideal_answer": "Communicate the issue as early as possible, explain the technical blocker and its impact, and propose a realistic revised plan.",
+            "evaluation_points": [
+                "Communicates early",
+                "Explains the actual blocker",
+                "Understands impact",
+                "Provides a recovery plan"
+            ],
+            "difficulty": "easy"
+        },
+        {
+            "scenario_id": "SJ005",
+            "category": "technical_problem_solving",
+            "scenario": "A feature works correctly on a developer's machine but fails in the test environment. What would be a reasonable next step?",
+            "options": [
+                "Rewrite the complete feature immediately",
+                "Compare the environments, configurations, dependencies, and logs",
+                "Assume the test environment is broken",
+                "Ignore the issue until production"
+            ],
+            "ideal_answer": "Compare the development and test environments, inspect configurations and dependencies, and examine logs to identify the difference causing the failure.",
+            "evaluation_points": [
+                "Compares environments",
+                "Checks configuration",
+                "Checks dependencies",
+                "Uses logs and evidence"
+            ],
+            "difficulty": "medium"
+        },
+        {
+            "scenario_id": "SJ006",
+            "category": "decision_making",
+            "scenario": "You need to make a technical decision but the available information is incomplete. What should you do?",
+            "options": [
+                "Make a decision without considering the missing information",
+                "Delay the decision indefinitely",
+                "Identify the critical missing information, gather what is practical, and make a reasoned decision",
+                "Choose the most complicated solution"
+            ],
+            "ideal_answer": "Identify which missing information could materially affect the decision, gather that information where practical, and make a reasoned decision using the available evidence.",
+            "evaluation_points": [
+                "Identifies information gaps",
+                "Determines which information matters",
+                "Gathers useful evidence",
+                "Explains the decision logically"
+            ],
+            "difficulty": "medium"
+        }
+    ]
+}
