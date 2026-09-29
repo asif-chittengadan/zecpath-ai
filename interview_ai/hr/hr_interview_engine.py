@@ -41,6 +41,13 @@ from interview_ai.hr.stress_indicator_analyzer import (
 from interview_ai.hr.behavioral_confidence_engine import (
     BehavioralConfidenceEngine
 )
+from interview_ai.hr.hr_interview_scoring_engine import (
+    HRInterviewScoringEngine
+)
+
+from interview_ai.hr.hr_score_normalizer import (
+    HRScoreNormalizer
+)
 
 class HRInterviewEngine:
     """
@@ -625,3 +632,68 @@ class HRInterviewEngine:
         return list(
             self.behavioral_history
         )
+    
+    def calculate_hr_interview_score(
+        self,
+        question_scores
+    ):
+        """
+        Calculate the final HR interview score
+        from scores collected across interview questions.
+        """
+
+        normalizer = HRScoreNormalizer()
+
+        normalized_result = normalizer.normalize(
+            question_scores
+        )
+
+        normalized_scores = (
+            normalized_result["normalized_scores"]
+        )
+
+        scoring_engine = HRInterviewScoringEngine(
+            "config/hr_interview_scoring_rules.json"
+        )
+
+        score_result = scoring_engine.calculate_score(
+            answer_relevance=normalized_scores[
+                "answer_relevance"
+            ],
+            communication=normalized_scores[
+                "communication"
+            ],
+            confidence=normalized_scores[
+                "confidence"
+            ],
+            consistency=normalized_scores[
+                "consistency"
+            ]
+        )
+
+        breakdown = scoring_engine.get_score_breakdown(
+            answer_relevance=normalized_scores[
+                "answer_relevance"
+            ],
+            communication=normalized_scores[
+                "communication"
+            ],
+            confidence=normalized_scores[
+                "confidence"
+            ],
+            consistency=normalized_scores[
+                "consistency"
+            ]
+        )
+
+        return {
+            "final_score": score_result["final_score"],
+            "normalized_scores": normalized_scores,
+            "breakdown": breakdown["breakdown"],
+            "answered_questions": normalized_result[
+                "answered_questions"
+            ],
+            "completion_ratio": normalized_result[
+                "completion_ratio"
+            ]
+        }

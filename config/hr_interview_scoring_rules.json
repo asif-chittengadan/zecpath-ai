@@ -1,0 +1,30 @@
+{
+    "version": "1.0",
+    "score_range": {
+        "minimum": 0,
+        "maximum": 100
+    },
+    "parameters": {
+        "answer_relevance": {
+            "weight": 0.30,
+            "description": "How relevant the candidate's answer is to the interview question."
+        },
+        "communication": {
+            "weight": 0.25,
+            "description": "How clearly and effectively the candidate communicates."
+        },
+        "confidence": {
+            "weight": 0.20,
+            "description": "Behavioral confidence signal derived from the candidate's responses."
+        },
+        "consistency": {
+            "weight": 0.25,
+            "description": "How consistent the candidate's responses are across the interview."
+        }
+    },
+    "normalization": {
+        "enabled": true,
+        "minimum_score": 0,
+        "maximum_score": 100
+    }
+}
