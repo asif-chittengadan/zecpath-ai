@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 from interview_ai.hr.interview_summary_generator import (
     InterviewSummaryGenerator
 )
@@ -14,15 +17,29 @@ from interview_ai.hr.hr_interview_report_generator import (
 
 class InterviewSummaryPipeline:
     """
-    Integrates the Day 39 interview summary components
-    into one recruiter-ready reporting pipeline.
+    Generates and stores recruiter-ready interview summaries.
     """
 
-    def __init__(self):
+    DEFAULT_OUTPUT_PATH = (
+        Path("data")
+        / "interview_summaries"
+        / "interview_summary.json"
+    )
+
+    def __init__(
+        self,
+        output_path=None
+    ):
         self.summary_generator = InterviewSummaryGenerator()
         self.risk_analyzer = InterviewRiskAnalyzer()
         self.performance_summary = HRPerformanceSummary()
         self.report_generator = HRInterviewReportGenerator()
+
+        self.output_path = Path(
+            output_path
+            if output_path is not None
+            else self.DEFAULT_OUTPUT_PATH
+        )
 
     def generate(
         self,
@@ -62,8 +79,35 @@ class InterviewSummaryPipeline:
             summary=summary
         )
 
-        return {
+        result = {
             "candidate_name": candidate_name,
             "structured_summary": summary,
             "natural_language_report": report
         }
+
+        self.save_output(result)
+
+        return result
+
+    def save_output(self, result):
+        """
+        Save the final interview summary output as JSON.
+        """
+
+        self.output_path.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        with self.output_path.open(
+            "w",
+            encoding="utf-8"
+        ) as file:
+            json.dump(
+                result,
+                file,
+                indent=4,
+                ensure_ascii=False
+            )
+
+        return self.output_path

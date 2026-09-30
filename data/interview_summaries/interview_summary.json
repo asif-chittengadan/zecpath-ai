@@ -1,0 +1,27 @@
+{
+    "candidate_name": "John",
+    "structured_summary": {
+        "candidate_strengths": [
+            "Good communication"
+        ],
+        "candidate_weaknesses": [],
+        "cultural_fit_indicators": [],
+        "risk_flags": [],
+        "inconsistencies": [],
+        "overall_hr_performance": {
+            "overall_score": 80.0,
+            "performance_level": "high",
+            "component_scores": {},
+            "component_count": 0
+        },
+        "risk_analysis": {
+            "inconsistencies": [],
+            "risk_flags": [],
+            "inconsistency_count": 0,
+            "risk_flag_count": 0,
+            "has_inconsistencies": false,
+            "has_risk_flags": false
+        }
+    },
+    "natural_language_report": "HR Interview Report\nCandidate: John\n\nOverall HR Performance\nScore: 80.00/100\nPerformance Level: high\n\nCandidate Strengths\n- Good communication\n\nCandidate Weaknesses\nNo specific weaknesses were recorded.\n\nCultural Fit Indicators\nNo specific cultural fit indicators were recorded.\n\nRisk Flags\nNo risk flags were recorded.\n\nInconsistencies\nNo inconsistencies were identified."
+}
