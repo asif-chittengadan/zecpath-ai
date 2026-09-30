@@ -1,0 +1,392 @@
+{
+  "report_type": "HR Interview Test Report",
+  "candidate_count": 4,
+  "tolerance": 5,
+  "overall_accuracy_evaluation": {
+    "average_difference": 10.94,
+    "evaluation_basis": "Average absolute difference between AI and manual component scores."
+  },
+  "candidate_reports": [
+    {
+      "candidate_name": "Test Candidate - Confident",
+      "candidate_type": "confident",
+      "ai_result": {
+        "candidate_name": "Test Candidate - Confident",
+        "candidate_type": "confident",
+        "responses": [
+          "I have strong communication skills and can explain my approach clearly.",
+          "I would identify the problem, analyze the options, and implement the most suitable solution.",
+          "I am comfortable working independently and collaborating with a team."
+        ],
+        "response_count": 3,
+        "normalized_scores": {
+          "answer_relevance": 75.0,
+          "communication": 75.0,
+          "confidence": 75.0,
+          "consistency": 75.0
+        },
+        "hr_score": {
+          "final_score": 75.0,
+          "component_scores": {
+            "answer_relevance": 75.0,
+            "communication": 75.0,
+            "confidence": 75.0,
+            "consistency": 75.0
+          },
+          "weighted_scores": {
+            "answer_relevance": 22.5,
+            "communication": 18.75,
+            "confidence": 15.0,
+            "consistency": 18.75
+          }
+        }
+      },
+      "manual_scores": {
+        "answer_relevance": 82,
+        "communication": 80,
+        "confidence": 85,
+        "consistency": 80
+      },
+      "comparison": {
+        "comparison": {
+          "answer_relevance": {
+            "ai_score": 75.0,
+            "manual_score": 82.0,
+            "difference": 7.0,
+            "within_tolerance": false
+          },
+          "communication": {
+            "ai_score": 75.0,
+            "manual_score": 80.0,
+            "difference": 5.0,
+            "within_tolerance": true
+          },
+          "confidence": {
+            "ai_score": 75.0,
+            "manual_score": 85.0,
+            "difference": 10.0,
+            "within_tolerance": false
+          },
+          "consistency": {
+            "ai_score": 75.0,
+            "manual_score": 80.0,
+            "difference": 5.0,
+            "within_tolerance": true
+          }
+        },
+        "average_difference": 6.75,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "confidence"
+        ],
+        "inconsistency_count": 2,
+        "all_within_tolerance": false,
+        "tolerance": 5
+      },
+      "inconsistency_analysis": {
+        "accuracy_level": "moderate_alignment",
+        "average_difference": 6.75,
+        "inconsistency_count": 2,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "confidence"
+        ],
+        "recommendations": [
+          "Review relevance scoring criteria and improve alignment between AI scoring and manual assessment.",
+          "Review confidence-related signals and calibration against manual evaluations."
+        ]
+      }
+    },
+    {
+      "candidate_name": "Test Candidate - Hesitant",
+      "candidate_type": "hesitant",
+      "ai_result": {
+        "candidate_name": "Test Candidate - Hesitant",
+        "candidate_type": "hesitant",
+        "responses": [
+          "I think I could probably explain the situation, although I may need some time.",
+          "I would first try to understand the problem and then maybe consider a few options.",
+          "I can work with a team, but sometimes I need additional time to respond."
+        ],
+        "response_count": 3,
+        "normalized_scores": {
+          "answer_relevance": 75.0,
+          "communication": 75.0,
+          "confidence": 75.0,
+          "consistency": 75.0
+        },
+        "hr_score": {
+          "final_score": 75.0,
+          "component_scores": {
+            "answer_relevance": 75.0,
+            "communication": 75.0,
+            "confidence": 75.0,
+            "consistency": 75.0
+          },
+          "weighted_scores": {
+            "answer_relevance": 22.5,
+            "communication": 18.75,
+            "confidence": 15.0,
+            "consistency": 18.75
+          }
+        }
+      },
+      "manual_scores": {
+        "answer_relevance": 65,
+        "communication": 60,
+        "confidence": 55,
+        "consistency": 70
+      },
+      "comparison": {
+        "comparison": {
+          "answer_relevance": {
+            "ai_score": 75.0,
+            "manual_score": 65.0,
+            "difference": 10.0,
+            "within_tolerance": false
+          },
+          "communication": {
+            "ai_score": 75.0,
+            "manual_score": 60.0,
+            "difference": 15.0,
+            "within_tolerance": false
+          },
+          "confidence": {
+            "ai_score": 75.0,
+            "manual_score": 55.0,
+            "difference": 20.0,
+            "within_tolerance": false
+          },
+          "consistency": {
+            "ai_score": 75.0,
+            "manual_score": 70.0,
+            "difference": 5.0,
+            "within_tolerance": true
+          }
+        },
+        "average_difference": 12.5,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "communication",
+          "confidence"
+        ],
+        "inconsistency_count": 3,
+        "all_within_tolerance": false,
+        "tolerance": 5
+      },
+      "inconsistency_analysis": {
+        "accuracy_level": "low_alignment",
+        "average_difference": 12.5,
+        "inconsistency_count": 3,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "communication",
+          "confidence"
+        ],
+        "recommendations": [
+          "Review relevance scoring criteria and improve alignment between AI scoring and manual assessment.",
+          "Review communication indicators and ensure AI scoring reflects the same criteria used by manual evaluators.",
+          "Review confidence-related signals and calibration against manual evaluations."
+        ]
+      }
+    },
+    {
+      "candidate_name": "Test Candidate - Inexperienced",
+      "candidate_type": "inexperienced",
+      "ai_result": {
+        "candidate_name": "Test Candidate - Inexperienced",
+        "candidate_type": "inexperienced",
+        "responses": [
+          "I have limited professional experience, but I have worked on academic projects.",
+          "I would try to understand the problem and ask for guidance if necessary.",
+          "I am willing to learn and improve my technical and communication skills."
+        ],
+        "response_count": 3,
+        "normalized_scores": {
+          "answer_relevance": 75.0,
+          "communication": 75.0,
+          "confidence": 75.0,
+          "consistency": 75.0
+        },
+        "hr_score": {
+          "final_score": 75.0,
+          "component_scores": {
+            "answer_relevance": 75.0,
+            "communication": 75.0,
+            "confidence": 75.0,
+            "consistency": 75.0
+          },
+          "weighted_scores": {
+            "answer_relevance": 22.5,
+            "communication": 18.75,
+            "confidence": 15.0,
+            "consistency": 18.75
+          }
+        }
+      },
+      "manual_scores": {
+        "answer_relevance": 60,
+        "communication": 65,
+        "confidence": 55,
+        "consistency": 65
+      },
+      "comparison": {
+        "comparison": {
+          "answer_relevance": {
+            "ai_score": 75.0,
+            "manual_score": 60.0,
+            "difference": 15.0,
+            "within_tolerance": false
+          },
+          "communication": {
+            "ai_score": 75.0,
+            "manual_score": 65.0,
+            "difference": 10.0,
+            "within_tolerance": false
+          },
+          "confidence": {
+            "ai_score": 75.0,
+            "manual_score": 55.0,
+            "difference": 20.0,
+            "within_tolerance": false
+          },
+          "consistency": {
+            "ai_score": 75.0,
+            "manual_score": 65.0,
+            "difference": 10.0,
+            "within_tolerance": false
+          }
+        },
+        "average_difference": 13.75,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "communication",
+          "confidence",
+          "consistency"
+        ],
+        "inconsistency_count": 4,
+        "all_within_tolerance": false,
+        "tolerance": 5
+      },
+      "inconsistency_analysis": {
+        "accuracy_level": "low_alignment",
+        "average_difference": 13.75,
+        "inconsistency_count": 4,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "communication",
+          "confidence",
+          "consistency"
+        ],
+        "recommendations": [
+          "Review relevance scoring criteria and improve alignment between AI scoring and manual assessment.",
+          "Review communication indicators and ensure AI scoring reflects the same criteria used by manual evaluators.",
+          "Review confidence-related signals and calibration against manual evaluations.",
+          "Review consistency detection and compare AI evidence with manual judgments."
+        ]
+      }
+    },
+    {
+      "candidate_name": "Test Candidate - Overqualified",
+      "candidate_type": "overqualified",
+      "ai_result": {
+        "candidate_name": "Test Candidate - Overqualified",
+        "candidate_type": "overqualified",
+        "responses": [
+          "I have extensive experience solving similar problems and leading technical teams.",
+          "I would evaluate the architecture, identify the root cause, and implement a scalable solution.",
+          "I can independently handle complex responsibilities and mentor other team members."
+        ],
+        "response_count": 3,
+        "normalized_scores": {
+          "answer_relevance": 75.0,
+          "communication": 75.0,
+          "confidence": 75.0,
+          "consistency": 75.0
+        },
+        "hr_score": {
+          "final_score": 75.0,
+          "component_scores": {
+            "answer_relevance": 75.0,
+            "communication": 75.0,
+            "confidence": 75.0,
+            "consistency": 75.0
+          },
+          "weighted_scores": {
+            "answer_relevance": 22.5,
+            "communication": 18.75,
+            "confidence": 15.0,
+            "consistency": 18.75
+          }
+        }
+      },
+      "manual_scores": {
+        "answer_relevance": 88,
+        "communication": 82,
+        "confidence": 85,
+        "consistency": 88
+      },
+      "comparison": {
+        "comparison": {
+          "answer_relevance": {
+            "ai_score": 75.0,
+            "manual_score": 88.0,
+            "difference": 13.0,
+            "within_tolerance": false
+          },
+          "communication": {
+            "ai_score": 75.0,
+            "manual_score": 82.0,
+            "difference": 7.0,
+            "within_tolerance": false
+          },
+          "confidence": {
+            "ai_score": 75.0,
+            "manual_score": 85.0,
+            "difference": 10.0,
+            "within_tolerance": false
+          },
+          "consistency": {
+            "ai_score": 75.0,
+            "manual_score": 88.0,
+            "difference": 13.0,
+            "within_tolerance": false
+          }
+        },
+        "average_difference": 10.75,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "communication",
+          "confidence",
+          "consistency"
+        ],
+        "inconsistency_count": 4,
+        "all_within_tolerance": false,
+        "tolerance": 5
+      },
+      "inconsistency_analysis": {
+        "accuracy_level": "low_alignment",
+        "average_difference": 10.75,
+        "inconsistency_count": 4,
+        "inconsistent_parameters": [
+          "answer_relevance",
+          "communication",
+          "confidence",
+          "consistency"
+        ],
+        "recommendations": [
+          "Review relevance scoring criteria and improve alignment between AI scoring and manual assessment.",
+          "Review communication indicators and ensure AI scoring reflects the same criteria used by manual evaluators.",
+          "Review confidence-related signals and calibration against manual evaluations.",
+          "Review consistency detection and compare AI evidence with manual judgments."
+        ]
+      }
+    }
+  ],
+  "improvement_recommendations": [
+    "Review relevance scoring criteria and improve alignment between AI scoring and manual assessment.",
+    "Review confidence-related signals and calibration against manual evaluations.",
+    "Review communication indicators and ensure AI scoring reflects the same criteria used by manual evaluators.",
+    "Review consistency detection and compare AI evidence with manual judgments."
+  ]
+}
