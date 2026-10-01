@@ -1,0 +1,28 @@
+{
+    "candidate": "Demo Candidate",
+    "role": "Software Developer",
+    "round_scores": {
+        "ats": 80.0,
+        "screening": 8.0,
+        "hr_interview": 90.0
+    },
+    "normalized_scores": {
+        "ats": 80.0,
+        "screening": 80.0,
+        "hr_interview": 90.0
+    },
+    "weights": {
+        "ats": 0.45,
+        "screening": 0.2,
+        "hr_interview": 0.35
+    },
+    "weighted_scores": {
+        "ats": 36.0,
+        "screening": 16.0,
+        "hr_interview": 31.5
+    },
+    "unified_score": 83.5,
+    "hiring_fit_percentage": 83.5,
+    "score_type": "unified_candidate_score",
+    "round_count": 3
+}

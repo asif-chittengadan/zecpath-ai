@@ -1,0 +1,59 @@
+{
+    "version": "1.1",
+    "score_range": {
+        "minimum": 0,
+        "maximum": 100
+    },
+    "rounds": {
+        "ats": {
+            "weight": 0.40,
+            "input_minimum": 0,
+            "input_maximum": 100,
+            "description": "Resume and ATS evaluation score."
+        },
+        "screening": {
+            "weight": 0.25,
+            "input_minimum": 0,
+            "input_maximum": 10,
+            "description": "Candidate screening evaluation score."
+        },
+        "hr_interview": {
+            "weight": 0.35,
+            "input_minimum": 0,
+            "input_maximum": 100,
+            "description": "HR interview evaluation score."
+        }
+    },
+    "normalization": {
+        "enabled": true,
+        "target_minimum": 0,
+        "target_maximum": 100
+    },
+    "role_adjustments": {
+        "default": {
+            "ats": 0.40,
+            "screening": 0.25,
+            "hr_interview": 0.35
+        },
+        "software_developer": {
+            "ats": 0.45,
+            "screening": 0.20,
+            "hr_interview": 0.35
+        },
+        "data_scientist": {
+            "ats": 0.45,
+            "screening": 0.20,
+            "hr_interview": 0.35
+        },
+        "sales_executive": {
+            "ats": 0.30,
+            "screening": 0.30,
+            "hr_interview": 0.40
+        },
+        "hr_manager": {
+            "ats": 0.25,
+            "screening": 0.30,
+            "hr_interview": 0.45
+        }
+    }
+}
