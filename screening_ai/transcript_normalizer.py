@@ -14,6 +14,8 @@ class TranscriptNormalizer:
 
     _skill_display_casing = None
 
+    _display_casing_patterns = None
+
     def __init__(self):
 
         if TranscriptNormalizer._rules is None:
@@ -31,6 +33,16 @@ class TranscriptNormalizer:
             )
 
         self.skill_display_casing = TranscriptNormalizer._skill_display_casing
+
+        if TranscriptNormalizer._display_casing_patterns is None:
+
+            TranscriptNormalizer._display_casing_patterns = (
+                self.__build_display_casing_patterns()
+            )
+
+        self.display_casing_patterns = (
+            TranscriptNormalizer._display_casing_patterns
+        )
 
     def __load_json(
         self,
@@ -227,9 +239,8 @@ class TranscriptNormalizer:
 
         return text
 
-    def __restore_display_casing(
-        self,
-        text
+    def __build_display_casing_patterns(
+        self
     ):
 
         combined = {
@@ -243,12 +254,34 @@ class TranscriptNormalizer:
             reverse=True
         )
 
-        for key in ordered_keys:
-            pattern = r"(?<![a-zA-Z0-9])" + re.escape(key) + r"(?![a-zA-Z0-9])"
-            text = re.sub(pattern, combined[key], text)
+        return [
+            (
+                re.compile(
+                    r"(?<![a-zA-Z0-9])"
+                    + re.escape(key)
+                    + r"(?![a-zA-Z0-9])"
+                ),
+                display_value
+            )
+            for key, display_value in (
+                (key, combined[key])
+                for key in ordered_keys
+            )
+        ]
+
+    def __restore_display_casing(
+        self,
+        text
+    ):
+
+        for pattern, replacement in self.display_casing_patterns:
+            text = pattern.sub(
+                replacement,
+                text
+            )
 
         return text
-
+        
     def __normalize_numbers(
         self,
         text

@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 
@@ -13,6 +14,30 @@ class ScreeningScoringEngine:
             )
 
         self.rules = self._load_rules(rules_path)
+    
+    @staticmethod
+    def _keyword_matches(answer, keyword):
+        """
+        Match a keyword as a complete word or phrase
+        instead of allowing arbitrary substring matches.
+        """
+
+        keyword = str(keyword).strip()
+
+        if not keyword:
+            return False
+
+        pattern = (
+            r"(?<!\w)"
+            + re.escape(keyword)
+            + r"(?!\w)"
+        )
+
+        return re.search(
+            pattern,
+            answer,
+            flags=re.IGNORECASE
+        ) is not None
 
     def _load_rules(self, rules_path):
         with open(
@@ -128,12 +153,13 @@ class ScreeningScoringEngine:
         if not answer:
             return 0.0
 
-        answer_lower = answer.lower()
-
         matches = 0
 
         for keyword in expected_keywords:
-            if str(keyword).lower() in answer_lower:
+            if self._keyword_matches(
+                answer,
+                keyword
+            ):
                 matches += 1
 
         if expected_keywords:
@@ -152,7 +178,10 @@ class ScreeningScoringEngine:
             category_matches = sum(
                 1
                 for term in category_terms
-                if term in answer_lower
+                if self._keyword_matches(
+                    answer,
+                    term
+                )
             )
 
             if category_matches > 0:
@@ -171,12 +200,13 @@ class ScreeningScoringEngine:
         if not expected_keywords:
             return 10.0
 
-        answer_lower = answer.lower()
-
         matched_keywords = sum(
             1
             for keyword in expected_keywords
-            if str(keyword).lower() in answer_lower
+            if self._keyword_matches(
+                answer,
+                keyword
+            )
         )
 
         completeness_ratio = (

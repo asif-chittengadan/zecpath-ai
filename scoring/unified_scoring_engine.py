@@ -1,4 +1,5 @@
 import json
+import math
 from pathlib import Path
 
 
@@ -82,6 +83,11 @@ class UnifiedScoringEngine:
         except (TypeError, ValueError):
             raise ValueError(
                 f"{score_name} must be numeric."
+            )
+
+        if not math.isfinite(score):
+            raise ValueError(
+                f"{score_name} must be a finite number."
             )
 
         if not minimum <= score <= maximum:
@@ -240,6 +246,51 @@ class UnifiedScoringEngine:
             "hiring_fit_percentage": unified_score
         }
 
+    def _validate_role_weights(self, weights):
+        required_weights = {
+            "ats",
+            "screening",
+            "hr_interview"
+        }
+
+        if not required_weights.issubset(weights.keys()):
+            raise ValueError(
+                "Role weights must contain ATS, screening, "
+                "and HR interview weights."
+            )
+
+        validated_weights = {}
+
+        for name in required_weights:
+            try:
+                weight = float(weights[name])
+            except (TypeError, ValueError):
+                raise ValueError(
+                    f"Role weight '{name}' must be numeric."
+                )
+
+            if not math.isfinite(weight):
+                raise ValueError(
+                    f"Role weight '{name}' must be a finite number."
+                )
+
+            if not 0 <= weight <= 1:
+                raise ValueError(
+                    f"Role weight '{name}' must be between 0 and 1."
+                )
+
+            validated_weights[name] = weight
+
+        total_weight = sum(validated_weights.values())
+
+        if round(total_weight, 6) != 1.0:
+            raise ValueError(
+                "Role weights must total 1.0, "
+                f"got {total_weight}"
+            )
+
+        return validated_weights
+
     def _get_role_weights(self, role):
         role_adjustments = self.config.get(
             "role_adjustments",
@@ -247,7 +298,7 @@ class UnifiedScoringEngine:
         )
 
         if not role:
-            return role_adjustments.get(
+            weights = role_adjustments.get(
                 "default",
                 {
                     "ats": 0.40,
@@ -256,6 +307,8 @@ class UnifiedScoringEngine:
                 }
             )
 
+            return self._validate_role_weights(weights)
+
         normalized_role = (
             role.strip()
             .lower()
@@ -263,7 +316,7 @@ class UnifiedScoringEngine:
             .replace("-", "_")
         )
 
-        return role_adjustments.get(
+        weights = role_adjustments.get(
             normalized_role,
             role_adjustments.get(
                 "default",
@@ -274,3 +327,5 @@ class UnifiedScoringEngine:
                 }
             )
         )
+
+        return self._validate_role_weights(weights)

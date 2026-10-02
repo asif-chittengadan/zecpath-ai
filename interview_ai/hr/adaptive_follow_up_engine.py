@@ -11,13 +11,14 @@ class AdaptiveFollowUpEngine:
         - none
     """
 
-    def decide(self, analysis, category):
+    def decide(self, analysis, category, previous_follow_up=None):
         """
         Decide which follow-up strategy should be used.
 
         Args:
             analysis: Output from HRResponseAnalyzer.analyze()
             category: HR interview question category
+            previous_follow_up: Previously generated follow-up result, if any.
 
         Returns:
             {
@@ -35,24 +36,30 @@ class AdaptiveFollowUpEngine:
 
         category = self._normalize_category(category)
 
+        # Prevent repeating the exact same follow-up question.
+        previous_question = None
+
+        if isinstance(previous_follow_up, dict):
+            previous_question = previous_follow_up.get("question")
+
         if classification == "incomplete":
-            return self._build_result(
+            result = self._build_result(
                 trigger="clarification",
                 required=True,
                 question=self._clarification_question(category),
                 reason="Candidate response is incomplete."
             )
 
-        if classification == "vague":
-            return self._build_result(
+        elif classification == "vague":
+            result = self._build_result(
                 trigger="deepening",
                 required=True,
                 question=self._deepening_question(category),
                 reason="Candidate response is vague."
             )
 
-        if classification == "confident":
-            return self._build_result(
+        elif classification == "confident":
+            result = self._build_result(
                 trigger="scenario_based",
                 required=True,
                 question=self._scenario_question(category),
@@ -62,13 +69,13 @@ class AdaptiveFollowUpEngine:
                 )
             )
 
-        if classification == "complete":
+        elif classification == "complete":
             if category in {
                 "career_journey",
                 "strengths_weaknesses",
                 "teamwork_culture_fit"
             }:
-                return self._build_result(
+                result = self._build_result(
                     trigger="example_based",
                     required=True,
                     question=self._example_question(category),
@@ -77,20 +84,38 @@ class AdaptiveFollowUpEngine:
                         "can provide stronger behavioral evidence."
                     )
                 )
+            else:
+                result = self._build_result(
+                    trigger="none",
+                    required=False,
+                    question=None,
+                    reason="Response is sufficiently complete."
+                )
 
+        else:
+            result = self._build_result(
+                trigger="clarification",
+                required=True,
+                question=self._clarification_question(category),
+                reason="Unknown response classification."
+            )
+
+        # If the generated question is identical to the previous one,
+        # stop the follow-up instead of repeating it.
+        if (
+            previous_question
+            and result["question"]
+            and result["question"].strip().lower()
+            == previous_question.strip().lower()
+        ):
             return self._build_result(
                 trigger="none",
                 required=False,
                 question=None,
-                reason="Response is sufficiently complete."
+                reason="Duplicate follow-up prevented."
             )
 
-        return self._build_result(
-            trigger="clarification",
-            required=True,
-            question=self._clarification_question(category),
-            reason="Unknown response classification."
-        )
+        return result
 
     def _clarification_question(self, category):
         questions = {
