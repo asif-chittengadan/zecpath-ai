@@ -1,6 +1,7 @@
 import json
 import math
 from pathlib import Path
+from scoring.explainability import ExplanationGenerator
 
 
 class UnifiedScoringEngine:
@@ -23,6 +24,8 @@ class UnifiedScoringEngine:
         self.config = self._load_config()
 
         self._validate_config()
+
+        self.explanation_generator = ExplanationGenerator()
 
     def _load_config(self):
 
@@ -219,7 +222,7 @@ class UnifiedScoringEngine:
             2
         )
 
-        return {
+        result = {
             "candidate": candidate_name or "Unknown",
             "role": role or "Unknown",
             "round_scores": {
@@ -245,6 +248,14 @@ class UnifiedScoringEngine:
             "unified_score": unified_score,
             "hiring_fit_percentage": unified_score
         }
+
+        result["explainability"] = (
+            self.explanation_generator.generate(
+                result
+            )
+        )
+
+        return result
 
     def _validate_role_weights(self, weights):
         required_weights = {

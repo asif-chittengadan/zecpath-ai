@@ -1,5 +1,6 @@
 from scoring.semantic_matching_engine import SemanticMatchingEngine
 from scoring.candidate_score_generator import CandidateScoreGenerator
+from scoring.fairness_masker import FairnessMasker
 
 
 class CandidateMatchingService:
@@ -19,6 +20,7 @@ class CandidateMatchingService:
         )
 
         self.score_generator = CandidateScoreGenerator()
+        self.fairness_masker = FairnessMasker()
 
     def generate_score(
         self,
@@ -26,7 +28,15 @@ class CandidateMatchingService:
         job_description
     ):
 
+        # Candidate name is retained only as display metadata.
+        # It is not used as a scoring feature.
         candidate_name = self.__extract_candidate_name(
+            resume
+        )
+
+        # Create a sanitized copy for all scoring operations.
+        # The original resume is never modified.
+        scoring_resume = self.fairness_masker.mask_candidate(
             resume
         )
 

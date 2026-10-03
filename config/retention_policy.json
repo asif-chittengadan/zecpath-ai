@@ -1,0 +1,34 @@
+{
+    "version": "1.0",
+    "default_action": "delete",
+    "policies": {
+        "resume": {
+            "retention_days": 365,
+            "action": "delete"
+        },
+        "candidate_profile": {
+            "retention_days": 365,
+            "action": "delete"
+        },
+        "interview_recording": {
+            "retention_days": 90,
+            "action": "delete"
+        },
+        "transcript": {
+            "retention_days": 180,
+            "action": "delete"
+        },
+        "ai_evaluation": {
+            "retention_days": 365,
+            "action": "delete"
+        },
+        "consent_record": {
+            "retention_days": 365,
+            "action": "retain"
+        },
+        "audit_record": {
+            "retention_days": 730,
+            "action": "retain"
+        }
+    }
+}
