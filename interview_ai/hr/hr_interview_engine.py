@@ -151,6 +151,9 @@ class HRInterviewEngine:
         self.follow_up_active = False
         self.current_category = None
 
+        # Day 45 - Track completion of role-based evaluation
+        self.role_question_answered = False
+
     def start(self):
         """
         Start the HR interview.
@@ -466,8 +469,26 @@ class HRInterviewEngine:
 
     def _prepare_role_question(self):
         """
-        Prepare a deterministic role-based question.
+        Prepare the role-based evaluation question.
+
+        Day 45:
+        The role-based evaluation contains one deterministic
+        question. After that question is answered, the interview
+        moves to the closing phase.
         """
+
+        # Role-based evaluation already completed.
+        if self.role_question_answered:
+
+            self.category_index = 0
+            self.question_index = 0
+
+            next_phase = self.flow.move_to_next_phase()
+
+            if next_phase == "closing":
+                return self._prepare_next_question()
+
+            return self._prepare_next_question()
 
         role = self.state.role
 
@@ -483,9 +504,7 @@ class HRInterviewEngine:
                 f"would help you contribute effectively as a {role}?"
             )
 
-        self.current_category = (
-            "role_based_evaluation"
-        )
+        self.current_category = "role_based_evaluation"
 
         question_id = "ROLE-EVAL-001"
 
@@ -502,6 +521,9 @@ class HRInterviewEngine:
         self.repetition_guard.register_question(
             question
         )
+
+        # Mark the role-based question as prepared.
+        self.role_question_answered = True
 
         return question
 

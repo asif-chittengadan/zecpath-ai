@@ -1,0 +1,70 @@
+{
+  "version": "1.0",
+  "demo": "ZECPATH AI Day 45 HR Interview",
+  "candidate": {
+    "candidate_id": "DEMO-CAND-001",
+    "role": "Software Engineer",
+    "candidate_type": "fresher",
+    "role_type": "technical"
+  },
+  "interview": {
+    "session_id": "DEMO-SESS-001",
+    "current_phase": "closing",
+    "questions_answered": 18,
+    "completion_ratio": 1.0,
+    "interview_completed": true
+  },
+  "scoring": {
+    "final_score": 88.2,
+    "normalized_scores": {
+      "answer_relevance": 77.34,
+      "communication": 80.87,
+      "confidence": 98.89,
+      "consistency": 100.0
+    },
+    "breakdown": [
+      {
+        "parameter": "answer_relevance",
+        "score": 77.34,
+        "weight": 0.3,
+        "weight_percentage": 30.0,
+        "contribution": 23.2
+      },
+      {
+        "parameter": "communication",
+        "score": 80.87,
+        "weight": 0.25,
+        "weight_percentage": 25.0,
+        "contribution": 20.22
+      },
+      {
+        "parameter": "confidence",
+        "score": 98.89,
+        "weight": 0.2,
+        "weight_percentage": 20.0,
+        "contribution": 19.78
+      },
+      {
+        "parameter": "consistency",
+        "score": 100.0,
+        "weight": 0.25,
+        "weight_percentage": 25.0,
+        "contribution": 25.0
+      }
+    ]
+  },
+  "recommendation": {
+    "status": "RECOMMEND",
+    "hr_interview_score": 88.2,
+    "interview_completed": true,
+    "reason": "Completed HR interview with a strong overall demonstration score.",
+    "human_review_required": true
+  },
+  "scoring_notes": [
+    "Communication score is produced by the existing deterministic communication scoring pipeline.",
+    "Confidence score is produced by the existing behavioral confidence engine.",
+    "Consistency score is derived from contradiction detection.",
+    "Answer relevance uses a transparent deterministic demonstration heuristic based on response completeness, keyword overlap and response length.",
+    "The recommendation is a decision-support output and requires human review."
+  ]
+}
