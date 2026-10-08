@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ZECPATH AI — AI-powered recruitment platform for resume parsing, JD parsing, ATS screening, AI interviews and candidate evaluation.">
+<title>ZECPATH AI — AI-Powered Recruitment</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1a2b;--text:#f4f7fb;--muted:#a8b4c5;--line:#203149;--accent:#7dd3fc;--accent2:#a78bfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 80% 10%,#18284a 0,transparent 35%),var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 24px}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{font-weight:800;letter-spacing:.08em}.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--text)}
+.hero{padding:100px 0 90px;text-align:center}.eyebrow{display:inline-block;border:1px solid #29405e;background:#0d1b2e;padding:7px 13px;border-radius:999px;color:var(--accent);font-size:13px;font-weight:700}
+h1{font-size:clamp(46px,8vw,86px);line-height:1.02;margin:24px auto 20px;max-width:900px;letter-spacing:-.055em}
+.gradient{background:linear-gradient(90deg,var(--accent),#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:720px;margin:0 auto;color:var(--muted);font-size:19px}.actions{display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap}.btn{padding:13px 20px;border-radius:10px;border:1px solid var(--line);font-weight:700}.primary{background:#fff;color:#08111e;border-color:#fff}.secondary{background:#0c192a}
+section{padding:72px 0}.section-title{text-align:center;font-size:36px;letter-spacing:-.03em;margin:0 0 12px}.section-lead{text-align:center;color:var(--muted);max-width:650px;margin:0 auto 38px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:rgba(13,26,43,.78);border:1px solid var(--line);border-radius:16px;padding:24px}.card h3{margin:0 0 8px}.card p{margin:0;color:var(--muted);font-size:14px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:34px}.step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 16px;font-weight:700;font-size:14px}.arrow{color:var(--muted)}
+.tech{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:30px}.pill{padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:#cbd5e1;background:#0b1727;font-size:14px}
+.cta{background:linear-gradient(135deg,#101f35,#0b1525);border:1px solid var(--line);border-radius:22px;padding:50px;text-align:center}.cta p{color:var(--muted)}
+footer{padding:32px 0 50px;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.07)}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.navlinks{display:none}.hero{padding-top:70px}.cta{padding:32px 20px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav><a class="logo" href="#">ZEC<span>PATH</span> AI</a><div class="navlinks"><a href="#platform">Platform</a><a href="#workflow">Workflow</a><a href="#technology">Technology</a><a href="#github">GitHub</a></div></nav></div></header>
+<main>
+<section class="hero"><div class="wrap">
+<div class="eyebrow">AI-POWERED RECRUITMENT PLATFORM</div>
+<h1>Make hiring more <span class="gradient">intelligent.</span></h1>
+<p class="lead">ZECPATH AI is a modular recruitment platform designed to automate job-description processing, resume analysis, candidate screening, interviews and evaluation.</p>
+<div class="actions"><a class="btn primary" href="#platform">Explore Platform</a><a class="btn secondary" href="https://github.com/asif-chittengadan/zecpath-ai" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+</div></section>
+<section id="platform"><div class="wrap"><h2 class="section-title">One platform for the hiring lifecycle</h2><p class="section-lead">Independent modules work together to turn unstructured recruitment data into structured candidate insights.</p>
+<div class="grid">
+<div class="card"><h3>Resume Parsing</h3><p>Extract and clean candidate information from resumes for downstream recruitment workflows.</p></div>
+<div class="card"><h3>JD Parsing</h3><p>Extract roles, skills, experience and education requirements into structured JSON.</p></div>
+<div class="card"><h3>ATS Screening</h3><p>Support resume-to-job matching, compatibility scoring and candidate ranking.</p></div>
+<div class="card"><h3>AI Screening</h3><p>Build AI-assisted screening workflows for candidate responses and communication assessment.</p></div>
+<div class="card"><h3>AI Interviews</h3><p>Support HR and technical interview workflows with structured evaluation.</p></div>
+<div class="card"><h3>Candidate Scoring</h3><p>Combine recruitment signals into structured candidate evaluation and recommendations.</p></div>
+</div></div></section>
+<section id="workflow"><div class="wrap"><h2 class="section-title">How it works</h2><p class="section-lead">A modular pipeline designed for progressive automation.</p><div class="flow">
+<div class="step">Job Description</div><span class="arrow">→</span><div class="step">JD Parser</div><span class="arrow">→</span><div class="step">Resume Parser</div><span class="arrow">→</span><div class="step">ATS Screening</div><span class="arrow">→</span><div class="step">AI Screening</div><span class="arrow">→</span><div class="step">Interview</div><span class="arrow">→</span><div class="step">Evaluation</div>
+</div></div></section>
+<section id="technology"><div class="wrap"><h2 class="section-title">Built with modern AI tooling</h2><p class="section-lead">The project combines Python, document processing, NLP, machine learning and API technologies.</p><div class="tech">
+<span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">PyTorch</span><span class="pill">Transformers</span><span class="pill">spaCy</span><span class="pill">Scikit-learn</span><span class="pill">Sentence Transformers</span><span class="pill">Faster-Whisper</span><span class="pill">PyMuPDF</span><span class="pill">pdfplumber</span>
+</div></div></section>
+<section id="github"><div class="wrap"><div class="cta"><h2 class="section-title">Explore the project</h2><p>See the source code, parser modules, documentation and ongoing development on GitHub.</p><div class="actions"><a class="btn primary" href="https://github.com/asif-chittengadan/zecpath-ai" target="_blank" rel="noopener">Open ZECPATH AI on GitHub ↗</a></div></div></div></section>
+</main>
+<footer><div class="wrap">© 2026 ZECPATH AI · Built by Asif C</div></footer>
+</body></html>
