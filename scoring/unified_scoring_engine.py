@@ -62,7 +62,7 @@ class UnifiedScoringEngine:
             self._validate_role_weights(weights)
 
     @staticmethod
-    def_validate_score(score, minimum, maximum, score_name):
+    def _validate_score(score, minimum, maximum, score_name):
         if score is None or isinstance(score, bool):
             raise ValueError(f"{score_name} must be numeric.")
 
@@ -87,7 +87,7 @@ class UnifiedScoringEngine:
 
 
     @staticmethod
-    def_normalize_score(
+    def _normalize_score(
         score,
         input_minimum,
         input_maximum,
@@ -105,7 +105,7 @@ class UnifiedScoringEngine:
         return round(value, 2)
 
     @staticmethod
-    def_validate_role_weights(weights):
+    def _validate_role_weights(weights):
         legacy_rounds = {
             "ats",
             "screening",
@@ -159,7 +159,7 @@ class UnifiedScoringEngine:
         return validated
 
 
-    def_get_role_weights(self, role):
+    def _get_role_weights(self, role):
         adjustments = self.config.get("role_adjustments", {})
         default = adjustments.get("default")
 
