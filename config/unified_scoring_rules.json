@@ -1,27 +1,40 @@
+
 {
-    "version": "1.1",
+    "version": "2.0",
     "score_range": {
         "minimum": 0,
         "maximum": 100
     },
     "rounds": {
         "ats": {
-            "weight": 0.40,
+            "weight": 0.25,
             "input_minimum": 0,
             "input_maximum": 100,
             "description": "Resume and ATS evaluation score."
         },
         "screening": {
-            "weight": 0.25,
+            "weight": 0.15,
             "input_minimum": 0,
             "input_maximum": 10,
             "description": "Candidate screening evaluation score."
         },
         "hr_interview": {
-            "weight": 0.35,
+            "weight": 0.20,
             "input_minimum": 0,
             "input_maximum": 100,
             "description": "HR interview evaluation score."
+        },
+        "technical_interview": {
+            "weight": 0.25,
+            "input_minimum": 0,
+            "input_maximum": 100,
+            "description": "Technical interview evaluation score."
+        },
+        "machine_test": {
+            "weight": 0.15,
+            "input_minimum": 0,
+            "input_maximum": 100,
+            "description": "Practical machine test evaluation score."
         }
     },
     "normalization": {
@@ -31,29 +44,39 @@
     },
     "role_adjustments": {
         "default": {
-            "ats": 0.40,
-            "screening": 0.25,
-            "hr_interview": 0.35
+            "ats": 0.25,
+            "screening": 0.15,
+            "hr_interview": 0.20,
+            "technical_interview": 0.25,
+            "machine_test": 0.15
         },
         "software_developer": {
-            "ats": 0.45,
-            "screening": 0.20,
-            "hr_interview": 0.35
+            "ats": 0.20,
+            "screening": 0.10,
+            "hr_interview": 0.15,
+            "technical_interview": 0.30,
+            "machine_test": 0.25
         },
         "data_scientist": {
-            "ats": 0.45,
-            "screening": 0.20,
-            "hr_interview": 0.35
+            "ats": 0.20,
+            "screening": 0.10,
+            "hr_interview": 0.15,
+            "technical_interview": 0.30,
+            "machine_test": 0.25
         },
         "sales_executive": {
-            "ats": 0.30,
-            "screening": 0.30,
-            "hr_interview": 0.40
+            "ats": 0.25,
+            "screening": 0.25,
+            "hr_interview": 0.35,
+            "technical_interview": 0.05,
+            "machine_test": 0.10
         },
         "hr_manager": {
-            "ats": 0.25,
-            "screening": 0.30,
-            "hr_interview": 0.45
+            "ats": 0.20,
+            "screening": 0.20,
+            "hr_interview": 0.40,
+            "technical_interview": 0.10,
+            "machine_test": 0.10
         }
     }
 }

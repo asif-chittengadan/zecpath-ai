@@ -1,92 +1,77 @@
+
 import json
 import math
 from pathlib import Path
+
 from scoring.explainability import ExplanationGenerator
 
 
 class UnifiedScoringEngine:
-    """
-    Combines ATS, screening, and HR interview scores
-    into a unified hiring-fit score.
-    """
-
     DEFAULT_CONFIG_PATH = (
-        Path("config") /
-        "unified_scoring_rules.json"
+        Path("config") / "unified_scoring_rules.json"
+    )
+
+    ROUND_NAMES = (
+        "ats",
+        "screening",
+        "hr_interview",
+        "technical_interview",
+        "machine_test",
     )
 
     def __init__(self, config_path=None):
-
-        if config_path is None:
-            config_path = self.DEFAULT_CONFIG_PATH
-
-        self.config_path = Path(config_path)
+        self.config_path = Path(
+            config_path or self.DEFAULT_CONFIG_PATH
+        )
         self.config = self._load_config()
-
         self._validate_config()
-
         self.explanation_generator = ExplanationGenerator()
 
     def _load_config(self):
-
-        with self.config_path.open(
-            "r",
-            encoding="utf-8"
-        ) as file:
-
+        with self.config_path.open("r", encoding="utf-8") as file:
             return json.load(file)
 
     def _validate_config(self):
+        rounds = self.config.get("rounds", {})
+        required = {"ats", "screening", "hr_interview"}
 
-        rounds = self.config.get(
-            "rounds",
-            {}
-        )
+        if not required.issubset(rounds):
+            raise ValueError("Scoring configuration is missing required rounds.")
 
-        required_rounds = {
-            "ats",
-            "screening",
-            "hr_interview"
-        }
+        for name, settings in rounds.items():
+            minimum = settings.get("input_minimum")
+            maximum = settings.get("input_maximum")
+            weight = settings.get("weight")
 
-        if not required_rounds.issubset(
-            rounds.keys()
-        ):
-            raise ValueError(
-                "Unified scoring configuration "
-                "is missing required rounds."
-            )
+            if (
+                not isinstance(minimum, (int, float))
+                or not isinstance(maximum, (int, float))
+                or minimum >= maximum
+            ):
+                raise ValueError(f"Invalid score range for round '{name}'.")
 
-        total_weight = sum(
-            rounds[name]["weight"]
-            for name in required_rounds
-        )
+            if (
+                not isinstance(weight, (int, float))
+                or not math.isfinite(weight)
+                or not 0 <= weight <= 1
+            ):
+                raise ValueError(f"Invalid configured weight for round '{name}'.")
 
-        if round(total_weight, 6) != 1.0:
-            raise ValueError(
-                "Unified scoring weights must "
-                f"total 1.0, got {total_weight}"
-            )
+        role_adjustments = self.config.get("role_adjustments", {})
+        for role, weights in role_adjustments.items():
+            self._validate_role_weights(weights)
 
     @staticmethod
-    def _validate_score(
-        score,
-        minimum,
-        maximum,
-        score_name
-    ):
-
-        if score is None:
-            raise ValueError(
-                f"{score_name} cannot be None."
-            )
+    def_validate_score(score, minimum, maximum, score_name):
+        if score is None or isinstance(score, bool):
+            raise ValueError(f"{score_name} must be numeric.")
 
         try:
             score = float(score)
         except (TypeError, ValueError):
             raise ValueError(
                 f"{score_name} must be numeric."
-            )
+            ) from None
 
         if not math.isfinite(score):
             raise ValueError(
@@ -95,41 +80,108 @@ class UnifiedScoringEngine:
 
         if not minimum <= score <= maximum:
             raise ValueError(
-                f"{score_name} must be between "
-                f"{minimum} and {maximum}."
+                f"{score_name} must be between {minimum} and {maximum}."
             )
 
         return score
 
+
     @staticmethod
-    def _normalize_score(
+    def_normalize_score(
         score,
         input_minimum,
         input_maximum,
         target_minimum=0,
-        target_maximum=100
+        target_maximum=100,
     ):
-
         if input_maximum == input_minimum:
+            raise ValueError("Input score range cannot be zero.")
+
+        value = (
+            (score - input_minimum)
+            / (input_maximum - input_minimum)
+        ) * (target_maximum - target_minimum) + target_minimum
+
+        return round(value, 2)
+
+    @staticmethod
+    def_validate_role_weights(weights):
+        legacy_rounds = {
+            "ats",
+            "screening",
+            "hr_interview",
+        }
+        five_rounds = set(UnifiedScoringEngine.ROUND_NAMES)
+
+        if not isinstance(weights, dict):
+            raise ValueError("Role weights must be a dictionary.")
+
+        if set(weights) not in (legacy_rounds, five_rounds):
             raise ValueError(
-                "Input score range cannot be zero."
+                "Role weights must contain either the three "
+                "legacy rounds or all five evaluation rounds."
             )
 
-        normalized = (
-            (
-                score - input_minimum
-            )
-            /
-            (
-                input_maximum -
-                input_minimum
-            )
-        ) * (
-            target_maximum -
-            target_minimum
-        ) + target_minimum
+        validated = {}
 
-        return round(normalized, 2)
+        for name, value in weights.items():
+            if isinstance(value, bool):
+                raise ValueError(
+                    f"Weight '{name}' must be numeric."
+                )
+
+            try:
+                value = float(value)
+            except (TypeError, ValueError):
+                raise ValueError(
+                    f"Weight '{name}' must be numeric."
+                ) from None
+
+            if not math.isfinite(value):
+                raise ValueError(
+                    f"Weight '{name}' must be a finite number."
+                )
+
+            if not 0 <= value <= 1:
+                raise ValueError(
+                    f"Weight '{name}' must be between 0 and 1."
+                )
+
+            validated[name] = value
+
+        if not math.isclose(
+            sum(validated.values()),
+            1.0,
+            abs_tol=1e-6,
+        ):
+            raise ValueError("Role weights must total 1.0.")
+
+        return validated
+
+
+    def_get_role_weights(self, role):
+        adjustments = self.config.get("role_adjustments", {})
+        default = adjustments.get("default")
+
+        if default is None:
+            config_rounds = self.config.get("rounds", {})
+            default = {
+                name: config_rounds[name]["weight"]
+                for name in self.ROUND_NAMES
+                if name in config_rounds
+            }
+
+        normalized_role = (
+            (role or "")
+            .strip()
+            .lower()
+            .replace(" ", "_")
+            .replace("-", "_")
+        )
+
+        weights = adjustments.get(normalized_role, default)
+        return self._validate_role_weights(weights)
+
 
     def calculate_score(
         self,
@@ -137,206 +189,134 @@ class UnifiedScoringEngine:
         role,
         ats_score,
         screening_score,
-        hr_interview_score
+        hr_interview_score,
+        technical_interview_score=None,
+        machine_test_score=None,
     ):
+        supplied = {
+            "ats": ats_score,
+            "screening": screening_score,
+            "hr_interview": hr_interview_score,
+            "technical_interview": technical_interview_score,
+            "machine_test": machine_test_score,
+        }
 
-        ats_config = self.config[
-            "rounds"
-        ]["ats"]
+        active_rounds = [
+            name for name in self.ROUND_NAMES
+            if supplied[name] is not None
+        ]
 
-        screening_config = self.config[
-            "rounds"
-        ]["screening"]
+        if not {"ats", "screening", "hr_interview"}.issubset(active_rounds):
+            raise ValueError("ATS, screening, and HR interview scores are required.")
 
-        hr_config = self.config[
-            "rounds"
-        ]["hr_interview"]
+        config_rounds = self.config["rounds"]
+        normalized = {}
+        raw = {}
 
-        ats_score = self._validate_score(
-            ats_score,
-            ats_config["input_minimum"],
-            ats_config["input_maximum"],
-            "ATS score"
-        )
+        for name in active_rounds:
+            settings = config_rounds.get(name)
+            if settings is None:
+                raise ValueError(
+                    f"Configuration is missing the '{name}' round."
+                )
 
-        screening_score = self._validate_score(
-            screening_score,
-            screening_config["input_minimum"],
-            screening_config["input_maximum"],
-            "Screening score"
-        )
+            raw[name] = self._validate_score(
+                supplied[name],
+                settings["input_minimum"],
+                settings["input_maximum"],
+                f"{name} score",
+            )
 
-        hr_interview_score = self._validate_score(
-            hr_interview_score,
-            hr_config["input_minimum"],
-            hr_config["input_maximum"],
-            "HR interview score"
-        )
+            normalization = self.config.get("normalization", {})
+            if normalization.get("enabled", True):
+                normalized[name] = self._normalize_score(
+                    raw[name],
+                    settings["input_minimum"],
+                    settings["input_maximum"],
+                    normalization.get("target_minimum", 0),
+                    normalization.get("target_maximum", 100),
+                )
+            else:
+                normalized[name] = raw[name]
 
-        normalized_ats = self._normalize_score(
-            ats_score,
-            ats_config["input_minimum"],
-            ats_config["input_maximum"]
-        )
+        configured_weights = self._get_role_weights(role)
 
-        normalized_screening = self._normalize_score(
-            screening_score,
-            screening_config["input_minimum"],
-            screening_config["input_maximum"]
-        )
+        if len(active_rounds) == 3:
+            legacy_role_weights = {
+                "default": {
+                    "ats": 0.40,
+                    "screening": 0.25,
+                    "hr_interview": 0.35,
+                },
+                "software_developer": {
+                    "ats": 0.45,
+                    "screening": 0.20,
+                    "hr_interview": 0.35,
+                },
+                "data_scientist": {
+                    "ats": 0.45,
+                    "screening": 0.20,
+                    "hr_interview": 0.35,
+                },
+                "sales_executive": {
+                    "ats": 0.30,
+                    "screening": 0.30,
+                    "hr_interview": 0.40,
+                },
+                "hr_manager": {
+                    "ats": 0.25,
+                    "screening": 0.30,
+                    "hr_interview": 0.45,
+                },
+            }
 
-        normalized_hr = self._normalize_score(
-            hr_interview_score,
-            hr_config["input_minimum"],
-            hr_config["input_maximum"]
-        )
+            role_key = (
+                (role or "")
+                .strip()
+                .lower()
+                .replace(" ", "_")
+                .replace("-", "_")
+            )
 
-        role_weights = self._get_role_weights(
-            role
-        )
+            effective_weights = legacy_role_weights.get(
+                role_key,
+                legacy_role_weights["default"],
+            )
+        else:
+            active_weight_total = sum(
+                configured_weights[name] for name in active_rounds
+            )
 
-        ats_weight = role_weights["ats"]
-        screening_weight = role_weights["screening"]
-        hr_weight = role_weights["hr_interview"]
+            if active_weight_total <= 0:
+                raise ValueError("Active round weights must total more than zero.")
 
-        weighted_ats = round(
-            normalized_ats * ats_weight,
-            2
-        )
+            effective_weights = {
+                name: configured_weights[name] / active_weight_total
+                for name in active_rounds
+            }
 
-        weighted_screening = round(
-            normalized_screening *
-            screening_weight,
-            2
-        )
+        weighted = {
+            name: round(normalized[name] * effective_weights[name], 2)
+            for name in active_rounds
+        }
 
-        weighted_hr = round(
-            normalized_hr * hr_weight,
-            2
-        )
-
-        unified_score = round(
-            weighted_ats +
-            weighted_screening +
-            weighted_hr,
-            2
-        )
+        unified_score = round(sum(weighted.values()), 2)
 
         result = {
             "candidate": candidate_name or "Unknown",
             "role": role or "Unknown",
-            "round_scores": {
-                "ats": ats_score,
-                "screening": screening_score,
-                "hr_interview": hr_interview_score
-            },
-            "normalized_scores": {
-                "ats": normalized_ats,
-                "screening": normalized_screening,
-                "hr_interview": normalized_hr
-            },
+            "round_count": len(active_rounds),
+            "round_scores": raw,
+            "normalized_scores": normalized,
             "weights": {
-                "ats": ats_weight,
-                "screening": screening_weight,
-                "hr_interview": hr_weight
+                name: round(effective_weights[name], 6)
+                for name in active_rounds
             },
-            "weighted_scores": {
-                "ats": weighted_ats,
-                "screening": weighted_screening,
-                "hr_interview": weighted_hr
-            },
+            "weighted_scores": weighted,
             "unified_score": unified_score,
-            "hiring_fit_percentage": unified_score
+            "hiring_fit_percentage": unified_score,
+            "score_type": "unified_candidate_score",
         }
 
-        result["explainability"] = (
-            self.explanation_generator.generate(
-                result
-            )
-        )
-
+        result["explainability"] = self.explanation_generator.generate(result)
         return result
-
-    def _validate_role_weights(self, weights):
-        required_weights = {
-            "ats",
-            "screening",
-            "hr_interview"
-        }
-
-        if not required_weights.issubset(weights.keys()):
-            raise ValueError(
-                "Role weights must contain ATS, screening, "
-                "and HR interview weights."
-            )
-
-        validated_weights = {}
-
-        for name in required_weights:
-            try:
-                weight = float(weights[name])
-            except (TypeError, ValueError):
-                raise ValueError(
-                    f"Role weight '{name}' must be numeric."
-                )
-
-            if not math.isfinite(weight):
-                raise ValueError(
-                    f"Role weight '{name}' must be a finite number."
-                )
-
-            if not 0 <= weight <= 1:
-                raise ValueError(
-                    f"Role weight '{name}' must be between 0 and 1."
-                )
-
-            validated_weights[name] = weight
-
-        total_weight = sum(validated_weights.values())
-
-        if round(total_weight, 6) != 1.0:
-            raise ValueError(
-                "Role weights must total 1.0, "
-                f"got {total_weight}"
-            )
-
-        return validated_weights
-
-    def _get_role_weights(self, role):
-        role_adjustments = self.config.get(
-            "role_adjustments",
-            {}
-        )
-
-        if not role:
-            weights = role_adjustments.get(
-                "default",
-                {
-                    "ats": 0.40,
-                    "screening": 0.25,
-                    "hr_interview": 0.35
-                }
-            )
-
-            return self._validate_role_weights(weights)
-
-        normalized_role = (
-            role.strip()
-            .lower()
-            .replace(" ", "_")
-            .replace("-", "_")
-        )
-
-        weights = role_adjustments.get(
-            normalized_role,
-            role_adjustments.get(
-                "default",
-                {
-                    "ats": 0.40,
-                    "screening": 0.25,
-                    "hr_interview": 0.35
-                }
-            )
-        )
-
-        return self._validate_role_weights(weights)
