@@ -1,0 +1,24 @@
+{
+    "candidate_id": "CAND-052",
+    "candidate_name": "Demo Candidate",
+    "role": "Software Developer",
+    "decision": "Selected",
+    "unified_score": 90.0,
+    "confidence_score": 87.4,
+    "thresholds": {
+        "selection": 75,
+        "review": 50
+    },
+    "risk_factors": [],
+    "eligibility": {
+        "failed_rules": [],
+        "review_rules": [],
+        "missing_mandatory_skills": []
+    },
+    "reasons": [
+        "Score meets the selection threshold."
+    ],
+    "human_review_required": false,
+    "behavioral_evaluation": null,
+    "integrity_evaluation": null
+}

@@ -1,0 +1,81 @@
+
+import json
+from pathlib import Path
+
+from interview_ai.behavioral_evaluator import BehavioralEvaluator
+from interview_ai.integrity.integrity_evaluator import IntegrityEvaluator
+from scoring.recommendation import RecommendationAIEngine
+
+
+class FinalRecommendationGenerator:
+    DEFAULT_OUTPUT_PATH = (
+        Path("data") / "recommendations" / "final_recommendations.json"
+    )
+
+    def __init__(self, engine=None, output_path=None):
+        self.engine = engine or RecommendationAIEngine()
+        self.integrity_evaluator = IntegrityEvaluator()
+        self.output_path = Path(
+            output_path or self.DEFAULT_OUTPUT_PATH
+        )
+
+    def generate(
+        self,
+        candidate_id,
+        candidate_name,
+        role,
+        unified_score,
+        eligibility_result=None,
+        behavior_risk=None,
+        integrity_risk=None,
+        behavioral_observations=None,
+        behavioral_signal_scores=None,
+        integrity_observations=None,
+    ):
+        behavioral_result = None
+
+        if behavioral_observations is not None or behavioral_signal_scores is not None:
+            if behavioral_observations is None:
+                behavioral_observations = {}
+            if behavioral_signal_scores is None:
+                behavioral_signal_scores = {}
+
+            behavioral_result = BehavioralEvaluator.evaluate(
+                behavioral_observations,
+                behavioral_signal_scores,
+            )
+
+            behavior_risk = behavior_risk or behavioral_result["scoring_summary"]
+
+        if integrity_observations is not None:
+            integrity_risk = self.integrity_evaluator.evaluate(
+                integrity_observations,
+                behavioral_result=behavioral_result,
+            )
+
+        recommendation = self.engine.evaluate(
+            unified_score=unified_score,
+            eligibility_result=eligibility_result,
+            behavior_risk=behavior_risk,
+            integrity_risk=integrity_risk,
+        )
+
+        result = {
+            "candidate_id": candidate_id,
+            "candidate_name": candidate_name,
+            "role": role,
+            **recommendation,
+            "behavioral_evaluation": behavioral_result,
+            "integrity_evaluation": integrity_risk,
+        }
+
+        self.save(result)
+        return result
+
+    def save(self, result):
+        self.output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        with self.output_path.open("w", encoding="utf-8") as file:
+            json.dump(result, file, indent=4)
+
+        return self.output_path
