@@ -1,0 +1,143 @@
+{
+  "report_type": "hiring_intelligence_report",
+  "version": "1.1",
+  "candidate": {
+    "candidate_id": "CAND-053-DEMO",
+    "candidate_name": "Demo Candidate",
+    "role": "Software Developer"
+  },
+  "evaluation": {
+    "ats_summary": {
+      "match_score": 85.0,
+      "strengths": [
+        "Strong alignment with the required Python and API skills"
+      ],
+      "weaknesses": [
+        "Production-scale experience should be confirmed in the interview"
+      ],
+      "matched_skills": [
+        "Python",
+        "REST APIs",
+        "SQL"
+      ],
+      "missing_skills": [
+        "Kubernetes"
+      ]
+    },
+    "screening_results": {
+      "screening_score": 82.0,
+      "questions_evaluated": 6,
+      "strengths": [
+        "Screening answers covered the required role skills"
+      ],
+      "risks": [
+        "Joining availability should be confirmed with the candidate"
+      ]
+    },
+    "hr_insights": {
+      "overall_hr_performance": {
+        "score": 84.0,
+        "level": "high"
+      },
+      "candidate_strengths": [
+        "Gave clear examples of collaborative problem solving"
+      ],
+      "candidate_weaknesses": [
+        "Could provide more detail about individual project ownership"
+      ],
+      "risk_flags": []
+    },
+    "technical_performance": {
+      "technical_score": 79.0,
+      "skill_wise_breakdown": {
+        "Python": 88,
+        "SQL": 76,
+        "API design": 73
+      },
+      "strengths": [
+        "Demonstrated sound Python fundamentals"
+      ],
+      "weaknesses": [
+        "API design trade-offs need a deeper follow-up discussion"
+      ],
+      "human_review_required": true
+    },
+    "behavioral_flags": {
+      "risk_flags": [
+        "Manual review requested for interview observations"
+      ],
+      "limitations": [
+        "Observable signals are not psychological or personality assessments"
+      ],
+      "human_review_required": true
+    }
+  },
+  "summary": {
+    "strengths": [
+      "Strong alignment with the required Python and API skills",
+      "Screening answers covered the required role skills",
+      "Gave clear examples of collaborative problem solving",
+      "Demonstrated sound Python fundamentals"
+    ],
+    "weaknesses": [
+      "Production-scale experience should be confirmed in the interview",
+      "Could provide more detail about individual project ownership",
+      "API design trade-offs need a deeper follow-up discussion"
+    ],
+    "risk_indicators": [
+      "Joining availability should be confirmed with the candidate",
+      "Manual review requested for interview observations",
+      "Behavioral risk requires human review"
+    ]
+  },
+  "final_recommendation": {
+    "decision": "Hold / Review",
+    "unified_score": 81.3,
+    "confidence_score": 60.0,
+    "thresholds": {
+      "selection": 75,
+      "review": 50
+    },
+    "risk_factors": [
+      "Behavioral risk requires human review"
+    ],
+    "eligibility": {
+      "failed_rules": [],
+      "review_rules": [],
+      "missing_mandatory_skills": []
+    },
+    "reasons": [
+      "Decision based on the configured score thresholds."
+    ],
+    "human_review_required": true
+  },
+  "recruiter_summary": {
+    "decision": "Hold / Review",
+    "explanation": [
+      "Decision based on the configured score thresholds.",
+      "One or more risk indicators require review.",
+      "Human review is required before a final hiring decision."
+    ],
+    "strength_count": 4,
+    "weakness_count": 3,
+    "risk_count": 3,
+    "missing_sections": [],
+    "human_review_required": true
+  },
+  "data_completeness": {
+    "ats_summary": true,
+    "screening_results": true,
+    "hr_insights": true,
+    "technical_performance": true,
+    "behavioral_flags": true
+  },
+  "limitations": [
+    "Only supplied evaluation results are included.",
+    "Missing sections are not interpreted as zero scores.",
+    "The generator does not recalculate evaluation scores.",
+    "Explanations are based on supplied reasons and available data.",
+    "Risk indicators are not proof of misconduct or unsuitability.",
+    "The report supports recruiter review; it does not replace human hiring judgment."
+  ],
+  "notice": "Demonstration only: all values are illustrative and do not describe a real candidate."
+}
