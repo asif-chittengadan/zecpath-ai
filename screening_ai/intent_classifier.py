@@ -1,5 +1,5 @@
 import json
-
+import re
 from scoring.semantic_matching_engine import SemanticMatchingEngine
 
 
@@ -113,39 +113,46 @@ class IntentClassifier:
 
         return max(scores)
 
+    def __contains_phrase(
+        self,
+        source_text,
+        phrases
+    ):
+        normalized_text = " ".join(
+            source_text.strip().lower().split()
+        )
+
+        for phrase in phrases:
+            normalized_phrase = " ".join(
+                phrase.lower().split()
+            )
+
+            pattern = (
+                rf"(?<!\w){re.escape(normalized_phrase)}(?!\w)"
+            )
+
+            if re.search(pattern, normalized_text):
+                return True
+
+        return False
+
     def __looks_vague(
         self,
         source_text
     ):
-        stripped = source_text.strip().rstrip(".").lower()
-
-        for phrase in self.rules["vague_phrases"]:
-            if phrase in stripped:
-                return True
-
-        word_count = len(stripped.split())
-
-        if word_count > self.rules["vague_word_count_threshold"]:
-            return False
-
-        return False
+        return self.__contains_phrase(
+            source_text,
+            self.rules.get("vague_phrases", [])
+        )
 
     def __looks_confused(
         self,
         source_text
     ):
-        normalized = " ".join(
-            source_text.strip().lower().split()
-        )
-
-        for phrase in self.rules.get(
-            "confusion_phrases",
-            []
-        ):
-            if phrase.lower() in normalized:
-                return True
-
-        return False    
+        return self.__contains_phrase(
+            source_text,
+            self.rules.get("confusion_phrases", [])
+        )    
     
     def __build_result(
         self,

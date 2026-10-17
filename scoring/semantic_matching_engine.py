@@ -1,15 +1,25 @@
 from functools import lru_cache
-
+import threading
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
 class SemanticMatchingEngine:
 
+    _model = None
+    _model_lock = threading.Lock()
+
     def __init__(self):
-        self.model = SentenceTransformer(
-            "all-MiniLM-L6-v2"
-        )
+        cls = type(self)
+
+        if cls._model is None:
+            with cls._model_lock:
+                if cls._model is None:
+                    cls._model = SentenceTransformer(
+                        "all-MiniLM-L6-v2"
+                    )
+
+        self.model = cls._model
 
     def encode(self, text):
 
@@ -24,10 +34,10 @@ class SemanticMatchingEngine:
         return self._encode_cached(text)
 
 
+    @classmethod
     @lru_cache(maxsize=256)
-    def _encode_cached(self, text):
-
-        return self.model.encode(
+    def _encode_cached(cls, text):
+        return cls._model.encode(
             text,
             convert_to_numpy=True
         )

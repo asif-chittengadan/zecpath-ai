@@ -1,0 +1,35 @@
+{
+  "positive_class": "Eligible",
+  "negative_class": "Rejected",
+  "total_cases": 26,
+  "matches": 26,
+  "overall_agreement_percent": 100.0,
+  "binary_case_count": 24,
+  "confusion_matrix_expected_rows_actual_columns": {
+    "Eligible": {
+      "Eligible": 15,
+      "Rejected": 0,
+      "Review": 0
+    },
+    "Rejected": {
+      "Eligible": 0,
+      "Rejected": 9,
+      "Review": 0
+    },
+    "Review": {
+      "Eligible": 0,
+      "Rejected": 0,
+      "Review": 2
+    }
+  },
+  "binary_metrics_percent": {
+    "accuracy": 100.0,
+    "precision": 100.0,
+    "recall": 100.0
+  },
+  "false_positive_cases": [],
+  "false_negative_cases": [],
+  "review_mismatch_cases": [],
+  "all_mismatches": [],
+  "note": "These are designed repository test cases, not real-world candidate outcomes."
+}

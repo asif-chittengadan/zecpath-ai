@@ -239,35 +239,21 @@ class UnifiedScoringEngine:
             else:
                 normalized[name] = raw[name]
 
-        configured_weights = self._get_role_weights(role)
+            configured_weights = self._get_role_weights(role)
 
-        if len(active_rounds) == 3:
-            legacy_role_weights = {
-                "default": {
-                    "ats": 0.40,
-                    "screening": 0.25,
-                    "hr_interview": 0.35,
-                },
-                "software_developer": {
-                    "ats": 0.45,
-                    "screening": 0.20,
-                    "hr_interview": 0.35,
-                },
-                "data_scientist": {
-                    "ats": 0.45,
-                    "screening": 0.20,
-                    "hr_interview": 0.35,
-                },
-                "sales_executive": {
-                    "ats": 0.30,
-                    "screening": 0.30,
-                    "hr_interview": 0.40,
-                },
-                "hr_manager": {
-                    "ats": 0.25,
-                    "screening": 0.30,
-                    "hr_interview": 0.45,
-                },
+            active_weight_total = sum(
+                configured_weights[name]
+                for name in active_rounds
+            )
+
+            if active_weight_total <= 0:
+                raise ValueError(
+                    "Active round weights must total more than zero."
+                )
+
+            effective_weights = {
+                name: configured_weights[name] / active_weight_total
+                for name in active_rounds
             }
 
             role_key = (
