@@ -10,6 +10,8 @@ from scoring.fairness_masker import FairnessMasker
 from scoring.bias_evaluator import BiasEvaluator
 from scoring.eligibility_decision_engine import EligibilityDecisionEngine
 
+from compliance.consent_manager import ConsentManager
+from compliance.models import ConsentType
 
 CV_FOLDER = "data/labeled_resumes"
 
@@ -200,7 +202,42 @@ def extract_candidate_availability(
     return None
 
 
-def main():
+def require_resume_screening_consent(
+    consent_manager,
+    candidate_id,
+):
+    """Block resume ranking unless its required consents are current."""
+
+    if not candidate_id or not str(candidate_id).strip():
+        raise ValueError("A registered candidate ID is required for consent checks.")
+
+    for consent_type in (
+        ConsentType.RESUME_PROCESSING,
+        ConsentType.AI_SCREENING,
+    ):
+        consent_manager.require_consent(
+            str(candidate_id).strip(),
+            consent_type,
+        )
+
+
+def main(
+    consent_manager=None,
+    candidate_id_by_file=None,
+):
+
+    if consent_manager is None or candidate_id_by_file is None:
+        print(
+            "Candidate ranking requires a consent manager and a "
+            "filename-to-candidate-ID mapping. No resumes were processed."
+        )
+        return
+
+    if not isinstance(consent_manager, ConsentManager):
+        raise TypeError("consent_manager must be a ConsentManager instance.")
+
+    if not isinstance(candidate_id_by_file, dict):
+        raise TypeError("candidate_id_by_file must be a dictionary.")
 
     # ---------------------------------
     # Find Job Description
@@ -312,7 +349,22 @@ def main():
             file_name
         )
 
+        candidate_id = candidate_id_by_file.get(file_name)
+
+        if not candidate_id:
+            print(
+                f"Skipping {file_name}: no registered candidate ID "
+                "was supplied."
+            )
+            continue
+
         try:
+
+            # Check consent before opening or processing the resume.
+            require_resume_screening_consent(
+                consent_manager,
+                candidate_id,
+            )
 
             # ---------------------------------
             # Load Resume
@@ -542,6 +594,12 @@ def main():
                 eligibility_result[
                     "missing_mandatory_skills"
                 ]
+            )
+
+        except PermissionError as e:
+
+            print(
+                f"Skipping {file_name}: {e}"
             )
 
         except Exception as e:

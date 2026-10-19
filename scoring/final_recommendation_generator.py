@@ -1,7 +1,7 @@
 
 import json
 from pathlib import Path
-
+from compliance.audit_logger import AuditLogger
 from interview_ai.behavioral_evaluator import BehavioralEvaluator
 from interview_ai.integrity.integrity_evaluator import IntegrityEvaluator
 from scoring.recommendation import RecommendationAIEngine
@@ -31,6 +31,7 @@ class FinalRecommendationGenerator:
         behavioral_observations=None,
         behavioral_signal_scores=None,
         integrity_observations=None,
+        audit_logger=None,
     ):
         behavioral_result = None
 
@@ -68,6 +69,11 @@ class FinalRecommendationGenerator:
             "behavioral_evaluation": behavioral_result,
             "integrity_evaluation": integrity_risk,
         }
+        self.audit_logger.log_decision(
+            candidate_id=candidate_id,
+            role=role,
+            decision_result=result,
+        )
 
         self.save(result)
         return result

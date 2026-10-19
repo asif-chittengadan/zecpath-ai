@@ -5,3 +5,6 @@ __pycache__/
 logs/
 
 .env
+
+# Local secure-record storage (candidate transcripts and reports)
+data/private_records/

@@ -1,7 +1,7 @@
 
 import json
 from pathlib import Path
-
+from compliance.audit_logger import AuditLogger
 from scoring.unified_candidate_score import UnifiedCandidateScore
 from scoring.unified_scoring_engine import UnifiedScoringEngine
 
@@ -13,10 +13,19 @@ class UnifiedCandidateScoreGenerator:
         / "unified_candidate_score.json"
     )
 
-    def __init__(self, scoring_engine=None, output_path=None):
+    def __init__(
+        self,
+        scoring_engine=None,
+        output_path=None,
+        audit_logger=None,
+    ):
         self.scoring_engine = scoring_engine or UnifiedScoringEngine()
         self.output_path = Path(output_path or self.DEFAULT_OUTPUT_PATH)
-
+        self.audit_logger = (
+            audit_logger
+            if audit_logger is not None
+            else AuditLogger()
+        )
     def generate(
         self,
         candidate_name,
@@ -51,6 +60,10 @@ class UnifiedCandidateScoreGenerator:
 
         result.update(score_object.to_dict())
         result["explainability"] = self.scoring_engine.explanation_generator.generate(result)
+        self.audit_logger.log_score(
+            candidate_id=candidate_id,
+            score_result=result,
+        )
         self.save(result)
         return result
 

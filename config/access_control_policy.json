@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "default_effect": "deny",
+  "roles": {
+    "candidate": {
+      "permissions": [
+        "transcript.read",
+        "report.read",
+        "consent.read",
+        "consent.write"
+      ],
+      "candidate_scope": "assigned"
+    },
+    "recruiter": {
+      "permissions": [
+        "report.read",
+        "score.read"
+      ],
+      "candidate_scope": "assigned"
+    },
+    "interviewer": {
+      "permissions": [
+        "transcript.read"
+      ],
+      "candidate_scope": "assigned"
+    },
+    "compliance_auditor": {
+      "permissions": [
+        "audit.read",
+        "consent.read",
+        "retention.read"
+      ],
+      "candidate_scope": "all"
+    },
+    "consent_service": {
+      "permissions": [
+        "consent.read",
+        "consent.write"
+      ],
+      "candidate_scope": "all"
+    },
+    "retention_worker": {
+      "permissions": [
+        "retention.read",
+        "retention.manage",
+        "record.delete"
+      ],
+      "candidate_scope": "all"
+    },
+    "ai_processing_service": {
+      "permissions": [
+        "transcript.read",
+        "transcript.write",
+        "report.write",
+        "score.write",
+        "consent.read",
+        "audit.write"
+      ],
+      "candidate_scope": "all"
+    },
+    "security_admin": {
+      "permissions": [
+        "access_policy.manage"
+      ],
+      "candidate_scope": "none"
+    }
+  }
+}
