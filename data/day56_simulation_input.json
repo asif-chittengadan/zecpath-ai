@@ -1,0 +1,79 @@
+{
+  "candidate_id": "DAY56-SYNTH-001",
+  "candidate_name": "Synthetic Candidate 001",
+  "role": "Python Developer",
+  "experience_years": 2,
+  "resume_filename": "embedded synthetic resume object",
+  "resume": {
+    "Summary": [
+      "Python developer with two years of experience building backend services and REST APIs.",
+      "Worked with Django, FastAPI, SQL, Git, and automated testing in collaborative projects."
+    ],
+    "Skills": {
+      "technical": [
+        {"skill": "Python", "confidence": 1.0, "matched_by": "fixture"},
+        {"skill": "Django", "confidence": 1.0, "matched_by": "fixture"},
+        {"skill": "FastAPI", "confidence": 1.0, "matched_by": "fixture"},
+        {"skill": "REST APIs", "confidence": 1.0, "matched_by": "fixture"},
+        {"skill": "SQL", "confidence": 1.0, "matched_by": "fixture"},
+        {"skill": "Git", "confidence": 1.0, "matched_by": "fixture"}
+      ],
+      "business": [],
+      "creative": []
+    },
+    "Experience": {
+      "total_experience": {
+        "total_months": 24,
+        "years": 2,
+        "months": 0,
+        "formatted": "2 years"
+      }
+    },
+    "Education": {
+      "degree": "Bachelor of Technology",
+      "field_of_study": "Computer Science"
+    },
+    "Projects": [
+      "Built a Django inventory API with SQL persistence, input validation, and automated tests."
+    ],
+    "Others": ["Synthetic Candidate 001"]
+  },
+  "job_description": {
+    "role": "Python Developer",
+    "skills": ["Python", "Django", "FastAPI", "REST APIs", "SQL", "Git"],
+    "experience": {
+      "minimum": 1,
+      "maximum": 4,
+      "text": "1 to 4 years"
+    },
+    "education": ["Bachelor of Technology", "Computer Science"],
+    "summary": "Build and maintain Python backend services and REST APIs."
+  },
+  "screening": [
+    {
+      "category": "Experience",
+      "question": "How many years of Python development experience do you have?",
+      "answer": "I have two years of experience building Python services and Django APIs.",
+      "expected_keywords": ["two years", "Python", "Django"]
+    },
+    {
+      "category": "Skills",
+      "question": "Which backend technologies have you used?",
+      "answer": "I have used Python, Django, FastAPI, SQL, REST APIs, and Git.",
+      "expected_keywords": ["Python", "Django", "FastAPI", "SQL", "REST APIs", "Git"]
+    },
+    {
+      "category": "Availability",
+      "question": "When could you start?",
+      "answer": "I can join within 30 days.",
+      "expected_keywords": ["join", "30 days"]
+    }
+  ],
+  "technical_rubric_input": {
+    "accuracy": 84,
+    "depth": 78,
+    "logical_reasoning": 82,
+    "real_world_applicability": 80,
+    "note": "Illustrative rubric inputs; the current interview flow does not score free-text answers."
+  }
+}

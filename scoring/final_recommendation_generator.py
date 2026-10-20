@@ -12,12 +12,13 @@ class FinalRecommendationGenerator:
         Path("data") / "recommendations" / "final_recommendations.json"
     )
 
-    def __init__(self, engine=None, output_path=None):
+    def __init__(self, engine=None, output_path=None, audit_logger=None):
         self.engine = engine or RecommendationAIEngine()
         self.integrity_evaluator = IntegrityEvaluator()
         self.output_path = Path(
             output_path or self.DEFAULT_OUTPUT_PATH
         )
+        self.audit_logger = audit_logger or AuditLogger()
 
     def generate(
         self,
@@ -69,7 +70,7 @@ class FinalRecommendationGenerator:
             "behavioral_evaluation": behavioral_result,
             "integrity_evaluation": integrity_risk,
         }
-        self.audit_logger.log_decision(
+        (audit_logger or self.audit_logger).log_decision(
             candidate_id=candidate_id,
             role=role,
             decision_result=result,

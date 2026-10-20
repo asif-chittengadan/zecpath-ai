@@ -19,6 +19,19 @@ class UnifiedScoringEngine:
         "machine_test",
     )
 
+    LEGACY_THREE_ROUND_WEIGHTS = {
+        "default": {
+            "ats": 0.45,
+            "screening": 0.20,
+            "hr_interview": 0.35,
+        },
+        "software_developer": {
+            "ats": 0.45,
+            "screening": 0.20,
+            "hr_interview": 0.35,
+        },
+    }
+
     def __init__(self, config_path=None):
         self.config_path = Path(
             config_path or self.DEFAULT_CONFIG_PATH
@@ -213,6 +226,42 @@ class UnifiedScoringEngine:
         normalized = {}
         raw = {}
 
+        role_key = (
+            (role or "")
+            .strip()
+            .lower()
+            .replace(" ", "_")
+            .replace("-", "_")
+        )
+        legacy_rounds = {"ats", "screening", "hr_interview"}
+
+        if set(active_rounds) == legacy_rounds:
+            legacy_weights = self.LEGACY_THREE_ROUND_WEIGHTS.get(
+                role_key,
+                self.LEGACY_THREE_ROUND_WEIGHTS["default"],
+            )
+            effective_weights = dict(legacy_weights)
+        else:
+            configured_weights = self._get_role_weights(role)
+            missing_weights = set(active_rounds) - set(configured_weights)
+            if missing_weights:
+                raise ValueError(
+                    "Scoring configuration is missing active round weights: "
+                    f"{sorted(missing_weights)}"
+                )
+
+            active_weight_total = sum(
+                configured_weights[name]
+                for name in active_rounds
+            )
+            if active_weight_total <= 0:
+                raise ValueError("Active round weights must total more than zero.")
+
+            effective_weights = {
+                name: configured_weights[name] / active_weight_total
+                for name in active_rounds
+            }
+
         for name in active_rounds:
             settings = config_rounds.get(name)
             if settings is None:
@@ -238,48 +287,6 @@ class UnifiedScoringEngine:
                 )
             else:
                 normalized[name] = raw[name]
-
-            configured_weights = self._get_role_weights(role)
-
-            active_weight_total = sum(
-                configured_weights[name]
-                for name in active_rounds
-            )
-
-            if active_weight_total <= 0:
-                raise ValueError(
-                    "Active round weights must total more than zero."
-                )
-
-            effective_weights = {
-                name: configured_weights[name] / active_weight_total
-                for name in active_rounds
-            }
-
-            role_key = (
-                (role or "")
-                .strip()
-                .lower()
-                .replace(" ", "_")
-                .replace("-", "_")
-            )
-
-            effective_weights = legacy_role_weights.get(
-                role_key,
-                legacy_role_weights["default"],
-            )
-        else:
-            active_weight_total = sum(
-                configured_weights[name] for name in active_rounds
-            )
-
-            if active_weight_total <= 0:
-                raise ValueError("Active round weights must total more than zero.")
-
-            effective_weights = {
-                name: configured_weights[name] / active_weight_total
-                for name in active_rounds
-            }
 
         weighted = {
             name: round(normalized[name] * effective_weights[name], 2)

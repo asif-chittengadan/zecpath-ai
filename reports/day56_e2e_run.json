@@ -1,0 +1,294 @@
+{
+  "report_title": "Day 56 Full System Simulation",
+  "run_at_utc": "2026-10-20T07:53:59.164370+00:00",
+  "scenario": {
+    "candidate_id": "DAY56-SYNTH-001",
+    "candidate_name": "Synthetic Candidate 001",
+    "role": "Python Developer",
+    "synthetic": true,
+    "resume_source": "embedded synthetic resume object",
+    "resume_intake_note": "The upload step is represented by loading the synthetic JSON fixture. The repository has no upload endpoint, and its PDF/DOCX parser output is not directly connected to the ATS resume schema."
+  },
+  "stages": {
+    "ats": {
+      "score_0_100": 95.05,
+      "components": {
+        "skill_match": 1.0,
+        "experience_relevance": 1.0,
+        "education_alignment": 1.0,
+        "semantic_similarity": 0.7523
+      }
+    },
+    "screening": {
+      "score_0_100": 95.0,
+      "questions_evaluated": 3,
+      "answers_accepted": 3,
+      "conversation_completed": true,
+      "parameter_scores": {
+        "clarity": 23.33,
+        "relevance": 25.0,
+        "completeness": 25.0,
+        "consistency": 21.67
+      },
+      "answer_actions": [
+        "next_question",
+        "next_question",
+        "end_call"
+      ]
+    },
+    "hr_interview": {
+      "score_0_100": 87.97,
+      "questions_answered": 18,
+      "completed": true,
+      "completion_ratio": 1.0,
+      "scoring_note": "Uses the current Day 45 deterministic demonstration heuristics; the interview responses are synthetic."
+    },
+    "technical_interview": {
+      "score_0_100": 81.5,
+      "questions_answered": 8,
+      "completed": true,
+      "skill_domain": "python",
+      "score_source": "illustrative rubric inputs from the simulation fixture"
+    },
+    "unified_score": {
+      "score_0_100": 89.39,
+      "round_scores": {
+        "ats": 95.05,
+        "screening": 9.5,
+        "hr_interview": 87.97,
+        "technical_interview": 81.5
+      },
+      "weights": {
+        "ats": 0.294118,
+        "screening": 0.176471,
+        "hr_interview": 0.235294,
+        "technical_interview": 0.294118
+      },
+      "note": "Screening score was divided by 10 at the integration boundary because the unified config expects 0-10, while screening emits 0-100."
+    },
+    "final_decision": {
+      "candidate_id": "DAY56-SYNTH-001",
+      "candidate_name": "Synthetic Candidate 001",
+      "role": "Python Developer",
+      "decision": "Hold / Review",
+      "unified_score": 89.39,
+      "confidence_score": 60.0,
+      "thresholds": {
+        "selection": 75,
+        "review": 50
+      },
+      "risk_factors": [],
+      "eligibility": {
+        "failed_rules": [],
+        "review_rules": [
+          "Synthetic simulation requires human review before any real hiring action."
+        ],
+        "missing_mandatory_skills": []
+      },
+      "reasons": [
+        "Synthetic simulation requires human review before any real hiring action."
+      ],
+      "human_review_required": true,
+      "behavioral_evaluation": null,
+      "integrity_evaluation": null
+    }
+  },
+  "human_comparison": {
+    "comparison_scope": "screening intent and action only",
+    "cases": 10,
+    "matches": 10,
+    "mismatches": 0,
+    "agreement_percent": 100.0,
+    "evaluations": [
+      {
+        "case_id": "D30-001",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-002",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-003",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-004",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-005",
+        "human_intent": "vague",
+        "ai_intent": "vague",
+        "human_action": "clarify",
+        "ai_action": "clarify",
+        "match": true
+      },
+      {
+        "case_id": "D30-006",
+        "human_intent": "off_topic",
+        "ai_intent": "off_topic",
+        "human_action": "fallback",
+        "ai_action": "fallback",
+        "match": true
+      },
+      {
+        "case_id": "D30-007",
+        "human_intent": "missing",
+        "ai_intent": "missing",
+        "human_action": "clarify",
+        "ai_action": "clarify",
+        "match": true
+      },
+      {
+        "case_id": "D30-008",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-009",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-010",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      }
+    ],
+    "candidate_level_human_reference_available": true,
+    "candidate_level_summary": {
+      "human_scores_recorded": true,
+      "stages_rated": [
+        "ATS",
+        "screening",
+        "HR interview",
+        "technical interview"
+      ],
+      "final_human_decision": "Advance / Recommend",
+      "final_ai_decision": "Hold / Review",
+      "final_decision_comparison_note": "The AI Hold / Review outcome was triggered by an explicit simulation human-review rule, not by a candidate-specific rejection threshold. The human decision to advance therefore differs in process state, not necessarily candidate assessment."
+    }
+  },
+  "performance": {
+    "stage_seconds": {
+      "resume_intake": 0.0004,
+      "ats_scoring": 1.1669,
+      "screening": 0.3143,
+      "hr_interview": 0.0111,
+      "technical_interview": 0.0002,
+      "unified_scoring": 0.0051,
+      "final_decision": 0.005,
+      "screening_human_comparison": 0.3249
+    },
+    "total_seconds": 1.8341,
+    "measurement_note": "One local synthetic run using a cached model; local model initialization is included but first-time model download is excluded. This is not a production load or throughput benchmark."
+  },
+  "limitations": [
+    "This is one local synthetic candidate run. Timings do not establish production throughput, reliability, or fairness.",
+    "Resume intake used an embedded JSON fixture; there is no production file-upload path or parser-to-ATS adapter in this run.",
+    "The HR transcript used synthetic answers assigned sequentially to adaptive questions; several prompt-answer pairs were mismatched, making the AI HR score provisional.",
+    "Technical interview flow was exercised, but its AI score came from illustrative rubric values rather than evaluation of free-text answers. The human rating used a synthetic answer sheet.",
+    "Human review reflects one reviewer who had access to simulation results; the comparison was not blinded or a multi-reviewer validation.",
+    "The separate screening intent/action benchmark covers 10 existing labeled cases only; its 100% agreement does not demonstrate broad accuracy."
+  ],
+  "human_review": {
+    "reviewer_count": 1,
+    "ratings": [
+      {
+        "stage": "ATS",
+        "human": 95.0,
+        "ai": 95.05,
+        "delta": -0.05,
+        "note": "Close agreement."
+      },
+      {
+        "stage": "Screening",
+        "human": 95.0,
+        "ai": 95.0,
+        "delta": 0.0,
+        "note": "Exact agreement."
+      },
+      {
+        "stage": "HR interview",
+        "human": 90.0,
+        "ai": 87.97,
+        "delta": 2.03,
+        "note": "Provisional: scripted answers were paired with mismatched adaptive questions."
+      },
+      {
+        "stage": "Technical interview",
+        "human": 82.0,
+        "ai": 81.5,
+        "delta": 0.5,
+        "note": "Illustrative: human reviewed synthetic sample answers; engine score used rubric inputs."
+      }
+    ],
+    "final_decision": {
+      "decision": "Advance / Recommend",
+      "rationale": "The user indicated that all human reviews are okay; recorded as approval to advance.",
+      "human_review_complete": true
+    },
+    "interpretation_note": "The human ratings were supplied after the simulation results were discussed; this was not a blinded evaluation.",
+    "comparison_assessment": "ATS and screening ratings closely align. HR comparison is provisional because prompt-answer pairs were mismatched. Technical comparison is illustrative because the interview engine did not evaluate the sample free-text answers."
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "area": "HR interview simulation",
+      "finding": "A fixed synthetic answer list was fed sequentially into adaptive interview questions, so several answers did not address the question asked.",
+      "example": "The notice-period question received an answer about improving backend skills.",
+      "impact": "The HR score and its comparison with the human 90/100 rating are provisional and should not be treated as reliable candidate-level evaluation."
+    },
+    {
+      "severity": "high",
+      "area": "Technical interview scoring",
+      "finding": "The question flow accepted placeholder answer-quality values; the engine did not score free-text responses.",
+      "impact": "The AI 81.5 score came from illustrative rubric inputs. The human 82 rating reviewed a synthetic sample answer set, so this is illustrative rather than a direct score comparison."
+    },
+    {
+      "severity": "medium",
+      "area": "Score integration",
+      "finding": "Screening emits a 0\u2013100 score while unified scoring expects 0\u201310.",
+      "impact": "The simulation divides the screening score by 10 at the integration boundary; score scales should be standardized across modules."
+    },
+    {
+      "severity": "medium",
+      "area": "Resume intake",
+      "finding": "The run loads a structured JSON fixture rather than exercising a real upload and parser-to-ATS path.",
+      "impact": "Resume ingestion and schema integration remain unvalidated end-to-end."
+    }
+  ],
+  "recommendations": [
+    "Pair each HR response with the adaptive question it answers, persist the transcript, and reject or clarify off-topic responses before scoring.",
+    "Score actual technical free-text answers against a transparent rubric; retain the questions, answers, and rubric evidence for human review.",
+    "Standardize stage score ranges and validation at module boundaries instead of relying on an implicit divide-by-10 conversion.",
+    "Connect real PDF/DOCX upload and parser output to the ATS schema, then run tests using representative resumes and jobs.",
+    "Expand human evaluation beyond one synthetic candidate and 10 screening intent cases; assess agreement, fairness, and performance across a representative dataset."
+  ]
+}
