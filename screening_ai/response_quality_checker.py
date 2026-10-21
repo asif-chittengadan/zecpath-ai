@@ -1,4 +1,6 @@
+import math
 import re
+from collections.abc import Mapping
 
 
 class ResponseQualityChecker:
@@ -12,7 +14,7 @@ class ResponseQualityChecker:
         }
 
     def check(self, answer, metadata=None):
-        metadata = metadata or {}
+        metadata = metadata if isinstance(metadata, Mapping) else {}
         text = "" if answer is None else str(answer).strip()
 
         issues = []
@@ -45,7 +47,10 @@ class ResponseQualityChecker:
         confidence = metadata.get("audio_confidence")
         if confidence is None:
             return False
-        return float(confidence) < float(
+        confidence = self._bounded_metric(confidence)
+        if confidence is None:
+            return True
+        return confidence < float(
             self.thresholds.get("minimum_audio_confidence", 0.55)
         )
 
@@ -53,9 +58,24 @@ class ResponseQualityChecker:
         noise_score = metadata.get("noise_score")
         if noise_score is None:
             return False
-        return float(noise_score) > float(
+        noise_score = self._bounded_metric(noise_score)
+        if noise_score is None:
+            return True
+        return noise_score > float(
             self.thresholds.get("maximum_noise_score", 0.70)
         )
+
+    @staticmethod
+    def _bounded_metric(value):
+        if isinstance(value, bool):
+            return None
+        try:
+            number = float(value)
+        except (TypeError, ValueError, OverflowError):
+            return None
+        if not math.isfinite(number) or not 0.0 <= number <= 1.0:
+            return None
+        return number
 
     def _is_language_mixed(self, text, metadata):
         if metadata.get("language_mixed") is True:

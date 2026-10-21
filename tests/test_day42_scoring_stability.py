@@ -13,7 +13,7 @@ def test_nan_score_is_rejected():
             candidate_name="Test Candidate",
             role="Software Developer",
             ats_score=math.nan,
-            screening_score=8,
+            screening_score=80,
             hr_interview_score=90
         )
 
@@ -26,7 +26,7 @@ def test_infinite_score_is_rejected():
             candidate_name="Test Candidate",
             role="Software Developer",
             ats_score=math.inf,
-            screening_score=8,
+            screening_score=80,
             hr_interview_score=90
         )
 
@@ -76,7 +76,7 @@ def test_unified_score_matches_weighted_scores():
         candidate_name="Test Candidate",
         role="Software Developer",
         ats_score=80,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90
     )
 

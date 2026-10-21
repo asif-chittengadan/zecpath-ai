@@ -1,6 +1,6 @@
 
 {
-    "version": "2.0",
+    "version": "2.1",
     "score_range": {
         "minimum": 0,
         "maximum": 100
@@ -15,8 +15,8 @@
         "screening": {
             "weight": 0.15,
             "input_minimum": 0,
-            "input_maximum": 10,
-            "description": "Candidate screening evaluation score."
+            "input_maximum": 100,
+            "description": "Candidate screening evaluation score (0-100)."
         },
         "hr_interview": {
             "weight": 0.20,
@@ -77,6 +77,33 @@
             "hr_interview": 0.40,
             "technical_interview": 0.10,
             "machine_test": 0.10
+        }
+    },
+    "legacy_role_adjustments": {
+        "default": {
+            "ats": 0.40,
+            "screening": 0.25,
+            "hr_interview": 0.35
+        },
+        "software_developer": {
+            "ats": 0.45,
+            "screening": 0.20,
+            "hr_interview": 0.35
+        },
+        "data_scientist": {
+            "ats": 0.45,
+            "screening": 0.20,
+            "hr_interview": 0.35
+        },
+        "sales_executive": {
+            "ats": 0.30,
+            "screening": 0.30,
+            "hr_interview": 0.40
+        },
+        "hr_manager": {
+            "ats": 0.25,
+            "screening": 0.30,
+            "hr_interview": 0.45
         }
     }
 }

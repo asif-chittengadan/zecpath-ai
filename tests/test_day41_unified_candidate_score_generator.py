@@ -31,7 +31,7 @@ class TestDay41UnifiedCandidateScoreGenerator(
                 candidate_name="Test Candidate",
                 role="Test Role",
                 ats_score=80,
-                screening_score=8,
+                screening_score=80,
                 hr_interview_score=90
             )
 
@@ -84,7 +84,7 @@ class TestDay41UnifiedCandidateScoreGenerator(
                 candidate_name="Test Candidate",
                 role="Test Role",
                 ats_score=80,
-                screening_score=8,
+                screening_score=80,
                 hr_interview_score=90
             )
 
@@ -111,7 +111,7 @@ class TestDay41UnifiedCandidateScoreGenerator(
                 candidate_name="Test Candidate",
                 role="Test Role",
                 ats_score=80,
-                screening_score=8,
+                screening_score=80,
                 hr_interview_score=90
             )
 
@@ -145,7 +145,7 @@ class TestDay41UnifiedCandidateScoreGenerator(
                 candidate_name="Developer",
                 role="Software Developer",
                 ats_score=80,
-                screening_score=8,
+                screening_score=80,
                 hr_interview_score=90
             )
 

@@ -213,9 +213,9 @@ class ResumeExperienceExtractor:
         durations = []
 
         patterns = [
-            r"\b\d+(?:\.\d+)?\+?\s*years?\s+\d+\s*months?\b",
-            r"\b\d+(?:\.\d+)?\+?\s*years?\b",
-            r"\b\d+\s*months?\b"
+            r"(?<![-\d])\d+(?:\.\d+)?\+?\s*years?\s+\d+\s*months?\b",
+            r"(?<![-\d])\d+(?:\.\d+)?\+?\s*years?\b",
+            r"(?<![-\d])\d+\s*months?\b"
         ]
 
         for line in section_lines:
@@ -245,7 +245,7 @@ class ResumeExperienceExtractor:
 
     def __parse_month_year(self, value):
 
-        if not value:
+        if not isinstance(value, str) or not value.strip():
             return None
 
         value = value.strip()
@@ -269,31 +269,36 @@ class ResumeExperienceExtractor:
         return None
 
     def calculate_total_experience(self, dates, durations):
+        intervals = self.__validated_intervals(dates)
         total_months = 0
-
-        if dates:
-            for date in dates:
-                start = self.__parse_month_year(date["start_date"])
-
-                if date["end_date"].lower() == "present":
-                    end = datetime.now()
+        if intervals:
+            intervals = [
+                (interval["start"], interval["end"])
+                for interval in intervals
+            ]
+            intervals.sort()
+            merged_start, merged_end = intervals[0]
+            for start, end in intervals[1:]:
+                start_month = start.year * 12 + start.month
+                end_month = end.year * 12 + end.month
+                merged_end_month = merged_end.year * 12 + merged_end.month
+                if start_month <= merged_end_month + 1:
+                    if end_month > merged_end_month:
+                        merged_end = end
                 else:
-                    end = self.__parse_month_year(date["end_date"])
-
-                if start is None or end is None:
-                    continue
-
-                months = (
-                    (end.year - start.year) * 12
-                    + (end.month - start.month)
-                    + 1
-                )
-
-                if months > 0:
-                    total_months += months
-
-        elif durations:
-            for duration in durations:
+                    total_months += merged_end_month - (
+                        merged_start.year * 12 + merged_start.month
+                    ) + 1
+                    merged_start, merged_end = start, end
+            total_months += (
+                merged_end.year * 12 + merged_end.month
+                - (merged_start.year * 12 + merged_start.month)
+                + 1
+            )
+        else:
+            if isinstance(durations, str):
+                durations = [durations]
+            for duration in durations or []:
                 total_months += self.__duration_to_months(duration)
 
         years = total_months // 12
@@ -306,18 +311,71 @@ class ResumeExperienceExtractor:
             "formatted": f"{years} years {months} months"
         }
 
+    def __validated_intervals(self, dates):
+        now = datetime.now()
+        intervals = []
+        if not isinstance(dates, (list, tuple)):
+            return intervals
+        for date in dates:
+            if not isinstance(date, dict):
+                continue
+
+            start = self.__parse_month_year(date.get("start_date"))
+            end_value = date.get("end_date")
+            if isinstance(end_value, str) and end_value.strip().lower() == "present":
+                end = now
+            else:
+                end = self.__parse_month_year(end_value)
+
+            if start is None or end is None:
+                continue
+            if end > now:
+                end = now
+            if end < start:
+                continue
+            intervals.append({"start": start, "end": end})
+        return intervals
+
+    def extract(self, section_lines):
+        """Parse experience lines into a stable structured section."""
+        if isinstance(section_lines, str):
+            lines = section_lines.splitlines()
+        else:
+            lines = [str(line) for line in (section_lines or []) if line is not None]
+
+        companies = self.extract_companies(lines)
+        roles = self.extract_roles(lines)
+        dates = self.extract_dates(lines)
+        durations = self.extract_durations(lines)
+        result = self.build_experience_output(
+            companies,
+            roles,
+            dates,
+            durations,
+        )
+        result["total_experience"] = self.calculate_total_experience(
+            dates,
+            durations,
+        )
+        result["gaps"] = self.detect_gaps(dates)
+        result["overlaps"] = self.detect_overlaps(dates)
+        return result
+
     def __duration_to_months(self, duration):
+        if not isinstance(duration, str):
+            return 0
+
         years = 0
         months = 0
 
         year_match = re.search(
-            r"(\d+(?:\.\d+)?)\+?\s*years?",
+            r"(-?\d+(?:\.\d+)?)\+?\s*years?",
             duration,
             re.IGNORECASE
         )
 
         month_match = re.search(
-            r"(\d+)\s*months?",
+            r"(-?\d+)\s*months?",
             duration,
             re.IGNORECASE
         )
@@ -328,6 +386,9 @@ class ResumeExperienceExtractor:
         if month_match:
             months = int(month_match.group(1))
 
+        if years < 0 or months < 0:
+            return 0
+
         return round(years * 12) + months
 
     def calculate_experience_duration(self, start_date, end_date):
@@ -337,12 +398,18 @@ class ResumeExperienceExtractor:
         if not start:
             return ""
 
-        if end_date.lower() == "present":
+        if isinstance(end_date, str) and end_date.strip().lower() == "present":
             end = datetime.now()
         else:
             end = self.__parse_month_year(end_date)
 
         if not end:
+            return ""
+
+        now = datetime.now()
+        if end > now:
+            end = now
+        if end < start:
             return ""
 
         months = (
@@ -366,30 +433,10 @@ class ResumeExperienceExtractor:
         return f"{remaining_months} months"
     
     def detect_gaps(self, dates):
-        if len(dates) < 2:
+        if not dates or len(dates) < 2:
             return []
 
-        parsed_dates = []
-
-        for date in dates:
-            start = self.__parse_month_year(
-                date["start_date"]
-            )
-
-            if date["end_date"].lower() == "present":
-                end = datetime.now()
-            else:
-                end = self.__parse_month_year(
-                    date["end_date"]
-                )
-
-            if start is None or end is None:
-                continue
-
-            parsed_dates.append({
-                "start": start,
-                "end": end
-            })
+        parsed_dates = self.__validated_intervals(dates)
 
         if len(parsed_dates) < 2:
             return []
@@ -427,30 +474,10 @@ class ResumeExperienceExtractor:
         return gaps
 
     def detect_overlaps(self, dates):
-        if len(dates) < 2:
+        if not dates or len(dates) < 2:
             return []
 
-        parsed_dates = []
-
-        for date in dates:
-            start = self.__parse_month_year(
-                date["start_date"]
-            )
-
-            if date["end_date"].lower() == "present":
-                end = datetime.now()
-            else:
-                end = self.__parse_month_year(
-                    date["end_date"]
-                )
-
-            if start is None or end is None:
-                continue
-
-            parsed_dates.append({
-                "start": start,
-                "end": end
-            })
+        parsed_dates = self.__validated_intervals(dates)
 
         overlaps = []
 

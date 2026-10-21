@@ -314,9 +314,8 @@ def run_simulation(output_path=DEFAULT_OUTPUT_PATH):
             candidate_name=candidate_name,
             role=role,
             ats_score=ats_result["percentage"],
-            # The current unified-scoring config expects screening 0-10,
-            # while ScreeningScoringEngine returns 0-100.
-            screening_score=screening_result["score_0_100"] / 10,
+            # All pipeline stage scores use the same 0-100 scale.
+            screening_score=screening_result["score_0_100"],
             hr_interview_score=hr_result["score_0_100"],
             technical_interview_score=technical_result["score_0_100"],
         )
@@ -374,8 +373,7 @@ def run_simulation(output_path=DEFAULT_OUTPUT_PATH):
                 "round_scores": unified["round_scores"],
                 "weights": unified["weights"],
                 "note": (
-                    "Screening score was divided by 10 at the integration boundary "
-                    "because the unified config expects 0-10, while screening emits 0-100."
+                "All stage scores use the shared 0-100 input scale."
                 ),
             },
             "final_decision": recommendation,

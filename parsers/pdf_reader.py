@@ -4,14 +4,8 @@ import fitz
 class PDFReader:
 
     def extract_text(self, file_path):
-
-        document = fitz.open(file_path)
-
-        text = ""
-
-        for page in document:
-            text += page.get_text("text")
-
-        document.close()
-
-        return text
+        with fitz.open(file_path) as document:
+            return "\n".join(
+                page.get_text("text")
+                for page in document
+            )

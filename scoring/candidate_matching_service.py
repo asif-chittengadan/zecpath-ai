@@ -1,6 +1,10 @@
+import math
+from collections.abc import Mapping
+
 from scoring.semantic_matching_engine import SemanticMatchingEngine
 from scoring.candidate_score_generator import CandidateScoreGenerator
 from scoring.fairness_masker import FairnessMasker
+from scoring.resume_schema_adapter import ResumeSchemaAdapter
 
 
 class CandidateMatchingService:
@@ -28,29 +32,54 @@ class CandidateMatchingService:
         job_description
     ):
 
+        if not isinstance(job_description, dict):
+            raise TypeError("job_description must be a dictionary.")
+
+        normalized_resume = ResumeSchemaAdapter.to_ats_schema(resume)
+
         # Candidate name is retained only as display metadata.
         # It is not used as a scoring feature.
         candidate_name = self.__extract_candidate_name(
-            resume
+            normalized_resume
         )
 
         # Create a sanitized copy for all scoring operations.
         # The original resume is never modified.
         scoring_resume = self.fairness_masker.mask_candidate(
-            resume
+            normalized_resume
         )
 
-        role = job_description.get(
-            "role",
-            ""
+        role = job_description.get("role")
+        role = role.strip() if isinstance(role, str) else ""
+
+        experience_requirements = job_description.get("experience")
+        if not isinstance(experience_requirements, Mapping):
+            experience_requirements = {}
+        else:
+            experience_requirements = dict(experience_requirements)
+        experience_requirements["minimum"] = self._finite_requirement(
+            experience_requirements.get("minimum")
         )
+        experience_requirements["maximum"] = self._finite_requirement(
+            experience_requirements.get("maximum")
+        )
+        if not isinstance(experience_requirements.get("text"), str):
+            experience_requirements["text"] = ""
+
+        job_description = {
+            **job_description,
+            "role": role,
+            "skills": self._text_values(job_description.get("skills")),
+            "experience": experience_requirements,
+            "education": self._text_values(job_description.get("education")),
+        }
 
         # -----------------------------
         # Skills
         # -----------------------------
 
         candidate_skills = self.__extract_skills(
-            resume
+            scoring_resume
         )
 
         required_skills = job_description.get(
@@ -76,7 +105,7 @@ class CandidateMatchingService:
 
         experience_relevance = (
             self.__calculate_experience_relevance(
-                resume,
+                scoring_resume,
                 job_description
             )
         )
@@ -87,7 +116,7 @@ class CandidateMatchingService:
 
         education_alignment = (
             self.__calculate_education_alignment(
-                resume,
+                scoring_resume,
                 job_description
             )
         )
@@ -98,7 +127,7 @@ class CandidateMatchingService:
 
         candidate_text = (
             self.__build_candidate_text(
-                resume
+                scoring_resume
             )
         )
 
@@ -143,6 +172,37 @@ class CandidateMatchingService:
             return others[0].strip()
 
         return "Unknown"
+
+    @staticmethod
+    def _finite_requirement(value):
+        if isinstance(value, bool) or value is None:
+            return None
+        try:
+            number = float(value)
+        except (TypeError, ValueError, OverflowError):
+            return None
+        if not math.isfinite(number) or number < 0:
+            return None
+        return number
+
+    @staticmethod
+    def _text_values(value):
+        if isinstance(value, str):
+            values = [value]
+        elif isinstance(value, (list, tuple, set)):
+            values = value
+            if isinstance(value, set):
+                values = sorted(value, key=lambda item: str(item).casefold())
+        else:
+            return []
+
+        normalized = []
+        for item in values:
+            if isinstance(item, Mapping):
+                item = item.get("skill") or item.get("name") or item.get("value")
+            if isinstance(item, str) and item.strip():
+                normalized.append(item.strip())
+        return list(dict.fromkeys(normalized))
 
     def __extract_skills(
         self,

@@ -8,7 +8,7 @@ def test_unified_score_contains_explainability():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 
@@ -22,7 +22,7 @@ def test_explainability_matches_unified_score():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 
@@ -43,7 +43,7 @@ def test_explainability_contains_all_rounds():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 
@@ -68,7 +68,7 @@ def test_explainability_contains_weighted_contributions():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 
@@ -100,7 +100,7 @@ def test_explainability_has_summary():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 
@@ -117,7 +117,7 @@ def test_explainability_does_not_change_score():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 
@@ -133,7 +133,7 @@ def test_explainability_contains_limitations():
         candidate_name="Candidate A",
         role="python_developer",
         ats_score=85,
-        screening_score=8,
+        screening_score=80,
         hr_interview_score=90,
     )
 

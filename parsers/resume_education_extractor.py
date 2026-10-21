@@ -25,6 +25,22 @@ class EducationExtractor:
             reverse=True
         )
 
+    def extract(self, section_lines):
+        """Return education fields in the shape used by ResumeSectionParser."""
+        if isinstance(section_lines, str):
+            text = section_lines
+        else:
+            text = "\n".join(
+                str(line) for line in (section_lines or []) if line is not None
+            )
+
+        return {
+            "degrees": self.extract_degree(text),
+            "fields_of_study": self.extract_field_of_study(text),
+            "institutions": self.extract_institution(text),
+            "graduation_year": self.extract_graduation_year(text),
+        }
+
     def extract_degree(self, text):
 
         matches = []

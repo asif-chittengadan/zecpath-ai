@@ -1,10 +1,10 @@
 
-import json
 from pathlib import Path
 from compliance.audit_logger import AuditLogger
 from interview_ai.behavioral_evaluator import BehavioralEvaluator
 from interview_ai.integrity.integrity_evaluator import IntegrityEvaluator
 from scoring.recommendation import RecommendationAIEngine
+from utils.json_output import write_json_atomic
 
 
 class FinalRecommendationGenerator:
@@ -80,9 +80,4 @@ class FinalRecommendationGenerator:
         return result
 
     def save(self, result):
-        self.output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        with self.output_path.open("w", encoding="utf-8") as file:
-            json.dump(result, file, indent=4)
-
-        return self.output_path
+        return write_json_atomic(self.output_path, result)

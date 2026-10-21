@@ -64,6 +64,7 @@ class ConversationContext:
     events: List[Dict[str, Any]] = field(default_factory=list)
     last_response: str = ""
     last_action: str = ""
+    pending_follow_up_question: Optional[str] = None
     completed: bool = False
 
 
@@ -174,7 +175,15 @@ class ConversationFlowEngine:
                 )
 
         if not text:
-            return self._handle_silence(context)
+            return self._handle_silence(
+                context,
+                is_follow_up=context.pending_follow_up_question is not None,
+            )
+
+        # The answer to a pending follow-up must stay attached to that
+        # follow-up even when callers use the regular response entry point.
+        if context.pending_follow_up_question is not None:
+            return self.submit_follow_up(context, text)
 
         self._transition(context, ConversationState.PROCESS_RESPONSE, "Candidate response received.")
 
@@ -212,12 +221,14 @@ class ConversationFlowEngine:
         self._transition(context, ConversationState.CHECK_FOLLOW_UP, "Checking follow-up triggers.")
 
         if self._follow_up_required(analysis):
+            follow_up_question = self._follow_up_prompt(analysis, question)
+            context.pending_follow_up_question = follow_up_question
             context.last_action = "ask_follow_up"
             self._transition(context, ConversationState.ASK_FOLLOW_UP, "Follow-up triggered.")
             return self._result(
                 context,
                 "ask_follow_up",
-                prompt=self._follow_up_prompt(analysis, question),
+                prompt=follow_up_question,
                 answer_stored=True,
             )
 
@@ -228,6 +239,12 @@ class ConversationFlowEngine:
         context: ConversationContext,
         response: Optional[str],
     ) -> Dict[str, Any]:
+        if context.completed:
+            return self._result(context, "call_already_completed")
+
+        if context.pending_follow_up_question is None:
+            return self._result(context, "no_follow_up_pending")
+
         text = (response or "").strip()
 
         if not text:
@@ -237,12 +254,13 @@ class ConversationFlowEngine:
         context.answers.append(
             {
                 "question_index": context.current_index,
-                "question": self._follow_up_prompt({}, question),
+                "question": context.pending_follow_up_question,
                 "category": question.get("category", ""),
                 "answer": text,
                 "is_follow_up": True,
             }
         )
+        context.pending_follow_up_question = None
 
         context.retry_count = 0
         context.silence_count = 0
@@ -306,8 +324,14 @@ class ConversationFlowEngine:
         context.last_action = "fallback_after_silence"
 
         if fallback:
+            # The fallback restates the main screening question, so its next
+            # response must not be recorded as an answer to the follow-up.
+            if is_follow_up:
+                context.pending_follow_up_question = None
             return self._result(context, "fallback", prompt=fallback)
 
+        if is_follow_up:
+            context.pending_follow_up_question = None
         return self._skip_current_question(context, "No response after retry limit.")
 
     def _handle_confusion(self, context: ConversationContext) -> Dict[str, Any]:

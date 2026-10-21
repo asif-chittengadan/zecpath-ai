@@ -19,19 +19,6 @@ class UnifiedScoringEngine:
         "machine_test",
     )
 
-    LEGACY_THREE_ROUND_WEIGHTS = {
-        "default": {
-            "ats": 0.45,
-            "screening": 0.20,
-            "hr_interview": 0.35,
-        },
-        "software_developer": {
-            "ats": 0.45,
-            "screening": 0.20,
-            "hr_interview": 0.35,
-        },
-    }
-
     def __init__(self, config_path=None):
         self.config_path = Path(
             config_path or self.DEFAULT_CONFIG_PATH
@@ -73,6 +60,21 @@ class UnifiedScoringEngine:
         role_adjustments = self.config.get("role_adjustments", {})
         for role, weights in role_adjustments.items():
             self._validate_role_weights(weights)
+
+        legacy_adjustments = self.config.get(
+            "legacy_role_adjustments", {}
+        )
+        if not isinstance(legacy_adjustments, dict):
+            raise ValueError("Legacy role adjustments must be a dictionary.")
+        if legacy_adjustments and "default" not in legacy_adjustments:
+            raise ValueError(
+                "Legacy role adjustments must include default weights."
+            )
+        for role, weights in legacy_adjustments.items():
+            self._validate_role_weights(
+                weights,
+                expected_rounds={"ats", "screening", "hr_interview"},
+            )
 
     @staticmethod
     def _validate_score(score, minimum, maximum, score_name):
@@ -118,7 +120,7 @@ class UnifiedScoringEngine:
         return round(value, 2)
 
     @staticmethod
-    def _validate_role_weights(weights):
+    def _validate_role_weights(weights, expected_rounds=None):
         legacy_rounds = {
             "ats",
             "screening",
@@ -129,7 +131,12 @@ class UnifiedScoringEngine:
         if not isinstance(weights, dict):
             raise ValueError("Role weights must be a dictionary.")
 
-        if set(weights) not in (legacy_rounds, five_rounds):
+        valid_round_sets = (
+            {frozenset(legacy_rounds), frozenset(five_rounds)}
+            if expected_rounds is None
+            else {frozenset(expected_rounds)}
+        )
+        if frozenset(weights) not in valid_round_sets:
             raise ValueError(
                 "Role weights must contain either the three "
                 "legacy rounds or all five evaluation rounds."
@@ -195,6 +202,38 @@ class UnifiedScoringEngine:
         weights = adjustments.get(normalized_role, default)
         return self._validate_role_weights(weights)
 
+    def _get_legacy_role_weights(self, role):
+        legacy_rounds = {"ats", "screening", "hr_interview"}
+        adjustments = self.config.get("legacy_role_adjustments", {})
+
+        if adjustments:
+            role_key = (
+                (role or "")
+                .strip()
+                .lower()
+                .replace(" ", "_")
+                .replace("-", "_")
+            )
+            weights = adjustments.get(role_key, adjustments["default"])
+            return self._validate_role_weights(
+                weights,
+                expected_rounds=legacy_rounds,
+            )
+
+        configured_weights = self._get_role_weights(role)
+        active_weights = {
+            name: configured_weights[name]
+            for name in legacy_rounds
+            if name in configured_weights
+        }
+        total = sum(active_weights.values())
+        if total <= 0:
+            raise ValueError("Legacy active round weights must total more than zero.")
+        return {
+            name: value / total
+            for name, value in active_weights.items()
+        }
+
 
     def calculate_score(
         self,
@@ -226,21 +265,10 @@ class UnifiedScoringEngine:
         normalized = {}
         raw = {}
 
-        role_key = (
-            (role or "")
-            .strip()
-            .lower()
-            .replace(" ", "_")
-            .replace("-", "_")
-        )
         legacy_rounds = {"ats", "screening", "hr_interview"}
 
         if set(active_rounds) == legacy_rounds:
-            legacy_weights = self.LEGACY_THREE_ROUND_WEIGHTS.get(
-                role_key,
-                self.LEGACY_THREE_ROUND_WEIGHTS["default"],
-            )
-            effective_weights = dict(legacy_weights)
+            effective_weights = self._get_legacy_role_weights(role)
         else:
             configured_weights = self._get_role_weights(role)
             missing_weights = set(active_rounds) - set(configured_weights)

@@ -19,7 +19,7 @@ class TestDay41UnifiedScoringEngine(
             candidate_name="Test Candidate",
             role="Software Developer",
             ats_score=100,
-            screening_score=10,
+            screening_score=100,
             hr_interview_score=100
         )
 
@@ -54,7 +54,7 @@ class TestDay41UnifiedScoringEngine(
             candidate_name="Test Candidate",
             role="Software Developer",
             ats_score=80,
-            screening_score=8,
+            screening_score=80,
             hr_interview_score=90
         )
 
@@ -69,7 +69,7 @@ class TestDay41UnifiedScoringEngine(
             candidate_name="Test Candidate",
             role="Test Role",
             ats_score=80,
-            screening_score=8,
+            screening_score=80,
             hr_interview_score=90
         )
 
@@ -99,7 +99,7 @@ class TestDay41UnifiedScoringEngine(
             candidate_name="Asif",
             role="Data Scientist",
             ats_score=75,
-            screening_score=7,
+            screening_score=70,
             hr_interview_score=85
         )
 
@@ -121,7 +121,7 @@ class TestDay41UnifiedScoringEngine(
                 candidate_name="Test",
                 role="Developer",
                 ats_score=101,
-                screening_score=8,
+                screening_score=80,
                 hr_interview_score=80
             )
 
@@ -133,7 +133,7 @@ class TestDay41UnifiedScoringEngine(
                 candidate_name="Test",
                 role="Developer",
                 ats_score=80,
-                screening_score=11,
+                screening_score=101,
                 hr_interview_score=80
             )
 
@@ -145,7 +145,7 @@ class TestDay41UnifiedScoringEngine(
                 candidate_name="Test",
                 role="Developer",
                 ats_score=80,
-                screening_score=8,
+                screening_score=80,
                 hr_interview_score=101
             )
 

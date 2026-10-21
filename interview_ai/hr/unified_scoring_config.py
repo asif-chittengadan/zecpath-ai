@@ -37,18 +37,19 @@ class UnifiedScoringConfig:
             return json.load(file)
 
     @staticmethod
-    def _validate_weights(weights, label):
-        """Validate a complete set of five-round weights."""
+    def _validate_weights(weights, label, required_rounds=None):
+        """Validate a complete set of round weights."""
 
         if not isinstance(weights, dict):
             raise ValueError(
                 f"Weights for {label} must be a dictionary."
             )
 
-        if set(weights) != UnifiedScoringConfig.REQUIRED_ROUNDS:
+        expected_rounds = required_rounds or UnifiedScoringConfig.REQUIRED_ROUNDS
+        if set(weights) != expected_rounds:
             raise ValueError(
                 f"Invalid role weights for: {label}. "
-                "All five evaluation rounds are required."
+                "All required evaluation rounds must be provided."
             )
 
         validated = {}
@@ -159,15 +160,27 @@ class UnifiedScoringConfig:
         for role, weights in role_adjustments.items():
             self._validate_weights(weights, role)
 
+        legacy_adjustments = self.config.get("legacy_role_adjustments", {})
+        if not isinstance(legacy_adjustments, dict):
+            raise ValueError("Legacy role adjustments must be a dictionary.")
+        if legacy_adjustments and "default" not in legacy_adjustments:
+            raise ValueError(
+                "Legacy role adjustments must include default weights."
+            )
+        for role, weights in legacy_adjustments.items():
+            self._validate_weights(
+                weights,
+                role,
+                required_rounds=self.LEGACY_ROUNDS,
+            )
+
     def get_round(self, name):
         return self.config["rounds"][name]
 
     def get_weight(self, name):
-        legacy_weights = {
-            "ats": 0.40,
-            "screening": 0.25,
-            "hr_interview": 0.35,
-        }
+        legacy_weights = self.config.get(
+            "legacy_role_adjustments", {}
+        ).get("default", {})
 
         if name in legacy_weights:
             return legacy_weights[name]
@@ -198,47 +211,44 @@ class UnifiedScoringConfig:
         )
 
     def get_role_weights(self, role=None):
-        legacy_roles = {
-            "default": {
-                "ats": 0.40,
-                "screening": 0.25,
-                "hr_interview": 0.35,
-            },
-            "software_developer": {
-                "ats": 0.45,
-                "screening": 0.20,
-                "hr_interview": 0.35,
-            },
-            "data_scientist": {
-                "ats": 0.45,
-                "screening": 0.20,
-                "hr_interview": 0.35,
-            },
-            "sales_executive": {
-                "ats": 0.30,
-                "screening": 0.30,
-                "hr_interview": 0.40,
-            },
-            "hr_manager": {
-                "ats": 0.25,
-                "screening": 0.30,
-                "hr_interview": 0.45,
-            },
-        }
+        legacy_roles = self.config.get("legacy_role_adjustments", {})
+        if legacy_roles:
+            normalized_role = (
+                (role or "")
+                .strip()
+                .lower()
+                .replace(" ", "_")
+                .replace("-", "_")
+            )
+            return dict(
+                legacy_roles.get(
+                    normalized_role,
+                    legacy_roles["default"],
+                )
+            )
 
-        if not role:
-            return dict(legacy_roles["default"])
-
+        # Older configuration files may only provide five-round weights.
         normalized_role = (
-            role.strip()
+            (role or "")
+            .strip()
             .lower()
             .replace(" ", "_")
             .replace("-", "_")
         )
-
-        return dict(
-            legacy_roles.get(
-                normalized_role,
-                legacy_roles["default"],
-            )
+        role_adjustments = self.config.get("role_adjustments", {})
+        five_round_weights = role_adjustments.get(
+            normalized_role,
+            role_adjustments.get("default", {}),
         )
+        legacy_weights = {
+            name: five_round_weights[name]
+            for name in self.LEGACY_ROUNDS
+            if name in five_round_weights
+        }
+        total = sum(legacy_weights.values())
+        if total <= 0:
+            raise ValueError("Legacy active round weights must total more than zero.")
+        return {
+            name: weight / total
+            for name, weight in legacy_weights.items()
+        }

@@ -96,13 +96,25 @@ class TestDay41RoleBasedScoring(
                 1.0
             )
 
+    def test_legacy_default_weights_come_from_shared_config(self):
+        for name, expected in {
+            "ats": 0.40,
+            "screening": 0.25,
+            "hr_interview": 0.35,
+        }.items():
+            with self.subTest(round=name):
+                self.assertEqual(
+                    self.config.get_weight(name),
+                    expected,
+                )
+
     def test_engine_uses_role_weights(self):
 
         result = self.engine.calculate_score(
             candidate_name="Test Candidate",
             role="Software Developer",
             ats_score=80,
-            screening_score=8,
+            screening_score=80,
             hr_interview_score=90
         )
 
@@ -140,6 +152,28 @@ class TestDay41RoleBasedScoring(
             result["unified_score"],
             83.5
         )
+
+    def test_engine_uses_configured_legacy_weights_for_each_role(self):
+        for role in (
+            "Unknown Role",
+            "Software Developer",
+            "Data Scientist",
+            "Sales Executive",
+            "HR Manager",
+        ):
+            with self.subTest(role=role):
+                result = self.engine.calculate_score(
+                    candidate_name="Test Candidate",
+                    role=role,
+                    ats_score=80,
+                    screening_score=80,
+                    hr_interview_score=90,
+                )
+
+                self.assertEqual(
+                    result["weights"],
+                    self.config.get_role_weights(role),
+                )
 
 
 if __name__ == "__main__":

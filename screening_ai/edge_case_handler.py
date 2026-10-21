@@ -30,8 +30,15 @@ class EdgeCaseHandler:
             issues[0]
         )
 
-        current_count = retry_counts.get(issue, 0)
         limit = int(self.retry_limits.get(issue, 1))
+        current_count = retry_counts.get(issue, 0)
+        if isinstance(current_count, bool):
+            current_count = limit
+        else:
+            try:
+                current_count = max(0, int(current_count))
+            except (TypeError, ValueError, OverflowError):
+                current_count = limit
 
         if current_count < limit:
             retry_counts[issue] = current_count + 1

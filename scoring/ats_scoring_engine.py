@@ -1,3 +1,5 @@
+import math
+
 from scoring.weight_config import WeightConfig
 
 
@@ -14,7 +16,10 @@ class ATSScoringEngine:
 
         try:
             score = float(score)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
+            return 0.0
+
+        if math.isnan(score):
             return 0.0
 
         if score < 0:
@@ -174,4 +179,3 @@ class ATSScoringEngine:
             })
 
         return explanations
-    
