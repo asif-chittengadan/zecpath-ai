@@ -1,5 +1,6 @@
 from functools import lru_cache
 import threading
+import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -32,7 +33,6 @@ class SemanticMatchingEngine:
             return None
 
         return self._encode_cached(text)
-
 
     @classmethod
     @lru_cache(maxsize=256)
@@ -120,16 +120,32 @@ class SemanticMatchingEngine:
                 "missing_skills": []
             }
 
+        # Encode each listed skill once, then compare all pairs together.
+        candidate_vectors = np.vstack([
+            self.encode(skill)
+            for skill in candidate_skills
+        ])
+
+        required_vectors = np.vstack([
+            self.encode(skill)
+            for skill in required_skills
+        ])
+
+        similarities = cosine_similarity(
+            required_vectors,
+            candidate_vectors
+        )
+
         matched_skills = []
         missing_skills = []
         scores = []
 
-        for required_skill in required_skills:
+        for required_index, required_skill in enumerate(required_skills):
 
             best_score = 0.0
             best_candidate = None
 
-            for candidate_skill in candidate_skills:
+            for candidate_index, candidate_skill in enumerate(candidate_skills):
 
                 candidate_normalized = candidate_skill.strip().lower()
                 required_normalized = required_skill.strip().lower()
@@ -140,9 +156,9 @@ class SemanticMatchingEngine:
 
                 else:
 
-                    score = self.calculate_similarity(
-                        candidate_skill,
-                        required_skill
+                    score = round(
+                        float(similarities[required_index, candidate_index]),
+                        4
                     )
 
                 if score > best_score:

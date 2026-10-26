@@ -1,5 +1,5 @@
 import math
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 
 from scoring.semantic_matching_engine import SemanticMatchingEngine
 from scoring.candidate_score_generator import CandidateScoreGenerator
@@ -156,6 +156,35 @@ class CandidateMatchingService:
             education_alignment=education_alignment,
             semantic_similarity=semantic_similarity
         )
+
+    def generate_scores(
+        self,
+        resumes,
+        job_description
+    ):
+
+        if isinstance(resumes, (str, bytes, Mapping)) or not isinstance(
+            resumes,
+            Iterable
+        ):
+            raise TypeError(
+                "resumes must be an iterable of resume objects."
+            )
+
+        if not isinstance(job_description, dict):
+            raise TypeError("job_description must be a dictionary.")
+
+        results = []
+
+        for resume in resumes:
+            results.append(
+                self.generate_score(
+                    resume,
+                    job_description
+                )
+            )
+
+        return results
 
     def __extract_candidate_name(
         self,
