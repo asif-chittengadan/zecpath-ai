@@ -70,7 +70,6 @@ def bullet_list(items):
     return ListFlowable(
         [ListItem(Paragraph(item, styles["Day60Body"])) for item in items],
         bulletType="bullet",
-        start="bullet",
         leftIndent=16,
         bulletFontName="Helvetica",
         bulletFontSize=8,
@@ -130,17 +129,6 @@ story = [
         "against expected scoring behavior before deployment.",
         styles["Day60Body"],
     ),
-    Paragraph("Memory and cache", styles["Day60Heading"]),
-    Paragraph(
-        "The LRU embedding cache is already bounded at 256 entries. The eight-resume "
-        "workload populated 51 entries; at 384 float32 values per embedding, the maximum "
-        "vector payload is approximately 0.38 MB. A process-memory run reached a 482 MB "
-        "working set after scoring eight resumes. This is a single local observation, not "
-        "a production capacity guarantee. The existing tracemalloc benchmark starts after "
-        "model initialization and therefore does not include model/native-runtime memory.",
-        styles["Day60Body"],
-    ),
-    PageBreak(),
     Paragraph("Concurrent load simulation", styles["Day60Heading"]),
     Paragraph(
         "The simulation used one warmed process, eight labeled resumes, and three rounds "
@@ -151,6 +139,10 @@ story = [
     ),
     bullet_list([
         "Default PyTorch threading: concurrency 1 = 12.72 requests/s, 78.40 ms mean, 303.38 ms P95; concurrency 2 = 11.98 requests/s, 163.59 ms mean, 373.50 ms P95; concurrency 4 = 9.89 requests/s, 387.38 ms mean, 787.77 ms P95.",
+    ]),
+    PageBreak(),
+    Paragraph("Concurrent load simulation (continued)", styles["Day60Heading"]),
+    bullet_list([
         "With PyTorch intra-op and inter-op threads set to 1: concurrency 1 = 7.31 requests/s, 136.66 ms mean, 395.15 ms P95; concurrency 2 = 14.37 requests/s, 136.70 ms mean, 347.70 ms P95; concurrency 4 = 12.66 requests/s, 283.48 ms mean, 559.21 ms P95.",
     ]),
     Paragraph(
@@ -159,6 +151,16 @@ story = [
         "196 across the three rounds versus 153 expected for 51 unique embeddings per round. "
         "This is consistent with duplicate encodes when concurrent requests miss the same "
         "LRU key. Recheck thread settings and cache behavior on deployment hardware.",
+        styles["Day60Body"],
+    ),
+    Paragraph("Memory and cache", styles["Day60Heading"]),
+    Paragraph(
+        "The LRU embedding cache is already bounded at 256 entries. The eight-resume "
+        "workload populated 51 entries; at 384 float32 values per embedding, the maximum "
+        "vector payload is approximately 0.38 MB. A process-memory run reached a 482 MB "
+        "working set after scoring eight resumes. This is a single local observation, not "
+        "a production capacity guarantee. The existing tracemalloc benchmark starts after "
+        "model initialization and therefore does not include model/native-runtime memory.",
         styles["Day60Body"],
     ),
     Paragraph("Horizontal scaling strategy", styles["Day60Heading"]),
