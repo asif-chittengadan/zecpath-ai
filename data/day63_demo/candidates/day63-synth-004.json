@@ -1,0 +1,118 @@
+{
+  "candidate_id": "DAY63-SYNTH-004",
+  "candidate_name": "Jamie Rivera",
+  "job_description_id": "PY-API-ASSOCIATE",
+  "scenario": "Sparse entry-level profile with basic exposure, limited evidence, and an explicit skill/experience gap.",
+  "experience_years": 0.8,
+  "resume_quality": "limited",
+  "resume": {
+    "Summary": [
+      "Entry-level applicant with introductory Python coursework and a short portfolio project."
+    ],
+    "Skills": {
+      "technical": [
+        "Python",
+        "Git",
+        "SQLite"
+      ],
+      "business": [],
+      "creative": []
+    },
+    "Experience": {
+      "total_experience": {
+        "years": 0,
+        "months": 10,
+        "total_months": 10
+      }
+    },
+    "Education": {
+      "degree": "Python Development Certificate",
+      "field_of_study": "Software Development"
+    },
+    "Projects": [
+      "Created a command-line reading tracker in Python with basic SQLite storage; limited testing and no deployed API."
+    ],
+    "Others": [
+      "Jamie Rivera"
+    ]
+  },
+  "screening": [
+    {
+      "category": "Experience",
+      "question": "How much relevant Python backend experience do you have?",
+      "answer": "I have about ten months of Python coursework and practice, including one small command-line project, but no paid backend role yet.",
+      "expected_keywords": [
+        "ten months",
+        "Python",
+        "backend"
+      ]
+    },
+    {
+      "category": "Skills",
+      "question": "Which backend technologies have you used in projects?",
+      "answer": "I have used Python, Git, and SQLite in a beginner project. I have not built a REST API yet.",
+      "expected_keywords": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "pytest",
+        "Docker"
+      ]
+    },
+    {
+      "category": "Availability",
+      "question": "When could you start?",
+      "answer": "I could start within two weeks after receiving an offer.",
+      "expected_keywords": [
+        "two weeks",
+        "start"
+      ]
+    }
+  ],
+  "hr_responses": {
+    "self_introduction": "I completed an introductory Python certificate and made a small reading tracker. I am seeking my first software role and know I still need practical experience.",
+    "career_journey": "I started learning Python last year and have mainly done coursework and one command-line project. I have not worked on a production API.",
+    "strengths_weaknesses": "I am willing to learn and I finish small tasks. I need more experience with testing, APIs, and working on a team.",
+    "teamwork_culture_fit": "Most of my project work has been individual. In a group exercise I shared progress, but I have limited experience coordinating software work.",
+    "career_goals": "I want to build stronger Python skills, learn to make APIs, and gain experience with a software team.",
+    "availability_commitment": "I could start within two weeks and can follow the role's normal working schedule.",
+    "role_based_evaluation": "I would read the code and instructions, ask questions when I am unsure, and try a small change with help from a reviewer.",
+    "fallback": "I would ask for guidance, follow the example, and check whether the change works."
+  },
+  "technical_answers": [
+    "I have learned Python and built a small command-line reading tracker.",
+    "I know Python basics, Git, and a little SQLite.",
+    "I would read the error and try to reproduce the problem with a small input.",
+    "I would check the code around the error and ask for help if I could not find it.",
+    "An API lets a program request data from another program and receive a response.",
+    "An index can help find a database record faster, but I have not used one in a project.",
+    "I would look at the error message and ask an experienced developer what to check next.",
+    "I would report the failure and avoid repeating an action if it might create duplicate data."
+  ],
+  "technical_rubric_input": {
+    "accuracy": 43,
+    "depth": 38,
+    "logical_reasoning": 47,
+    "real_world_applicability": 42,
+    "note": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+  },
+  "technical_answer_quality": "weak",
+  "machine_test": {
+    "code": "def unique_sorted(values):\n    # TODO: implement\n    return []\n",
+    "execution_result": {
+      "simulated": true,
+      "passed": 0,
+      "total": 5,
+      "summary": "Fixture records zero of five example checks passing; no candidate code is executed."
+    },
+    "correctness": 20,
+    "efficiency": 50,
+    "code_quality": 35,
+    "problem_solving": 30,
+    "time_taken_minutes": 35
+  }
+}

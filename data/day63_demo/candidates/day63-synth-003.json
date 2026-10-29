@@ -1,0 +1,129 @@
+{
+  "candidate_id": "DAY63-SYNTH-003",
+  "candidate_name": "Taylor Brooks",
+  "job_description_id": "PY-BACKEND-MID",
+  "scenario": "Career changer with a nontraditional education path and relevant self-directed/volunteer work.",
+  "experience_years": 2,
+  "resume_quality": "mixed",
+  "resume": {
+    "Summary": [
+      "Career changer who has applied Python to operations automation and volunteer web projects over two years.",
+      "Portfolio emphasizes practical problem-solving; formal software-team experience is limited."
+    ],
+    "Skills": {
+      "technical": [
+        "Python",
+        "Flask",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "Linux"
+      ],
+      "business": [
+        "Process improvement",
+        "Stakeholder communication"
+      ],
+      "creative": [
+        "Technical writing"
+      ]
+    },
+    "Experience": {
+      "total_experience": {
+        "years": 2,
+        "months": 0,
+        "total_months": 24
+      }
+    },
+    "Education": {
+      "degree": "Bachelor of Business Administration",
+      "field_of_study": "Operations Management"
+    },
+    "Projects": [
+      "Automated recurring operations reports with Python and SQL, reducing manual spreadsheet preparation.",
+      "Built a Flask volunteer-directory API with PostgreSQL and documented setup and deployment steps."
+    ],
+    "Others": [
+      "Taylor Brooks"
+    ]
+  },
+  "screening": [
+    {
+      "category": "Experience",
+      "question": "How much relevant Python backend experience do you have?",
+      "answer": "For two years I have used Python for automation and a volunteer Flask API, while transitioning from operations work.",
+      "expected_keywords": [
+        "two years",
+        "Python",
+        "backend"
+      ]
+    },
+    {
+      "category": "Skills",
+      "question": "Which backend technologies have you used in projects?",
+      "answer": "My project tools include Python, Flask, REST APIs, SQL, PostgreSQL, Git, and Linux; I am learning Django and FastAPI.",
+      "expected_keywords": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "pytest",
+        "Docker"
+      ]
+    },
+    {
+      "category": "Availability",
+      "question": "When could you start?",
+      "answer": "I would need around 30 days to transition from my current operations role.",
+      "expected_keywords": [
+        "30 days",
+        "transition"
+      ]
+    }
+  ],
+  "hr_responses": {
+    "self_introduction": "I am moving from operations into software development. Over the last two years I have automated reporting with Python and contributed to a volunteer Flask project, and I can explain the business problem behind both.",
+    "career_journey": "I first wrote Python scripts to remove repetitive reporting work. That led me to learn SQL and build a small Flask API for a volunteer group; I am now looking for a dedicated engineering role.",
+    "strengths_weaknesses": "I understand user workflows and can communicate with nontechnical colleagues. My production experience is limited, so I deliberately seek code review and add tests when extending my projects.",
+    "teamwork_culture_fit": "For the volunteer directory, I gathered requirements from organizers, agreed on the fields with another contributor, and documented how to run the API so a new volunteer could support it.",
+    "career_goals": "My goal is to become a backend developer who combines practical user understanding with sound software engineering, especially around APIs and data quality.",
+    "availability_commitment": "I would need about 30 days to transition from my current role, and I can meet the stated working requirements after that.",
+    "role_based_evaluation": "I would learn the team's conventions, review existing endpoints and tests, then contribute a small, well-documented Python change while asking for feedback.",
+    "fallback": "I would connect the technical change to the user's need, document assumptions, and ask for review where I lack production experience."
+  },
+  "technical_answers": [
+    "I have built Python automation and a small Flask API, and I am moving into software engineering from operations.",
+    "I use Python, Flask, REST APIs, SQL, PostgreSQL, Git, and Linux; I am learning Django and FastAPI.",
+    "A report was slow because the same records were repeatedly loaded. I reviewed the SQL, reduced repeated work, and checked the output against the old report.",
+    "I would reproduce the issue with a small example, inspect logs and data, then make a focused fix and compare before and after results.",
+    "The client calls a route with a request. The server validates it, runs application logic, may query SQL, and returns a response.",
+    "An index can improve common lookups but adds write and storage costs, so I would check the query pattern before adding one.",
+    "I would check recent changes, logs, and database health, then reproduce a failing request and communicate what I have ruled out.",
+    "I would set timeouts, make retry behavior safe, and record enough context to diagnose an intermittent failure."
+  ],
+  "technical_rubric_input": {
+    "accuracy": 78,
+    "depth": 76,
+    "logical_reasoning": 81,
+    "real_world_applicability": 80,
+    "note": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+  },
+  "technical_answer_quality": "acceptable",
+  "machine_test": {
+    "code": "def unique_sorted(values):\n    ordered = sorted(values)\n    unique = []\n    for item in ordered:\n        if not unique or unique[-1] != item:\n            unique.append(item)\n    return unique\n",
+    "execution_result": {
+      "simulated": true,
+      "passed": 4,
+      "total": 5,
+      "summary": "Fixture records four of five example checks passing; no candidate code is executed."
+    },
+    "correctness": 80,
+    "efficiency": 77,
+    "code_quality": 75,
+    "problem_solving": 82,
+    "time_taken_minutes": 34
+  }
+}

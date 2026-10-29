@@ -1,0 +1,21 @@
+{
+  "task_id": "DAY63-PY-001",
+  "title": "Return sorted unique values",
+  "task_type": "coding",
+  "description": "Write a function that accepts a list of integers and returns the distinct values in ascending order.",
+  "time_limit_minutes": 35,
+  "input_data": {
+    "values": [
+      4,
+      1,
+      4,
+      2,
+      1
+    ]
+  },
+  "expected_output": [
+    1,
+    2,
+    4
+  ]
+}

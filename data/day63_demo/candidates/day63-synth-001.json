@@ -1,0 +1,129 @@
+{
+  "candidate_id": "DAY63-SYNTH-001",
+  "candidate_name": "Alex Morgan",
+  "job_description_id": "PY-BACKEND-MID",
+  "scenario": "Strong, detailed resume with directly relevant backend experience.",
+  "experience_years": 3.5,
+  "resume_quality": "strong",
+  "resume": {
+    "Summary": [
+      "Backend developer with 3.5 years building Python services for internal and customer-facing products.",
+      "Experienced with API design, relational databases, automated testing, code review, and containerized development."
+    ],
+    "Skills": {
+      "technical": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "pytest",
+        "Docker"
+      ],
+      "business": [
+        "Code review",
+        "Agile collaboration"
+      ],
+      "creative": []
+    },
+    "Experience": {
+      "total_experience": {
+        "years": 3,
+        "months": 6,
+        "total_months": 42
+      }
+    },
+    "Education": {
+      "degree": "Bachelor of Computer Science",
+      "field_of_study": "Computer Science"
+    },
+    "Projects": [
+      "Built a FastAPI order service with PostgreSQL transactions, request validation, and pytest coverage.",
+      "Improved a Django reporting endpoint by adding query indexes and reducing duplicate database work."
+    ],
+    "Others": [
+      "Alex Morgan"
+    ]
+  },
+  "screening": [
+    {
+      "category": "Experience",
+      "question": "How much relevant Python backend experience do you have?",
+      "answer": "I have 3.5 years building Python backend services, including Django and FastAPI applications used by internal teams.",
+      "expected_keywords": [
+        "3.5 years",
+        "Python",
+        "backend"
+      ]
+    },
+    {
+      "category": "Skills",
+      "question": "Which backend technologies have you used in projects?",
+      "answer": "I have used Python, Django, FastAPI, REST APIs, SQL, PostgreSQL, Git, pytest, and Docker across team projects.",
+      "expected_keywords": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "pytest",
+        "Docker"
+      ]
+    },
+    {
+      "category": "Availability",
+      "question": "When could you start?",
+      "answer": "I can join after completing my 30-day notice period.",
+      "expected_keywords": [
+        "30-day",
+        "notice"
+      ]
+    }
+  ],
+  "hr_responses": {
+    "self_introduction": "I am a backend developer with 3.5 years of experience delivering Python services. Recently I owned API changes from design through tests and release, and I enjoy making systems easier to maintain.",
+    "career_journey": "I started with Django maintenance work, then took on FastAPI services and database-backed features. In my current role I review changes, write tests, and coordinate releases with product and QA.",
+    "strengths_weaknesses": "My strengths are structured debugging and clear ownership. I used to spend too long polishing a first solution, so I now agree on acceptance criteria early and time-box investigations.",
+    "teamwork_culture_fit": "On an order-service project, I coordinated API contracts with the frontend developer and shared a small test plan with QA. We caught a pagination mismatch before release and delivered the fix together.",
+    "career_goals": "I want to deepen my backend design skills, contribute to reliable services, and gradually mentor teammates through code review and technical planning.",
+    "availability_commitment": "I can meet the role's normal working requirements and would need to complete a 30-day notice period before joining.",
+    "role_based_evaluation": "For a Python Developer role I would first clarify service boundaries and reliability needs, then make a small design, add tests, and monitor the change after deployment.",
+    "fallback": "I would clarify the requirement, communicate risks early, and verify the result with tests before calling the work complete."
+  },
+  "technical_answers": [
+    "I build Python APIs and data-backed services, and recently delivered an order workflow with validation and automated tests.",
+    "Python is my main language; I have used Django and FastAPI, plus SQL, PostgreSQL, Git, pytest, and Docker.",
+    "I reproduced a slow endpoint, inspected its SQL queries, added an index, and checked the change with a focused benchmark and regression tests.",
+    "I use logs and traces to narrow the failure, reproduce it locally, add a failing test, fix the cause, and verify neighboring behavior.",
+    "A client sends an HTTP request to a route; the service validates it, applies business logic, reads or writes the database, and returns a status and response body.",
+    "An index can speed up matching and sorting but costs storage and makes writes slightly more expensive, so I add one based on query patterns.",
+    "I would check error rates, saturation, and recent changes first, then reproduce the failing request and inspect database and dependency health.",
+    "I would use timeouts and bounded retries for transient failures, make writes idempotent where possible, and add monitoring for the failure mode."
+  ],
+  "technical_rubric_input": {
+    "accuracy": 88,
+    "depth": 84,
+    "logical_reasoning": 89,
+    "real_world_applicability": 88,
+    "note": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+  },
+  "technical_answer_quality": "strong",
+  "machine_test": {
+    "code": "def unique_sorted(values):\n    return sorted(set(values))\n",
+    "execution_result": {
+      "simulated": true,
+      "passed": 5,
+      "total": 5,
+      "summary": "Fixture states that all five example checks pass; the harness does not execute candidate code."
+    },
+    "correctness": 95,
+    "efficiency": 92,
+    "code_quality": 90,
+    "problem_solving": 90,
+    "time_taken_minutes": 22
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "job_description_id": "PY-API-ASSOCIATE",
+  "title": "Python API Developer — Associate",
+  "role": "Python Developer",
+  "summary": "Contribute to Python API development with support from experienced engineers. Demonstrate Python fundamentals, basic SQL, Git collaboration, and willingness to learn testing and service practices.",
+  "skills": [
+    "Python",
+    "REST APIs",
+    "SQL",
+    "Git",
+    "pytest"
+  ],
+  "experience": {
+    "minimum": 0,
+    "maximum": 2,
+    "text": "Entry-level to 2 years of relevant experience"
+  },
+  "education": [
+    "Bachelor of Computer Science",
+    "Bachelor of Information Technology",
+    "Python Development Certificate"
+  ],
+  "eligibility_rules": {
+    "minimum_ats_score": 25,
+    "mandatory_skills": [
+      "Python"
+    ],
+    "experience": {
+      "minimum": 0,
+      "maximum": 2
+    },
+    "location": [],
+    "availability": []
+  }
+}

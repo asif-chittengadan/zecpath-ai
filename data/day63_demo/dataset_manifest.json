@@ -1,0 +1,35 @@
+{
+  "dataset_id": "ZECPATH-DAY63-SYNTHETIC-HIRING-DEMO",
+  "version": "1.0",
+  "synthetic_only": true,
+  "description": "Fictional, varied-quality candidate profiles and responses for a reproducible end-to-end Python hiring-pipeline demonstration. No real candidate records are included.",
+  "job_descriptions": [
+    {
+      "job_description_id": "PY-BACKEND-MID",
+      "file": "job_descriptions/py-backend-mid.json"
+    },
+    {
+      "job_description_id": "PY-API-ASSOCIATE",
+      "file": "job_descriptions/py-api-associate.json"
+    }
+  ],
+  "candidate_profiles": [
+    {
+      "candidate_id": "DAY63-SYNTH-001",
+      "file": "candidates/day63-synth-001.json"
+    },
+    {
+      "candidate_id": "DAY63-SYNTH-002",
+      "file": "candidates/day63-synth-002.json"
+    },
+    {
+      "candidate_id": "DAY63-SYNTH-003",
+      "file": "candidates/day63-synth-003.json"
+    },
+    {
+      "candidate_id": "DAY63-SYNTH-004",
+      "file": "candidates/day63-synth-004.json"
+    }
+  ],
+  "machine_test_task_file": "assessments/python_unique_sorted_task.json"
+}

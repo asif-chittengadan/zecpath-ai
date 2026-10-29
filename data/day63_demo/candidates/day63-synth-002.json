@@ -1,0 +1,127 @@
+{
+  "candidate_id": "DAY63-SYNTH-002",
+  "candidate_name": "Riley Chen",
+  "job_description_id": "PY-API-ASSOCIATE",
+  "scenario": "Adequate early-career profile with relevant project evidence and a few missing preferred tools.",
+  "experience_years": 1.5,
+  "resume_quality": "adequate",
+  "resume": {
+    "Summary": [
+      "Junior software developer with 18 months of Python experience in small API and automation projects.",
+      "Comfortable with SQL, Git, basic testing, and learning unfamiliar frameworks."
+    ],
+    "Skills": {
+      "technical": [
+        "Python",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "Git",
+        "pytest",
+        "SQLite"
+      ],
+      "business": [
+        "Team communication",
+        "Documentation"
+      ],
+      "creative": []
+    },
+    "Experience": {
+      "total_experience": {
+        "years": 1,
+        "months": 6,
+        "total_months": 18
+      }
+    },
+    "Education": {
+      "degree": "Bachelor of Information Technology",
+      "field_of_study": "Information Technology"
+    },
+    "Projects": [
+      "Created a FastAPI service for a course project with SQL persistence and request validation.",
+      "Maintained Python automation scripts and added pytest checks for common input cases."
+    ],
+    "Others": [
+      "Riley Chen"
+    ]
+  },
+  "screening": [
+    {
+      "category": "Experience",
+      "question": "How much relevant Python backend experience do you have?",
+      "answer": "I have about 18 months of Python development, mainly FastAPI endpoints and small SQL-backed services.",
+      "expected_keywords": [
+        "18 months",
+        "Python",
+        "backend"
+      ]
+    },
+    {
+      "category": "Skills",
+      "question": "Which backend technologies have you used in projects?",
+      "answer": "I have used Python, FastAPI, REST APIs, SQL, Git, and pytest in work and team projects.",
+      "expected_keywords": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "pytest",
+        "Docker"
+      ]
+    },
+    {
+      "category": "Availability",
+      "question": "When could you start?",
+      "answer": "I could start in about two weeks, subject to confirming the offer details.",
+      "expected_keywords": [
+        "two weeks",
+        "start"
+      ]
+    }
+  ],
+  "hr_responses": {
+    "self_introduction": "I am a junior developer with about 18 months of Python experience. I have worked on API and automation projects, and I am looking for a team where I can keep building reliable software.",
+    "career_journey": "I began with Python scripts and then built a small FastAPI service. I have handled basic validation, SQL persistence, and tests, and I am still gaining experience with production practices.",
+    "strengths_weaknesses": "I am persistent when debugging and I ask for feedback. I sometimes need help estimating unfamiliar work, so I break tasks into smaller steps and check assumptions early.",
+    "teamwork_culture_fit": "In a course project I owned one API module and coordinated the request and response format with two teammates. We tested the integration together and fixed a field-name mismatch.",
+    "career_goals": "I want to become a dependable backend engineer, learn how teams operate production services, and improve my testing and database design skills.",
+    "availability_commitment": "I can start in about two weeks if the offer and schedule are confirmed.",
+    "role_based_evaluation": "I would first understand the existing Python service and its tests, then make a small change, ask for review, and verify the API behavior.",
+    "fallback": "I would ask a teammate to clarify the requirement, make a small change, and test it before sharing the result."
+  },
+  "technical_answers": [
+    "I have built small Python APIs and scripts, including a FastAPI project that stores records in SQL.",
+    "Python is my strongest language. I have also used FastAPI, REST, SQL, Git, pytest, and SQLite.",
+    "I found a failing request by checking the input and error message, then added validation and a test for the missing field.",
+    "I would reproduce the bug, read the traceback, make one change at a time, and run the relevant tests.",
+    "A client sends a request to an API route. The server validates it, performs the work, and sends back a response.",
+    "An index helps a database locate rows faster, although too many indexes can slow down updates and use more space.",
+    "I would check the logs and recent deployment, reproduce the issue, and ask whether the database or another service is also failing.",
+    "I would add a timeout, report a clear error, and avoid retrying a request if it could create duplicate writes."
+  ],
+  "technical_rubric_input": {
+    "accuracy": 72,
+    "depth": 68,
+    "logical_reasoning": 74,
+    "real_world_applicability": 71,
+    "note": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+  },
+  "technical_answer_quality": "acceptable",
+  "machine_test": {
+    "code": "def unique_sorted(values):\n    result = []\n    for value in sorted(values):\n        if value not in result:\n            result.append(value)\n    return result\n",
+    "execution_result": {
+      "simulated": true,
+      "passed": 4,
+      "total": 5,
+      "summary": "Fixture records four of five example checks passing; no candidate code is executed."
+    },
+    "correctness": 75,
+    "efficiency": 62,
+    "code_quality": 72,
+    "problem_solving": 70,
+    "time_taken_minutes": 31
+  }
+}

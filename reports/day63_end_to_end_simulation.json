@@ -1,0 +1,1908 @@
+{
+  "report_title": "Day 63 Synthetic End-to-End Hiring Pipeline Simulation",
+  "dataset_id": "ZECPATH-DAY63-SYNTHETIC-HIRING-DEMO",
+  "dataset_version": "1.0",
+  "dataset_storage": {
+    "manifest": "data/day63_demo/dataset_manifest.json",
+    "job_descriptions": "data/day63_demo/job_descriptions/",
+    "candidate_profiles": "data/day63_demo/candidates/",
+    "shared_assessment": "data/day63_demo/assessments/python_unique_sorted_task.json"
+  },
+  "run_at_utc": "2026-10-29T08:32:33.747295+00:00",
+  "synthetic_only": true,
+  "job_descriptions": [
+    {
+      "job_description_id": "PY-BACKEND-MID",
+      "title": "Python Backend Developer \u2014 Mid-Level",
+      "role": "Python Developer",
+      "summary": "Build and maintain Python backend services and REST APIs. Work with relational data, automated tests, code review, and collaborative delivery practices.",
+      "skills": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "Git",
+        "pytest",
+        "Docker"
+      ],
+      "experience": {
+        "minimum": 1,
+        "maximum": 5,
+        "text": "1 to 5 years of relevant software development experience"
+      },
+      "education": [
+        "Bachelor of Computer Science",
+        "Bachelor of Software Engineering",
+        "Bachelor of Information Technology"
+      ],
+      "eligibility_rules": {
+        "minimum_ats_score": 55,
+        "mandatory_skills": [
+          "Python",
+          "SQL"
+        ],
+        "experience": {
+          "minimum": 1,
+          "maximum": 5
+        },
+        "location": [],
+        "availability": []
+      }
+    },
+    {
+      "job_description_id": "PY-API-ASSOCIATE",
+      "title": "Python API Developer \u2014 Associate",
+      "role": "Python Developer",
+      "summary": "Contribute to Python API development with support from experienced engineers. Demonstrate Python fundamentals, basic SQL, Git collaboration, and willingness to learn testing and service practices.",
+      "skills": [
+        "Python",
+        "REST APIs",
+        "SQL",
+        "Git",
+        "pytest"
+      ],
+      "experience": {
+        "minimum": 0,
+        "maximum": 2,
+        "text": "Entry-level to 2 years of relevant experience"
+      },
+      "education": [
+        "Bachelor of Computer Science",
+        "Bachelor of Information Technology",
+        "Python Development Certificate"
+      ],
+      "eligibility_rules": {
+        "minimum_ats_score": 25,
+        "mandatory_skills": [
+          "Python"
+        ],
+        "experience": {
+          "minimum": 0,
+          "maximum": 2
+        },
+        "location": [],
+        "availability": []
+      }
+    }
+  ],
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "candidate": {
+        "candidate_id": "DAY63-SYNTH-001",
+        "candidate_name": "Alex Morgan",
+        "job_description_id": "PY-BACKEND-MID",
+        "job_title": "Python Backend Developer \u2014 Mid-Level",
+        "scenario": "Strong, detailed resume with directly relevant backend experience.",
+        "resume_quality": "strong",
+        "experience_years": 3.5,
+        "synthetic": true
+      },
+      "stages": {
+        "resume_intake": {
+          "source": "structured synthetic resume fixture",
+          "profile_quality_scenario": "strong",
+          "parser_or_upload_endpoint_exercised": false
+        },
+        "ats": {
+          "score_0_100": 95.59,
+          "components": {
+            "skill_match": 1.0,
+            "experience_relevance": 1.0,
+            "education_alignment": 1.0,
+            "semantic_similarity": 0.7797
+          },
+          "weights": {
+            "skill_match": 0.35,
+            "experience_relevance": 0.3,
+            "education_alignment": 0.15,
+            "semantic_similarity": 0.2
+          },
+          "explanations": [
+            {
+              "component": "Skill Match",
+              "score": 1.0,
+              "weight": 0.35,
+              "contribution": 0.35
+            },
+            {
+              "component": "Experience Relevance",
+              "score": 1.0,
+              "weight": 0.3,
+              "contribution": 0.3
+            },
+            {
+              "component": "Education Alignment",
+              "score": 1.0,
+              "weight": 0.15,
+              "contribution": 0.15
+            },
+            {
+              "component": "Semantic Similarity",
+              "score": 0.7797,
+              "weight": 0.2,
+              "contribution": 0.1559
+            }
+          ]
+        },
+        "screening": {
+          "score_0_100": 95.0,
+          "questions_evaluated": 3,
+          "answers_accepted": 3,
+          "conversation_completed": true,
+          "parameter_scores": {
+            "clarity": 23.33,
+            "relevance": 25.0,
+            "completeness": 25.0,
+            "consistency": 21.67
+          },
+          "answer_actions": [
+            "next_question",
+            "next_question",
+            "end_call"
+          ],
+          "answers": [
+            {
+              "question": "How much relevant Python backend experience do you have?",
+              "category": "Experience",
+              "answer": "I have 3.5 years building Python backend services, including Django and FastAPI applications used by internal teams.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 100.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "No previous answers were available for consistency comparison."
+              }
+            },
+            {
+              "question": "Which backend technologies have you used in projects?",
+              "category": "Skills",
+              "answer": "I have used Python, Django, FastAPI, REST APIs, SQL, PostgreSQL, Git, pytest, and Docker across team projects.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            },
+            {
+              "question": "When could you start?",
+              "category": "Availability",
+              "answer": "I can join after completing my 30-day notice period.",
+              "normalized_scores": {
+                "clarity": 80.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides a reasonable amount of detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            }
+          ],
+          "scoring_note": "Uses the screening conversation state machine and configured rubric. This fixture harness supplies pre-curated non-empty responses and does not invoke the semantic answer-intent adapter."
+        },
+        "hr_interview": {
+          "score_0_100": 90.12,
+          "questions_answered": 18,
+          "completed": true,
+          "completion_ratio": 1.0,
+          "normalized_scores": {
+            "answer_relevance": 76.64,
+            "communication": 88.52,
+            "confidence": 100.0,
+            "consistency": 100.0
+          },
+          "responses": [
+            {
+              "category": "self_introduction",
+              "question": "Could you introduce yourself and summarize your professional technical experience?",
+              "response": "I am a backend developer with 3.5 years of experience delivering Python services. Recently I owned API changes from design through tests and release, and I enjoy making systems easier to maintain."
+            },
+            {
+              "category": "self_introduction",
+              "question": "Could you walk me through your career and the technical roles you have held?",
+              "response": "I am a backend developer with 3.5 years of experience delivering Python services. Recently I owned API changes from design through tests and release, and I enjoy making systems easier to maintain."
+            },
+            {
+              "category": "career_journey",
+              "question": "What has been the most important technical transition in your career?",
+              "response": "I started with Django maintenance work, then took on FastAPI services and database-backed features. In my current role I review changes, write tests, and coordinate releases with product and QA."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you give me a specific example from that experience?",
+              "response": "I started with Django maintenance work, then took on FastAPI services and database-backed features. In my current role I review changes, write tests, and coordinate releases with product and QA."
+            },
+            {
+              "category": "career_journey",
+              "question": "Which professional project has contributed most to your technical growth?",
+              "response": "I started with Django maintenance work, then took on FastAPI services and database-backed features. In my current role I review changes, write tests, and coordinate releases with product and QA."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you describe a different example?",
+              "response": "I started with Django maintenance work, then took on FastAPI services and database-backed features. In my current role I review changes, write tests, and coordinate releases with product and QA."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What technical strength has helped you most in your career?",
+              "response": "My strengths are structured debugging and clear ownership. I used to spend too long polishing a first solution, so I now agree on acceptance criteria early and time-box investigations."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Could you give me an example that demonstrates this?",
+              "response": "My strengths are structured debugging and clear ownership. I used to spend too long polishing a first solution, so I now agree on acceptance criteria early and time-box investigations."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What technical area are you currently working to improve?",
+              "response": "My strengths are structured debugging and clear ownership. I used to spend too long polishing a first solution, so I now agree on acceptance criteria early and time-box investigations."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Can you share another situation where this happened?",
+              "response": "My strengths are structured debugging and clear ownership. I used to spend too long polishing a first solution, so I now agree on acceptance criteria early and time-box investigations."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Tell me about a technical project where you had to collaborate with different teams.",
+              "response": "On an order-service project, I coordinated API contracts with the frontend developer and shared a small test plan with QA. We caught a pagination mismatch before release and delivered the fix together."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Could you give me a specific example of how you handled that situation?",
+              "response": "On an order-service project, I coordinated API contracts with the frontend developer and shared a small test plan with QA. We caught a pagination mismatch before release and delivered the fix together."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "How do you handle technical disagreements within a team?",
+              "response": "On an order-service project, I coordinated API contracts with the frontend developer and shared a small test plan with QA. We caught a pagination mismatch before release and delivered the fix together."
+            },
+            {
+              "category": "career_goals",
+              "question": "What technical direction would you like to take in the next few years?",
+              "response": "I want to deepen my backend design skills, contribute to reliable services, and gradually mentor teammates through code review and technical planning."
+            },
+            {
+              "category": "career_goals",
+              "question": "What are your long-term career goals?",
+              "response": "I want to deepen my backend design skills, contribute to reliable services, and gradually mentor teammates through code review and technical planning."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "What is your current notice period and when could you start?",
+              "response": "I can meet the role's normal working requirements and would need to complete a 30-day notice period before joining."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "Are there any work arrangements or commitments we should consider?",
+              "response": "I can meet the role's normal working requirements and would need to complete a 30-day notice period before joining."
+            },
+            {
+              "category": "role_based_evaluation",
+              "question": "Could you describe a technical challenge you would expect to face in a Python Developer role and how you would approach it?",
+              "response": "For a Python Developer role I would first clarify service boundaries and reliability needs, then make a small design, add tests, and monitor the change after deployment."
+            }
+          ],
+          "scoring_note": "Uses the current deterministic HR demonstration heuristics. Responses are fictional fixture inputs and require human interpretation."
+        },
+        "technical_interview": {
+          "score_0_100": 87.2,
+          "score_breakdown": {
+            "accuracy": {
+              "score": 88.0,
+              "weight": 0.4,
+              "weighted_score": 35.2
+            },
+            "depth": {
+              "score": 84.0,
+              "weight": 0.25,
+              "weighted_score": 21.0
+            },
+            "logical_reasoning": {
+              "score": 89.0,
+              "weight": 0.2,
+              "weighted_score": 17.8
+            },
+            "real_world_applicability": {
+              "score": 88.0,
+              "weight": 0.15,
+              "weighted_score": 13.2
+            }
+          },
+          "questions_answered": 8,
+          "completed": true,
+          "skill_domain": "python",
+          "question_answers": [
+            {
+              "stage": "introduction",
+              "difficulty": "intermediate",
+              "question": "Describe your technical experience and major projects.",
+              "answer": "I build Python APIs and data-backed services, and recently delivered an order workflow with validation and automated tests."
+            },
+            {
+              "stage": "introduction",
+              "difficulty": "advanced",
+              "question": "Which technical decisions have you made that had a significant impact on a project?",
+              "answer": "Python is my main language; I have used Django and FastAPI, plus SQL, PostgreSQL, Git, pytest, and Docker."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "advanced",
+              "question": "Describe a complex technical problem you solved and the trade-offs you considered.",
+              "answer": "I reproduced a slow endpoint, inspected its SQL queries, added an index, and checked the change with a focused benchmark and regression tests."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "advanced",
+              "question": "Describe an architectural decision you made and why you selected that approach.",
+              "answer": "I use logs and traces to narrow the failure, reproduce it locally, add a failing test, fix the cause, and verify neighboring behavior."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "advanced",
+              "question": "Explain the trade-offs between different database scaling strategies.",
+              "answer": "A client sends an HTTP request to a route; the service validates it, applies business logic, reads or writes the database, and returns a status and response body."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "advanced",
+              "question": "How would you design a system for high availability and scalability?",
+              "answer": "An index can speed up matching and sorting but costs storage and makes writes slightly more expensive, so I add one based on query patterns."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "advanced",
+              "question": "Design a scalable system capable of handling millions of users.",
+              "answer": "I would check error rates, saturation, and recent changes first, then reproduce the failing request and inspect database and dependency health."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "advanced",
+              "question": "A distributed system is experiencing latency and reliability problems. How would you diagnose and improve it?",
+              "answer": "I would use timeouts and bounded retries for transient failures, make writes idempotent where possible, and add monitoring for the failure mode."
+            }
+          ],
+          "score_source": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+        },
+        "machine_test": {
+          "candidate_id": "DAY63-SYNTH-001",
+          "task_id": "DAY63-PY-001",
+          "task_type": "coding",
+          "evaluated_at": "2026-10-29T08:32:33.486280+00:00",
+          "submission": {
+            "code_snapshot": "def unique_sorted(values):\n    return sorted(set(values))\n",
+            "execution_result": {
+              "simulated": true,
+              "passed": 5,
+              "total": 5,
+              "summary": "Fixture states that all five example checks pass; the harness does not execute candidate code."
+            }
+          },
+          "component_scores": {
+            "evaluation_score": 92.4,
+            "maximum_score": 100,
+            "breakdown": {
+              "correctness": {
+                "score": 95,
+                "weight": 0.4,
+                "weighted_score": 38.0
+              },
+              "efficiency": {
+                "score": 92,
+                "weight": 0.2,
+                "weighted_score": 18.4
+              },
+              "code_quality": {
+                "score": 90,
+                "weight": 0.2,
+                "weighted_score": 18.0
+              },
+              "problem_solving": {
+                "score": 90,
+                "weight": 0.2,
+                "weighted_score": 18.0
+              }
+            },
+            "human_review_required": true
+          },
+          "time_scoring": {
+            "base_score": 92.4,
+            "time_limit_minutes": 35,
+            "time_taken_minutes": 22,
+            "time_bonus": 0.0,
+            "time_penalty": 0,
+            "final_score": 92.4
+          },
+          "final_score": 92.4,
+          "human_review_required": true,
+          "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
+        },
+        "unified_score": {
+          "score_0_100": 91.83,
+          "round_scores": {
+            "ats": 95.59,
+            "screening": 95.0,
+            "hr_interview": 90.12,
+            "technical_interview": 87.2,
+            "machine_test": 92.4
+          },
+          "normalized_scores": {
+            "ats": 95.59,
+            "screening": 95.0,
+            "hr_interview": 90.12,
+            "technical_interview": 87.2,
+            "machine_test": 92.4
+          },
+          "weights": {
+            "ats": 0.25,
+            "screening": 0.15,
+            "hr_interview": 0.2,
+            "technical_interview": 0.25,
+            "machine_test": 0.15
+          },
+          "weighted_scores": {
+            "ats": 23.9,
+            "screening": 14.25,
+            "hr_interview": 18.02,
+            "technical_interview": 21.8,
+            "machine_test": 13.86
+          }
+        },
+        "eligibility": {
+          "decision": "Eligible",
+          "ats_score": 95.59,
+          "failed_rules": [],
+          "review_rules": [],
+          "missing_mandatory_skills": []
+        },
+        "final_recommendation": {
+          "candidate_id": "DAY63-SYNTH-001",
+          "candidate_name": "Alex Morgan",
+          "role": "Python Developer",
+          "decision": "Selected",
+          "unified_score": 91.83,
+          "confidence_score": 89.52,
+          "thresholds": {
+            "selection": 75,
+            "review": 50
+          },
+          "risk_factors": [],
+          "eligibility": {
+            "failed_rules": [],
+            "review_rules": [],
+            "missing_mandatory_skills": []
+          },
+          "reasons": [
+            "Score meets the selection threshold."
+          ],
+          "human_review_required": false,
+          "behavioral_evaluation": null,
+          "integrity_evaluation": null
+        }
+      },
+      "performance": {
+        "stage_seconds": {
+          "resume_intake_and_consent": 0.0001,
+          "ats_scoring": 0.2496,
+          "screening": 0.0021,
+          "hr_interview": 0.0051,
+          "technical_interview": 0.0001,
+          "machine_test": 0.0001,
+          "unified_scoring": 0.0081,
+          "eligibility_and_final_decision": 0.0074
+        },
+        "total_seconds": 0.2725
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "DAY63-SYNTH-002",
+        "candidate_name": "Riley Chen",
+        "job_description_id": "PY-API-ASSOCIATE",
+        "job_title": "Python API Developer \u2014 Associate",
+        "scenario": "Adequate early-career profile with relevant project evidence and a few missing preferred tools.",
+        "resume_quality": "adequate",
+        "experience_years": 1.5,
+        "synthetic": true
+      },
+      "stages": {
+        "resume_intake": {
+          "source": "structured synthetic resume fixture",
+          "profile_quality_scenario": "adequate",
+          "parser_or_upload_endpoint_exercised": false
+        },
+        "ats": {
+          "score_0_100": 94.71,
+          "components": {
+            "skill_match": 1.0,
+            "experience_relevance": 1.0,
+            "education_alignment": 1.0,
+            "semantic_similarity": 0.7353
+          },
+          "weights": {
+            "skill_match": 0.35,
+            "experience_relevance": 0.3,
+            "education_alignment": 0.15,
+            "semantic_similarity": 0.2
+          },
+          "explanations": [
+            {
+              "component": "Skill Match",
+              "score": 1.0,
+              "weight": 0.35,
+              "contribution": 0.35
+            },
+            {
+              "component": "Experience Relevance",
+              "score": 1.0,
+              "weight": 0.3,
+              "contribution": 0.3
+            },
+            {
+              "component": "Education Alignment",
+              "score": 1.0,
+              "weight": 0.15,
+              "contribution": 0.15
+            },
+            {
+              "component": "Semantic Similarity",
+              "score": 0.7353,
+              "weight": 0.2,
+              "contribution": 0.1471
+            }
+          ]
+        },
+        "screening": {
+          "score_0_100": 85.57,
+          "questions_evaluated": 3,
+          "answers_accepted": 3,
+          "conversation_completed": true,
+          "parameter_scores": {
+            "clarity": 25.0,
+            "relevance": 19.45,
+            "completeness": 19.45,
+            "consistency": 21.67
+          },
+          "answer_actions": [
+            "next_question",
+            "next_question",
+            "end_call"
+          ],
+          "answers": [
+            {
+              "question": "How much relevant Python backend experience do you have?",
+              "category": "Experience",
+              "answer": "I have about 18 months of Python development, mainly FastAPI endpoints and small SQL-backed services.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 66.7,
+                "completeness": 66.7,
+                "consistency": 100.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains some of the expected relevant information.",
+                "completeness": "The answer contains some but not all expected information.",
+                "consistency": "No previous answers were available for consistency comparison."
+              }
+            },
+            {
+              "question": "Which backend technologies have you used in projects?",
+              "category": "Skills",
+              "answer": "I have used Python, FastAPI, REST APIs, SQL, Git, and pytest in work and team projects.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 66.7,
+                "completeness": 66.7,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains some of the expected relevant information.",
+                "completeness": "The answer contains some but not all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            },
+            {
+              "question": "When could you start?",
+              "category": "Availability",
+              "answer": "I could start in about two weeks, subject to confirming the offer details.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            }
+          ],
+          "scoring_note": "Uses the screening conversation state machine and configured rubric. This fixture harness supplies pre-curated non-empty responses and does not invoke the semantic answer-intent adapter."
+        },
+        "hr_interview": {
+          "score_0_100": 89.36,
+          "questions_answered": 18,
+          "completed": true,
+          "completion_ratio": 1.0,
+          "normalized_scores": {
+            "answer_relevance": 75.67,
+            "communication": 86.66,
+            "confidence": 100.0,
+            "consistency": 100.0
+          },
+          "responses": [
+            {
+              "category": "self_introduction",
+              "question": "Could you please introduce yourself and briefly tell me about your technical background?",
+              "response": "I am a junior developer with about 18 months of Python experience. I have worked on API and automation projects, and I am looking for a team where I can keep building reliable software."
+            },
+            {
+              "category": "self_introduction",
+              "question": "Could you walk me through your education and the technical projects you have worked on?",
+              "response": "I am a junior developer with about 18 months of Python experience. I have worked on API and automation projects, and I am looking for a team where I can keep building reliable software."
+            },
+            {
+              "category": "career_journey",
+              "question": "Which academic project or experience has contributed most to your technical growth?",
+              "response": "I began with Python scripts and then built a small FastAPI service. I have handled basic validation, SQL persistence, and tests, and I am still gaining experience with production practices."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you give me a specific example from that experience?",
+              "response": "I began with Python scripts and then built a small FastAPI service. I have handled basic validation, SQL persistence, and tests, and I am still gaining experience with production practices."
+            },
+            {
+              "category": "career_journey",
+              "question": "What led you to choose this technical career path?",
+              "response": "I began with Python scripts and then built a small FastAPI service. I have handled basic validation, SQL persistence, and tests, and I am still gaining experience with production practices."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you describe a different example?",
+              "response": "I began with Python scripts and then built a small FastAPI service. I have handled basic validation, SQL persistence, and tests, and I am still gaining experience with production practices."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What is one technical strength you would bring to this role?",
+              "response": "I am persistent when debugging and I ask for feedback. I sometimes need help estimating unfamiliar work, so I break tasks into smaller steps and check assumptions early."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Could you give me an example that demonstrates this?",
+              "response": "I am persistent when debugging and I ask for feedback. I sometimes need help estimating unfamiliar work, so I break tasks into smaller steps and check assumptions early."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What technical area are you currently working to improve?",
+              "response": "I am persistent when debugging and I ask for feedback. I sometimes need help estimating unfamiliar work, so I break tasks into smaller steps and check assumptions early."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Can you share another situation where this happened?",
+              "response": "I am persistent when debugging and I ask for feedback. I sometimes need help estimating unfamiliar work, so I break tasks into smaller steps and check assumptions early."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Tell me about a technical project where you worked as part of a team.",
+              "response": "In a course project I owned one API module and coordinated the request and response format with two teammates. We tested the integration together and fixed a field-name mismatch."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Could you give me a specific example of how you handled that situation?",
+              "response": "In a course project I owned one API module and coordinated the request and response format with two teammates. We tested the integration together and fixed a field-name mismatch."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "How do you handle a technical disagreement with a teammate?",
+              "response": "In a course project I owned one API module and coordinated the request and response format with two teammates. We tested the integration together and fixed a field-name mismatch."
+            },
+            {
+              "category": "career_goals",
+              "question": "What technical skills would you like to develop over the next few years?",
+              "response": "I want to become a dependable backend engineer, learn how teams operate production services, and improve my testing and database design skills."
+            },
+            {
+              "category": "career_goals",
+              "question": "What are your career goals at the beginning of your professional journey?",
+              "response": "I want to become a dependable backend engineer, learn how teams operate production services, and improve my testing and database design skills."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "When would you be available to start this role?",
+              "response": "I can start in about two weeks if the offer and schedule are confirmed."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "Are you comfortable with the work expectations associated with this role?",
+              "response": "I can start in about two weeks if the offer and schedule are confirmed."
+            },
+            {
+              "category": "role_based_evaluation",
+              "question": "Could you describe a technical challenge you would expect to face in a Python Developer role and how you would approach it?",
+              "response": "I would first understand the existing Python service and its tests, then make a small change, ask for review, and verify the API behavior."
+            }
+          ],
+          "scoring_note": "Uses the current deterministic HR demonstration heuristics. Responses are fictional fixture inputs and require human interpretation."
+        },
+        "technical_interview": {
+          "score_0_100": 71.25,
+          "score_breakdown": {
+            "accuracy": {
+              "score": 72.0,
+              "weight": 0.4,
+              "weighted_score": 28.8
+            },
+            "depth": {
+              "score": 68.0,
+              "weight": 0.25,
+              "weighted_score": 17.0
+            },
+            "logical_reasoning": {
+              "score": 74.0,
+              "weight": 0.2,
+              "weighted_score": 14.8
+            },
+            "real_world_applicability": {
+              "score": 71.0,
+              "weight": 0.15,
+              "weighted_score": 10.65
+            }
+          },
+          "questions_answered": 8,
+          "completed": true,
+          "skill_domain": "python",
+          "question_answers": [
+            {
+              "stage": "introduction",
+              "difficulty": "basic",
+              "question": "Tell me about your technical background.",
+              "answer": "I have built small Python APIs and scripts, including a FastAPI project that stores records in SQL."
+            },
+            {
+              "stage": "introduction",
+              "difficulty": "basic",
+              "question": "Which programming languages are you comfortable with?",
+              "answer": "Python is my strongest language. I have also used FastAPI, REST, SQL, Git, pytest, and SQLite."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "basic",
+              "question": "Describe a project you have worked on.",
+              "answer": "I found a failing request by checking the input and error message, then added validation and a test for the missing field."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "basic",
+              "question": "What was your role in the project?",
+              "answer": "I would reproduce the bug, read the traceback, make one change at a time, and run the relevant tests."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "basic",
+              "question": "What is object-oriented programming?",
+              "answer": "A client sends a request to an API route. The server validates it, performs the work, and sends back a response."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "basic",
+              "question": "What is the difference between a list and a tuple?",
+              "answer": "An index helps a database locate rows faster, although too many indexes can slow down updates and use more space."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "basic",
+              "question": "A program is producing an unexpected error. How would you debug it?",
+              "answer": "I would check the logs and recent deployment, reproduce the issue, and ask whether the database or another service is also failing."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "basic",
+              "question": "An application is running slowly. What would you check first?",
+              "answer": "I would add a timeout, report a clear error, and avoid retrying a request if it could create duplicate writes."
+            }
+          ],
+          "score_source": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+        },
+        "machine_test": {
+          "candidate_id": "DAY63-SYNTH-002",
+          "task_id": "DAY63-PY-001",
+          "task_type": "coding",
+          "evaluated_at": "2026-10-29T08:32:33.587948+00:00",
+          "submission": {
+            "code_snapshot": "def unique_sorted(values):\n    result = []\n    for value in sorted(values):\n        if value not in result:\n            result.append(value)\n    return result\n",
+            "execution_result": {
+              "simulated": true,
+              "passed": 4,
+              "total": 5,
+              "summary": "Fixture records four of five example checks passing; no candidate code is executed."
+            }
+          },
+          "component_scores": {
+            "evaluation_score": 70.8,
+            "maximum_score": 100,
+            "breakdown": {
+              "correctness": {
+                "score": 75,
+                "weight": 0.4,
+                "weighted_score": 30.0
+              },
+              "efficiency": {
+                "score": 62,
+                "weight": 0.2,
+                "weighted_score": 12.4
+              },
+              "code_quality": {
+                "score": 72,
+                "weight": 0.2,
+                "weighted_score": 14.4
+              },
+              "problem_solving": {
+                "score": 70,
+                "weight": 0.2,
+                "weighted_score": 14.0
+              }
+            },
+            "human_review_required": true
+          },
+          "time_scoring": {
+            "base_score": 70.8,
+            "time_limit_minutes": 35,
+            "time_taken_minutes": 31,
+            "time_bonus": 0.0,
+            "time_penalty": 0,
+            "final_score": 70.8
+          },
+          "final_score": 70.8,
+          "human_review_required": true,
+          "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
+        },
+        "unified_score": {
+          "score_0_100": 82.82,
+          "round_scores": {
+            "ats": 94.71,
+            "screening": 85.57,
+            "hr_interview": 89.36,
+            "technical_interview": 71.25,
+            "machine_test": 70.8
+          },
+          "normalized_scores": {
+            "ats": 94.71,
+            "screening": 85.57,
+            "hr_interview": 89.36,
+            "technical_interview": 71.25,
+            "machine_test": 70.8
+          },
+          "weights": {
+            "ats": 0.25,
+            "screening": 0.15,
+            "hr_interview": 0.2,
+            "technical_interview": 0.25,
+            "machine_test": 0.15
+          },
+          "weighted_scores": {
+            "ats": 23.68,
+            "screening": 12.84,
+            "hr_interview": 17.87,
+            "technical_interview": 17.81,
+            "machine_test": 10.62
+          }
+        },
+        "eligibility": {
+          "decision": "Eligible",
+          "ats_score": 94.71,
+          "failed_rules": [],
+          "review_rules": [],
+          "missing_mandatory_skills": []
+        },
+        "final_recommendation": {
+          "candidate_id": "DAY63-SYNTH-002",
+          "candidate_name": "Riley Chen",
+          "role": "Python Developer",
+          "decision": "Selected",
+          "unified_score": 82.82,
+          "confidence_score": 79.07,
+          "thresholds": {
+            "selection": 75,
+            "review": 50
+          },
+          "risk_factors": [],
+          "eligibility": {
+            "failed_rules": [],
+            "review_rules": [],
+            "missing_mandatory_skills": []
+          },
+          "reasons": [
+            "Score meets the selection threshold."
+          ],
+          "human_review_required": false,
+          "behavioral_evaluation": null,
+          "integrity_evaluation": null
+        }
+      },
+      "performance": {
+        "stage_seconds": {
+          "resume_intake_and_consent": 0.0001,
+          "ats_scoring": 0.0803,
+          "screening": 0.0015,
+          "hr_interview": 0.0041,
+          "technical_interview": 0.0001,
+          "machine_test": 0.0001,
+          "unified_scoring": 0.005,
+          "eligibility_and_final_decision": 0.0057
+        },
+        "total_seconds": 0.0968
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "DAY63-SYNTH-003",
+        "candidate_name": "Taylor Brooks",
+        "job_description_id": "PY-BACKEND-MID",
+        "job_title": "Python Backend Developer \u2014 Mid-Level",
+        "scenario": "Career changer with a nontraditional education path and relevant self-directed/volunteer work.",
+        "resume_quality": "mixed",
+        "experience_years": 2,
+        "synthetic": true
+      },
+      "stages": {
+        "resume_intake": {
+          "source": "structured synthetic resume fixture",
+          "profile_quality_scenario": "mixed",
+          "parser_or_upload_endpoint_exercised": false
+        },
+        "ats": {
+          "score_0_100": 67.91,
+          "components": {
+            "skill_match": 0.7293,
+            "experience_relevance": 1.0,
+            "education_alignment": 0.0,
+            "semantic_similarity": 0.6194
+          },
+          "weights": {
+            "skill_match": 0.35,
+            "experience_relevance": 0.3,
+            "education_alignment": 0.15,
+            "semantic_similarity": 0.2
+          },
+          "explanations": [
+            {
+              "component": "Skill Match",
+              "score": 0.7293,
+              "weight": 0.35,
+              "contribution": 0.2553
+            },
+            {
+              "component": "Experience Relevance",
+              "score": 1.0,
+              "weight": 0.3,
+              "contribution": 0.3
+            },
+            {
+              "component": "Education Alignment",
+              "score": 0.0,
+              "weight": 0.15,
+              "contribution": 0.0
+            },
+            {
+              "component": "Semantic Similarity",
+              "score": 0.6194,
+              "weight": 0.2,
+              "contribution": 0.1239
+            }
+          ]
+        },
+        "screening": {
+          "score_0_100": 87.43,
+          "questions_evaluated": 3,
+          "answers_accepted": 3,
+          "conversation_completed": true,
+          "parameter_scores": {
+            "clarity": 25.0,
+            "relevance": 20.38,
+            "completeness": 20.38,
+            "consistency": 21.67
+          },
+          "answer_actions": [
+            "next_question",
+            "next_question",
+            "end_call"
+          ],
+          "answers": [
+            {
+              "question": "How much relevant Python backend experience do you have?",
+              "category": "Experience",
+              "answer": "For two years I have used Python for automation and a volunteer Flask API, while transitioning from operations work.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 66.7,
+                "completeness": 66.7,
+                "consistency": 100.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains some of the expected relevant information.",
+                "completeness": "The answer contains some but not all expected information.",
+                "consistency": "No previous answers were available for consistency comparison."
+              }
+            },
+            {
+              "question": "Which backend technologies have you used in projects?",
+              "category": "Skills",
+              "answer": "My project tools include Python, Flask, REST APIs, SQL, PostgreSQL, Git, and Linux; I am learning Django and FastAPI.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 77.8,
+                "completeness": 77.8,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains some of the expected relevant information.",
+                "completeness": "The answer contains some but not all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            },
+            {
+              "question": "When could you start?",
+              "category": "Availability",
+              "answer": "I would need around 30 days to transition from my current operations role.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            }
+          ],
+          "scoring_note": "Uses the screening conversation state machine and configured rubric. This fixture harness supplies pre-curated non-empty responses and does not invoke the semantic answer-intent adapter."
+        },
+        "hr_interview": {
+          "score_0_100": 87.93,
+          "questions_answered": 18,
+          "completed": true,
+          "completion_ratio": 1.0,
+          "normalized_scores": {
+            "answer_relevance": 75.66,
+            "communication": 81.38,
+            "confidence": 99.44,
+            "consistency": 100.0
+          },
+          "responses": [
+            {
+              "category": "self_introduction",
+              "question": "Could you introduce yourself and summarize your professional technical experience?",
+              "response": "I am moving from operations into software development. Over the last two years I have automated reporting with Python and contributed to a volunteer Flask project, and I can explain the business problem behind both."
+            },
+            {
+              "category": "self_introduction",
+              "question": "Could you walk me through your career and the technical roles you have held?",
+              "response": "I am moving from operations into software development. Over the last two years I have automated reporting with Python and contributed to a volunteer Flask project, and I can explain the business problem behind both."
+            },
+            {
+              "category": "career_journey",
+              "question": "What has been the most important technical transition in your career?",
+              "response": "I first wrote Python scripts to remove repetitive reporting work. That led me to learn SQL and build a small Flask API for a volunteer group; I am now looking for a dedicated engineering role."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you give me a specific example from that experience?",
+              "response": "I first wrote Python scripts to remove repetitive reporting work. That led me to learn SQL and build a small Flask API for a volunteer group; I am now looking for a dedicated engineering role."
+            },
+            {
+              "category": "career_journey",
+              "question": "Which professional project has contributed most to your technical growth?",
+              "response": "I first wrote Python scripts to remove repetitive reporting work. That led me to learn SQL and build a small Flask API for a volunteer group; I am now looking for a dedicated engineering role."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you describe a different example?",
+              "response": "I first wrote Python scripts to remove repetitive reporting work. That led me to learn SQL and build a small Flask API for a volunteer group; I am now looking for a dedicated engineering role."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What technical strength has helped you most in your career?",
+              "response": "I understand user workflows and can communicate with nontechnical colleagues. My production experience is limited, so I deliberately seek code review and add tests when extending my projects."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Could you give me an example that demonstrates this?",
+              "response": "I understand user workflows and can communicate with nontechnical colleagues. My production experience is limited, so I deliberately seek code review and add tests when extending my projects."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What technical area are you currently working to improve?",
+              "response": "I understand user workflows and can communicate with nontechnical colleagues. My production experience is limited, so I deliberately seek code review and add tests when extending my projects."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Can you share another situation where this happened?",
+              "response": "I understand user workflows and can communicate with nontechnical colleagues. My production experience is limited, so I deliberately seek code review and add tests when extending my projects."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Tell me about a technical project where you had to collaborate with different teams.",
+              "response": "For the volunteer directory, I gathered requirements from organizers, agreed on the fields with another contributor, and documented how to run the API so a new volunteer could support it."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Could you give me a specific example of how you handled that situation?",
+              "response": "For the volunteer directory, I gathered requirements from organizers, agreed on the fields with another contributor, and documented how to run the API so a new volunteer could support it."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "How do you handle technical disagreements within a team?",
+              "response": "For the volunteer directory, I gathered requirements from organizers, agreed on the fields with another contributor, and documented how to run the API so a new volunteer could support it."
+            },
+            {
+              "category": "career_goals",
+              "question": "What technical direction would you like to take in the next few years?",
+              "response": "My goal is to become a backend developer who combines practical user understanding with sound software engineering, especially around APIs and data quality."
+            },
+            {
+              "category": "career_goals",
+              "question": "What are your long-term career goals?",
+              "response": "My goal is to become a backend developer who combines practical user understanding with sound software engineering, especially around APIs and data quality."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "What is your current notice period and when could you start?",
+              "response": "I would need about 30 days to transition from my current role, and I can meet the stated working requirements after that."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "Are there any work arrangements or commitments we should consider?",
+              "response": "I would need about 30 days to transition from my current role, and I can meet the stated working requirements after that."
+            },
+            {
+              "category": "role_based_evaluation",
+              "question": "Could you describe a technical challenge you would expect to face in a Python Developer role and how you would approach it?",
+              "response": "I would learn the team's conventions, review existing endpoints and tests, then contribute a small, well-documented Python change while asking for feedback."
+            }
+          ],
+          "scoring_note": "Uses the current deterministic HR demonstration heuristics. Responses are fictional fixture inputs and require human interpretation."
+        },
+        "technical_interview": {
+          "score_0_100": 78.4,
+          "score_breakdown": {
+            "accuracy": {
+              "score": 78.0,
+              "weight": 0.4,
+              "weighted_score": 31.2
+            },
+            "depth": {
+              "score": 76.0,
+              "weight": 0.25,
+              "weighted_score": 19.0
+            },
+            "logical_reasoning": {
+              "score": 81.0,
+              "weight": 0.2,
+              "weighted_score": 16.2
+            },
+            "real_world_applicability": {
+              "score": 80.0,
+              "weight": 0.15,
+              "weighted_score": 12.0
+            }
+          },
+          "questions_answered": 8,
+          "completed": true,
+          "skill_domain": "python",
+          "question_answers": [
+            {
+              "stage": "introduction",
+              "difficulty": "basic",
+              "question": "Tell me about your technical background.",
+              "answer": "I have built Python automation and a small Flask API, and I am moving into software engineering from operations."
+            },
+            {
+              "stage": "introduction",
+              "difficulty": "basic",
+              "question": "Which programming languages are you comfortable with?",
+              "answer": "I use Python, Flask, REST APIs, SQL, PostgreSQL, Git, and Linux; I am learning Django and FastAPI."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "basic",
+              "question": "Describe a project you have worked on.",
+              "answer": "A report was slow because the same records were repeatedly loaded. I reviewed the SQL, reduced repeated work, and checked the output against the old report."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "basic",
+              "question": "What was your role in the project?",
+              "answer": "I would reproduce the issue with a small example, inspect logs and data, then make a focused fix and compare before and after results."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "basic",
+              "question": "What is object-oriented programming?",
+              "answer": "The client calls a route with a request. The server validates it, runs application logic, may query SQL, and returns a response."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "basic",
+              "question": "What is the difference between a list and a tuple?",
+              "answer": "An index can improve common lookups but adds write and storage costs, so I would check the query pattern before adding one."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "basic",
+              "question": "A program is producing an unexpected error. How would you debug it?",
+              "answer": "I would check recent changes, logs, and database health, then reproduce a failing request and communicate what I have ruled out."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "basic",
+              "question": "An application is running slowly. What would you check first?",
+              "answer": "I would set timeouts, make retry behavior safe, and record enough context to diagnose an intermittent failure."
+            }
+          ],
+          "score_source": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+        },
+        "machine_test": {
+          "candidate_id": "DAY63-SYNTH-003",
+          "task_id": "DAY63-PY-001",
+          "task_type": "coding",
+          "evaluated_at": "2026-10-29T08:32:33.683499+00:00",
+          "submission": {
+            "code_snapshot": "def unique_sorted(values):\n    ordered = sorted(values)\n    unique = []\n    for item in ordered:\n        if not unique or unique[-1] != item:\n            unique.append(item)\n    return unique\n",
+            "execution_result": {
+              "simulated": true,
+              "passed": 4,
+              "total": 5,
+              "summary": "Fixture records four of five example checks passing; no candidate code is executed."
+            }
+          },
+          "component_scores": {
+            "evaluation_score": 78.8,
+            "maximum_score": 100,
+            "breakdown": {
+              "correctness": {
+                "score": 80,
+                "weight": 0.4,
+                "weighted_score": 32.0
+              },
+              "efficiency": {
+                "score": 77,
+                "weight": 0.2,
+                "weighted_score": 15.4
+              },
+              "code_quality": {
+                "score": 75,
+                "weight": 0.2,
+                "weighted_score": 15.0
+              },
+              "problem_solving": {
+                "score": 82,
+                "weight": 0.2,
+                "weighted_score": 16.4
+              }
+            },
+            "human_review_required": true
+          },
+          "time_scoring": {
+            "base_score": 78.8,
+            "time_limit_minutes": 35,
+            "time_taken_minutes": 34,
+            "time_bonus": 0.0,
+            "time_penalty": 0,
+            "final_score": 78.8
+          },
+          "final_score": 78.8,
+          "human_review_required": true,
+          "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
+        },
+        "unified_score": {
+          "score_0_100": 79.1,
+          "round_scores": {
+            "ats": 67.91,
+            "screening": 87.43,
+            "hr_interview": 87.93,
+            "technical_interview": 78.4,
+            "machine_test": 78.8
+          },
+          "normalized_scores": {
+            "ats": 67.91,
+            "screening": 87.43,
+            "hr_interview": 87.93,
+            "technical_interview": 78.4,
+            "machine_test": 78.8
+          },
+          "weights": {
+            "ats": 0.25,
+            "screening": 0.15,
+            "hr_interview": 0.2,
+            "technical_interview": 0.25,
+            "machine_test": 0.15
+          },
+          "weighted_scores": {
+            "ats": 16.98,
+            "screening": 13.11,
+            "hr_interview": 17.59,
+            "technical_interview": 19.6,
+            "machine_test": 11.82
+          }
+        },
+        "eligibility": {
+          "decision": "Eligible",
+          "ats_score": 67.91,
+          "failed_rules": [],
+          "review_rules": [],
+          "missing_mandatory_skills": []
+        },
+        "final_recommendation": {
+          "candidate_id": "DAY63-SYNTH-003",
+          "candidate_name": "Taylor Brooks",
+          "role": "Python Developer",
+          "decision": "Selected",
+          "unified_score": 79.1,
+          "confidence_score": 74.76,
+          "thresholds": {
+            "selection": 75,
+            "review": 50
+          },
+          "risk_factors": [],
+          "eligibility": {
+            "failed_rules": [],
+            "review_rules": [],
+            "missing_mandatory_skills": []
+          },
+          "reasons": [
+            "Score meets the selection threshold."
+          ],
+          "human_review_required": false,
+          "behavioral_evaluation": null,
+          "integrity_evaluation": null
+        }
+      },
+      "performance": {
+        "stage_seconds": {
+          "resume_intake_and_consent": 0.0001,
+          "ats_scoring": 0.0768,
+          "screening": 0.0023,
+          "hr_interview": 0.0055,
+          "technical_interview": 0.0001,
+          "machine_test": 0.0001,
+          "unified_scoring": 0.0057,
+          "eligibility_and_final_decision": 0.0057
+        },
+        "total_seconds": 0.0961
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "DAY63-SYNTH-004",
+        "candidate_name": "Jamie Rivera",
+        "job_description_id": "PY-API-ASSOCIATE",
+        "job_title": "Python API Developer \u2014 Associate",
+        "scenario": "Sparse entry-level profile with basic exposure, limited evidence, and an explicit skill/experience gap.",
+        "resume_quality": "limited",
+        "experience_years": 0.8,
+        "synthetic": true
+      },
+      "stages": {
+        "resume_intake": {
+          "source": "structured synthetic resume fixture",
+          "profile_quality_scenario": "limited",
+          "parser_or_upload_endpoint_exercised": false
+        },
+        "ats": {
+          "score_0_100": 70.6,
+          "components": {
+            "skill_match": 0.6318,
+            "experience_relevance": 1.0,
+            "education_alignment": 0.5,
+            "semantic_similarity": 0.5492
+          },
+          "weights": {
+            "skill_match": 0.35,
+            "experience_relevance": 0.3,
+            "education_alignment": 0.15,
+            "semantic_similarity": 0.2
+          },
+          "explanations": [
+            {
+              "component": "Skill Match",
+              "score": 0.6318,
+              "weight": 0.35,
+              "contribution": 0.2211
+            },
+            {
+              "component": "Experience Relevance",
+              "score": 1.0,
+              "weight": 0.3,
+              "contribution": 0.3
+            },
+            {
+              "component": "Education Alignment",
+              "score": 0.5,
+              "weight": 0.15,
+              "contribution": 0.075
+            },
+            {
+              "component": "Semantic Similarity",
+              "score": 0.5492,
+              "weight": 0.2,
+              "contribution": 0.1098
+            }
+          ]
+        },
+        "screening": {
+          "score_0_100": 82.04,
+          "questions_evaluated": 3,
+          "answers_accepted": 3,
+          "conversation_completed": true,
+          "parameter_scores": {
+            "clarity": 23.33,
+            "relevance": 18.52,
+            "completeness": 18.52,
+            "consistency": 21.67
+          },
+          "answer_actions": [
+            "next_question",
+            "next_question",
+            "end_call"
+          ],
+          "answers": [
+            {
+              "question": "How much relevant Python backend experience do you have?",
+              "category": "Experience",
+              "answer": "I have about ten months of Python coursework and practice, including one small command-line project, but no paid backend role yet.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 100.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "No previous answers were available for consistency comparison."
+              }
+            },
+            {
+              "question": "Which backend technologies have you used in projects?",
+              "category": "Skills",
+              "answer": "I have used Python, Git, and SQLite in a beginner project. I have not built a REST API yet.",
+              "normalized_scores": {
+                "clarity": 100.0,
+                "relevance": 22.2,
+                "completeness": 22.2,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides sufficient detail.",
+                "relevance": "The answer contains limited relevant information.",
+                "completeness": "The answer contains only a small portion of the expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            },
+            {
+              "question": "When could you start?",
+              "category": "Availability",
+              "answer": "I could start within two weeks after receiving an offer.",
+              "normalized_scores": {
+                "clarity": 80.0,
+                "relevance": 100.0,
+                "completeness": 100.0,
+                "consistency": 80.0
+              },
+              "explanations": {
+                "clarity": "The answer is clear and provides a reasonable amount of detail.",
+                "relevance": "The answer contains all expected relevant information.",
+                "completeness": "The answer contains all expected information.",
+                "consistency": "The answer is broadly consistent with the available previous responses."
+              }
+            }
+          ],
+          "scoring_note": "Uses the screening conversation state machine and configured rubric. This fixture harness supplies pre-curated non-empty responses and does not invoke the semantic answer-intent adapter."
+        },
+        "hr_interview": {
+          "score_0_100": 89.4,
+          "questions_answered": 18,
+          "completed": true,
+          "completion_ratio": 1.0,
+          "normalized_scores": {
+            "answer_relevance": 76.41,
+            "communication": 85.92,
+            "confidence": 100.0,
+            "consistency": 100.0
+          },
+          "responses": [
+            {
+              "category": "self_introduction",
+              "question": "Could you please introduce yourself and briefly tell me about your technical background?",
+              "response": "I completed an introductory Python certificate and made a small reading tracker. I am seeking my first software role and know I still need practical experience."
+            },
+            {
+              "category": "self_introduction",
+              "question": "Could you walk me through your education and the technical projects you have worked on?",
+              "response": "I completed an introductory Python certificate and made a small reading tracker. I am seeking my first software role and know I still need practical experience."
+            },
+            {
+              "category": "career_journey",
+              "question": "Which academic project or experience has contributed most to your technical growth?",
+              "response": "I started learning Python last year and have mainly done coursework and one command-line project. I have not worked on a production API."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you give me a specific example from that experience?",
+              "response": "I started learning Python last year and have mainly done coursework and one command-line project. I have not worked on a production API."
+            },
+            {
+              "category": "career_journey",
+              "question": "What led you to choose this technical career path?",
+              "response": "I started learning Python last year and have mainly done coursework and one command-line project. I have not worked on a production API."
+            },
+            {
+              "category": "career_journey",
+              "question": "Could you describe a different example?",
+              "response": "I started learning Python last year and have mainly done coursework and one command-line project. I have not worked on a production API."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What is one technical strength you would bring to this role?",
+              "response": "I am willing to learn and I finish small tasks. I need more experience with testing, APIs, and working on a team."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Could you give me an example that demonstrates this?",
+              "response": "I am willing to learn and I finish small tasks. I need more experience with testing, APIs, and working on a team."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "What technical area are you currently working to improve?",
+              "response": "I am willing to learn and I finish small tasks. I need more experience with testing, APIs, and working on a team."
+            },
+            {
+              "category": "strengths_weaknesses",
+              "question": "Can you share another situation where this happened?",
+              "response": "I am willing to learn and I finish small tasks. I need more experience with testing, APIs, and working on a team."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Tell me about a technical project where you worked as part of a team.",
+              "response": "Most of my project work has been individual. In a group exercise I shared progress, but I have limited experience coordinating software work."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "Could you give me a specific example of how you handled that situation?",
+              "response": "Most of my project work has been individual. In a group exercise I shared progress, but I have limited experience coordinating software work."
+            },
+            {
+              "category": "teamwork_culture_fit",
+              "question": "How do you handle a technical disagreement with a teammate?",
+              "response": "Most of my project work has been individual. In a group exercise I shared progress, but I have limited experience coordinating software work."
+            },
+            {
+              "category": "career_goals",
+              "question": "What technical skills would you like to develop over the next few years?",
+              "response": "I want to build stronger Python skills, learn to make APIs, and gain experience with a software team."
+            },
+            {
+              "category": "career_goals",
+              "question": "What are your career goals at the beginning of your professional journey?",
+              "response": "I want to build stronger Python skills, learn to make APIs, and gain experience with a software team."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "When would you be available to start this role?",
+              "response": "I could start within two weeks and can follow the role's normal working schedule."
+            },
+            {
+              "category": "availability_commitment",
+              "question": "Are you comfortable with the work expectations associated with this role?",
+              "response": "I could start within two weeks and can follow the role's normal working schedule."
+            },
+            {
+              "category": "role_based_evaluation",
+              "question": "Could you describe a technical challenge you would expect to face in a Python Developer role and how you would approach it?",
+              "response": "I would read the code and instructions, ask questions when I am unsure, and try a small change with help from a reviewer."
+            }
+          ],
+          "scoring_note": "Uses the current deterministic HR demonstration heuristics. Responses are fictional fixture inputs and require human interpretation."
+        },
+        "technical_interview": {
+          "score_0_100": 42.4,
+          "score_breakdown": {
+            "accuracy": {
+              "score": 43.0,
+              "weight": 0.4,
+              "weighted_score": 17.2
+            },
+            "depth": {
+              "score": 38.0,
+              "weight": 0.25,
+              "weighted_score": 9.5
+            },
+            "logical_reasoning": {
+              "score": 47.0,
+              "weight": 0.2,
+              "weighted_score": 9.4
+            },
+            "real_world_applicability": {
+              "score": 42.0,
+              "weight": 0.15,
+              "weighted_score": 6.3
+            }
+          },
+          "questions_answered": 8,
+          "completed": true,
+          "skill_domain": "python",
+          "question_answers": [
+            {
+              "stage": "introduction",
+              "difficulty": "basic",
+              "question": "Tell me about your technical background.",
+              "answer": "I have learned Python and built a small command-line reading tracker."
+            },
+            {
+              "stage": "introduction",
+              "difficulty": "basic",
+              "question": "Which programming languages are you comfortable with?",
+              "answer": "I know Python basics, Git, and a little SQLite."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "basic",
+              "question": "Describe a project you have worked on.",
+              "answer": "I would read the error and try to reproduce the problem with a small input."
+            },
+            {
+              "stage": "experience_based",
+              "difficulty": "basic",
+              "question": "What was your role in the project?",
+              "answer": "I would check the code around the error and ask for help if I could not find it."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "basic",
+              "question": "What is object-oriented programming?",
+              "answer": "An API lets a program request data from another program and receive a response."
+            },
+            {
+              "stage": "conceptual",
+              "difficulty": "basic",
+              "question": "What is the difference between a list and a tuple?",
+              "answer": "An index can help find a database record faster, but I have not used one in a project."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "basic",
+              "question": "A program is producing an unexpected error. How would you debug it?",
+              "answer": "I would look at the error message and ask an experienced developer what to check next."
+            },
+            {
+              "stage": "scenario_based",
+              "difficulty": "basic",
+              "question": "An application is running slowly. What would you check first?",
+              "answer": "I would report the failure and avoid repeating an action if it might create duplicate data."
+            }
+          ],
+          "score_source": "Illustrative human-rubric fixture; free-text technical answers are retained but are not automatically graded by the current scorer."
+        },
+        "machine_test": {
+          "candidate_id": "DAY63-SYNTH-004",
+          "task_id": "DAY63-PY-001",
+          "task_type": "coding",
+          "evaluated_at": "2026-10-29T08:32:33.725995+00:00",
+          "submission": {
+            "code_snapshot": "def unique_sorted(values):\n    # TODO: implement\n    return []\n",
+            "execution_result": {
+              "simulated": true,
+              "passed": 0,
+              "total": 5,
+              "summary": "Fixture records zero of five example checks passing; no candidate code is executed."
+            }
+          },
+          "component_scores": {
+            "evaluation_score": 31.0,
+            "maximum_score": 100,
+            "breakdown": {
+              "correctness": {
+                "score": 20,
+                "weight": 0.4,
+                "weighted_score": 8.0
+              },
+              "efficiency": {
+                "score": 50,
+                "weight": 0.2,
+                "weighted_score": 10.0
+              },
+              "code_quality": {
+                "score": 35,
+                "weight": 0.2,
+                "weighted_score": 7.0
+              },
+              "problem_solving": {
+                "score": 30,
+                "weight": 0.2,
+                "weighted_score": 6.0
+              }
+            },
+            "human_review_required": true
+          },
+          "time_scoring": {
+            "base_score": 31.0,
+            "time_limit_minutes": 35,
+            "time_taken_minutes": 35,
+            "time_bonus": 0.0,
+            "time_penalty": 0,
+            "final_score": 31.0
+          },
+          "final_score": 31.0,
+          "human_review_required": true,
+          "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
+        },
+        "unified_score": {
+          "score_0_100": 63.09,
+          "round_scores": {
+            "ats": 70.6,
+            "screening": 82.04,
+            "hr_interview": 89.4,
+            "technical_interview": 42.4,
+            "machine_test": 31.0
+          },
+          "normalized_scores": {
+            "ats": 70.6,
+            "screening": 82.04,
+            "hr_interview": 89.4,
+            "technical_interview": 42.4,
+            "machine_test": 31.0
+          },
+          "weights": {
+            "ats": 0.25,
+            "screening": 0.15,
+            "hr_interview": 0.2,
+            "technical_interview": 0.25,
+            "machine_test": 0.15
+          },
+          "weighted_scores": {
+            "ats": 17.65,
+            "screening": 12.31,
+            "hr_interview": 17.88,
+            "technical_interview": 10.6,
+            "machine_test": 4.65
+          }
+        },
+        "eligibility": {
+          "decision": "Eligible",
+          "ats_score": 70.6,
+          "failed_rules": [],
+          "review_rules": [],
+          "missing_mandatory_skills": []
+        },
+        "final_recommendation": {
+          "candidate_id": "DAY63-SYNTH-004",
+          "candidate_name": "Jamie Rivera",
+          "role": "Python Developer",
+          "decision": "Hold / Review",
+          "unified_score": 63.09,
+          "confidence_score": 60.24,
+          "thresholds": {
+            "selection": 75,
+            "review": 50
+          },
+          "risk_factors": [],
+          "eligibility": {
+            "failed_rules": [],
+            "review_rules": [],
+            "missing_mandatory_skills": []
+          },
+          "reasons": [
+            "Score falls within the review range."
+          ],
+          "human_review_required": true,
+          "behavioral_evaluation": null,
+          "integrity_evaluation": null
+        }
+      },
+      "performance": {
+        "stage_seconds": {
+          "resume_intake_and_consent": 0.0001,
+          "ats_scoring": 0.0212,
+          "screening": 0.002,
+          "hr_interview": 0.0076,
+          "technical_interview": 0.0001,
+          "machine_test": 0.0001,
+          "unified_scoring": 0.0054,
+          "eligibility_and_final_decision": 0.0068
+        },
+        "total_seconds": 0.0433
+      }
+    }
+  ],
+  "pipeline_observations": [
+    {
+      "finding": "HR interview scores are tightly clustered across varied profiles.",
+      "evidence": {
+        "minimum_score": 87.93,
+        "maximum_score": 90.12,
+        "score_spread": 2.19
+      },
+      "interpretation": "The deterministic HR heuristics produce similar outputs even when resume and technical evidence differ. Treat this stage as a conversation aid, not a reliable ranking signal."
+    },
+    {
+      "finding": "A limited-evidence profile receives a relatively high screening score.",
+      "evidence": [
+        {
+          "candidate_id": "DAY63-SYNTH-004",
+          "screening_score": 82.04
+        }
+      ],
+      "interpretation": "The configured screening rubric also rewards clarity and consistency, so its aggregate score can remain high when job-skill evidence is limited. Compare it with ATS, interview, and human-reviewed evidence."
+    }
+  ],
+  "pipeline_stages": [
+    "synthetic resume intake",
+    "ATS scoring",
+    "screening",
+    "HR interview",
+    "technical interview",
+    "machine test evaluation",
+    "unified scoring",
+    "eligibility and final recommendation"
+  ],
+  "performance": {
+    "total_seconds": 0.5189,
+    "measurement_note": "One local synthetic run. Model initialization and any first-use download affect timings; this is not a production benchmark."
+  },
+  "limitations": [
+    "Resume upload and parser integration are represented by pre-structured synthetic JSON; this runner does not exercise a production upload endpoint.",
+    "The screening state machine and configured answer rubric are used, but the semantic answer-intent adapter is not invoked by this fixture harness.",
+    "HR scoring uses the repository's deterministic demonstration heuristics and synthetic responses.",
+    "Technical interview and machine-test scores use explicitly labeled rubric fixtures; candidate free text and code are not automatically evaluated by those components.",
+    "Machine-test execution summaries are simulated fixture data; no submitted code is executed or sandboxed.",
+    "The final recommendations are demonstration outputs only. Human review is required before any real hiring decision."
+  ]
+}

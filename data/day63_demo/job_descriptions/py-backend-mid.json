@@ -1,0 +1,40 @@
+{
+  "job_description_id": "PY-BACKEND-MID",
+  "title": "Python Backend Developer — Mid-Level",
+  "role": "Python Developer",
+  "summary": "Build and maintain Python backend services and REST APIs. Work with relational data, automated tests, code review, and collaborative delivery practices.",
+  "skills": [
+    "Python",
+    "Django",
+    "FastAPI",
+    "REST APIs",
+    "SQL",
+    "PostgreSQL",
+    "Git",
+    "pytest",
+    "Docker"
+  ],
+  "experience": {
+    "minimum": 1,
+    "maximum": 5,
+    "text": "1 to 5 years of relevant software development experience"
+  },
+  "education": [
+    "Bachelor of Computer Science",
+    "Bachelor of Software Engineering",
+    "Bachelor of Information Technology"
+  ],
+  "eligibility_rules": {
+    "minimum_ats_score": 55,
+    "mandatory_skills": [
+      "Python",
+      "SQL"
+    ],
+    "experience": {
+      "minimum": 1,
+      "maximum": 5
+    },
+    "location": [],
+    "availability": []
+  }
+}
