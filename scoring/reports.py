@@ -5,6 +5,7 @@ Day 53: Combines candidate evaluation outputs and explains results.
 """
 
 import json
+import math
 from pathlib import Path
 
 
@@ -41,6 +42,22 @@ class HiringIntelligenceReportGenerator:
         if isinstance(value, (list, tuple)):
             return list(value)
         return [value]
+
+    @staticmethod
+    def _format_score(value):
+        """Render numeric recruiter-facing scores with their 100-point scale."""
+        if isinstance(value, bool):
+            return str(value)
+
+        try:
+            score = float(value)
+        except (TypeError, ValueError, OverflowError):
+            return str(value)
+
+        if not math.isfinite(score):
+            return str(value)
+
+        return f"{score:.2f} / 100"
 
     @classmethod
     def _collect_items(cls, sources, keys):
@@ -356,17 +373,26 @@ class HiringIntelligenceReportGenerator:
 
         lines.extend(("", "## Final Recommendation"))
         lines.append(
+            "> Scores use a 0–100 scale. Decision confidence is a heuristic "
+            "indicator, not a probability of candidate success."
+        )
+        lines.append("")
+        lines.append(
             f"- **Decision:** {recommendation.get('decision', 'Not available')}"
         )
         for label, key in (
             ("Unified score", "unified_score"),
-            ("Confidence score", "confidence_score"),
+            ("Decision confidence", "confidence_score"),
             ("Human review required", "human_review_required"),
         ):
             if recommendation.get(key) is not None:
                 value = recommendation[key]
                 if key == "human_review_required":
                     value = "Yes" if value else "No"
+                elif key in {"unified_score", "confidence_score"}:
+                    value = HiringIntelligenceReportGenerator._format_score(
+                        value
+                    )
                 lines.append(f"- **{label}:** {value}")
 
         reasons = recommendation.get("reasons", [])

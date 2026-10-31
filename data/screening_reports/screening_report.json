@@ -75,9 +75,7 @@
         }
     },
     "strengths": [
-        "Strong communication signal.",
-        "Positive sentiment detected.",
-        "Relevant skills were confirmed during screening."
+        "Strong communication signal."
     ],
     "risks": [],
     "missing_data": [],
@@ -90,7 +88,7 @@
         "Git",
         "REST API"
     ],
-    "recruiter_summary": "Strengths: Strong communication signal.; Positive sentiment detected.; Relevant skills were confirmed during screening.",
+    "recruiter_summary": "Strengths: Strong communication signal.\nNeeds review: 1 review flag(s) recorded.\nJob requirements were unavailable; role alignment could not be assessed.",
     "session_metadata": {
         "session_id": "SESSION-20260904-0007-DAY28",
         "source_session_id": "SESSION-20260904-0007",

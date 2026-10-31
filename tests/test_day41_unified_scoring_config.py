@@ -70,7 +70,7 @@ class TestDay41UnifiedScoringConfig(
 
         self.assertEqual(
             score_range["maximum"],
-            10
+            100
         )
 
     def test_hr_input_range(self):

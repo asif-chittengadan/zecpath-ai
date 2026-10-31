@@ -36,9 +36,11 @@
 - Behavioral risk requires human review
 
 ## Final Recommendation
+> Scores use a 0–100 scale. Decision confidence is a heuristic indicator, not a probability of candidate success.
+
 - **Decision:** Hold / Review
-- **Unified score:** 81.3
-- **Confidence score:** 60.0
+- **Unified score:** 81.30 / 100
+- **Decision confidence:** 60.00 / 100
 - **Human review required:** Yes
 - **Reasons:**
   - Decision based on the configured score thresholds.

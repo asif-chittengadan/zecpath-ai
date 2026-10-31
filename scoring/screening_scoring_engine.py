@@ -226,23 +226,10 @@ class ScreeningScoringEngine:
         if not answer:
             return 0.0
 
-        if not previous_answers:
-            return 10.0
-
-        answer_lower = answer.lower()
-
-        for previous_answer in previous_answers:
-            if not previous_answer:
-                continue
-
-            previous_lower = (
-                str(previous_answer).lower()
-            )
-
-            if answer_lower == previous_lower:
-                return 10.0
-
-        return 8.0
+        # Plain answers without matched questions or structured facts cannot
+        # support a reliable consistency judgment. Avoid rewarding missing
+        # history or treating every different answer as consistent.
+        return 5.0
 
     def aggregate_scores(self, question_scores):
         if not question_scores:
@@ -336,10 +323,7 @@ class ScreeningScoringEngine:
         return "The answer contains all expected information."
 
     def _explain_consistency(self, score, previous_answers):
-        if not previous_answers:
-            return "No previous answers were available for consistency comparison."
-
-        if score == 10:
-            return "The answer is consistent with the available previous responses."
-
-        return "The answer is broadly consistent with the available previous responses."
+        return (
+            "Consistency could not be verified from unstructured answer history; "
+            "this component is scored neutrally."
+        )

@@ -8,7 +8,7 @@
     "candidate_profiles": "data/day63_demo/candidates/",
     "shared_assessment": "data/day63_demo/assessments/python_unique_sorted_task.json"
   },
-  "run_at_utc": "2026-10-29T08:32:33.747295+00:00",
+  "run_at_utc": "2026-10-30T08:49:29.515314+00:00",
   "synthetic_only": true,
   "job_descriptions": [
     {
@@ -406,7 +406,7 @@
           "candidate_id": "DAY63-SYNTH-001",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-29T08:32:33.486280+00:00",
+          "evaluated_at": "2026-10-30T08:49:29.072177+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    return sorted(set(values))\n",
             "execution_result": {
@@ -521,15 +521,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.2496,
-          "screening": 0.0021,
-          "hr_interview": 0.0051,
-          "technical_interview": 0.0001,
+          "ats_scoring": 0.5559,
+          "screening": 0.0277,
+          "hr_interview": 0.0313,
+          "technical_interview": 0.0002,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0081,
-          "eligibility_and_final_decision": 0.0074
+          "unified_scoring": 0.0177,
+          "eligibility_and_final_decision": 0.0052
         },
-        "total_seconds": 0.2725
+        "total_seconds": 0.6383
       }
     },
     {
@@ -849,7 +849,7 @@
           "candidate_id": "DAY63-SYNTH-002",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-29T08:32:33.587948+00:00",
+          "evaluated_at": "2026-10-30T08:49:29.238192+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    result = []\n    for value in sorted(values):\n        if value not in result:\n            result.append(value)\n    return result\n",
             "execution_result": {
@@ -964,15 +964,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.0803,
-          "screening": 0.0015,
-          "hr_interview": 0.0041,
+          "ats_scoring": 0.1361,
+          "screening": 0.0016,
+          "hr_interview": 0.005,
           "technical_interview": 0.0001,
           "machine_test": 0.0001,
-          "unified_scoring": 0.005,
-          "eligibility_and_final_decision": 0.0057
+          "unified_scoring": 0.0041,
+          "eligibility_and_final_decision": 0.005
         },
-        "total_seconds": 0.0968
+        "total_seconds": 0.152
       }
     },
     {
@@ -1292,7 +1292,7 @@
           "candidate_id": "DAY63-SYNTH-003",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-29T08:32:33.683499+00:00",
+          "evaluated_at": "2026-10-30T08:49:29.423438+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    ordered = sorted(values)\n    unique = []\n    for item in ordered:\n        if not unique or unique[-1] != item:\n            unique.append(item)\n    return unique\n",
             "execution_result": {
@@ -1407,15 +1407,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.0768,
-          "screening": 0.0023,
-          "hr_interview": 0.0055,
+          "ats_scoring": 0.1681,
+          "screening": 0.0029,
+          "hr_interview": 0.0049,
           "technical_interview": 0.0001,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0057,
-          "eligibility_and_final_decision": 0.0057
+          "unified_scoring": 0.0058,
+          "eligibility_and_final_decision": 0.0055
         },
-        "total_seconds": 0.0961
+        "total_seconds": 0.1874
       }
     },
     {
@@ -1735,7 +1735,7 @@
           "candidate_id": "DAY63-SYNTH-004",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-29T08:32:33.725995+00:00",
+          "evaluated_at": "2026-10-30T08:49:29.488297+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    # TODO: implement\n    return []\n",
             "execution_result": {
@@ -1850,15 +1850,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.0212,
-          "screening": 0.002,
-          "hr_interview": 0.0076,
-          "technical_interview": 0.0001,
+          "ats_scoring": 0.0392,
+          "screening": 0.0028,
+          "hr_interview": 0.0111,
+          "technical_interview": 0.0002,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0054,
-          "eligibility_and_final_decision": 0.0068
+          "unified_scoring": 0.0143,
+          "eligibility_and_final_decision": 0.0074
         },
-        "total_seconds": 0.0433
+        "total_seconds": 0.0752
       }
     }
   ],
@@ -1894,7 +1894,7 @@
     "eligibility and final recommendation"
   ],
   "performance": {
-    "total_seconds": 0.5189,
+    "total_seconds": 1.0591,
     "measurement_note": "One local synthetic run. Model initialization and any first-use download affect timings; this is not a production benchmark."
   },
   "limitations": [

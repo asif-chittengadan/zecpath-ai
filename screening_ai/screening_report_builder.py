@@ -24,7 +24,9 @@ class ScreeningReportBuilder:
         candidate=None,
         answer_results=None,
         screening_score=None,
-        behavioral_analysis=None
+        behavioral_analysis=None,
+        review_flags=None,
+        job_requirement_status=None
     ):
         candidate = candidate or {}
         answer_results = answer_results or []
@@ -85,7 +87,17 @@ class ScreeningReportBuilder:
                 self._extract_skill_confirmations(
                     answer_results
                 )
-            )
+            ),
+            "review_flags": (
+                review_flags
+                if review_flags is not None
+                else candidate.get("review_flags", [])
+            ),
+            "job_requirement_status": (
+                job_requirement_status
+                if job_requirement_status is not None
+                else candidate.get("job_requirement_status")
+            ),
         }
 
         report["recruiter_summary"] = (
@@ -243,33 +255,6 @@ class ScreeningReportBuilder:
             strengths.append(
                 "Strong communication signal."
             )
-
-        sentiment = behavioral_analysis.get(
-            "sentiment",
-            {}
-        )
-
-        if sentiment.get("sentiment") == "positive":
-            strengths.append(
-                "Positive sentiment detected."
-            )
-
-        for item in answer_results:
-            if not isinstance(item, dict):
-                continue
-
-            if item.get("category") == "skills":
-                answer = item.get(
-                    "answer",
-                    ""
-                )
-
-                if answer:
-                    strengths.append(
-                        "Relevant skills were confirmed "
-                        "during screening."
-                    )
-                    break
 
         return self._unique(strengths)
 
@@ -469,9 +454,8 @@ class ScreeningReportBuilder:
             if not isinstance(item, dict):
                 continue
 
-            if str(
-                item.get("category", "")
-            ).lower() != "skills":
+            category = str(item.get("category", "")).strip().lower()
+            if category not in {"skills", "skill"}:
                 continue
 
             extracted = item.get(
@@ -480,15 +464,11 @@ class ScreeningReportBuilder:
             )
 
             if isinstance(extracted, list):
-                skills.extend(extracted)
-
-            answer = item.get(
-                "answer",
-                ""
-            )
-
-            if answer and not extracted:
-                skills.append(answer)
+                skills.extend(
+                    skill.strip()
+                    for skill in extracted
+                    if isinstance(skill, str) and skill.strip()
+                )
 
         return ScreeningReportBuilder._unique(
             skills
@@ -508,6 +488,10 @@ class ScreeningReportBuilder:
         missing = report.get(
             "missing_data",
             []
+        )
+        review_flags = report.get("review_flags", [])
+        job_requirement_status = report.get(
+            "job_requirement_status"
         )
 
         summary = []
@@ -530,13 +514,26 @@ class ScreeningReportBuilder:
                 + ", ".join(missing)
             )
 
+        if review_flags:
+            summary.append(
+                f"Needs review: {len(review_flags)} review flag(s) recorded."
+            )
+
+        if (
+            isinstance(job_requirement_status, dict)
+            and not job_requirement_status.get("available", False)
+        ):
+            summary.append(
+                "Job requirements were unavailable; role alignment could not be assessed."
+            )
+
         if not summary:
             return (
                 "No major screening signals were "
                 "identified from the available data."
             )
 
-        return " ".join(summary)
+        return "\n".join(summary)
 
     @staticmethod
     def _has_value(value):
@@ -563,6 +560,28 @@ class ScreeningReportBuilder:
             dict.fromkeys(values)
         )
 
+    @staticmethod
+    def _humanize_label(value):
+        acronyms = {
+            "ai": "AI",
+            "api": "API",
+            "ats": "ATS",
+            "hr": "HR",
+            "id": "ID",
+            "sql": "SQL",
+        }
+        words = str(value or "general").replace("_", " ").replace("-", " ").split()
+        return " ".join(
+            acronyms.get(word.lower(), word.capitalize())
+            for word in words
+        )
+
+    @staticmethod
+    def _format_score(value):
+        if isinstance(value, (int, float)):
+            return f"{value:.2f} / 100"
+        return "Not available"
+
     def to_markdown(self, report):
         lines = []
 
@@ -582,15 +601,29 @@ class ScreeningReportBuilder:
         )
 
         lines.append("## Candidate Information")
-        lines.append(
-            f"- Name: {candidate.get('name', 'N/A')}"
-        )
-        lines.append(
-            f"- Email: {candidate.get('email', 'N/A')}"
-        )
-        lines.append(
-            f"- Role: {candidate.get('role', 'N/A')}"
-        )
+        for label, key in (
+            ("Name", "name"),
+            ("Email", "email"),
+            ("Role", "role"),
+            ("Candidate ID", "candidate_id"),
+            ("Job ID", "job_id"),
+            ("Session ID", "session_id"),
+        ):
+            value = candidate.get(key)
+            lines.append(f"- {label}: {value if value else 'Not provided'}")
+
+        lines.append("")
+        lines.append("## Job Requirement Status")
+        job_status = report.get("job_requirement_status")
+        if not isinstance(job_status, dict):
+            lines.append("Not assessed.")
+        elif job_status.get("available"):
+            lines.append("Job requirements are available for review.")
+        else:
+            lines.append(
+                job_status.get("message")
+                or "Job requirements were not available."
+            )
 
         lines.append("")
         lines.append("## Key Answers")
@@ -602,10 +635,18 @@ class ScreeningReportBuilder:
 
         if key_answers:
             for item in key_answers:
-                lines.append(
-                    f"- **{item.get('category', 'General')}**: "
-                    f"{item.get('answer', '')}"
+                category = self._humanize_label(
+                    item.get("category") or "general"
                 )
+                question = str(item.get("question") or "").strip()
+                answer = str(item.get("answer") or "").strip()
+                lines.append(
+                    f"### {category}"
+                )
+                if question:
+                    lines.append(f"- Question / reference: {question}")
+                lines.append(f"- Answer: {answer or 'Not provided'}")
+                lines.append("")
         else:
             lines.append(
                 "- No screening answers available."
@@ -619,15 +660,33 @@ class ScreeningReportBuilder:
             {}
         )
 
-        lines.append(
-            f"- Total Score: "
-            f"{score.get('total_score', 'N/A')}"
-        )
+        total_score = self._format_score(score.get("total_score"))
+        lines.append(f"- Total score: {total_score}")
 
         lines.append(
             f"- Questions Evaluated: "
             f"{score.get('questions_evaluated', 0)}"
         )
+
+        lines.append("")
+        lines.append("## Review Flags")
+        review_flags = report.get("review_flags", [])
+        if review_flags:
+            for flag in review_flags:
+                if not isinstance(flag, dict):
+                    continue
+                reason = self._humanize_label(
+                    flag.get("reason") or "review required"
+                )
+                reference = flag.get("question_id") or flag.get("transcript_id")
+                line = f"- {reason}"
+                if reference:
+                    line += f" (reference: {reference})"
+                if flag.get("confidence_level") is not None:
+                    line += f"; confidence value: {flag['confidence_level']}"
+                lines.append(line)
+        else:
+            lines.append("No review flags recorded.")
 
         lines.append("")
         lines.append("## Communication Signals")
@@ -639,7 +698,7 @@ class ScreeningReportBuilder:
 
         lines.append(
             f"- Communication Strength: "
-            f"{communication.get('communication_strength', {}).get('score', 'N/A')}"
+            f"{self._format_score(communication.get('communication_strength', {}).get('score'))}"
         )
 
         lines.append(
@@ -649,7 +708,7 @@ class ScreeningReportBuilder:
 
         lines.append(
             f"- Behavioral Strength: "
-            f"{communication.get('behavioral_strength', {}).get('score', 'N/A')}"
+            f"{self._format_score(communication.get('behavioral_strength', {}).get('score'))}"
         )
 
         lines.append("")
@@ -729,7 +788,7 @@ class ScreeningReportBuilder:
         )
 
         lines.append("")
-        lines.append("## Skill Confirmations")
+        lines.append("## Skills Extracted from Answers")
 
         skills = report.get(
             "skill_confirmations",
@@ -743,7 +802,7 @@ class ScreeningReportBuilder:
             )
         else:
             lines.append(
-                "- No skills confirmed during screening."
+                "- No skills were extracted from screening answers."
             )
 
         lines.append("")
@@ -755,7 +814,7 @@ class ScreeningReportBuilder:
             )
         )
 
-        return "\n".join(lines)
+        return "\n".join(lines) + "\n"
 
     def save_markdown(
         self,

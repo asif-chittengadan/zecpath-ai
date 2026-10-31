@@ -275,5 +275,29 @@ class TestDay53HiringIntelligenceReport(unittest.TestCase):
 
 
 
+    def test_markdown_scores_show_scale_and_confidence_is_qualified(self):
+        report = self.generator.generate_report(
+            candidate_id="CAND-053",
+            candidate_name="Demo Candidate",
+            role="Software Developer",
+            final_recommendation={
+                "decision": "Hold / Review",
+                "unified_score": 81.3,
+                "confidence_score": 60.0,
+                "human_review_required": True,
+            },
+        )
+
+        markdown = self.generator.render_markdown(report)
+
+        self.assertIn("- **Unified score:** 81.30 / 100", markdown)
+        self.assertIn("- **Decision confidence:** 60.00 / 100", markdown)
+        self.assertIn(
+            "Decision confidence is a heuristic indicator, not a probability "
+            "of candidate success.",
+            markdown,
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

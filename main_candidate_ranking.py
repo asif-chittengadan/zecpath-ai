@@ -9,6 +9,7 @@ from parsers.normalizer import Normalizer
 from scoring.fairness_masker import FairnessMasker
 from scoring.bias_evaluator import BiasEvaluator
 from scoring.eligibility_decision_engine import EligibilityDecisionEngine
+from scoring.resume_schema_adapter import ResumeSchemaAdapter
 
 from compliance.consent_manager import ConsentManager
 from compliance.models import ConsentType
@@ -84,9 +85,9 @@ def extract_candidate_skills(
     resume
 ):
 
-    skills = resume.get(
+    skills = ResumeSchemaAdapter.to_ats_schema(resume).get(
         "Skills",
-        {}
+        {},
     )
 
     result = []
@@ -382,11 +383,13 @@ def main(
                 continue
 
             skills = resume.get("Skills", {})
-
-            if not isinstance(skills, dict):
+            if skills is not None and not isinstance(
+                skills,
+                (dict, list, tuple, set, str),
+            ):
                 print(
                     f"Skipping {file_name}: "
-                    "unsupported Skills format."
+                    "Skills must be an object, list, string, or null."
                 )
                 continue
 
@@ -427,7 +430,7 @@ def main(
             # ---------------------------------
 
             scoring_resume = (
-                fairness_masker.mask(
+                fairness_masker.mask_candidate(
                     normalized_resume
                 )
             )
