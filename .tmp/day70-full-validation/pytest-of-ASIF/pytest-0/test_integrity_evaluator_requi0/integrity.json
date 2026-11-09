@@ -1,0 +1,110 @@
+{
+    "candidate_id": "C52-002",
+    "candidate_name": "Demo Candidate",
+    "role": "Software Developer",
+    "decision": "Hold / Review",
+    "unified_score": 90.0,
+    "confidence_score": 71.0,
+    "thresholds": {
+        "selection": 75,
+        "review": 50
+    },
+    "risk_factors": [
+        "Integrity risk requires human review"
+    ],
+    "eligibility": {
+        "failed_rules": [],
+        "review_rules": [],
+        "missing_mandatory_skills": []
+    },
+    "reasons": [
+        "Decision based on the configured score thresholds."
+    ],
+    "human_review_required": true,
+    "behavioral_evaluation": null,
+    "integrity_evaluation": {
+        "timestamp": "2026-11-09T07:50:24.527972+00:00",
+        "risk_level": "HIGH",
+        "risk_tags": [
+            "external_voice",
+            "repeated_looking_away",
+            "tab_switching"
+        ],
+        "alerts": [
+            {
+                "type": "INTEGRITY_REVIEW",
+                "signal": "tab_switching",
+                "message": "Review required for signal: tab_switching"
+            },
+            {
+                "type": "INTEGRITY_REVIEW",
+                "signal": "external_voice",
+                "message": "Review required for signal: external_voice"
+            },
+            {
+                "type": "INTEGRITY_REVIEW",
+                "signal": "repeated_looking_away",
+                "message": "Review required for signal: repeated_looking_away"
+            }
+        ],
+        "behavioral_summary_included": false,
+        "behavioral_summary": null,
+        "human_review_required": true,
+        "decision": "REVIEW_REQUIRED",
+        "signal_analysis": {
+            "signals": {
+                "tab_switching": {
+                    "metric": "switches_per_minute",
+                    "unit": "count",
+                    "observed_value": 3,
+                    "available": true
+                },
+                "screen_focus_loss": {
+                    "metric": "focus_loss_events_per_minute",
+                    "unit": "count",
+                    "observed_value": 0,
+                    "available": true
+                },
+                "external_voice": {
+                    "metric": "external_voice_events",
+                    "unit": "count",
+                    "observed_value": 1,
+                    "available": true
+                },
+                "repeated_looking_away": {
+                    "metric": "look_away_events_per_minute",
+                    "unit": "count",
+                    "observed_value": 4,
+                    "available": true
+                }
+            },
+            "missing_signals": [],
+            "human_review_required": true
+        },
+        "detection_result": {
+            "flags": [
+                {
+                    "signal": "tab_switching",
+                    "observed_value": 3,
+                    "threshold": 3,
+                    "flag": "REVIEW_REQUIRED"
+                },
+                {
+                    "signal": "external_voice",
+                    "observed_value": 1,
+                    "threshold": 1,
+                    "flag": "REVIEW_REQUIRED"
+                },
+                {
+                    "signal": "repeated_looking_away",
+                    "observed_value": 4,
+                    "threshold": 4,
+                    "flag": "REVIEW_REQUIRED"
+                }
+            ],
+            "flag_count": 3,
+            "missing_signals": [],
+            "human_review_required": true
+        }
+    }
+}

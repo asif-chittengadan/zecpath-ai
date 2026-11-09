@@ -1,0 +1,207 @@
+{
+  "report_title": "Day 56 Full System Simulation",
+  "run_at_utc": "2026-11-09T08:05:41.975565+00:00",
+  "scenario": {
+    "candidate_id": "DAY56-SYNTH-001",
+    "candidate_name": "Synthetic Candidate 001",
+    "role": "Python Developer",
+    "synthetic": true,
+    "resume_source": "embedded synthetic resume object",
+    "resume_intake_note": "The upload step is represented by loading the synthetic JSON fixture. The repository has no upload endpoint, and its PDF/DOCX parser output is not directly connected to the ATS resume schema."
+  },
+  "stages": {
+    "ats": {
+      "score_0_100": 95.05,
+      "components": {
+        "skill_match": 1.0,
+        "experience_relevance": 1.0,
+        "education_alignment": 1.0,
+        "semantic_similarity": 0.7523
+      }
+    },
+    "screening": {
+      "score_0_100": 85.83,
+      "questions_evaluated": 3,
+      "answers_accepted": 3,
+      "conversation_completed": true,
+      "parameter_scores": {
+        "clarity": 23.33,
+        "relevance": 25.0,
+        "completeness": 25.0,
+        "consistency": 12.5
+      },
+      "answer_actions": [
+        "next_question",
+        "next_question",
+        "end_call"
+      ]
+    },
+    "hr_interview": {
+      "score_0_100": 87.97,
+      "questions_answered": 18,
+      "completed": true,
+      "completion_ratio": 1.0,
+      "scoring_note": "Uses the current Day 45 deterministic demonstration heuristics; the interview responses are synthetic."
+    },
+    "technical_interview": {
+      "score_0_100": 81.5,
+      "questions_answered": 8,
+      "completed": true,
+      "skill_domain": "python",
+      "score_source": "illustrative rubric inputs from the simulation fixture"
+    },
+    "unified_score": {
+      "score_0_100": 87.78,
+      "round_scores": {
+        "ats": 95.05,
+        "screening": 85.83,
+        "hr_interview": 87.97,
+        "technical_interview": 81.5
+      },
+      "weights": {
+        "ats": 0.294118,
+        "screening": 0.176471,
+        "hr_interview": 0.235294,
+        "technical_interview": 0.294118
+      },
+      "note": "All stage scores use the shared 0-100 input scale."
+    },
+    "final_decision": {
+      "candidate_id": "DAY56-SYNTH-001",
+      "candidate_name": "Synthetic Candidate 001",
+      "role": "Python Developer",
+      "decision": "Hold / Review",
+      "unified_score": 87.78,
+      "confidence_score": 60.0,
+      "thresholds": {
+        "selection": 75,
+        "review": 50
+      },
+      "risk_factors": [],
+      "eligibility": {
+        "failed_rules": [],
+        "review_rules": [
+          "Synthetic simulation requires human review before any real hiring action."
+        ],
+        "missing_mandatory_skills": []
+      },
+      "reasons": [
+        "Synthetic simulation requires human review before any real hiring action."
+      ],
+      "human_review_required": true,
+      "behavioral_evaluation": null,
+      "integrity_evaluation": null
+    }
+  },
+  "human_comparison": {
+    "comparison_scope": "screening intent and action only",
+    "cases": 10,
+    "matches": 10,
+    "mismatches": 0,
+    "agreement_percent": 100.0,
+    "evaluations": [
+      {
+        "case_id": "D30-001",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-002",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-003",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-004",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-005",
+        "human_intent": "vague",
+        "ai_intent": "vague",
+        "human_action": "clarify",
+        "ai_action": "clarify",
+        "match": true
+      },
+      {
+        "case_id": "D30-006",
+        "human_intent": "off_topic",
+        "ai_intent": "off_topic",
+        "human_action": "fallback",
+        "ai_action": "fallback",
+        "match": true
+      },
+      {
+        "case_id": "D30-007",
+        "human_intent": "missing",
+        "ai_intent": "missing",
+        "human_action": "clarify",
+        "ai_action": "clarify",
+        "match": true
+      },
+      {
+        "case_id": "D30-008",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-009",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      },
+      {
+        "case_id": "D30-010",
+        "human_intent": "on_topic",
+        "ai_intent": "on_topic",
+        "human_action": "accept",
+        "ai_action": "accept",
+        "match": true
+      }
+    ],
+    "candidate_level_human_reference_available": false
+  },
+  "performance": {
+    "stage_seconds": {
+      "resume_intake": 0.0005,
+      "ats_scoring": 1.1605,
+      "screening": 0.4263,
+      "hr_interview": 0.0076,
+      "technical_interview": 0.0001,
+      "unified_scoring": 0.0106,
+      "final_decision": 0.0056,
+      "screening_human_comparison": 0.3956
+    },
+    "total_seconds": 2.01,
+    "measurement_note": "One local synthetic run using a cached model; local model initialization is included but first-time model download is excluded. This is not a production load or throughput benchmark."
+  },
+  "limitations": [
+    "The human benchmark covers 10 screening cases only; no human ratings were supplied for this candidate's ATS, HR, technical, or final decision.",
+    "Technical question flow is exercised, but the current technical interview engine does not score free-text answers; illustrative rubric values are used.",
+    "HR responses and candidate data are synthetic, and HR scoring uses deterministic demonstration heuristics.",
+    "Resume intake loads a structured fixture rather than exercising a production file-upload endpoint or parser-to-ATS adapter.",
+    "Single-candidate timings do not establish production performance or fairness across a representative population."
+  ]
+}

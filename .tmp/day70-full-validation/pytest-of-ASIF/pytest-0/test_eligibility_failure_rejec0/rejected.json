@@ -1,0 +1,28 @@
+{
+    "candidate_id": "CAND-054",
+    "candidate_name": "Ineligible Candidate",
+    "role": "Software Developer",
+    "decision": "Rejected",
+    "unified_score": 95.0,
+    "confidence_score": 60.0,
+    "thresholds": {
+        "selection": 75,
+        "review": 50
+    },
+    "risk_factors": [],
+    "eligibility": {
+        "failed_rules": [
+            "Missing mandatory skills"
+        ],
+        "review_rules": [],
+        "missing_mandatory_skills": [
+            "Python"
+        ]
+    },
+    "reasons": [
+        "Missing mandatory skills"
+    ],
+    "human_review_required": false,
+    "behavioral_evaluation": null,
+    "integrity_evaluation": null
+}

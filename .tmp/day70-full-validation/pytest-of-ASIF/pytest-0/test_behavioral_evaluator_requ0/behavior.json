@@ -1,0 +1,82 @@
+{
+    "candidate_id": "C52-001",
+    "candidate_name": "Demo Candidate",
+    "role": "Software Developer",
+    "decision": "Hold / Review",
+    "unified_score": 90.0,
+    "confidence_score": 71.0,
+    "thresholds": {
+        "selection": 75,
+        "review": 50
+    },
+    "risk_factors": [
+        "Behavioral risk requires human review"
+    ],
+    "eligibility": {
+        "failed_rules": [],
+        "review_rules": [],
+        "missing_mandatory_skills": []
+    },
+    "reasons": [
+        "Decision based on the configured score thresholds."
+    ],
+    "human_review_required": true,
+    "behavioral_evaluation": {
+        "signal_analysis": {
+            "signals": {
+                "gaze_stability": {
+                    "indicator": "focus_level",
+                    "observed_value": 0.82,
+                    "measurement": "Proportion of valid observation time with gaze in a defined interview area",
+                    "available": true
+                },
+                "head_movement": {
+                    "indicator": "movement_frequency",
+                    "observed_value": 4,
+                    "measurement": "Number of detected head movements per minute",
+                    "available": true
+                },
+                "facial_engagement": {
+                    "indicator": "engagement_signal",
+                    "observed_value": null,
+                    "measurement": "Presence and duration of predefined visible engagement cues",
+                    "available": false
+                },
+                "attention_patterns": {
+                    "indicator": "distraction_frequency",
+                    "observed_value": 2,
+                    "measurement": "Number of detected attention shifts away from the interview area per minute",
+                    "available": true
+                },
+                "nervous_gestures": {
+                    "indicator": "gesture_frequency",
+                    "observed_value": 1,
+                    "measurement": "Number of predefined repetitive gestures per minute",
+                    "available": true
+                }
+            },
+            "missing_signals": [
+                "facial_engagement"
+            ],
+            "psychological_inference_performed": false,
+            "human_review_required": true
+        },
+        "scoring_summary": {
+            "overall_score": 82.94,
+            "coverage": 80.0,
+            "signals_scored": 4,
+            "missing_signals": [
+                "facial_engagement"
+            ],
+            "human_review_required": true,
+            "interpretation": "Observable-signal summary only; not a psychological or hiring suitability assessment."
+        },
+        "limitations": [
+            "Scores describe observable signals only.",
+            "Missing observations are not treated as zero.",
+            "No psychological or personality inference is performed.",
+            "Human review is required."
+        ]
+    },
+    "integrity_evaluation": null
+}

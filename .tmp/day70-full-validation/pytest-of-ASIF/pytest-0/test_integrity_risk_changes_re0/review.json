@@ -1,0 +1,28 @@
+{
+    "candidate_id": "CAND-053",
+    "candidate_name": "Review Candidate",
+    "role": "Software Developer",
+    "decision": "Hold / Review",
+    "unified_score": 90.0,
+    "confidence_score": 71.0,
+    "thresholds": {
+        "selection": 75,
+        "review": 50
+    },
+    "risk_factors": [
+        "Integrity risk requires human review"
+    ],
+    "eligibility": {
+        "failed_rules": [],
+        "review_rules": [],
+        "missing_mandatory_skills": []
+    },
+    "reasons": [
+        "Decision based on the configured score thresholds."
+    ],
+    "human_review_required": true,
+    "behavioral_evaluation": null,
+    "integrity_evaluation": {
+        "risk_level": "HIGH"
+    }
+}
