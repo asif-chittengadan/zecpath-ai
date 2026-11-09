@@ -8,7 +8,7 @@
     "candidate_profiles": "data/day63_demo/candidates/",
     "shared_assessment": "data/day63_demo/assessments/python_unique_sorted_task.json"
   },
-  "run_at_utc": "2026-10-30T08:49:29.515314+00:00",
+  "run_at_utc": "2026-11-09T08:16:14.243087+00:00",
   "synthetic_only": true,
   "job_descriptions": [
     {
@@ -148,7 +148,7 @@
           ]
         },
         "screening": {
-          "score_0_100": 95.0,
+          "score_0_100": 85.83,
           "questions_evaluated": 3,
           "answers_accepted": 3,
           "conversation_completed": true,
@@ -156,7 +156,7 @@
             "clarity": 23.33,
             "relevance": 25.0,
             "completeness": 25.0,
-            "consistency": 21.67
+            "consistency": 12.5
           },
           "answer_actions": [
             "next_question",
@@ -172,13 +172,13 @@
                 "clarity": 100.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 100.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "No previous answers were available for consistency comparison."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -189,13 +189,13 @@
                 "clarity": 100.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -206,13 +206,13 @@
                 "clarity": 80.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides a reasonable amount of detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             }
           ],
@@ -406,7 +406,7 @@
           "candidate_id": "DAY63-SYNTH-001",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-30T08:49:29.072177+00:00",
+          "evaluated_at": "2026-11-09T08:16:14.052268+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    return sorted(set(values))\n",
             "execution_result": {
@@ -456,17 +456,17 @@
           "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
         },
         "unified_score": {
-          "score_0_100": 91.83,
+          "score_0_100": 90.45,
           "round_scores": {
             "ats": 95.59,
-            "screening": 95.0,
+            "screening": 85.83,
             "hr_interview": 90.12,
             "technical_interview": 87.2,
             "machine_test": 92.4
           },
           "normalized_scores": {
             "ats": 95.59,
-            "screening": 95.0,
+            "screening": 85.83,
             "hr_interview": 90.12,
             "technical_interview": 87.2,
             "machine_test": 92.4
@@ -480,7 +480,7 @@
           },
           "weighted_scores": {
             "ats": 23.9,
-            "screening": 14.25,
+            "screening": 12.87,
             "hr_interview": 18.02,
             "technical_interview": 21.8,
             "machine_test": 13.86
@@ -498,8 +498,8 @@
           "candidate_name": "Alex Morgan",
           "role": "Python Developer",
           "decision": "Selected",
-          "unified_score": 91.83,
-          "confidence_score": 89.52,
+          "unified_score": 90.45,
+          "confidence_score": 87.92,
           "thresholds": {
             "selection": 75,
             "review": 50
@@ -521,15 +521,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.5559,
-          "screening": 0.0277,
-          "hr_interview": 0.0313,
-          "technical_interview": 0.0002,
+          "ats_scoring": 0.1674,
+          "screening": 0.0015,
+          "hr_interview": 0.0058,
+          "technical_interview": 0.0001,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0177,
-          "eligibility_and_final_decision": 0.0052
+          "unified_scoring": 0.0092,
+          "eligibility_and_final_decision": 0.0043
         },
-        "total_seconds": 0.6383
+        "total_seconds": 0.1885
       }
     },
     {
@@ -591,7 +591,7 @@
           ]
         },
         "screening": {
-          "score_0_100": 85.57,
+          "score_0_100": 76.4,
           "questions_evaluated": 3,
           "answers_accepted": 3,
           "conversation_completed": true,
@@ -599,7 +599,7 @@
             "clarity": 25.0,
             "relevance": 19.45,
             "completeness": 19.45,
-            "consistency": 21.67
+            "consistency": 12.5
           },
           "answer_actions": [
             "next_question",
@@ -615,13 +615,13 @@
                 "clarity": 100.0,
                 "relevance": 66.7,
                 "completeness": 66.7,
-                "consistency": 100.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains some of the expected relevant information.",
                 "completeness": "The answer contains some but not all expected information.",
-                "consistency": "No previous answers were available for consistency comparison."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -632,13 +632,13 @@
                 "clarity": 100.0,
                 "relevance": 66.7,
                 "completeness": 66.7,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains some of the expected relevant information.",
                 "completeness": "The answer contains some but not all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -649,13 +649,13 @@
                 "clarity": 100.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             }
           ],
@@ -849,7 +849,7 @@
           "candidate_id": "DAY63-SYNTH-002",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-30T08:49:29.238192+00:00",
+          "evaluated_at": "2026-11-09T08:16:14.124797+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    result = []\n    for value in sorted(values):\n        if value not in result:\n            result.append(value)\n    return result\n",
             "execution_result": {
@@ -899,17 +899,17 @@
           "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
         },
         "unified_score": {
-          "score_0_100": 82.82,
+          "score_0_100": 81.44,
           "round_scores": {
             "ats": 94.71,
-            "screening": 85.57,
+            "screening": 76.4,
             "hr_interview": 89.36,
             "technical_interview": 71.25,
             "machine_test": 70.8
           },
           "normalized_scores": {
             "ats": 94.71,
-            "screening": 85.57,
+            "screening": 76.4,
             "hr_interview": 89.36,
             "technical_interview": 71.25,
             "machine_test": 70.8
@@ -923,7 +923,7 @@
           },
           "weighted_scores": {
             "ats": 23.68,
-            "screening": 12.84,
+            "screening": 11.46,
             "hr_interview": 17.87,
             "technical_interview": 17.81,
             "machine_test": 10.62
@@ -941,8 +941,8 @@
           "candidate_name": "Riley Chen",
           "role": "Python Developer",
           "decision": "Selected",
-          "unified_score": 82.82,
-          "confidence_score": 79.07,
+          "unified_score": 81.44,
+          "confidence_score": 77.47,
           "thresholds": {
             "selection": 75,
             "review": 50
@@ -964,15 +964,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.1361,
-          "screening": 0.0016,
-          "hr_interview": 0.005,
+          "ats_scoring": 0.054,
+          "screening": 0.0012,
+          "hr_interview": 0.0036,
           "technical_interview": 0.0001,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0041,
-          "eligibility_and_final_decision": 0.005
+          "unified_scoring": 0.0035,
+          "eligibility_and_final_decision": 0.0047
         },
-        "total_seconds": 0.152
+        "total_seconds": 0.0672
       }
     },
     {
@@ -1034,7 +1034,7 @@
           ]
         },
         "screening": {
-          "score_0_100": 87.43,
+          "score_0_100": 78.26,
           "questions_evaluated": 3,
           "answers_accepted": 3,
           "conversation_completed": true,
@@ -1042,7 +1042,7 @@
             "clarity": 25.0,
             "relevance": 20.38,
             "completeness": 20.38,
-            "consistency": 21.67
+            "consistency": 12.5
           },
           "answer_actions": [
             "next_question",
@@ -1058,13 +1058,13 @@
                 "clarity": 100.0,
                 "relevance": 66.7,
                 "completeness": 66.7,
-                "consistency": 100.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains some of the expected relevant information.",
                 "completeness": "The answer contains some but not all expected information.",
-                "consistency": "No previous answers were available for consistency comparison."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -1075,13 +1075,13 @@
                 "clarity": 100.0,
                 "relevance": 77.8,
                 "completeness": 77.8,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains some of the expected relevant information.",
                 "completeness": "The answer contains some but not all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -1092,13 +1092,13 @@
                 "clarity": 100.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             }
           ],
@@ -1292,7 +1292,7 @@
           "candidate_id": "DAY63-SYNTH-003",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-30T08:49:29.423438+00:00",
+          "evaluated_at": "2026-11-09T08:16:14.202321+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    ordered = sorted(values)\n    unique = []\n    for item in ordered:\n        if not unique or unique[-1] != item:\n            unique.append(item)\n    return unique\n",
             "execution_result": {
@@ -1342,17 +1342,17 @@
           "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
         },
         "unified_score": {
-          "score_0_100": 79.1,
+          "score_0_100": 77.73,
           "round_scores": {
             "ats": 67.91,
-            "screening": 87.43,
+            "screening": 78.26,
             "hr_interview": 87.93,
             "technical_interview": 78.4,
             "machine_test": 78.8
           },
           "normalized_scores": {
             "ats": 67.91,
-            "screening": 87.43,
+            "screening": 78.26,
             "hr_interview": 87.93,
             "technical_interview": 78.4,
             "machine_test": 78.8
@@ -1366,7 +1366,7 @@
           },
           "weighted_scores": {
             "ats": 16.98,
-            "screening": 13.11,
+            "screening": 11.74,
             "hr_interview": 17.59,
             "technical_interview": 19.6,
             "machine_test": 11.82
@@ -1384,8 +1384,8 @@
           "candidate_name": "Taylor Brooks",
           "role": "Python Developer",
           "decision": "Selected",
-          "unified_score": 79.1,
-          "confidence_score": 74.76,
+          "unified_score": 77.73,
+          "confidence_score": 73.17,
           "thresholds": {
             "selection": 75,
             "review": 50
@@ -1407,15 +1407,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.1681,
-          "screening": 0.0029,
-          "hr_interview": 0.0049,
+          "ats_scoring": 0.0633,
+          "screening": 0.0014,
+          "hr_interview": 0.0044,
           "technical_interview": 0.0001,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0058,
-          "eligibility_and_final_decision": 0.0055
+          "unified_scoring": 0.0042,
+          "eligibility_and_final_decision": 0.004
         },
-        "total_seconds": 0.1874
+        "total_seconds": 0.0775
       }
     },
     {
@@ -1477,7 +1477,7 @@
           ]
         },
         "screening": {
-          "score_0_100": 82.04,
+          "score_0_100": 72.87,
           "questions_evaluated": 3,
           "answers_accepted": 3,
           "conversation_completed": true,
@@ -1485,7 +1485,7 @@
             "clarity": 23.33,
             "relevance": 18.52,
             "completeness": 18.52,
-            "consistency": 21.67
+            "consistency": 12.5
           },
           "answer_actions": [
             "next_question",
@@ -1501,13 +1501,13 @@
                 "clarity": 100.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 100.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "No previous answers were available for consistency comparison."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -1518,13 +1518,13 @@
                 "clarity": 100.0,
                 "relevance": 22.2,
                 "completeness": 22.2,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides sufficient detail.",
                 "relevance": "The answer contains limited relevant information.",
                 "completeness": "The answer contains only a small portion of the expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             },
             {
@@ -1535,13 +1535,13 @@
                 "clarity": 80.0,
                 "relevance": 100.0,
                 "completeness": 100.0,
-                "consistency": 80.0
+                "consistency": 50.0
               },
               "explanations": {
                 "clarity": "The answer is clear and provides a reasonable amount of detail.",
                 "relevance": "The answer contains all expected relevant information.",
                 "completeness": "The answer contains all expected information.",
-                "consistency": "The answer is broadly consistent with the available previous responses."
+                "consistency": "Consistency could not be verified from unstructured answer history; this component is scored neutrally."
               }
             }
           ],
@@ -1735,7 +1735,7 @@
           "candidate_id": "DAY63-SYNTH-004",
           "task_id": "DAY63-PY-001",
           "task_type": "coding",
-          "evaluated_at": "2026-10-30T08:49:29.488297+00:00",
+          "evaluated_at": "2026-11-09T08:16:14.232627+00:00",
           "submission": {
             "code_snapshot": "def unique_sorted(values):\n    # TODO: implement\n    return []\n",
             "execution_result": {
@@ -1785,17 +1785,17 @@
           "scoring_note": "The evaluator scores fixture-supplied rubric values and captures the code. The current framework does not execute candidate code; execution summaries are synthetic inputs and must not be treated as verified test results."
         },
         "unified_score": {
-          "score_0_100": 63.09,
+          "score_0_100": 61.71,
           "round_scores": {
             "ats": 70.6,
-            "screening": 82.04,
+            "screening": 72.87,
             "hr_interview": 89.4,
             "technical_interview": 42.4,
             "machine_test": 31.0
           },
           "normalized_scores": {
             "ats": 70.6,
-            "screening": 82.04,
+            "screening": 72.87,
             "hr_interview": 89.4,
             "technical_interview": 42.4,
             "machine_test": 31.0
@@ -1809,7 +1809,7 @@
           },
           "weighted_scores": {
             "ats": 17.65,
-            "screening": 12.31,
+            "screening": 10.93,
             "hr_interview": 17.88,
             "technical_interview": 10.6,
             "machine_test": 4.65
@@ -1827,8 +1827,8 @@
           "candidate_name": "Jamie Rivera",
           "role": "Python Developer",
           "decision": "Hold / Review",
-          "unified_score": 63.09,
-          "confidence_score": 60.24,
+          "unified_score": 61.71,
+          "confidence_score": 60.32,
           "thresholds": {
             "selection": 75,
             "review": 50
@@ -1850,15 +1850,15 @@
       "performance": {
         "stage_seconds": {
           "resume_intake_and_consent": 0.0001,
-          "ats_scoring": 0.0392,
-          "screening": 0.0028,
-          "hr_interview": 0.0111,
-          "technical_interview": 0.0002,
+          "ats_scoring": 0.0151,
+          "screening": 0.0011,
+          "hr_interview": 0.0056,
+          "technical_interview": 0.0001,
           "machine_test": 0.0001,
-          "unified_scoring": 0.0143,
-          "eligibility_and_final_decision": 0.0074
+          "unified_scoring": 0.0033,
+          "eligibility_and_final_decision": 0.0037
         },
-        "total_seconds": 0.0752
+        "total_seconds": 0.0289
       }
     }
   ],
@@ -1871,16 +1871,6 @@
         "score_spread": 2.19
       },
       "interpretation": "The deterministic HR heuristics produce similar outputs even when resume and technical evidence differ. Treat this stage as a conversation aid, not a reliable ranking signal."
-    },
-    {
-      "finding": "A limited-evidence profile receives a relatively high screening score.",
-      "evidence": [
-        {
-          "candidate_id": "DAY63-SYNTH-004",
-          "screening_score": 82.04
-        }
-      ],
-      "interpretation": "The configured screening rubric also rewards clarity and consistency, so its aggregate score can remain high when job-skill evidence is limited. Compare it with ATS, interview, and human-reviewed evidence."
     }
   ],
   "pipeline_stages": [
@@ -1894,7 +1884,7 @@
     "eligibility and final recommendation"
   ],
   "performance": {
-    "total_seconds": 1.0591,
+    "total_seconds": 0.3667,
     "measurement_note": "One local synthetic run. Model initialization and any first-use download affect timings; this is not a production benchmark."
   },
   "limitations": [
