@@ -1,494 +1,127 @@
-# ZECPATH AI Hiring Platform
+# ZECPATH AI
 
-> An AI-powered recruitment platform focused on automating key stages of the hiring lifecycle — from job-description and resume processing to candidate screening, interviews, and evaluation.
+ZECPATH AI is a modular Python project that prototypes AI-assisted recruitment tasks: resume and job-description processing, candidate-to-job scoring, screening and interview workflows, decision support, and compliance helpers.
 
-## Overview
+The repository contains callable modules and local demonstration scripts. It is not a deployed hiring service, and the sample simulations do not prove production accuracy, fairness, security, or scale.
 
-**ZECPATH AI** is a recruitment technology project designed to help automate and structure the hiring workflow.
+## Current project status
 
-The platform is organized into independent modules for:
+As of Day 68, the local synthetic demonstration and automated suite have been validated. The final check completed **679 tests and 8 subtests**. A four-profile Day 63 run completed in about 1.02 seconds after model initialization, with score bounds and weighted totals checked. See the [Day 68 validation report](output/pdf/Day_68_Final_Validation_and_Bug_Fix_Report.pdf).
 
-- Resume parsing and text extraction
-- Job Description (JD) parsing
-- ATS and candidate matching
-- AI-based screening
-- HR and technical interviews
-- Candidate scoring and evaluation
-- Compliance and supporting utilities
+The integrated demonstrations use fictional profiles and supplied response or rubric fixtures. Resume parsing is not connected end to end to ATS matching. The repository has no implemented HTTP API or connected hiring UI. `website/index.html` is a static page and is separate from the company's official website.
 
-The project is being developed as a modular Python-based platform so that individual components can be tested and improved independently.
+## Project structure
 
----
+- `parsers/` - PDF/DOCX text readers, resume parsing components, and job-description parsing.
+- `scoring/` - resume/JD matching, ATS scoring, screening score aggregation, unified scores, eligibility, recommendations, explainability, and fairness helpers.
+- `screening_ai/` - screening conversation state, response analysis, and speech/transcript utilities.
+- `interview_ai/` - HR, technical, behavioral, and machine-test components.
+- `compliance/` - consent, access-policy checks, audit-event writing, and retention decisions. These helpers are not enforced across every application path.
+- `config/` - scoring, interview, eligibility, access, and retention rules.
+- `data/day63_demo/` - fictional demo jobs, candidate profiles, and assessment fixtures.
+- `tests/` - pytest coverage for the project modules and edge cases.
+- `reports/` - local JSON/Markdown analysis outputs.
+- `docs/` - technical references, governance materials, reports, and the Day 69 package.
+- `output/` - presentation and PDF deliverables.
+- `main_day56_full_system_simulation.py` and `main_day63_end_to_end_simulation.py` - local synthetic pipeline demonstrations.
 
-## Project Status
+The `ats_engine/` directory is a legacy namespace; active ATS matching and ranking code is primarily under `scoring/`. The `db/` folder contains a schema draft, not a live database integration.
 
-### Currently implemented
+## Setup
 
-- Resume PDF text extraction and cleaning
-- DOCX/PDF-related resume parsing components
-- Job Description PDF parsing
-- JD cleaning and normalization
-- JD section extraction
-- Role extraction
-- Skill extraction
-- Experience requirement extraction
-- Education requirement extraction
-- Structured JSON generation for parsed JDs
-- Automated processing of multiple JD PDFs
-- Test and utility structure for continued development
+Python 3.13 is the validated development runtime for this repository. From a PowerShell terminal:
 
-### In development
-
-- ATS matching and candidate ranking
-- AI voice screening
-- HR and technical interview workflows
-- Candidate evaluation and scoring
-- Additional recruitment automation features
-
-> Features listed as "in development" are part of the platform architecture but should not be considered production-ready unless their implementation and testing are complete.
-
----
-
-## Architecture
-
-The repository is organized into functional modules:
-
-```
-ZECPATH-AI/
-│
-├── ats_engine/          # ATS and candidate matching components
-├── compliance/          # Compliance-related components
-├── config/              # Configuration files
-├── data/                # Input data and generated outputs
-├── db/                  # Database-related components
-├── docs/                # Project documentation
-├── interview_ai/        # AI interview components
-├── parsers/             # Resume and JD parsing engines
-├── reports/             # Reports and generated analysis
-├── scoring/             # Candidate scoring components
-├── screening_ai/        # AI screening components
-├── tests/               # Automated tests
-├── utils/               # Logging and helper utilities
-│
-├── main.py
-├── main_resume.py
-├── main_job_parser.py
-├── requirements.txt
-├── README.md
-└── .gitignore
+```powershell
+git clone https://github.com/asif-chittengadan/zecpath-ai.git
+cd zecpath-ai
+py -3.13 -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
----
-
-# Core Modules
-
-## 1. Resume Parser
-
-The resume-processing pipeline extracts useful text from candidate resumes and prepares it for downstream recruitment processing.
-
-### Current capabilities
-
-- PDF resume text extraction
-- DOCX resume parsing components
-- Text cleaning
-- Cleaned resume output
-- Processing of resume files from the project data directory
-
-### Input
-
-```
-data/resumes/
-```
-
-### Run
-
-```bash
-python main_resume.py
-```
-
----
-
-## 2. Job Description Parser
-
-The JD Parser converts Job Description PDFs into structured JSON data that can be consumed by downstream recruitment and matching components.
-
-### Extraction pipeline
-
-```
-PDF
- ↓
-PDF Text Extraction
- ↓
-Cleaning
- ↓
-Normalization
- ↓
-Section Detection
- ↓
-Role Extraction
- ↓
-Skill Extraction
- ↓
-Experience Extraction
- ↓
-Education Extraction
- ↓
-Structured JSON
-```
-
-### Current capabilities
-
-- PDF Job Description reading
-- JD cleaning
-- JD normalization
-- Section detection
-- Role extraction
-- Required-skill extraction
-- Experience requirement extraction
-- Education extraction
-- Structured JSON generation
-- Batch processing of multiple JD PDFs
-
-### Input
-
-```
-data/job_descriptions/
-```
-
-### Output
-
-```
-data/parsed_jd/
-```
-
-### Run
-
-```bash
-python main_job_parser.py
-```
-
-The script scans the Job Description directory for PDF files and creates a corresponding JSON file for each JD.
-
-### Example output
-
-```json
-{
-  "role": "Software Developer",
-  "skills": [
-    "C",
-    "C++",
-    "JavaScript"
-  ],
-  "experience": {
-    "minimum": 0,
-    "maximum": 0,
-    "text": "Freshers"
-  },
-  "education": [
-    "B.Tech",
-    "Computer Science",
-    "Artificial Intelligence"
-  ]
-}
-```
-
----
-
-## 3. ATS Engine
-
-The `ats_engine/` module is intended to support automated resume-to-JD matching and candidate ranking.
-
-Planned/ongoing areas include:
-
-- Skill matching
-- Experience matching
-- Education matching
-- Resume/JD compatibility scoring
-- Candidate ranking
-
----
-
-## 4. Screening AI
-
-The `screening_ai/` module contains components for AI-assisted candidate screening.
-
-Development areas include:
-
-- Voice-based interaction
-- Transcript processing
-- Candidate response analysis
-- Communication assessment
-- Screening evaluation
-
----
-
-## 5. Interview AI
-
-The `interview_ai/` module is intended to support AI-assisted recruitment interviews.
-
-Development areas include:
-
-- HR interviews
-- Technical interviews
-- Question generation
-- Candidate response evaluation
-- Interview reports
-
----
-
-## 6. Scoring
-
-The `scoring/` module is intended to combine recruitment signals into structured candidate evaluation.
-
-Potential scoring dimensions include:
-
-- Technical performance
-- Experience
-- Skills
-- Communication
-- Interview performance
-- Overall candidate recommendation
-
----
-
-## 7. Compliance
-
-The `compliance/` module contains components related to responsible recruitment and compliance workflows.
-
----
-
-# Data Flow
-
-A simplified recruitment workflow is:
-
-```
-Candidate Resume ───────┐
-                        │
-                        ▼
-                  Resume Parser
-                        │
-                        ▼
-                 Candidate Data
-                        │
-                        ├──────────────┐
-                        │              │
-                        ▼              ▼
-                   ATS Engine     Interview AI
-                        │              │
-                        └──────┬───────┘
-                               ▼
-                         Scoring Engine
-                               │
-                               ▼
-                     Candidate Evaluation
-```
-
-For job descriptions:
-
-```
-Job Description PDF
-        │
-        ▼
-    JD Parser
-        │
-        ├── Role
-        ├── Skills
-        ├── Experience
-        └── Education
-        │
-        ▼
-   Structured JSON
-```
-
----
-
-# Installation
-
-## 1. Clone the repository
+For macOS or Linux:
 
 ```bash
 git clone https://github.com/asif-chittengadan/zecpath-ai.git
 cd zecpath-ai
-```
-
-## 2. Create a virtual environment
-
-### Windows
-
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-### macOS/Linux
-
-```bash
-python3 -m venv venv
+python3.13 -m venv venv
 source venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-## 3. Install dependencies
+The semantic matching component uses the Sentence Transformers model `all-MiniLM-L6-v2`. Its first use may download model files from Hugging Face, so allow network access and enough disk space; later runs can use the local model cache. Some speech and document dependencies may also require platform-specific system libraries.
 
-```bash
-pip install -r requirements.txt
-```
+## Run the project
 
-Some dependencies use external model packages and system resources. If an installation issue occurs, check the package-specific error before changing the pinned versions.
+Run commands from the repository root with the virtual environment active.
 
----
+### Resume text extraction
 
-# Running the Project
+`main.py` uses the configured `data/resumes/mycv.pdf` path:
 
-## Resume processing
-
-Place a PDF resume in:
-
-```
-data/resumes/
-```
-
-Then run:
-
-```bash
-python main_resume.py
-```
-
-## Job Description parsing
-
-Place one or more JD PDFs in:
-
-```
-data/job_descriptions/
-```
-
-Then run:
-
-```bash
-python main_job_parser.py
-```
-
-Parsed JSON files will be written to:
-
-```
-data/parsed_jd/
-```
-
-## Main entry point
-
-```bash
+```powershell
 python main.py
 ```
 
-The main entry point currently demonstrates the resume text-extraction workflow.
+`main_resume.py` processes a PDF from `data/resumes/`. These are parser demonstrations; their output is not automatically sent to ATS scoring.
 
----
+### Parse job descriptions
 
-# Testing
+Place job-description PDFs in `data/job_descriptions/`, then run:
 
-The repository contains a `tests/` directory for automated testing.
-
-Run:
-
-```bash
-pytest
+```powershell
+python main_job_parser.py
 ```
 
----
+The script writes parsed JSON files under `data/parsed_jd/`.
 
-# Technology Stack
+### Run synthetic hiring demonstrations
 
-### Programming
+Day 56 exercises a selected path through ATS, screening, HR, technical scoring, unified scoring, and a final decision:
 
-- Python 3
-
-### Document processing
-
-- PyMuPDF
-- pdfplumber
-- python-docx
-
-### NLP / AI
-
-- spaCy
-- Transformers
-- Sentence Transformers
-- PyTorch
-- Faster-Whisper
-
-### Data and machine learning
-
-- NumPy
-- Pandas
-- Scikit-learn
-- RapidFuzz
-
-### API / backend
-
-- FastAPI
-- Uvicorn
-
-### Testing
-
-- PyTest
-
-### Data formats
-
-- JSON
-- PDF
-- DOCX
-
----
-
-# Repository Goals
-
-ZECPATH AI is being developed toward an end-to-end AI-assisted recruitment workflow:
-
-```
-Job Description
-      ↓
-JD Parsing
-      ↓
-Resume Parsing
-      ↓
-ATS Screening
-      ↓
-AI Screening
-      ↓
-HR / Technical Interview
-      ↓
-Candidate Scoring
-      ↓
-Recruiter Decision
+```powershell
+python main_day56_full_system_simulation.py
 ```
 
-The project is intended to make recruitment workflows more structured, explainable, and easier to automate while keeping individual components modular and testable.
+Day 63 runs four fictional candidates through eight demo stages using the separate dataset under `data/day63_demo/`:
 
----
-
-# Documentation
-
-Project documentation and supporting materials are available in:
-
-```
-docs/
+```powershell
+python main_day63_end_to_end_simulation.py
 ```
 
-Additional generated reports and analysis are maintained in:
+The Day 56 and Day 63 scripts write local reports under `reports/` and may replace the corresponding prior report. Their outputs are demonstration results, not real hiring decisions.
 
+### Run tests and the warm-scoring benchmark
+
+```powershell
+python -m pytest -q
+python -m tests.day18_warm_benchmark
 ```
-reports/
-```
 
----
+The benchmark loads the semantic model and scores JSON resumes under `data/labeled_resumes/`. Results depend on model-cache state, hardware, and input size.
 
-# Author
+## Responsible use and data handling
 
-**Asif C**
+- Use fictional or explicitly authorized data for demonstrations. The repository may contain resume files and other candidate-related records; review them before sharing, uploading, or creating a public archive.
+- The Day 63 fixtures are explicitly synthetic and intended for local demonstrations.
+- Machine-test results in the current end-to-end fixture are supplied rubric values; submitted code is not run in a sandbox.
+- Interview and screening scores are decision-support signals. A human must review evidence and make any real employment decision.
+- Consent, access-control, audit, and retention modules provide reusable controls, but their presence does not mean every path is protected or that retention actions execute automatically.
 
-ZECPATH AI Hiring Platform
+## Documentation and portfolio
 
----
+Start at [docs/README.md](docs/README.md) for a guide to the existing documentation and reports. The Day 69 handoff includes:
 
-## License
+- [Internship portfolio source](docs/day69/INTERNSHIP_PORTFOLIO.md)
+- [AI roadmap source](docs/day69/AI_ROADMAP.md)
+- [Day 69 package index](docs/day69/README.md)
+- `output/pdf/Day_69_Internship_Portfolio.pdf`
+- `output/pdf/Day_69_AI_Roadmap.pdf`
 
-License information will be added when the project license is finalized.
+## Author
+
+Asif C
+
+License terms have not been finalized in this repository.
